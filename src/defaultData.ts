@@ -365,6 +365,30 @@ export const defaultSiteData: CMSSiteData = {
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true
       }
+    },
+    {
+      "id": 18,
+      "title": "tttttt",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "/src/assets/images/showreel-Thumbnail.png",
+      "link": "#",
+      "isPublished": true,
+      "gifModes": {}
+    },
+    {
+      "id": 19,
+      "title": "tttttttttt",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "/src/assets/images/showreel-Thumbnail.png",
+      "link": "#",
+      "isPublished": true,
+      "gifModes": {}
     }
   ],
   "projects": [],
@@ -2452,6 +2476,72 @@ export const defaultSiteData: CMSSiteData = {
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true
       }
+    },
+    {
+      "id": 18,
+      "title": "TTTTTT",
+      "shortDescription": "Short detail description next to video header.",
+      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
+      "role": "STORYBOARD & ANIMATION",
+      "client": "SELF WORK",
+      "description": "Short catalog description.",
+      "videoUrl": "",
+      "headerVideos": [],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD & ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT BRAND NAME",
+          "value": "SELF WORK"
+        }
+      ],
+      "gifModes": {}
+    },
+    {
+      "id": 19,
+      "title": "TTTTTTTTTT",
+      "shortDescription": "Short detail description next to video header.",
+      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
+      "role": "STORYBOARD & ANIMATION",
+      "client": "SELF WORK",
+      "description": "Short catalog description.",
+      "videoUrl": "",
+      "headerVideos": [],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD & ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT BRAND NAME",
+          "value": "SELF WORK"
+        }
+      ],
+      "gifModes": {}
     }
   ],
   "services": [
