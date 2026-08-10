@@ -241,6 +241,130 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4": true
       }
+    },
+    {
+      "id": 10,
+      "title": "WORKLEAP - SIZZLE REEL 1 - ANIMATING A NEW DIGITAL IDENTITY",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.20.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 11,
+      "title": "WORKLEAP - BRINGING ISOMETRIC WORLDS TO LIFE",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 12,
+      "title": "NYC Emergency Management - Critical Messages, Clearly Delivered",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Thumbnails.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4": true
+      }
+    },
+    {
+      "id": 13,
+      "title": "Ejadwa",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Thumbnail.png",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif": true
+      }
+    },
+    {
+      "id": 14,
+      "title": "WORKLEAP - TRANSFORMING ILLUSTRATIONS INTO LOOPING LOTTIE MOTION",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Thumbnail.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/GIF.video.thumbnail.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/GIF.video.thumbnail.mp4": true
+      }
+    },
+    {
+      "id": 15,
+      "title": "WORKLEAP - TRANSFORMING ILLUSTRATIONS INTO LOTTIE MOTION",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/thumbnail.project.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true
+      }
+    },
+    {
+      "id": 16,
+      "title": "SUCCESS FINDER",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-4.gif",
+      "isPublished": true,
+      "gifModes": {}
+    },
+    {
+      "id": 17,
+      "title": "WEACTIS - SIMPLIFYING CYBERSECURITY FOR TEAMS",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true
+      }
     }
   ],
   "projects": [],
@@ -1512,6 +1636,821 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 10,
+      "title": "WORKLEAP - SIZZLE REEL 1 - ANIMATING A NEW DIGITAL IDENTITY",
+      "shortDescription": "Workleap is a dynamic software platform that transforms the employee experience through intelligent AI-powered tools for performance management and training, helping organizations of all sizes build a more productive and collaborative workplace.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg",
+      "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
+      "client": "WORKLEAP",
+      "description": "I animated a high-energy sizzle reel showcasing their new logo and modern website design. By blending sleek motion graphics with seamless transitions",
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Video-Workleap-Sizzle.reel.mp4",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-6.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-3.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-5.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-5.mp4": true
+              }
+            },
+            {
+              "id": "row-1786276746989",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-6.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif"
+              ]
+            },
+            {
+              "id": "row-1786276717603",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-3.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-5.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-5.mp4": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.2.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.15.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.38.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.41.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.32.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.33.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.39.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.17.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg"
+          ],
+          "rows": [
+            {
+              "id": "row-1786277142738",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.2.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.15.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.38.jpg"
+              ]
+            },
+            {
+              "id": "row-1786277220007",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.41.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.32.jpg"
+              ]
+            },
+            {
+              "id": "row-1786277256708",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.33.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.39.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.17.jpg"
+              ]
+            },
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg"
+              ],
+              "singleImageColumns": 3
+            }
+          ]
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT",
+          "value": "Workleap"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 11,
+      "title": "WORKLEAP - BRINGING ISOMETRIC WORLDS TO LIFE",
+      "shortDescription": "Workleap is a dynamic software platform that transforms the employee experience through intelligent AI-powered tools for performance management and training, helping organizations of all sizes build a more productive and collaborative workplace.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
+      "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
+      "client": "WORKLEAP",
+      "description": "Since the scenes were all designed in an isometric style, it required specific expertise to handle this approach effectively. To streamline the process, I rebuilt the scenes and characters directly inside After Effects, making them easier to animate smoothly and consistently.",
+      "videoUrl": "https://www.youtube.com/watch?v=0kidr_FDq2s",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-7.jpg"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg"
+              ]
+            },
+            {
+              "id": "row-1786279810566",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-7.jpg"
+              ]
+            }
+          ]
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT",
+          "value": "Workleap"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 12,
+      "title": "NYC EMERGENCY MANAGEMENT - CRITICAL MESSAGES, CLEARLY DELIVERED",
+      "shortDescription": "NYC Emergency Management is the city agency responsible for planning, coordinating, and responding to emergencies and disasters in New York City.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Thumbnails.jpg",
+      "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
+      "client": "EJADWA",
+      "description": "The client needed designed and animated text bubbles that would clearly convey the message and communicate the key points to viewers effectively.",
+      "videoUrl": "",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "1 - NOTIFY NYC TRAFFIC ALERTS",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/1-Notify.NYC.Traffic.Alerts.gif",
+            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/1-Notify.NYC.Traffic.Alerts.gif",
+                "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "2 - NOTIFY NYC BASEMENT ALERTS",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/2-Notify.NYC.Basement.Alerts.gif",
+            "https://youtu.be/toXotV0ERfo?si=F9h7DulwBTqIlSdK"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/2-Notify.NYC.Basement.Alerts.gif",
+                "https://youtu.be/toXotV0ERfo?si=F9h7DulwBTqIlSdK"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "3 - NOTIFY NYC MAJOR EVENT ALERTS",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/3-Notify.NYC.Major.Event.Alerts.gif",
+            "https://youtu.be/NMG66ygSk_s?si=48SCzETFPUwwR1d0"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/3-Notify.NYC.Major.Event.Alerts.gif",
+                "https://youtu.be/NMG66ygSk_s?si=48SCzETFPUwwR1d0"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "4 - NOTIFY NYC MASS TRANSIT ALERTS",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/4-Notify.NYC.Mass.Transit.Alerts.gif",
+            "https://youtu.be/jl2imTplRyo?si=o91sFg_BImxLJJi8"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/4-Notify.NYC.Mass.Transit.Alerts.gif",
+                "https://youtu.be/jl2imTplRyo?si=o91sFg_BImxLJJi8"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "5 - NOTIFY NYC POWER OUTAGE ALERTS ",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/5-Notify.NYC.Power.Outage.Alerts.gif",
+            "https://youtu.be/_gFCryCdXf8?si=IEB8iFkXG5_hvBRc"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/5-Notify.NYC.Power.Outage.Alerts.gif",
+                "https://youtu.be/_gFCryCdXf8?si=IEB8iFkXG5_hvBRc"
+              ]
+            }
+          ]
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT BRAND NAME",
+          "value": ""
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4": true
+      }
+    },
+    {
+      "id": 13,
+      "title": "EJADWA",
+      "shortDescription": "",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Thumbnail.png",
+      "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
+      "client": "EJADWA",
+      "description": "",
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/video-final.mp4",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "STORYBOARD",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4": true
+              }
+            },
+            {
+              "id": "row-1786284189590",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.1.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.2.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.3.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.4.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.5.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.6.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.7.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.8.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.9.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.10.jpg"
+          ],
+          "rows": [
+            {
+              "id": "row-1786285838367",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.1.jpg"
+              ]
+            },
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.2.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.3.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.4.jpg"
+              ]
+            },
+            {
+              "id": "row-1786285716109",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.5.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.6.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.7.jpg"
+              ]
+            },
+            {
+              "id": "row-1786285749436",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.8.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.9.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.10.jpg"
+              ]
+            }
+          ]
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT BRAND NAME",
+          "value": "Ejadwa"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif": true
+      }
+    },
+    {
+      "id": 14,
+      "title": "WORKLEAP - TRANSFORMING ILLUSTRATIONS INTO LOOPING LOTTIE MOTION",
+      "shortDescription": "Workleap is a dynamic software platform that transforms the employee experience through intelligent AI-powered tools for performance management and training, helping organizations of all sizes build a more productive and collaborative workplace.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/picture-.jpg",
+      "role": "STORYBOARD & ANIMATION",
+      "client": "SELF WORK",
+      "description": "I animated the client-provided illustrations into a looping animation and converted them into Lottie files in JSON format to ensure a smooth, continuous, and engaging visual experience on their website.",
+      "videoUrl": "",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.1-small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.2-Small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/animation.3-small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.4-small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.5-small.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.1-small.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.2-Small.gif"
+              ]
+            },
+            {
+              "id": "row-1786286476548",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/animation.3-small.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.4-small.gif"
+              ]
+            },
+            {
+              "id": "row-1786286503082",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.5-small.gif"
+              ],
+              "singleImageColumns": 2
+            }
+          ]
+        }
+      ],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD & ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT BRAND NAME",
+          "value": ""
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/GIF.video.thumbnail.mp4": true
+      }
+    },
+    {
+      "id": 15,
+      "title": "WORKLEAP - TRANSFORMING ILLUSTRATIONS INTO LOTTIE MOTION",
+      "shortDescription": "Workleap is a dynamic software platform that transforms the employee experience through intelligent AI-powered tools for performance management and training, helping organizations of all sizes build a more productive and collaborative workplace.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/thumbnail.project.jpg",
+      "role": "ANIMATION",
+      "client": "SELF WORK",
+      "description": "I animated the client-provided illustrations and converted them into Lottie files in JSON format to enable smooth and engaging use on their website.",
+      "videoUrl": "",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "STORYBOARD",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-1.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-1.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true
+              },
+              "singleImageColumns": 2
+            },
+            {
+              "id": "row-1786364284396",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true
+              },
+              "singleImageColumns": 2
+            }
+          ],
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-1.mp4": true
+          }
+        }
+      ],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT BRAND NAME",
+          "value": "SELF WORK"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true
+      }
+    },
+    {
+      "id": 16,
+      "title": "SUCCESS FINDER",
+      "shortDescription": "SuccessFinder is a Canadian platform specializing in behavioral analytics and advanced HR solutions to help organizations enhance talent selection and development.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
+      "role": "STORYBOARD & ANIMATION",
+      "client": "SELF WORK",
+      "description": "The client opted for a clean illustration style built around flat, geometric shapes and character silhouettes.",
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Video-Success.Finder.mp4",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "STORYBOARD",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-2.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-4.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-5.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-1.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-2.gif"
+              ]
+            },
+            {
+              "id": "row-1786365006028",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-4.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-5.gif"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "STORYBOARD",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.2.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.3.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.4.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.5.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.6.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.7.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.8.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.9.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.10.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.11.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.12.png"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.2.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.3.png"
+              ]
+            },
+            {
+              "id": "row-1786364925125",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.4.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.5.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.6.png"
+              ]
+            },
+            {
+              "id": "row-1786364936816",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.7.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.8.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.9.png"
+              ]
+            },
+            {
+              "id": "row-1786364949060",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.10.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.11.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.12.png"
+              ]
+            }
+          ]
+        }
+      ],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD & ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT BRAND NAME",
+          "value": "SELF WORK"
+        }
+      ],
+      "gifModes": {}
+    },
+    {
+      "id": 17,
+      "title": "WEACTIS - SIMPLIFYING CYBERSECURITY FOR TEAMS",
+      "shortDescription": "WeActis, a solution designed to reduce cybersecurity risks in Microsoft 365 by promoting safe employee collaboration.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg",
+      "role": "STORYBOARD & ANIMATION",
+      "client": "SELF WORK",
+      "description": "The client requested a simple, easy-to-read video that adhered to the visual style of their previous work. I started by designing scenes that were perfectly aligned with this direction.",
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/WeActis.-.Mondata.mp4",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "STORYBOARD",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/2-Small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/5.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1786366580092",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4": true
+              }
+            },
+            {
+              "id": "row-1786366602091",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/2-Small.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/5.gif"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.1.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.2.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.4.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.5.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.6.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.7.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.8.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.9.jpg"
+          ],
+          "rows": [
+            {
+              "id": "row-1786366343580",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.1.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.2.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.4.jpg"
+              ]
+            },
+            {
+              "id": "row-1786366510376",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.5.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.6.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.7.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.8.jpg"
+              ]
+            },
+            {
+              "id": "row-1786366546747",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.9.jpg"
+              ],
+              "singleImageColumns": 4
+            }
+          ]
+        }
+      ],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD & ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT BRAND NAME",
+          "value": "SELF WORK"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true
       }
     }
   ],
