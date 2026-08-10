@@ -372,12 +372,20 @@ export const defaultSiteData: CMSSiteData = {
     {
       "id": 1,
       "title": "247 MAINTENANCE - CONNECTING HOMES TO EXPERTS",
-      "shortDescription": "247 MAINTENANCE IS A SMART APP THAT CONNECTS YOU WITH EXPERT TECHNICIANS FOR ALL YOUR HOME NEEDS ANYWHERE IN THE UNITED ARAB EMIRATES.",
+      "shortDescription": "I partnered with 247 Maintenance to create a dynamic explainer video showing how seamlessly their platform connects UAE homeowners with trusted, expert technicians.  ",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
       "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
       "client": "247 MAINTENANCE",
-      "description": "247 MAINTENANCE IS A SMART APP THAT CONNECTS YOU WITH EXPERT TECHNICIANS FOR ALL YOUR HOME NEEDS ANYWHERE IN THE UNITED ARAB EMIRATES.",
+      "description": "To give the video a more polished, professional feel and make each service stand out, I rendered the company and its services in 3D, adding depth and craft that help them pop against the flat 2D world around them and hold the viewer's attention.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
