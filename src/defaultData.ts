@@ -374,7 +374,7 @@ export const defaultSiteData: CMSSiteData = {
       "title": "247 MAINTENANCE - CONNECTING HOMES TO EXPERTS",
       "shortDescription": "I partnered with 247 Maintenance to create a dynamic explainer video showing how seamlessly their platform connects UAE homeowners with trusted, expert technicians.  ",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-      "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
+      "role": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX",
       "client": "247 MAINTENANCE",
       "description": "To give the video a more polished, professional feel and make each service stand out, I rendered the company and its services in 3D, adding depth and craft that help them pop against the flat 2D world around them and hold the viewer's attention.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
@@ -480,12 +480,17 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-role",
           "label": "ROLE",
-          "value": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX"
+          "value": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX"
         },
         {
           "id": "field-client",
-          "label": "CLIENT BRAND NAME",
+          "label": "CLIENT",
           "value": "247 MAINTENANCE"
+        },
+        {
+          "id": "field-1786392132109",
+          "label": "Tools",
+          "value": "Illustrator, Photoshop\nAfter Effects, Cinema 4D"
         }
       ],
       "gifModes": {
