@@ -121,14 +121,14 @@ export const defaultSiteData: CMSSiteData = {
         "Showreel"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg",
-      "link": "https://www.youtube.com/",
+      "link": "",
       "hoverGif": "",
       "isPublished": true,
       "gifModes": {}
     },
     {
       "id": 3,
-      "title": "COMÈTE STUDIO - FROM STATIC FRAMES TO LIVING STORIES",
+      "title": "Comète Studio - Conceptual Motion Graphics",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -145,10 +145,10 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 4,
-      "title": "WORKLEAP - GATHERING SPRING 2026",
-      "category": "Explainer",
+      "title": "WORKLEAP - SPHERICAL PROJECTION MAPPING",
+      "category": "Event",
       "categories": [
-        "Explainer"
+        "Event"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Cover.jpg",
       "link": "#",
@@ -156,15 +156,16 @@ export const defaultSiteData: CMSSiteData = {
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4": true
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4": true
       }
     },
     {
       "id": 5,
-      "title": "AINSI VA MANU (TV SERIES) -ENHANCING DRAMA WITH MOTION DESIGN",
-      "category": "Explainer",
+      "title": "AINSI VA MANU — ON SCREEN MOTION GRAPHICS",
+      "category": "Broadcast",
       "categories": [
-        "Explainer"
+        "Broadcast"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/thumpnail.webp",
       "link": "#",
@@ -176,10 +177,11 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 6,
-      "title": "POKA - MAKING AI WORK ON THE FACTORY FLOOR",
-      "category": "Explainer",
+      "title": "POKA - INTRODUCING POKA ASSISTANT",
+      "category": "Explainer, Brand",
       "categories": [
-        "Explainer"
+        "Explainer",
+        "Brand"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg",
       "link": "#",
@@ -194,9 +196,9 @@ export const defaultSiteData: CMSSiteData = {
     {
       "id": 7,
       "title": "CLUB DE LECTURE - WHERE BOOKS MEET MUSIC",
-      "category": "Explainer",
+      "category": "Brand",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg",
       "link": "#",
@@ -211,10 +213,10 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 8,
-      "title": "FONETIK CREATIVE STUDIO SHOWREEL",
-      "category": "Explainer",
+      "title": "FO.NE.TIK - BRAND IDENTITY ANIMATION",
+      "category": "Brand",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Thumbnail.jpg",
       "link": "#",
@@ -227,10 +229,10 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 9,
-      "title": "Fonetik Studio - Launching a New Creative Chapter",
-      "category": "Explainer",
+      "title": "fo.ne.tik - Showreel Animation",
+      "category": "Brand",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.3.jpg",
       "link": "#",
@@ -244,10 +246,10 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 10,
-      "title": "WORKLEAP - SIZZLE REEL 1 - ANIMATING A NEW DIGITAL IDENTITY",
-      "category": "Explainer",
+      "title": "WORKLEAP - BRAND IDENTITY SIZZLE REEL",
+      "category": "Brand",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.20.jpg",
       "link": "#",
@@ -260,7 +262,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 11,
-      "title": "WORKLEAP - BRINGING ISOMETRIC WORLDS TO LIFE",
+      "title": "Workleap - Isometric Motion Graphics",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -276,7 +278,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 12,
-      "title": "NYC Emergency Management - Critical Messages, Clearly Delivered",
+      "title": "NYC EMERGENCY MANAGEMENT - TEXT BUBBLE DESIGN & ANIMATION",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -293,7 +295,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 13,
-      "title": "Ejadwa",
+      "title": "EJADWA - FINANCIAL FEASIBILITY EXPLAINER VIDEO",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -310,7 +312,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 14,
-      "title": "WORKLEAP - TRANSFORMING ILLUSTRATIONS INTO LOOPING LOTTIE MOTION",
+      "title": "Workleap - Lottie Web Animations",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -325,7 +327,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 15,
-      "title": "WORKLEAP - TRANSFORMING ILLUSTRATIONS INTO LOTTIE MOTION",
+      "title": "WORKLEAP - LOTTIE WEB ANIMATIONS 2",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -340,7 +342,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 16,
-      "title": "SUCCESS FINDER",
+      "title": "SUCCESS FINDER — MINIMALIST MOTION DESIGN",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -353,7 +355,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 17,
-      "title": "WEACTIS - SIMPLIFYING CYBERSECURITY FOR TEAMS",
+      "title": "WEACTIS — CYBERSECURITY & SAFE COLLABORATION",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -392,7 +394,7 @@ export const defaultSiteData: CMSSiteData = {
       "sections": [
         {
           "type": "grid",
-          "label": "",
+          "label": "IN MOTION",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4"
@@ -414,7 +416,7 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "ILLUSTRATION",
+          "label": "STILLS",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.3.PNG",
@@ -478,17 +480,17 @@ export const defaultSiteData: CMSSiteData = {
       "externalLink": "#",
       "customFields": [
         {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX"
-        },
-        {
           "id": "field-client",
           "label": "CLIENT",
           "value": "247 MAINTENANCE"
         },
         {
-          "id": "field-1786392132109",
+          "id": "field-1786458291799",
+          "label": "ROLE",
+          "value": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX"
+        },
+        {
+          "id": "field-1786458316416",
           "label": "Tools",
           "value": "Illustrator, Photoshop\nAfter Effects, Cinema 4D"
         }
@@ -501,12 +503,20 @@ export const defaultSiteData: CMSSiteData = {
     {
       "id": 2,
       "title": "SHOWREEL 2025",
-      "shortDescription": "Motion is more than movement; it’s intention, timing, and emotion. I craft motion design that communicates clearly, guides the viewer’s eye, and leaves a lasting impact. \nThis showreel represents my journey, my growth, and my passion for bringing ideas to life.",
+      "shortDescription": "A showreel is the definitive showcase of a designer's style and execution. \nI curated this project to encapsulate my visual identity and demonstrate the precision, quality, and evolution across my work.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg",
       "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
       "client": "#",
-      "description": "",
+      "description": "With every shot carrying a distinct story and emotion, the core challenge was curation filtering an extensive archive down to only the most impactful frames. \nI focused on crafting a tight visual rhythm, meticulously syncing movement and transitions to the soundtrack to guide the viewer’s eye seamlessly through the reel.",
       "videoUrl": "https://vimeo.com/1153984527?fl=pl&fe=sh",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://vimeo.com/1153984527?fl=pl&fe=sh",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
         "Showreel"
       ],
@@ -579,33 +589,36 @@ export const defaultSiteData: CMSSiteData = {
       "customFields": [
         {
           "id": "field-role",
-          "label": "ROLE",
-          "value": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX"
-        },
-        {
-          "id": "field-client",
-          "label": "CLIENT BRAND NAME",
-          "value": "#"
+          "label": "",
+          "value": ""
         }
       ],
       "gifModes": {}
     },
     {
       "id": 3,
-      "title": "COMÈTE STUDIO - FROM STATIC FRAMES TO LIVING STORIES",
-      "shortDescription": "This creative collaboration with the prestigious Comète Studio in Montreal was established to produce a conceptual narrative video showcasing the studio's high artistic quality. \nThe video tells an inspiring visual story about the journey of transforming complex social issues and dry topics into captivating visual content and artwork that leaves a profound impact.",
+      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
+      "shortDescription": "Montreal-based Comète Studio needed a conceptual narrative video to highlight their ability to turn dry, complex social issues into captivating visual artwork. \nI collaborated with the studio to translate their static illustrations into a dynamic visual story that conveys deep narrative meaning with high artistic polish.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
       "role": "ANIMATION",
-      "client": "COMETE STUDIO",
-      "description": "My role was to breathe life into these illustrations, transforming them from static frames into a kinetic journey that serves the psychological and narrative meaning of each scene.",
+      "client": "STUDIO COMETE",
+      "description": "To capture the psychological weight of the narrative, the core execution focused on translating static visual concepts into deliberate, meaningful movement. \nI crafted fluid, seamless transitions between scenes, giving physical rhythm to the artwork so that every motion directly reinforces the emotional progression of the story.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
       "sections": [
         {
           "type": "grid",
-          "label": "",
+          "label": "IN MOTION",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4",
@@ -639,32 +652,31 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "DESIGN",
+          "label": "STILLS",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-5.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
           ],
           "rows": [
             {
               "id": "row-1",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
               ]
             },
             {
               "id": "row-1785853749903",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-5.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-5.jpg": false
-              }
+              },
+              "singleImageColumns": 1
             }
           ]
         }
@@ -678,14 +690,19 @@ export const defaultSiteData: CMSSiteData = {
       "externalLink": "#",
       "customFields": [
         {
-          "id": "field-role",
+          "id": "field-client",
+          "label": "CLIENT ",
+          "value": "Studio Comete"
+        },
+        {
+          "id": "field-1786459284151",
           "label": "ROLE",
           "value": "ANIMATION"
         },
         {
-          "id": "field-client",
-          "label": "CLIENT ",
-          "value": "Comete Studio"
+          "id": "field-1786459414705",
+          "label": "Tools",
+          "value": "After Effects, Illustrator"
         }
       ],
       "gifModes": {
@@ -696,19 +713,27 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 4,
-      "title": "WORKLEAP - GATHERING SPRING 2026",
-      "shortDescription": "Workleap is a leading Canadian software company building digital tools to enhance employee productivity and happiness\n\nAs a remote-first team, they hold their largest annual in-person event, Workleap Gathering Spring 2026, to bring employees together in person to connect, share their 2026 strategic vision, celebrate innovation, and strengthen team bonds.",
+      "title": "WORKLEAP - SPHERICAL PROJECTION MAPPING",
+      "shortDescription": "To bring their remote-first team together and unveil their 2026 strategic vision, Workleap needed an immersive visual centerpiece for their annual gathering. \n\nI translated the company's static brand designs into dynamic motion graphics specifically tailored for a physical spherical projection display.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Cover.jpg",
       "role": "ANIMATION",
       "client": "WORKLEAP",
-      "description": "My role was to breathe life into these illustrations, transforming them from static frames into a kinetic journey that serves the psychological and narrative meaning of each scene.",
+      "description": "",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Cover.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Event"
       ],
       "sections": [
         {
-          "type": "grid",
+          "type": "image_text",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4"
@@ -724,8 +749,20 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4": true
               },
               "singleImageColumns": 1
+            },
+            {
+              "id": "row-1786461321778",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4"
+              ]
             }
-          ]
+          ],
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4": true
+          },
+          "textContent": "Animating graphics for a large physical sphere comes with a unique challenge: flat designs can easily stretch or warp when projected onto a round surface. \n\nWorking within a 3780×1080 pixel canvas, I carefully adjusted the scale, positioning, and movement speed of the visual elements. \n\nThis ensured that every animation wrapped naturally around the curved display, delivering a clear and distortion-free experience for everyone in the room.",
+          "imagePosition": "right"
         },
         {
           "type": "grid",
@@ -771,16 +808,16 @@ export const defaultSiteData: CMSSiteData = {
           "type": "grid",
           "label": "SPHERE PROJECTION BLUEPRINT",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.2.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.3.png"
           ],
           "rows": [
             {
               "id": "row-1",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.2.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.3.png"
               ]
             }
@@ -788,112 +825,30 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "DESIGN",
+          "label": "STILLS",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/1.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/2.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/5.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/6.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/7.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/8.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/9.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/12.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/13.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/14.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/15.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/17.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/19.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/20.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/21.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/23.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/24.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/25.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/26.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/27.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/28.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/29.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/30.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/31.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/32.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/33.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/34.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
           ],
           "rows": [
             {
               "id": "row-1",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/1.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/2.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/5.jpg"
-              ]
-            },
-            {
-              "id": "row-1785966782621",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/6.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/7.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/8.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/9.jpg"
-              ]
-            },
-            {
-              "id": "row-1785966979705",
-              "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/12.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/13.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/14.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/15.jpg"
               ]
             },
             {
               "id": "row-1785967017084",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/15.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/17.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg"
-              ]
-            },
-            {
-              "id": "row-1785967017768",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/19.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/20.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/21.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
-              ]
-            },
-            {
-              "id": "row-1785967018231",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/23.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/24.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/25.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/26.jpg"
-              ]
-            },
-            {
-              "id": "row-1785967106974",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/27.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/28.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/29.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/30.jpg"
-              ]
-            },
-            {
-              "id": "row-1785967107199",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/31.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/32.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/33.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/34.jpg"
               ]
             }
           ]
@@ -916,24 +871,32 @@ export const defaultSiteData: CMSSiteData = {
           "id": "field-client",
           "label": "CLIENT ",
           "value": "Workleap"
+        },
+        {
+          "id": "field-1786461653131",
+          "label": "Tools",
+          "value": "Figma, After Effects"
         }
       ],
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4": true
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4": true
       }
     },
     {
       "id": 5,
-      "title": "AINSI VA MANU (TV SERIES) -ENHANCING DRAMA WITH MOTION DESIGN",
-      "shortDescription": "Ainsi va Manu : A drama centered around Manuela, a 16-year-old teenager. \nFacing an eviction threat from a property developer, Manuela makes a crucial decision to fight and defend her home and neighborhood.",
+      "title": "AINSI VA MANU — ON SCREEN MOTION GRAPHICS",
+      "shortDescription": "For the drama series Ainsi va Manu which follows a 16-year-old fighting against eviction \nthe director needed custom screen graphics to help tell the story. \n\nI designed and animated digital graphics that appear on characters phones and computer screens to support the narrative and reflect the show's dramatic energy.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/thumpnail.webp",
       "role": "ILLUSTRATION, ANIMATION",
-      "client": "247 MAINTENANCE",
-      "description": "The director needed screen graphics to support the visual storytelling, and my task was to design and animate these graphics in a way that aligns with the series’ shots and reflects its dramatic energy.",
+      "client": "DIVERSIFIED VOICES PRODUCTIONS",
+      "description": "I created simple, realistic screen interfaces for the phones and laptops featured throughout the show. \n\nBy making the screens clear to read and matching the timing of the animations to the actors movements and the scene's mood, the graphics felt completely natural and helped build the drama without distracting the audience.",
       "videoUrl": "",
+      "headerVideos": [],
+      "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Broadcast"
       ],
       "sections": [
         {
@@ -959,7 +922,7 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "EPISODE 7 - ",
+          "label": "EPISODE 7 ",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4",
@@ -1166,7 +1129,12 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-client",
           "label": "CLIENT ",
-          "value": ""
+          "value": "Diversified Voices Productions"
+        },
+        {
+          "id": "field-1786463790396",
+          "label": "Tools",
+          "value": "Illustrator, Photoshop\nAfter Effects,"
         }
       ],
       "gifModes": {
@@ -1175,15 +1143,24 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 6,
-      "title": "POKA - MAKING AI WORK ON THE FACTORY FLOOR",
-      "shortDescription": "Poka is a global Canadian platform (an IFS company) trusted by manufacturing giants like Nestlé and L'Oréal. This video focuses on introducing Poka Assistant, an AI digital coworker for factory workers that instantly answers their questions and turns long manuals into quick, clear steps right on the shop floor.",
+      "title": "POKA - INTRODUCING POKA ASSISTANT",
+      "shortDescription": "Poka is a Canadian software platform trusted by major manufacturers like Nestlé and L'Oréal. \n\nTo introduce Poka Assistant an AI tool that turns long factory manuals into simple, step-by-step guides \n\nI animated the internal team's static designs to help explain this new technology clearly.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg",
       "role": "ANIMATION",
       "client": "POKA",
-      "description": "I was responsible for full animation and motion direction, bringing the internal team's static designs to life. The challenge was to transform complex AI and software concepts into a simple, engaging visual story, delivering a high-end video that reflects Poka’s global brand power.",
+      "description": "The main challenge was making smart software concepts easy to understand for everyone. \nI animated the visual elements to show the AI in action clearly showing how long documents break down into short steps using smooth movements to keep the video clear, engaging, and professional.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-Main-Video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-Main-Video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Explainer",
+        "Brand"
       ],
       "sections": [
         {
@@ -1226,59 +1203,43 @@ export const defaultSiteData: CMSSiteData = {
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-1.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-3.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-4.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-5.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-6.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-7.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-8.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-9.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-10.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-13.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-26.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-29.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-13.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-26.jpg"
           ],
           "rows": [
             {
               "id": "row-1",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-1.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-3.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-4.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-5.jpg"
               ]
             },
             {
               "id": "row-1786199470204",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-5.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-6.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-7.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-8.jpg"
+              ]
+            },
+            {
+              "id": "row-1786469163175",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-29.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
               ]
             },
             {
               "id": "row-1786199352025",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-9.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-10.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-13.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-26.jpg"
-              ]
-            },
-            {
-              "id": "row-1786199418456",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-29.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
               ],
-              "singleImageColumns": 2
-            },
-            {
-              "id": "row-1786199907777",
-              "images": []
+              "singleImageColumns": 1
             }
           ]
         }
@@ -1299,7 +1260,7 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-1786196608541",
           "label": "Client",
-          "value": ""
+          "value": "Poka"
         }
       ],
       "gifModes": {
@@ -1311,19 +1272,27 @@ export const defaultSiteData: CMSSiteData = {
     {
       "id": 7,
       "title": "CLUB DE LECTURE - WHERE BOOKS MEET MUSIC",
-      "shortDescription": "Librairie l'Échange is a historic bookstore in Montreal, established in 1976, known for specializing in used books and graphic novels.",
+      "shortDescription": "To launch \"Club de Lecture\" a music video series filmed inside their Montreal store, Librairie l'Échange needed a short animated logo to start each episode. \n\nI animated their logo into a sleek, 2-second intro designed to make a strong first impression in a very short time.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg",
       "role": "ANIMATION ",
       "client": "247 MAINTENANCE",
-      "description": "To expand their reach, the bookstore launched a new video content series titled \"Club de Lecture.\" This series hosts artists and friends from the Québecois music scene, who perform intimate songs within the bookstore's unique setting.",
+      "description": "Creating a fast 2-second animation meant every single frame mattered. Before animating, I built a step-by-step storyboard to plan out the exact movement and timing. \n\nSharing this plan early ensured we were fully aligned on the motion, making the final animation feel smooth and clear rather than rushed.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4",
+          "thumbnail": ""
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "sections": [
         {
           "type": "grid",
-          "label": "",
+          "label": "STORYBOARD",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/storyboard.jpg"
           ],
@@ -1342,7 +1311,7 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "",
+          "label": "LOWER THIRDS",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif",
@@ -1388,20 +1357,28 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 8,
-      "title": "FONETIK CREATIVE STUDIO SHOWREEL",
-      "shortDescription": "fo.ne.tik is an independent, hybrid creative studio based in Montreal, specializing in full-scale audiovisual production, brand creation, and cultural localization.",
+      "title": "FO.NE.TIK - BRAND IDENTITY ANIMATION",
+      "shortDescription": "To launch their new brand identity, Montreal-based creative studio fo.ne.tik needed a video to introduce their core services. \n\nThe studio provided the pre-designed scenes, and I animated them to create a clean, engaging video presentation that reflects their brand values.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Thumbnail.jpg",
       "role": "ANIMATION",
       "client": "247 MAINTENANCE",
-      "description": "247 MAINTENANCE IS A SMART APP THAT CONNECTS YOU WITH EXPERT TECHNICIANS FOR ALL YOUR HOME NEEDS ANYWHERE IN THE UNITED ARAB EMIRATES.",
+      "description": "The focus was on giving smooth movement to simple elements like floating dots and text representing words. \n\nBy using natural timing and gentle transitions between the provided scenes, the animation brings the studio's brand story to life in a way that is clear and easy to follow.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Horizontal-EN.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Horizontal-EN.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Thumbnail.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "sections": [
         {
           "type": "grid",
-          "label": "VERTICAL",
+          "label": "FO.NE.TIK — SOCIAL MEDIA VERSION (VERTICAL)",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4"
           ],
@@ -1411,7 +1388,10 @@ export const defaultSiteData: CMSSiteData = {
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4"
               ],
-              "singleImageColumns": 1
+              "singleImageColumns": 1,
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4": false
+              }
             }
           ]
         },
@@ -1451,29 +1431,19 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "",
+          "label": "IN MOTION",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.3.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.4.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.5.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.6.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.7.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.8.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.10.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.19.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.20.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.21.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.22.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.23.jpg"
           ],
           "rows": [
             {
               "id": "row-1",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.3.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.4.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.5.jpg"
               ]
@@ -1482,27 +1452,15 @@ export const defaultSiteData: CMSSiteData = {
               "id": "row-1786207910689",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.6.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.7.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.8.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.10.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.8.jpg"
               ]
             },
             {
               "id": "row-1786207953597",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.19.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.20.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.21.jpg"
-              ]
-            },
-            {
-              "id": "row-1786208006728",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.22.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.23.jpg"
-              ],
-              "singleImageColumns": 2
+              ]
             }
           ]
         }
@@ -1533,15 +1491,23 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 9,
-      "title": "FONETIK STUDIO - LAUNCHING A NEW CREATIVE CHAPTER",
-      "shortDescription": "fo.ne.tik is an independent, hybrid creative studio based in Montreal, specializing in full-scale audiovisual production, brand creation, and cultural localization.",
+      "title": "FO.NE.TIK - SHOWREEL ANIMATION",
+      "shortDescription": "Montreal-based creative studio fo.ne.tik needed a high-energy showreel to highlight their work across audiovisual production, brand creation, and cultural localization. \n\nWorking directly from the video footage and storyboard provided by the client, I brought the project to life by animating their logo, text elements, and visual transitions.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.3.jpg",
       "role": "ANIMATION",
-      "client": "247 MAINTENANCE",
-      "description": "Fonetik Studio needed a high-energy showreel with smooth logo, text, and transition animations. \nWorking from their video and storyboard, I brought the motion graphics to life.",
+      "client": "FONETIK STUDIO",
+      "description": "The main focus was delivering a dynamic, fast-paced style while keeping every scene clear and easy to follow. \n\nI crafted smooth transitions and tuned the timing of each text and logo animation to flow naturally with the video edits, ensuring the reel remains engaging and polished from start to finish.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Video-Fonetik.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Video-Fonetik.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.3.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "sections": [
         {
@@ -1575,51 +1541,25 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "",
+          "label": "STILLS",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.3.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.5.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.8.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.9.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.10.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.11.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.12.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.13.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.14.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.15.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.16.jpg"
           ],
           "rows": [
             {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.3.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.5.jpg"
-              ]
-            },
-            {
-              "id": "row-1786211426924",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.8.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.9.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.10.jpg"
-              ]
-            },
-            {
               "id": "row-1786211471092",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.11.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.12.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.13.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.12.jpg"
               ]
             },
             {
-              "id": "row-1786211492888",
+              "id": "row-1786472364813",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.14.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.15.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.13.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.16.jpg"
               ]
             }
@@ -1642,7 +1582,12 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-client",
           "label": "CLIENT ",
-          "value": ""
+          "value": "FONETIK STUDIO"
+        },
+        {
+          "id": "field-1786472117560",
+          "label": "tools",
+          "value": "Illustration, After Effects"
         }
       ],
       "gifModes": {
@@ -1653,20 +1598,28 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 10,
-      "title": "WORKLEAP - SIZZLE REEL 1 - ANIMATING A NEW DIGITAL IDENTITY",
-      "shortDescription": "Workleap is a dynamic software platform that transforms the employee experience through intelligent AI-powered tools for performance management and training, helping organizations of all sizes build a more productive and collaborative workplace.",
+      "title": "WORKLEAP - BRAND IDENTITY SIZZLE REEL",
+      "shortDescription": "To help Workleap launch its new logo and updated website, I animated a short, energetic showcase video. \n\nI took their new visual design and brought it to life, creating a fast-paced video that clearly introduces their updated look to their audience.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg",
-      "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
+      "role": "ANIMATION",
       "client": "WORKLEAP",
-      "description": "I animated a high-energy sizzle reel showcasing their new logo and modern website design. By blending sleek motion graphics with seamless transitions",
+      "description": "To keep the video engaging, I timed every visual movement directly to the beat of the music. \n\nI animated the logo using smooth slides and clean transitions, making sure the information was easy to read while maintaining a fast, upbeat pace throughout the video.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Video-Workleap-Sizzle.reel.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Video-Workleap-Sizzle.reel.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "sections": [
         {
           "type": "grid",
-          "label": "",
+          "label": "IN MOTION",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4",
@@ -1708,7 +1661,7 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "",
+          "label": "STILLS",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.2.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.15.jpg",
@@ -1718,7 +1671,6 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.32.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.33.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.39.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.17.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg"
           ],
           "rows": [
@@ -1743,15 +1695,8 @@ export const defaultSiteData: CMSSiteData = {
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.33.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.39.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.17.jpg"
-              ]
-            },
-            {
-              "id": "row-1",
-              "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg"
-              ],
-              "singleImageColumns": 3
+              ]
             }
           ]
         }
@@ -1767,12 +1712,17 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-role",
           "label": "ROLE",
-          "value": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX"
+          "value": "Animation"
         },
         {
           "id": "field-client",
           "label": "CLIENT",
           "value": "Workleap"
+        },
+        {
+          "id": "field-1786473156674",
+          "label": "Tools",
+          "value": "After Effects\nIllustrator, Photoshop\n"
         }
       ],
       "gifModes": {
@@ -1782,20 +1732,28 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 11,
-      "title": "WORKLEAP - BRINGING ISOMETRIC WORLDS TO LIFE",
-      "shortDescription": "Workleap is a dynamic software platform that transforms the employee experience through intelligent AI-powered tools for performance management and training, helping organizations of all sizes build a more productive and collaborative workplace.",
+      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
+      "shortDescription": "Workleap is a software platform that offers AI-powered tools for employee performance management and training. \n\nTo help present their platform, I animated a series of static isometric scenes provided by the client, turning them into a dynamic, engaging video.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
-      "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
+      "role": "ANIMATION",
       "client": "WORKLEAP",
-      "description": "Since the scenes were all designed in an isometric style, it required specific expertise to handle this approach effectively. To streamline the process, I rebuilt the scenes and characters directly inside After Effects, making them easier to animate smoothly and consistently.",
+      "description": "With a strict three-day deadline, animating in an isometric style was a major challenge, as it requires far more structural precision and alignment than a standard flat style. \n\nTo hit this tight turnaround without compromising quality, I rebuilt the scenes and characters directly inside After Effects. \n\nThis streamlined the workflow, making the animation process much faster while ensuring every movement remained smooth, precise, and consistent.",
       "videoUrl": "https://www.youtube.com/watch?v=0kidr_FDq2s",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://www.youtube.com/watch?v=0kidr_FDq2s",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
       "sections": [
         {
           "type": "grid",
-          "label": "",
+          "label": "IN MOTION",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif"
@@ -1812,31 +1770,35 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "",
+          "label": "STILLS",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-7.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg"
           ],
           "rows": [
             {
               "id": "row-1",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg"
+              ]
+            },
+            {
+              "id": "row-1786473990541",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg"
               ]
             },
             {
               "id": "row-1786279810566",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-7.jpg"
-              ]
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg"
+              ],
+              "singleImageColumns": 2
             }
           ]
         }
@@ -1852,12 +1814,17 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-role",
           "label": "ROLE",
-          "value": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX"
+          "value": "ANIMATION"
         },
         {
           "id": "field-client",
           "label": "CLIENT",
           "value": "Workleap"
+        },
+        {
+          "id": "field-1786473901199",
+          "label": "tools",
+          "value": "After Effects, Illustrator"
         }
       ],
       "gifModes": {
@@ -1867,13 +1834,15 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 12,
-      "title": "NYC EMERGENCY MANAGEMENT - CRITICAL MESSAGES, CLEARLY DELIVERED",
-      "shortDescription": "NYC Emergency Management is the city agency responsible for planning, coordinating, and responding to emergencies and disasters in New York City.",
+      "title": "NYC EMERGENCY MANAGEMENT - TEXT BUBBLE DESIGN & ANIMATION",
+      "shortDescription": "NYC Emergency Management handles disaster response and public safety across New York City. \n\nTo help them share clear safety messages and emergency alerts in their videos, I designed and animated custom text bubbles to highlight key information.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Thumbnails.jpg",
       "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
-      "client": "EJADWA",
-      "description": "The client needed designed and animated text bubbles that would clearly convey the message and communicate the key points to viewers effectively.",
+      "client": "NEW YORK CITY EMERGENCY MANAGEMENT",
+      "description": "Since these videos were targeted for small mobile screens, we went through several design revisions. \n\nI simplified the text bubbles by removing unnecessary elements and increasing the font size, making every alert bold, clear, and easy to read on phones.",
       "videoUrl": "",
+      "headerVideos": [],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
@@ -1979,8 +1948,13 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "id": "field-client",
-          "label": "CLIENT BRAND NAME",
-          "value": ""
+          "label": "CLIENT",
+          "value": "New York City Emergency Management"
+        },
+        {
+          "id": "field-1786475731449",
+          "label": "tools",
+          "value": "Illustrator, After Effects"
         }
       ],
       "gifModes": {
@@ -1991,13 +1965,21 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 13,
-      "title": "EJADWA",
-      "shortDescription": "",
+      "title": "EJADWA - FINANCIAL FEASIBILITY EXPLAINER VIDEO",
+      "shortDescription": "To help Ejadwa introduce its online platform for financial feasibility studies, I created a motion graphics explainer video. \n\nStarting with only a voiceover, I turned complex financial concepts into a simple visual story that is easy for anyone to understand.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Thumbnail.png",
       "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
       "client": "EJADWA",
-      "description": "",
+      "description": "Starting from initial sketches, I created the illustrations, animated each scene to match the voiceover, and added sound effects to complete the final video.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/video-final.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/video-final.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Thumbnail.png"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
@@ -2045,14 +2027,9 @@ export const defaultSiteData: CMSSiteData = {
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.1.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.3.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.5.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.6.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.7.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.8.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.9.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.10.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.10.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.9.jpg"
           ],
           "rows": [
             {
@@ -2065,24 +2042,14 @@ export const defaultSiteData: CMSSiteData = {
               "id": "row-1",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.3.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.4.jpg"
-              ]
-            },
-            {
-              "id": "row-1786285716109",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.5.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.6.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.7.jpg"
               ]
             },
             {
               "id": "row-1786285749436",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.8.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.9.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.10.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.10.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.9.jpg"
               ]
             }
           ]
@@ -2105,6 +2072,11 @@ export const defaultSiteData: CMSSiteData = {
           "id": "field-client",
           "label": "CLIENT BRAND NAME",
           "value": "Ejadwa"
+        },
+        {
+          "id": "field-1786475831700",
+          "label": "tools",
+          "value": "After Effects, Illustrator"
         }
       ],
       "gifModes": {
@@ -2115,13 +2087,15 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 14,
-      "title": "WORKLEAP - TRANSFORMING ILLUSTRATIONS INTO LOOPING LOTTIE MOTION",
-      "shortDescription": "Workleap is a dynamic software platform that transforms the employee experience through intelligent AI-powered tools for performance management and training, helping organizations of all sizes build a more productive and collaborative workplace.",
+      "title": "WORKLEAP - LOTTIE WEB ANIMATIONS",
+      "shortDescription": "Workleap is a software platform that offers AI-powered tools for employee performance management and training. \n\nTo help make their website more engaging, I animated a set of client-provided illustrations into smooth, looping visuals that bring key features to life.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/picture-.jpg",
       "role": "STORYBOARD & ANIMATION",
-      "client": "SELF WORK",
-      "description": "I animated the client-provided illustrations into a looping animation and converted them into Lottie files in JSON format to ensure a smooth, continuous, and engaging visual experience on their website.",
+      "client": "WORKLEAP",
+      "description": "To ensure the best visual experience on the web, I created and exported the animations directly as lightweight Lottie files in JSON format. \n\nBuilding them specifically for Lottie ensured that every loop plays smoothly and scales cleanly on any screen size, keeping the website fast and responsive.",
       "videoUrl": "",
+      "headerVideos": [],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
@@ -2174,7 +2148,12 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-client",
           "label": "CLIENT BRAND NAME",
-          "value": ""
+          "value": "Workleap"
+        },
+        {
+          "id": "field-1786476605680",
+          "label": "tools",
+          "value": "After Effect, Bodymovin"
         }
       ],
       "gifModes": {
@@ -2183,13 +2162,15 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 15,
-      "title": "WORKLEAP - TRANSFORMING ILLUSTRATIONS INTO LOTTIE MOTION",
-      "shortDescription": "Workleap is a dynamic software platform that transforms the employee experience through intelligent AI-powered tools for performance management and training, helping organizations of all sizes build a more productive and collaborative workplace.",
+      "title": "WORKLEAP - LOTTIE WEB ANIMATIONS 2",
+      "shortDescription": "Workleap is a software platform that provides AI-powered tools for employee performance management and training. \n\nTo make their website more engaging, I animated a set of client-provided UI illustrations into smooth, continuous loops that visually demonstrate the platform in action.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/thumbnail.project.jpg",
       "role": "ANIMATION",
-      "client": "SELF WORK",
-      "description": "I animated the client-provided illustrations and converted them into Lottie files in JSON format to enable smooth and engaging use on their website.",
+      "client": "WORKLEAP",
+      "description": "To ensure a fast and responsive web experience, I animated and exported the illustrations directly as lightweight Lottie files in JSON format. \n\nBuilding them specifically as Lottie animations allowed the visual elements to play seamlessly and scale crisp and clear on any screen size without slowing down page load times.",
       "videoUrl": "",
+      "headerVideos": [],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
@@ -2242,8 +2223,13 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "id": "field-client",
-          "label": "CLIENT BRAND NAME",
-          "value": "SELF WORK"
+          "label": "CLIENT",
+          "value": "WORKLEAP"
+        },
+        {
+          "id": "field-1786477078085",
+          "label": "tools",
+          "value": "After Effects, Bodymovin plugin"
         }
       ],
       "gifModes": {
@@ -2252,20 +2238,28 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 16,
-      "title": "SUCCESS FINDER",
-      "shortDescription": "SuccessFinder is a Canadian platform specializing in behavioral analytics and advanced HR solutions to help organizations enhance talent selection and development.",
+      "title": "SUCCESS FINDER — MINIMALIST MOTION DESIGN",
+      "shortDescription": "SuccessFinder is a Canadian platform specializing in behavioral analytics and HR solutions to help companies hire and develop talent. \n\nTo help showcase their platform, I animated a set of illustrations provided by the client, which featured flat geometric shapes and character silhouettes.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
-      "role": "STORYBOARD & ANIMATION",
-      "client": "SELF WORK",
-      "description": "The client opted for a clean illustration style built around flat, geometric shapes and character silhouettes.",
+      "role": "ANIMATION",
+      "client": "SUCCESS FINDER ",
+      "description": "I focused on turning simple character silhouettes into smooth, beautifully animated figures. \n\nBy adding clean and aesthetic movement to these basic shapes, I made the visuals engaging while keeping the video clear and easy to follow.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Video-Success.Finder.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Video-Success.Finder.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
       "sections": [
         {
           "type": "grid",
-          "label": "STORYBOARD",
+          "label": "IN MOTION",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-1.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-2.gif",
@@ -2291,40 +2285,29 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "STORYBOARD",
+          "label": "STILLS",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.2.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.3.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.4.png",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.5.png",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.6.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.7.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.8.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.9.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.10.png",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.11.png",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.12.png"
           ],
           "rows": [
             {
               "id": "row-1",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.2.png",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.3.png"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.3.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.4.png"
               ]
             },
             {
               "id": "row-1786364925125",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.4.png",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.5.png",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.6.png"
-              ]
-            },
-            {
-              "id": "row-1786364936816",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.7.png",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.8.png",
@@ -2332,10 +2315,10 @@ export const defaultSiteData: CMSSiteData = {
               ]
             },
             {
-              "id": "row-1786364949060",
+              "id": "row-1786364936816",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.10.png",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.11.png",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.1.png",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.12.png"
               ]
             }
@@ -2350,32 +2333,45 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-role",
           "label": "ROLE",
-          "value": "STORYBOARD & ANIMATION"
+          "value": "ANIMATION"
         },
         {
           "id": "field-client",
-          "label": "CLIENT BRAND NAME",
-          "value": "SELF WORK"
+          "label": "CLIENT ",
+          "value": "Success Finder "
+        },
+        {
+          "id": "field-1786477728509",
+          "label": "tools",
+          "value": "After Effects, Illustrator"
         }
       ],
       "gifModes": {}
     },
     {
       "id": 17,
-      "title": "WEACTIS - SIMPLIFYING CYBERSECURITY FOR TEAMS",
-      "shortDescription": "WeActis, a solution designed to reduce cybersecurity risks in Microsoft 365 by promoting safe employee collaboration.",
+      "title": "WEACTIS — CYBERSECURITY & SAFE COLLABORATION",
+      "shortDescription": "WeActis is a solution designed to reduce cybersecurity risks in Microsoft 365 by promoting safe employee collaboration. \n\nTo present their platform, the client requested a simple, easy-to-read video that matched the visual style of their previous work. \n\nI started by designing scenes that aligned with their existing brand direction to set a consistent visual foundation.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg",
-      "role": "STORYBOARD & ANIMATION",
-      "client": "SELF WORK",
-      "description": "The client requested a simple, easy-to-read video that adhered to the visual style of their previous work. I started by designing scenes that were perfectly aligned with this direction.",
+      "role": "STORYBOARD, DESIGN, ANIMATION",
+      "client": "WEACTIS ",
+      "description": "To keep complex cybersecurity topics easy to understand, the animation focused on clarity and simple visual flow. \n\nI brought the designed scenes to life using clean movements and smooth transitions, ensuring the final video remained clear, engaging, and easy for any viewer to follow without visual distractions.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/WeActis.-.Mondata.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/WeActis.-.Mondata.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
       "categories": [
         "Explainer"
       ],
       "sections": [
         {
           "type": "grid",
-          "label": "STORYBOARD",
+          "label": "IN MOTION",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4",
@@ -2405,17 +2401,14 @@ export const defaultSiteData: CMSSiteData = {
         },
         {
           "type": "grid",
-          "label": "",
+          "label": "STILLS",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.1.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.5.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.6.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.9.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.7.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.8.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.9.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg"
           ],
           "rows": [
             {
@@ -2423,25 +2416,16 @@ export const defaultSiteData: CMSSiteData = {
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.1.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.4.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.9.jpg"
               ]
             },
             {
               "id": "row-1786366510376",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.5.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.6.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.7.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.8.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.8.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.3.jpg"
               ]
-            },
-            {
-              "id": "row-1786366546747",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/Picture-Scene-.9.jpg"
-              ],
-              "singleImageColumns": 4
             }
           ]
         }
@@ -2454,12 +2438,17 @@ export const defaultSiteData: CMSSiteData = {
         {
           "id": "field-role",
           "label": "ROLE",
-          "value": "STORYBOARD & ANIMATION"
+          "value": "STORYBOARD, Design, Animation"
         },
         {
           "id": "field-client",
           "label": "CLIENT BRAND NAME",
-          "value": "SELF WORK"
+          "value": "WeActis "
+        },
+        {
+          "id": "field-1786478330434",
+          "label": "tools",
+          "value": "Illustrator, After Effects"
         }
       ],
       "gifModes": {
