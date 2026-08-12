@@ -99,7 +99,7 @@ export const defaultSiteData: CMSSiteData = {
   "allProjects": [
     {
       "id": 1,
-      "title": "247 MAINTENANCE - CONNECTING HOMES TO EXPERTS",
+      "title": "247 Maintenance - Home Services Platform",
       "category": "Explainer",
       "categories": [
         "Explainer"
@@ -128,10 +128,10 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 3,
-      "title": "Comète Studio - Conceptual Motion Graphics",
-      "category": "Explainer",
+      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
+      "category": "Brand",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
       "link": "#",
@@ -162,7 +162,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 5,
-      "title": "AINSI VA MANU — ON SCREEN MOTION GRAPHICS",
+      "title": "AINSI VA MANU - ON SCREEN MOTION GRAPHICS",
       "category": "Broadcast",
       "categories": [
         "Broadcast"
@@ -178,9 +178,8 @@ export const defaultSiteData: CMSSiteData = {
     {
       "id": 6,
       "title": "POKA - INTRODUCING POKA ASSISTANT",
-      "category": "Explainer, Brand",
+      "category": "Brand",
       "categories": [
-        "Explainer",
         "Brand"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg",
@@ -279,9 +278,9 @@ export const defaultSiteData: CMSSiteData = {
     {
       "id": 12,
       "title": "NYC EMERGENCY MANAGEMENT - TEXT BUBBLE DESIGN & ANIMATION",
-      "category": "Explainer",
+      "category": "Broadcast",
       "categories": [
-        "Explainer"
+        "Broadcast"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Thumbnails.jpg",
       "link": "#",
@@ -312,10 +311,10 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 14,
-      "title": "Workleap - Lottie Web Animations",
-      "category": "Explainer",
+      "title": "WORKLEAP - LOTTIE WEB ANIMATIONS",
+      "category": "UI Motion",
       "categories": [
-        "Explainer"
+        "UI Motion"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Thumbnail.jpg",
       "link": "#",
@@ -328,9 +327,9 @@ export const defaultSiteData: CMSSiteData = {
     {
       "id": 15,
       "title": "WORKLEAP - LOTTIE WEB ANIMATIONS 2",
-      "category": "Explainer",
+      "category": "UI Motion",
       "categories": [
-        "Explainer"
+        "UI Motion"
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/thumbnail.project.jpg",
       "link": "#",
@@ -436,16 +435,73 @@ export const defaultSiteData: CMSSiteData = {
       }
     }
   ],
-  "projects": [],
+  "projects": [
+    {
+      "id": 1,
+      "title": "247 Maintenance - Home Services Platform",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      },
+      "description": "Custom slide description.",
+      "imageLeft": true
+    },
+    {
+      "id": 3,
+      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
+      },
+      "description": "Custom slide description.",
+      "imageLeft": false
+    },
+    {
+      "id": 13,
+      "title": "EJADWA - FINANCIAL FEASIBILITY EXPLAINER VIDEO",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Thumbnail.png",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif": true
+      },
+      "description": "Custom slide description.",
+      "imageLeft": true
+    }
+  ],
   "projectDetails": [
     {
       "id": 1,
-      "title": "247 MAINTENANCE - CONNECTING HOMES TO EXPERTS",
-      "shortDescription": "I partnered with 247 Maintenance to create a dynamic explainer video showing how seamlessly their platform connects UAE homeowners with trusted, expert technicians.  ",
+      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
+      "shortDescription": "I partnered with 247 Maintenance to create an explainer video showing how their platform connects UAE homeowners with trusted technicians. \n\nThe goal was to explain their services clearly while presenting the brand in a modern, engaging way.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
       "role": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX",
       "client": "247 MAINTENANCE",
-      "description": "To give the video a more polished, professional feel and make each service stand out, I rendered the company and its services in 3D, adding depth and craft that help them pop against the flat 2D world around them and hold the viewer's attention.",
+      "description": "To give the video a polished feel, I combined 3D elements with a flat 2D world. \n\nThis contrast added visual depth, helping key elements pop on screen and hold the viewer's attention throughout the video.",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
       "headerVideos": [
         {
@@ -570,11 +626,11 @@ export const defaultSiteData: CMSSiteData = {
     {
       "id": 2,
       "title": "SHOWREEL 2025",
-      "shortDescription": "A showreel is the definitive showcase of a designer's style and execution. \nI curated this project to encapsulate my visual identity and demonstrate the precision, quality, and evolution across my work.",
+      "shortDescription": "To showcase my growth and visual style, I needed a central video that brings together my best work. \n\nI curated this showreel to highlight my design identity, quality, and motion skills across different projects.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg",
       "role": "STORYBOARD, ILLUSTRATION, ANIMATION & SFX",
       "client": "#",
-      "description": "With every shot carrying a distinct story and emotion, the core challenge was curation filtering an extensive archive down to only the most impactful frames. \nI focused on crafting a tight visual rhythm, meticulously syncing movement and transitions to the soundtrack to guide the viewer’s eye seamlessly through the reel.",
+      "description": "The biggest challenge was choosing only the most impactful clips from a large archive of work. \n\nI focused on creating a smooth visual rhythm, carefully syncing every movement and transition to the music to guide the viewer’s eye seamlessly through the reel.",
       "videoUrl": "https://vimeo.com/1153984527?fl=pl&fe=sh",
       "headerVideos": [
         {
@@ -653,13 +709,7 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "behanceLink": "https://behance.net",
       "externalLink": "#",
-      "customFields": [
-        {
-          "id": "field-role",
-          "label": "",
-          "value": ""
-        }
-      ],
+      "customFields": [],
       "gifModes": {}
     },
     {
@@ -680,7 +730,7 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Brand"
       ],
       "sections": [
         {
@@ -953,7 +1003,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "id": 5,
-      "title": "AINSI VA MANU — ON SCREEN MOTION GRAPHICS",
+      "title": "AINSI VA MANU - ON SCREEN MOTION GRAPHICS",
       "shortDescription": "For the drama series Ainsi va Manu which follows a 16-year-old fighting against eviction \nthe director needed custom screen graphics to help tell the story. \n\nI designed and animated digital graphics that appear on characters phones and computer screens to support the narrative and reflect the show's dramatic energy.",
       "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/thumpnail.webp",
       "role": "ILLUSTRATION, ANIMATION",
@@ -1226,7 +1276,6 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "headerVideoLayout": "grid",
       "categories": [
-        "Explainer",
         "Brand"
       ],
       "sections": [
@@ -1911,7 +1960,7 @@ export const defaultSiteData: CMSSiteData = {
       "headerVideos": [],
       "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "Broadcast"
       ],
       "sections": [
         {
@@ -2164,7 +2213,7 @@ export const defaultSiteData: CMSSiteData = {
       "headerVideos": [],
       "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "UI Motion"
       ],
       "sections": [
         {
@@ -2239,7 +2288,7 @@ export const defaultSiteData: CMSSiteData = {
       "headerVideos": [],
       "headerVideoLayout": "grid",
       "categories": [
-        "Explainer"
+        "UI Motion"
       ],
       "sections": [
         {
