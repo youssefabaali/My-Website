@@ -38,11 +38,11 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
 
   return (
     <>
-      {/* Full screen backdrop blur overlay for mobile navigation */}
+      {/* Full screen subtle backdrop blur overlay for mobile navigation */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="md:hidden fixed inset-0 z-40 bg-black/80 backdrop-blur-2xl transition-opacity duration-300"
+          className="md:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
           aria-hidden="true"
         />
       )}
@@ -50,7 +50,7 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isOpen
-            ? "bg-brand-black/95 backdrop-blur-2xl border-b border-white/10 py-4 shadow-2xl"
+            ? "bg-brand-black/95 backdrop-blur-md border-b border-white/10 py-4 shadow-2xl"
             : isScrolled
             ? "bg-brand-nav-bg/90 backdrop-blur-md border-b border-brand-border/30 shadow-lg py-4"
             : "bg-transparent py-4"
@@ -106,23 +106,38 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
 
         {/* Mobile Links Container - Directly beneath the logo & header with zero gap */}
         {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-brand-black/95 backdrop-blur-2xl border-b border-white/10 px-6 pt-4 pb-8 flex flex-col gap-5 shadow-2xl animate-fade-in">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-brand-black/95 backdrop-blur-md border-b border-white/10 px-6 pt-3 pb-6 flex flex-col gap-3.5 shadow-2xl animate-fade-in">
+            {/* 1. Home */}
+            <button
+              onClick={() => handleLinkClick("home")}
+              className={`text-left font-sans text-[15px] uppercase tracking-wider py-1 transition-colors ${
+                currentView === "home"
+                  ? "text-brand-green font-bold"
+                  : "text-white/90 hover:text-brand-green"
+              }`}
+            >
+              Home
+            </button>
+
+            {/* 2. Work */}
             <button
               onClick={() => handleLinkClick("projects")}
-              className={`text-left font-sans text-lg uppercase tracking-wider py-1 transition-colors ${
+              className={`text-left font-sans text-[15px] uppercase tracking-wider py-1 transition-colors ${
                 currentView === "projects" || currentView === "project-detail"
                   ? "text-brand-green font-bold"
-                  : "text-white hover:text-brand-green"
+                  : "text-white/90 hover:text-brand-green"
               }`}
             >
               Work
             </button>
+
+            {/* 3. About & Contact */}
             <button
               onClick={() => handleLinkClick("about")}
-              className={`text-left font-sans text-lg uppercase tracking-wider py-1 transition-colors ${
+              className={`text-left font-sans text-[15px] uppercase tracking-wider py-1 transition-colors ${
                 currentView === "about"
                   ? "text-brand-green font-bold"
-                  : "text-white hover:text-brand-green"
+                  : "text-white/90 hover:text-brand-green"
               }`}
             >
               About & Contact

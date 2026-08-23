@@ -23,9 +23,9 @@ export function ProjectsView({ onSelectProject }: ProjectsViewProps) {
   const design = data.design || { layout: { paddingTop: 128, paddingBottom: 96 } };
   const pyTopDesktop = design.layout.paddingTop ?? 128;
   const pyBottomDesktop = design.layout.paddingBottom ?? pyTopDesktop;
-  const pyTopTablet = Math.min(Math.max(48, Math.round(pyTopDesktop * 0.65)), 80);
+  const pyTopTablet = Math.min(Math.max(80, Math.round(pyTopDesktop * 0.75)), 120);
   const pyBottomTablet = Math.min(Math.max(40, Math.round(pyBottomDesktop * 0.65)), 72);
-  const pyTopMobile = Math.min(Math.max(32, Math.round(pyTopDesktop * 0.4)), 48);
+  const pyTopMobile = Math.min(Math.max(72, Math.round(pyTopDesktop * 0.6)), 96);
   const pyBottomMobile = Math.min(Math.max(28, Math.round(pyBottomDesktop * 0.4)), 44);
 
   const publishedAll = data.allProjects.filter(p => p.isPublished !== false);
