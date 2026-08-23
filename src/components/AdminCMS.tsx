@@ -4682,79 +4682,148 @@ export function AdminCMS() {
 
                   {/* HOME PAGE SOCIAL LINKS */}
                   <div className="flex flex-col gap-4 pt-5 border-t border-white/5">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div>
                         <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green">6. HOME PAGE SOCIAL MEDIA LINKS & ICONS</h3>
-                        <p className="text-neutral-400 text-[10px] uppercase tracking-wider mt-0.5">Control social networks shown specifically on the Main/Home page ("I'm All Over The Internet").</p>
+                        <p className="text-neutral-400 text-[10px] uppercase tracking-wider mt-0.5">Control social networks shown specifically on the Main/Home page ("I'm All Over The Internet"). Use arrows to reorder.</p>
                       </div>
                       <button
                         onClick={() => {
-                          const newLink = { name: "New Social", href: "https://", icon: "/src/assets/Icons/Icon-LinkedIn-Color.svg", iconBW: "/src/assets/Icons/Icon-LinkedIn-BW.svg" };
+                          const newLink = { name: "NEW SOCIAL", href: "https://", icon: "/src/assets/Icons/Icon-LinkedIn-Color.svg" };
                           updateData((prev) => ({ ...prev, socials: [...(prev.socials || []), newLink] }), "Add Home Social", "Appended a new social network profile to home page");
                         }}
-                        className="px-3 py-1.5 text-[10px] bg-brand-green/10 border border-brand-green/20 text-brand-green hover:bg-brand-green hover:text-brand-black uppercase font-bold rounded-lg cursor-pointer transition-all"
+                        className="px-3.5 py-2 rounded-xl bg-brand-green text-brand-black text-[11px] uppercase font-bold cursor-pointer hover:scale-105 transition-all self-start sm:self-auto flex items-center gap-1.5"
                       >
-                        + Add Home Social Link
+                        <Plus size={14} /> Add Home Social Link
                       </button>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {(data.socials || []).map((soc, sIdx) => (
-                        <div key={sIdx} className="bg-neutral-900/60 border border-white/5 p-4 rounded-xl flex flex-col gap-3 relative">
-                          <button
-                            onClick={() => {
-                              const list = [...data.socials];
-                              list.splice(sIdx, 1);
-                              updateData((prev) => ({ ...prev, socials: list }), "Delete Home Social", `Deleted social link ${soc.name}`);
-                            }}
-                            className="absolute top-4 right-4 text-neutral-500 hover:text-red-400 cursor-pointer transition-colors"
-                            title="Delete Social Link"
-                          >
-                            <Trash2 size={14} />
-                          </button>
+                      {(data.socials || []).map((soc, sIdx) => {
+                        const totalCount = (data.socials || []).length;
+                        return (
+                          <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3.5 relative">
+                            {/* Header: Badge & Reordering + Delete Actions */}
+                            <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
+                              <div className="flex items-center gap-2">
+                                <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-mono text-[10px] font-bold">
+                                  #{sIdx + 1}
+                                </span>
+                                <span className="text-xs font-bold text-white uppercase tracking-wider truncate max-w-[140px] sm:max-w-[200px]">
+                                  {soc.name || "Untitled Social"}
+                                </span>
+                              </div>
 
-                          <div className="grid grid-cols-2 gap-3">
-                            <div className="flex flex-col gap-1">
-                              <label className="text-[9px] text-neutral-400 font-bold uppercase">Network Name</label>
-                              <input
-                                type="text"
-                                value={soc.name}
-                                onChange={(e) => {
-                                  const list = [...data.socials];
-                                  list[sIdx] = { ...list[sIdx], name: e.target.value };
-                                  updateData((prev) => ({ ...prev, socials: list }));
-                                }}
-                                className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-1.5 text-xs text-white"
-                              />
+                              <div className="flex items-center gap-1">
+                                {/* Move Up */}
+                                <button
+                                  type="button"
+                                  disabled={sIdx === 0}
+                                  onClick={() => {
+                                    if (sIdx === 0) return;
+                                    const list = [...(data.socials || [])];
+                                    const temp = list[sIdx];
+                                    list[sIdx] = list[sIdx - 1];
+                                    list[sIdx - 1] = temp;
+                                    updateData(
+                                      (prev) => ({ ...prev, socials: list }),
+                                      "Reorder Home Socials",
+                                      `Moved ${temp.name} up to position #${sIdx}`
+                                    );
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                  title="Move Up"
+                                >
+                                  <ArrowUp size={13} />
+                                </button>
+
+                                {/* Move Down */}
+                                <button
+                                  type="button"
+                                  disabled={sIdx === totalCount - 1}
+                                  onClick={() => {
+                                    if (sIdx >= totalCount - 1) return;
+                                    const list = [...(data.socials || [])];
+                                    const temp = list[sIdx];
+                                    list[sIdx] = list[sIdx + 1];
+                                    list[sIdx + 1] = temp;
+                                    updateData(
+                                      (prev) => ({ ...prev, socials: list }),
+                                      "Reorder Home Socials",
+                                      `Moved ${temp.name} down to position #${sIdx + 2}`
+                                    );
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                  title="Move Down"
+                                >
+                                  <ArrowDown size={13} />
+                                </button>
+
+                                {/* Delete */}
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const list = [...(data.socials || [])];
+                                    list.splice(sIdx, 1);
+                                    updateData(
+                                      (prev) => ({ ...prev, socials: list }),
+                                      "Delete Home Social",
+                                      `Deleted social link ${soc.name}`
+                                    );
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-500 hover:text-red-400 hover:border-red-500/50 cursor-pointer transition-all ml-1"
+                                  title="Delete Social Link"
+                                >
+                                  <Trash2 size={13} />
+                                </button>
+                              </div>
                             </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                              <div className="flex flex-col gap-1">
+                                <label className="text-[9px] text-neutral-400 font-bold uppercase">Platform Name</label>
+                                <input
+                                  type="text"
+                                  placeholder="e.g. Instagram, LinkedIn"
+                                  value={soc.name}
+                                  onChange={(e) => {
+                                    const list = [...(data.socials || [])];
+                                    list[sIdx] = { ...list[sIdx], name: e.target.value };
+                                    updateData((prev) => ({ ...prev, socials: list }), "Edit Social Name", `Updated ${soc.name} name`);
+                                  }}
+                                  className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
+                                />
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <label className="text-[9px] text-neutral-400 font-bold uppercase">Profile URL / Link</label>
+                                <input
+                                  type="text"
+                                  placeholder="https://..."
+                                  value={soc.href}
+                                  onChange={(e) => {
+                                    const list = [...(data.socials || [])];
+                                    list[sIdx] = { ...list[sIdx], href: e.target.value };
+                                    updateData((prev) => ({ ...prev, socials: list }), "Edit Social Link", `Updated ${soc.name} URL`);
+                                  }}
+                                  className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs font-mono text-white focus:outline-none focus:border-brand-green"
+                                />
+                              </div>
+                            </div>
+
                             <div className="flex flex-col gap-1">
-                              <label className="text-[9px] text-neutral-400 font-bold uppercase">URL / href</label>
-                              <input
-                                type="text"
-                                value={soc.href}
-                                onChange={(e) => {
-                                  const list = [...data.socials];
-                                  list[sIdx] = { ...list[sIdx], href: e.target.value };
-                                  updateData((prev) => ({ ...prev, socials: list }));
+                              <CMSImageField
+                                label="Social Media Icon (Icon Path / Image)"
+                                value={soc.icon || ""}
+                                onChange={(val) => {
+                                  const list = [...(data.socials || [])];
+                                  list[sIdx] = { ...list[sIdx], icon: val };
+                                  updateData((prev) => ({ ...prev, socials: list }), "Edit Social Icon", `Updated ${soc.name} icon image`);
                                 }}
-                                className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-1.5 text-xs font-mono text-white"
                               />
                             </div>
                           </div>
-
-                          <div className="grid grid-cols-1 gap-3">
-                            <CMSImageField
-                              label="Social Icon Path"
-                              value={soc.icon || ""}
-                              onChange={(val) => {
-                                const list = [...data.socials];
-                                list[sIdx] = { ...list[sIdx], icon: val };
-                                updateData((prev) => ({ ...prev, socials: list }));
-                              }}
-                            />
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -6231,88 +6300,150 @@ export function AdminCMS() {
 
                   {/* ABOUT ME PAGE SOCIAL LINKS */}
                   <div className="flex flex-col gap-4 pt-5 border-t border-white/5">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div>
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green">ABOUT ME PAGE SOCIAL MEDIA LINKS & ICONS</h3>
-                        <p className="text-neutral-400 text-[10px] uppercase tracking-wider mt-0.5">Control social networks shown specifically on the About Me page. Completely independent from the Home Page!</p>
+                        <label className="text-xs font-bold text-brand-green uppercase tracking-wider">
+                          ABOUT ME SOCIAL MEDIA LINKS & ICONS
+                        </label>
+                        <p className="text-[10px] text-neutral-400 uppercase mt-0.5">
+                          Manage and reorder social profile links and their icons displayed under the email in the About Me page.
+                        </p>
                       </div>
                       <button
                         onClick={() => {
-                          const newLink = { name: "New Social", href: "https://", icon: "/src/assets/Icons/Icon-LinkedIn-Color.svg", iconBW: "/src/assets/Icons/Icon-LinkedIn-BW.svg" };
-                          updateData((prev) => ({ ...prev, aboutSocials: [...(prev.aboutSocials || prev.socials || []), newLink] }), "Add About Social", "Appended a new social network profile to about page");
+                          const list = [...(data.aboutSocials || data.socials || [])];
+                          list.push({ name: "NEW SOCIAL", href: "https://", icon: "/src/assets/images/icons/instagram.png" });
+                          updateData((prev) => ({ ...prev, aboutSocials: list }), "Add About Social", "Added a new social media link to About Me");
                         }}
-                        className="px-3 py-1.5 text-[10px] bg-brand-green/10 border border-brand-green/20 text-brand-green hover:bg-brand-green hover:text-brand-black uppercase font-bold rounded-lg cursor-pointer transition-all"
+                        className="px-3.5 py-2 rounded-xl bg-brand-green text-brand-black text-[11px] uppercase font-bold cursor-pointer hover:scale-105 transition-all self-start sm:self-auto flex items-center gap-1.5"
                       >
-                        + Add About Social Link
+                        <Plus size={14} /> Add Social Link
                       </button>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {(data.aboutSocials || data.socials || []).map((soc, sIdx) => (
-                        <div key={sIdx} className="bg-neutral-900/60 border border-white/5 p-4 rounded-xl flex flex-col gap-3 relative">
-                          <button
-                            onClick={() => {
-                              const list = [...(data.aboutSocials || data.socials || [])];
-                              list.splice(sIdx, 1);
-                              updateData((prev) => ({ ...prev, aboutSocials: list }), "Delete About Social", `Deleted about social link ${soc.name}`);
-                            }}
-                            className="absolute top-4 right-4 text-neutral-500 hover:text-red-400 cursor-pointer transition-colors"
-                            title="Delete Social Link"
-                          >
-                            <Trash2 size={14} />
-                          </button>
+                      {(data.aboutSocials || data.socials || []).map((soc, sIdx) => {
+                        const currentList = data.aboutSocials || data.socials || [];
+                        const totalCount = currentList.length;
+                        return (
+                          <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3.5 relative">
+                            {/* Header: Position Badge & Reorder + Delete Actions */}
+                            <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
+                              <div className="flex items-center gap-2">
+                                <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-mono text-[10px] font-bold">
+                                  #{sIdx + 1}
+                                </span>
+                                <span className="text-xs font-bold text-white uppercase tracking-wider truncate max-w-[140px] sm:max-w-[200px]">
+                                  {soc.name || "Untitled Social"}
+                                </span>
+                              </div>
 
-                          <div className="grid grid-cols-2 gap-3">
-                            <div className="flex flex-col gap-1">
-                              <label className="text-[9px] text-neutral-400 font-bold uppercase">Network Name</label>
-                              <input
-                                type="text"
-                                value={soc.name}
-                                onChange={(e) => {
-                                  const list = [...(data.aboutSocials || data.socials || [])];
-                                  list[sIdx] = { ...list[sIdx], name: e.target.value };
-                                  updateData((prev) => ({ ...prev, aboutSocials: list }));
-                                }}
-                                className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-1.5 text-xs text-white"
-                              />
+                              <div className="flex items-center gap-1">
+                                {/* Move Up */}
+                                <button
+                                  type="button"
+                                  disabled={sIdx === 0}
+                                  onClick={() => {
+                                    if (sIdx === 0) return;
+                                    const list = [...(data.aboutSocials || data.socials || [])];
+                                    const temp = list[sIdx];
+                                    list[sIdx] = list[sIdx - 1];
+                                    list[sIdx - 1] = temp;
+                                    updateData(
+                                      (prev) => ({ ...prev, aboutSocials: list }),
+                                      "Reorder About Socials",
+                                      `Moved ${temp.name} up to position #${sIdx}`
+                                    );
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                  title="Move Up"
+                                >
+                                  <ArrowUp size={13} />
+                                </button>
+
+                                {/* Move Down */}
+                                <button
+                                  type="button"
+                                  disabled={sIdx === totalCount - 1}
+                                  onClick={() => {
+                                    if (sIdx >= totalCount - 1) return;
+                                    const list = [...(data.aboutSocials || data.socials || [])];
+                                    const temp = list[sIdx];
+                                    list[sIdx] = list[sIdx + 1];
+                                    list[sIdx + 1] = temp;
+                                    updateData(
+                                      (prev) => ({ ...prev, aboutSocials: list }),
+                                      "Reorder About Socials",
+                                      `Moved ${temp.name} down to position #${sIdx + 2}`
+                                    );
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                  title="Move Down"
+                                >
+                                  <ArrowDown size={13} />
+                                </button>
+
+                                {/* Delete */}
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const list = [...(data.aboutSocials || data.socials || [])];
+                                    list.splice(sIdx, 1);
+                                    updateData((prev) => ({ ...prev, aboutSocials: list }), "Delete About Social", `Deleted about social link ${soc.name}`);
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-500 hover:text-red-400 hover:border-red-500/50 cursor-pointer transition-all ml-1"
+                                  title="Delete Social Link"
+                                >
+                                  <Trash2 size={13} />
+                                </button>
+                              </div>
                             </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                              <div className="flex flex-col gap-1">
+                                <label className="text-[9px] text-neutral-400 font-bold uppercase">Platform Name</label>
+                                <input
+                                  type="text"
+                                  placeholder="e.g. Instagram, LinkedIn"
+                                  value={soc.name}
+                                  onChange={(e) => {
+                                    const list = [...(data.aboutSocials || data.socials || [])];
+                                    list[sIdx] = { ...list[sIdx], name: e.target.value };
+                                    updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Name", `Updated ${soc.name} name`);
+                                  }}
+                                  className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
+                                />
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <label className="text-[9px] text-neutral-400 font-bold uppercase">Profile URL / Link</label>
+                                <input
+                                  type="text"
+                                  placeholder="https://..."
+                                  value={soc.href}
+                                  onChange={(e) => {
+                                    const list = [...(data.aboutSocials || data.socials || [])];
+                                    list[sIdx] = { ...list[sIdx], href: e.target.value };
+                                    updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Link", `Updated ${soc.name} URL`);
+                                  }}
+                                  className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs font-mono text-white focus:outline-none focus:border-brand-green"
+                                />
+                              </div>
+                            </div>
+
                             <div className="flex flex-col gap-1">
-                              <label className="text-[9px] text-neutral-400 font-bold uppercase">URL / href</label>
-                              <input
-                                type="text"
-                                value={soc.href}
-                                onChange={(e) => {
+                              <CMSImageField
+                                label="Social Media Icon (Icon Path / Image)"
+                                value={soc.icon || soc.iconBW || ""}
+                                onChange={(val) => {
                                   const list = [...(data.aboutSocials || data.socials || [])];
-                                  list[sIdx] = { ...list[sIdx], href: e.target.value };
-                                  updateData((prev) => ({ ...prev, aboutSocials: list }));
+                                  list[sIdx] = { ...list[sIdx], icon: val, iconBW: val };
+                                  updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Icon", `Updated ${soc.name} icon image`);
                                 }}
-                                className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-1.5 text-xs font-mono text-white"
                               />
                             </div>
                           </div>
-
-                          <div className="grid grid-cols-1 gap-3">
-                            <CMSImageField
-                              label="Color Icon Path"
-                              value={soc.icon || ""}
-                              onChange={(val) => {
-                                const list = [...(data.aboutSocials || data.socials || [])];
-                                list[sIdx] = { ...list[sIdx], icon: val };
-                                updateData((prev) => ({ ...prev, aboutSocials: list }));
-                              }}
-                            />
-                            <CMSImageField
-                              label="B&W / Dark Icon Path (Optional)"
-                              value={soc.iconBW || ""}
-                              onChange={(val) => {
-                                const list = [...(data.aboutSocials || data.socials || [])];
-                                list[sIdx] = { ...list[sIdx], iconBW: val };
-                                updateData((prev) => ({ ...prev, aboutSocials: list }));
-                              }}
-                            />
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -6533,33 +6664,104 @@ export function AdminCMS() {
                       {((data.footer.footerSocials && data.footer.footerSocials.length > 0)
                         ? data.footer.footerSocials
                         : data.socials.map((s) => ({ label: s.name, href: s.href, isVisible: true }))
-                      ).map((soc, sIdx) => {
+                      ).map((soc, sIdx, allArr) => {
                         const isVis = soc.isVisible !== false;
+                        const totalCount = allArr.length;
                         return (
-                          <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3 relative">
-                            <button
-                              onClick={() => {
-                                const currentSocials = data.footer.footerSocials && data.footer.footerSocials.length > 0
-                                  ? data.footer.footerSocials
-                                  : data.socials.map((s) => ({ label: s.name, href: s.href, isVisible: true }));
-                                const updated = currentSocials.filter((_, idx) => idx !== sIdx);
-                                updateData(
-                                  (prev) => ({
-                                    ...prev,
-                                    footer: { ...prev.footer, footerSocials: updated },
-                                  }),
-                                  "Delete Footer Social",
-                                  `Deleted footer social: ${soc.label}`
-                                );
-                              }}
-                              className="absolute top-3.5 right-3.5 text-neutral-500 hover:text-red-400 transition-colors cursor-pointer"
-                              title="Delete Social Link"
-                            >
-                              <Trash2 size={14} />
-                            </button>
+                          <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3.5 relative">
+                            {/* Header: Position Badge, Visibility, Reorder & Delete Actions */}
+                            <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
+                              <div className="flex items-center gap-2">
+                                <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-mono text-[10px] font-bold">
+                                  #{sIdx + 1}
+                                </span>
+                                <span className="text-xs font-bold text-white uppercase tracking-wider truncate max-w-[120px] sm:max-w-[180px]">
+                                  {soc.label || "Untitled Social"}
+                                </span>
+                              </div>
+
+                              <div className="flex items-center gap-1">
+                                {/* Move Up */}
+                                <button
+                                  type="button"
+                                  disabled={sIdx === 0}
+                                  onClick={() => {
+                                    if (sIdx === 0) return;
+                                    const currentSocials = data.footer.footerSocials && data.footer.footerSocials.length > 0
+                                      ? [...data.footer.footerSocials]
+                                      : data.socials.map((s) => ({ label: s.name, href: s.href, isVisible: true }));
+                                    const temp = currentSocials[sIdx];
+                                    currentSocials[sIdx] = currentSocials[sIdx - 1];
+                                    currentSocials[sIdx - 1] = temp;
+                                    updateData(
+                                      (prev) => ({
+                                        ...prev,
+                                        footer: { ...prev.footer, footerSocials: currentSocials },
+                                      }),
+                                      "Reorder Footer Socials",
+                                      `Moved ${temp.label} up to position #${sIdx}`
+                                    );
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                  title="Move Up"
+                                >
+                                  <ArrowUp size={13} />
+                                </button>
+
+                                {/* Move Down */}
+                                <button
+                                  type="button"
+                                  disabled={sIdx === totalCount - 1}
+                                  onClick={() => {
+                                    if (sIdx >= totalCount - 1) return;
+                                    const currentSocials = data.footer.footerSocials && data.footer.footerSocials.length > 0
+                                      ? [...data.footer.footerSocials]
+                                      : data.socials.map((s) => ({ label: s.name, href: s.href, isVisible: true }));
+                                    const temp = currentSocials[sIdx];
+                                    currentSocials[sIdx] = currentSocials[sIdx + 1];
+                                    currentSocials[sIdx + 1] = temp;
+                                    updateData(
+                                      (prev) => ({
+                                        ...prev,
+                                        footer: { ...prev.footer, footerSocials: currentSocials },
+                                      }),
+                                      "Reorder Footer Socials",
+                                      `Moved ${temp.label} down to position #${sIdx + 2}`
+                                    );
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                  title="Move Down"
+                                >
+                                  <ArrowDown size={13} />
+                                </button>
+
+                                {/* Delete */}
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const currentSocials = data.footer.footerSocials && data.footer.footerSocials.length > 0
+                                      ? data.footer.footerSocials
+                                      : data.socials.map((s) => ({ label: s.name, href: s.href, isVisible: true }));
+                                    const updated = currentSocials.filter((_, idx) => idx !== sIdx);
+                                    updateData(
+                                      (prev) => ({
+                                        ...prev,
+                                        footer: { ...prev.footer, footerSocials: updated },
+                                      }),
+                                      "Delete Footer Social",
+                                      `Deleted footer social: ${soc.label}`
+                                    );
+                                  }}
+                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-500 hover:text-red-400 hover:border-red-500/50 cursor-pointer transition-all ml-1"
+                                  title="Delete Social Link"
+                                >
+                                  <Trash2 size={13} />
+                                </button>
+                              </div>
+                            </div>
 
                             {/* Visibility toggle + state */}
-                            <div className="flex items-center gap-3 pr-8">
+                            <div className="flex items-center gap-3">
                               <label className="flex items-center gap-2 cursor-pointer text-xs font-bold uppercase text-white select-none">
                                 <input
                                   type="checkbox"
@@ -6609,7 +6811,7 @@ export function AdminCMS() {
                                     );
                                   }}
                                   placeholder="e.g. INSTAGRAM"
-                                  className="w-full bg-neutral-950 border border-white/10 rounded px-3 py-1.5 text-xs text-white uppercase focus:outline-none focus:border-brand-green font-mono"
+                                  className="w-full bg-neutral-950 border border-white/10 rounded px-3 py-2 text-xs text-white uppercase focus:outline-none focus:border-brand-green font-mono font-semibold"
                                 />
                               </div>
 
@@ -6634,7 +6836,7 @@ export function AdminCMS() {
                                     );
                                   }}
                                   placeholder="https://..."
-                                  className="w-full bg-neutral-950 border border-white/10 rounded px-3 py-1.5 text-xs font-mono text-white focus:outline-none focus:border-brand-green"
+                                  className="w-full bg-neutral-950 border border-white/10 rounded px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-brand-green"
                                 />
                               </div>
                             </div>
