@@ -731,10 +731,25 @@ function SpacingInputWithPresets({
   placeholder?: string;
   helperText?: string;
 }) {
-  // Load user-saved presets from localStorage
+  // Load user-saved presets from localStorage (Desktop)
   const [customPresets, setCustomPresets] = useState<number[]>(() => {
     try {
       const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed.filter((n) => typeof n === "number" && !isNaN(n));
+      }
+    } catch {
+      // fallback
+    }
+    return [];
+  });
+
+  // Load user-saved presets from localStorage (Mobile/Tablet)
+  const mobileStorageKey = `${storageKey}_mobile`;
+  const [customMobilePresets, setCustomMobilePresets] = useState<number[]>(() => {
+    try {
+      const saved = localStorage.getItem(mobileStorageKey);
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) return parsed.filter((n) => typeof n === "number" && !isNaN(n));
@@ -819,6 +834,24 @@ function SpacingInputWithPresets({
     } catch {}
   };
 
+  const saveToCustomMobilePresets = (num: number) => {
+    if (customMobilePresets.includes(num)) return;
+    const updated = [...customMobilePresets, num].sort((a, b) => a - b);
+    setCustomMobilePresets(updated);
+    try {
+      localStorage.setItem(mobileStorageKey, JSON.stringify(updated));
+    } catch {}
+  };
+
+  const removeCustomMobilePreset = (num: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const updated = customMobilePresets.filter((n) => n !== num);
+    setCustomMobilePresets(updated);
+    try {
+      localStorage.setItem(mobileStorageKey, JSON.stringify(updated));
+    } catch {}
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
     setInputVal(raw);
@@ -860,8 +893,22 @@ function SpacingInputWithPresets({
     }
   };
 
+  const handleApplyMobilePreset = (val: number | "default") => {
+    if (!onMobileChange) return;
+    if (val === "default") {
+      setMobileInputVal("");
+      onMobileChange("default");
+    } else {
+      setMobileInputVal(String(val));
+      onMobileChange(val);
+    }
+  };
+
   const canSaveCurrentAsPreset =
     currentNum !== null && !customPresets.includes(currentNum);
+
+  const canSaveCurrentMobileAsPreset =
+    currentMobileNum !== null && !customMobilePresets.includes(currentMobileNum);
 
   return (
     <div className="flex flex-col gap-2 p-3 bg-neutral-950/80 border border-white/10 rounded-xl shadow-inner">
@@ -965,6 +1012,18 @@ function SpacingInputWithPresets({
                 </span>
               </div>
 
+              {canSaveCurrentMobileAsPreset && (
+                <button
+                  type="button"
+                  onClick={() => saveToCustomMobilePresets(currentMobileNum)}
+                  className="px-2 py-1.5 bg-cyan-400/20 border border-cyan-400/40 hover:bg-cyan-400 hover:text-black text-cyan-300 rounded-lg text-[9.5px] font-bold uppercase flex items-center gap-0.5 transition-all cursor-pointer shadow shrink-0"
+                  title="Save this mobile number to memory for quick future reuse"
+                >
+                  <Plus size={11} />
+                  <span>Save</span>
+                </button>
+              )}
+
               <button
                 type="button"
                 onClick={() => {
@@ -986,11 +1045,11 @@ function SpacingInputWithPresets({
         )}
       </div>
 
-      {/* User Saved Presets Only */}
+      {/* User Saved Presets Only (Desktop) */}
       {customPresets.length > 0 && (
         <div className="flex flex-col gap-1 mt-0.5">
           <div className="flex items-center justify-between text-[8px] text-neutral-400 font-bold uppercase tracking-wider">
-            <span>⚡ Saved Presets ({customPresets.length}):</span>
+            <span>⚡ Desktop Presets ({customPresets.length}):</span>
           </div>
           <div className="flex items-center gap-1.5 flex-wrap">
             {customPresets.map((presetNum) => {
@@ -1015,6 +1074,45 @@ function SpacingInputWithPresets({
                       isSelected ? "text-black/70 hover:text-white" : "text-neutral-400"
                     }`}
                     title="Delete saved preset from memory"
+                  >
+                    <X size={9} />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* User Saved Presets Only (Mobile/Tablet) */}
+      {onMobileChange && customMobilePresets.length > 0 && (
+        <div className="flex flex-col gap-1 mt-0.5">
+          <div className="flex items-center justify-between text-[8px] text-cyan-400/80 font-bold uppercase tracking-wider">
+            <span>📱 Mobile/Tab Presets ({customMobilePresets.length}):</span>
+          </div>
+          <div className="flex items-center gap-1.5 flex-wrap">
+            {customMobilePresets.map((presetNum) => {
+              const isSelected = currentMobileNum === presetNum;
+
+              return (
+                <div
+                  key={presetNum}
+                  onClick={() => handleApplyMobilePreset(presetNum)}
+                  className={`group/pill relative px-2 py-0.5 rounded text-[9.5px] font-mono font-bold cursor-pointer transition-all flex items-center gap-1 border ${
+                    isSelected
+                      ? "bg-cyan-400 text-black border-cyan-400 shadow-sm shadow-cyan-400/30 font-extrabold ring-1 ring-cyan-400"
+                      : "bg-neutral-900 text-cyan-300 border-cyan-500/20 hover:border-cyan-400/60 hover:text-white"
+                  }`}
+                  title={`Custom mobile saved preset (${presetNum}${unit}) - click to apply to mobile, or × to delete from memory`}
+                >
+                  <span>{presetNum > 0 ? `+${presetNum}` : presetNum}{unit}</span>
+                  <button
+                    type="button"
+                    onClick={(e) => removeCustomMobilePreset(presetNum, e)}
+                    className={`ml-0.5 p-0.5 rounded hover:bg-red-500 hover:text-white transition-colors cursor-pointer ${
+                      isSelected ? "text-black/70 hover:text-white" : "text-neutral-400"
+                    }`}
+                    title="Delete saved mobile preset from memory"
                   >
                     <X size={9} />
                   </button>
