@@ -104,16 +104,9 @@ export function Footer({ onNavigate }: FooterProps) {
             ))}
           </div>
 
-          {/* Copyright & Direct Admin Access */}
-          <p className="font-sans tracking-wide text-center sm:text-right flex items-center justify-center sm:justify-end gap-2">
-            <span>{copyrightText}</span>
-            <a
-              href="#admin"
-              className="text-white/20 hover:text-brand-green/80 transition-colors text-[10px] uppercase font-mono px-1.5 py-0.5 rounded border border-white/5 hover:border-brand-green/30"
-              title="Open Admin CMS Portal"
-            >
-              CMS ⚡
-            </a>
+          {/* Copyright */}
+          <p className="font-sans tracking-wide text-center sm:text-right">
+            {copyrightText}
           </p>
         </div>
       </div>
