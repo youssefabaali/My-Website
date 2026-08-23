@@ -253,7 +253,7 @@ export function AboutView() {
               viewport={{ once: true, amount: 0.2 }}
               className="w-full max-w-6xl mx-auto mt-4 px-2"
             >
-              <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 w-full">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-stretch sm:items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-sm sm:max-w-none mx-auto">
                 {(data.aboutSocials || data.socials).map((social) => (
                   <motion.a
                     key={social.name}
@@ -261,7 +261,7 @@ export function AboutView() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative bg-neutral-900/60 hover:bg-neutral-900/95 border border-white/10 hover:border-brand-green/50 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:shadow-[0_6px_25px_rgba(0,0,0,0.5)] overflow-hidden cursor-pointer shrink-0"
+                    className="group relative bg-neutral-900/60 hover:bg-neutral-900/95 border border-white/10 hover:border-brand-green/50 px-4 py-3 sm:px-3.5 sm:py-2.5 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:shadow-[0_6px_25px_rgba(0,0,0,0.5)] overflow-hidden cursor-pointer w-full sm:w-auto shrink-0"
                     aria-label={social.name}
                   >
                     {/* Subtle Ambient Hover Glow */}
