@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useCMS } from "../context/CMSContext";
 import { motion } from "motion/react";
 import { ImageFallback, fixAssetUrl } from "./ImageFallback";
-import { FileText, Download, Copy, Check, ExternalLink } from "lucide-react";
+import { FileText, Download, Copy, Check, ExternalLink, ArrowUpRight } from "lucide-react";
 
 export function AboutView() {
   const { data } = useCMS();
@@ -55,8 +55,32 @@ export function AboutView() {
     show: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
   };
 
+  const socialContainerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const socialCardVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.45,
+        ease: "easeOut" as const,
+      },
+    },
+  };
+
   const desktopWidth = aboutMe.profileImageWidthDesktop || 440;
   const mobileWidth = aboutMe.profileImageWidthMobile || 380;
+  const bioEmailGapDesktop = aboutMe.bioEmailGapDesktop ?? 64;
+  const bioEmailGapMobile = aboutMe.bioEmailGapMobile ?? 32;
 
   return (
     <motion.div
@@ -83,6 +107,15 @@ export function AboutView() {
           }
         }
 
+        .cms-bio-email-gap {
+          margin-bottom: ${bioEmailGapMobile}px;
+        }
+        @media (min-width: 1024px) {
+          .cms-bio-email-gap {
+            margin-bottom: ${bioEmailGapDesktop}px;
+          }
+        }
+
         .cms-section-gap {
           margin-bottom: ${gapMobile}px;
         }
@@ -106,7 +139,7 @@ export function AboutView() {
       {/* ══════════════════════════════════════════
            PROFILE BIOGRAPHY SECTION
        ══════════════════════════════════════════ */}
-      <section className="w-full cms-section-gap">
+      <section className="w-full cms-bio-email-gap">
         <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-12 xl:px-16">
           <div className="grid grid-cols-1 about-bio-grid gap-12 md:gap-16 lg:gap-20 items-start">
             {/* Picture wrap - Centered on Mobile/Tablet (< lg), Left-aligned on Desktop (>= lg) */}
@@ -211,30 +244,56 @@ export function AboutView() {
             </motion.div>
           )}
 
-          {/* Social connections */}
-          <motion.div
-            variants={containerVariants}
-            className="flex flex-wrap justify-center items-center gap-6 md:gap-8 mt-4"
-          >
-            {(data.aboutSocials || data.socials).map((social) => (
-              <motion.a
-                key={social.name}
-                variants={itemVariants}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/60 hover:text-brand-green transition-all hover:scale-110 duration-200"
-                aria-label={social.name}
-              >
-                <img
-                  src={fixAssetUrl(social.iconBW || social.icon)}
-                  alt={social.name}
-                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain select-none pointer-events-none"
-                  referrerPolicy="no-referrer"
-                />
-              </motion.a>
-            ))}
-          </motion.div>
+          {/* Social connections — Interactive Bento / Platform Cards */}
+          {((data.aboutSocials || data.socials) && (data.aboutSocials || data.socials).length > 0) && (
+            <motion.div
+              variants={socialContainerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              className="w-full max-w-6xl mx-auto mt-4 px-2"
+            >
+              <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 w-full">
+                {(data.aboutSocials || data.socials).map((social) => (
+                  <motion.a
+                    key={social.name}
+                    variants={socialCardVariants}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative bg-neutral-900/60 hover:bg-neutral-900/95 border border-white/10 hover:border-brand-green/50 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:shadow-[0_6px_25px_rgba(0,0,0,0.5)] overflow-hidden cursor-pointer shrink-0"
+                    aria-label={social.name}
+                  >
+                    {/* Subtle Ambient Hover Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-brand-green/0 via-brand-green/[0.02] to-brand-green/[0.06] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                    {/* Left: Icon + Platform Name */}
+                    <div className="flex items-center gap-2.5 min-w-0 relative z-10">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-neutral-950/90 border border-white/10 group-hover:border-brand-green/40 flex items-center justify-center p-1.5 transition-all duration-300 group-hover:scale-105 shrink-0 shadow-inner">
+                        <img
+                          src={fixAssetUrl(social.icon || social.iconBW)}
+                          alt={social.name}
+                          className="w-full h-full object-contain select-none pointer-events-none filter transition-all duration-300 group-hover:brightness-110"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                      <span className="font-bebas text-base sm:text-lg tracking-wider text-neutral-200 group-hover:text-brand-green uppercase transition-colors duration-300 whitespace-nowrap">
+                        {social.name}
+                      </span>
+                    </div>
+
+                    {/* Right: Interactive Arrow Button */}
+                    <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-lg bg-white/[0.04] group-hover:bg-brand-green border border-white/10 group-hover:border-brand-green flex items-center justify-center text-white/50 group-hover:text-brand-black transition-all duration-300 shrink-0 relative z-10">
+                      <ArrowUpRight
+                        size={13}
+                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </motion.div>
       </section>
 

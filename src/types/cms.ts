@@ -159,6 +159,8 @@ export interface AboutMeData {
   profileImage: string;
   profileImageWidthDesktop?: number;
   profileImageWidthMobile?: number;
+  bioEmailGapDesktop?: number;
+  bioEmailGapMobile?: number;
   paragraphs: string[];
   creativeHeadline: string;
   skills: SkillItem[];

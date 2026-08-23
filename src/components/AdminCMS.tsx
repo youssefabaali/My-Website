@@ -6183,6 +6183,124 @@ export function AdminCMS() {
                         </div>
                       ))}
                     </div>
+
+                    {/* BIO TO EMAIL GAP CONTROLS (DESKTOP & MOBILE/TABLET) */}
+                    <div className="pt-4 border-t border-white/5">
+                      <div className="flex items-center justify-between mb-3">
+                        <div>
+                          <h4 className="text-[11px] font-bold uppercase tracking-wider text-brand-green">
+                            Bio Description to Email Gap (Spacing)
+                          </h4>
+                          <p className="text-[10px] text-neutral-400 mt-0.5">
+                            Controls the vertical space between the biography paragraphs and the Gmail / Email section.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Desktop Spacing */}
+                        <div className="bg-neutral-900/70 border border-white/10 rounded-xl p-3.5 flex flex-col gap-2.5">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                              🖥️ Desktop Gap (px)
+                            </span>
+                            <span className="text-xs font-mono font-bold text-brand-green">
+                              {data.aboutMe.bioEmailGapDesktop ?? 64}px
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <input
+                              type="range"
+                              min={0}
+                              max={200}
+                              step={4}
+                              value={data.aboutMe.bioEmailGapDesktop ?? 64}
+                              onChange={(e) => {
+                                const val = Number(e.target.value);
+                                updateData(
+                                  (prev) => ({
+                                    ...prev,
+                                    aboutMe: { ...prev.aboutMe, bioEmailGapDesktop: val },
+                                  }),
+                                  "Bio to Email Desktop Gap",
+                                  `Set desktop bio-to-email spacing to ${val}px`
+                                );
+                              }}
+                              className="flex-1 accent-brand-green h-1.5 bg-neutral-950 rounded cursor-pointer"
+                            />
+                            <input
+                              type="number"
+                              min={0}
+                              max={300}
+                              value={data.aboutMe.bioEmailGapDesktop ?? 64}
+                              onChange={(e) => {
+                                const val = Number(e.target.value);
+                                updateData(
+                                  (prev) => ({
+                                    ...prev,
+                                    aboutMe: { ...prev.aboutMe, bioEmailGapDesktop: val },
+                                  }),
+                                  "Bio to Email Desktop Gap",
+                                  `Set desktop bio-to-email spacing to ${val}px`
+                                );
+                              }}
+                              className="w-16 bg-neutral-950 border border-white/10 rounded px-2 py-1 text-xs text-center font-mono text-white focus:outline-none focus:border-brand-green"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Mobile / Tablet Spacing */}
+                        <div className="bg-neutral-900/70 border border-white/10 rounded-xl p-3.5 flex flex-col gap-2.5">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                              📱 Tablet & Phone Gap (px)
+                            </span>
+                            <span className="text-xs font-mono font-bold text-brand-green">
+                              {data.aboutMe.bioEmailGapMobile ?? 32}px
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <input
+                              type="range"
+                              min={0}
+                              max={160}
+                              step={4}
+                              value={data.aboutMe.bioEmailGapMobile ?? 32}
+                              onChange={(e) => {
+                                const val = Number(e.target.value);
+                                updateData(
+                                  (prev) => ({
+                                    ...prev,
+                                    aboutMe: { ...prev.aboutMe, bioEmailGapMobile: val },
+                                  }),
+                                  "Bio to Email Mobile Gap",
+                                  `Set mobile bio-to-email spacing to ${val}px`
+                                );
+                              }}
+                              className="flex-1 accent-brand-green h-1.5 bg-neutral-950 rounded cursor-pointer"
+                            />
+                            <input
+                              type="number"
+                              min={0}
+                              max={200}
+                              value={data.aboutMe.bioEmailGapMobile ?? 32}
+                              onChange={(e) => {
+                                const val = Number(e.target.value);
+                                updateData(
+                                  (prev) => ({
+                                    ...prev,
+                                    aboutMe: { ...prev.aboutMe, bioEmailGapMobile: val },
+                                  }),
+                                  "Bio to Email Mobile Gap",
+                                  `Set mobile bio-to-email spacing to ${val}px`
+                                );
+                              }}
+                              className="w-16 bg-neutral-950 border border-white/10 rounded px-2 py-1 text-xs text-center font-mono text-white focus:outline-none focus:border-brand-green"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Skills Editor */}

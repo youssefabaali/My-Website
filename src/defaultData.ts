@@ -58,6 +58,8 @@ export const defaultSiteData: CMSSiteData = {
     "profileImage": "/src/assets/images/MyPicture.jpg",
     "profileImageWidthDesktop": 440,
     "profileImageWidthMobile": 380,
+    "bioEmailGapDesktop": 64,
+    "bioEmailGapMobile": 32,
     "paragraphs": [
       "Hi! I'm Youssef Abaali, a Motion Graphics Designer working as a Freelancer and based in Spain. Since 2017, I've been diving into the world of motion design, gaining extensive experience in executing motion graphics projects from start to finish.",
       "My goal is to transform complex ideas into smooth and impactful visual stories.",
