@@ -49,7 +49,11 @@ import {
   Columns,
   Monitor,
   Tablet,
-  Smartphone
+  Smartphone,
+  ChevronDown,
+  ChevronRight,
+  ChevronsUpDown,
+  ChevronsDownUp
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -1956,6 +1960,10 @@ function ProjectEditorStickyRail({
   onMoveSection,
   highlightedSectionIdx,
   isSaving,
+  imageClipboard,
+  onPasteImage,
+  onExpandAll,
+  onCollapseAll,
 }: {
   onSave: () => void;
   onDelete: () => void;
@@ -1966,6 +1974,16 @@ function ProjectEditorStickyRail({
   onMoveSection?: (sIdx: number, dir: "up" | "down") => void;
   highlightedSectionIdx: number | null;
   isSaving?: boolean;
+  imageClipboard?: {
+    imgUrl: string;
+    mode: "copy" | "move";
+    sourceSecIdx: number;
+    sourceRowIdx: number;
+    sourceImgIdx: number;
+  } | null;
+  onPasteImage?: (targetSecIdx: number, targetRowIdx: number) => void;
+  onExpandAll?: () => void;
+  onCollapseAll?: () => void;
 }) {
   const [isOutlineCollapsed, setIsOutlineCollapsed] = useState(false);
   const [isAddMenuOpen, setIsAddMenuOpen] = useState(true);
@@ -2013,6 +2031,51 @@ function ProjectEditorStickyRail({
           </button>
         </div>
       </div>
+
+      {/* ACTIVE CLIPBOARD QUICK ACTIONS CARD */}
+      {imageClipboard && (
+        <div className="bg-purple-950/40 border-2 border-purple-500/60 rounded-2xl p-3.5 flex flex-col gap-2.5 shadow-xl animate-in slide-in-from-top-2">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-black uppercase text-purple-300 flex items-center gap-1">
+              <ClipboardCopy size={13} />
+              Active Clipboard ({imageClipboard.mode})
+            </span>
+          </div>
+          <div className="flex items-center gap-2 bg-neutral-950/80 p-2 rounded-xl border border-white/5">
+            <img
+              src={imageClipboard.imgUrl}
+              alt="Clip"
+              className="w-9 h-9 object-cover rounded-lg border border-purple-400/30 shrink-0"
+            />
+            <div className="flex flex-col min-w-0">
+              <span className="text-[9.5px] font-bold text-white truncate">Image Copied</span>
+              <span className="text-[8px] text-purple-300">Ready to paste anywhere</span>
+            </div>
+          </div>
+          {sections.length > 0 && onPasteImage && (
+            <div className="flex flex-col gap-1 mt-1">
+              <span className="text-[8.5px] text-neutral-400 font-bold uppercase">Quick Paste into Section:</span>
+              <div className="flex flex-col gap-1 max-h-28 overflow-y-auto pr-0.5 custom-scrollbar">
+                {sections.map((sec: any, idx: number) => {
+                  const secLabel = sec.label || `Section #${idx + 1}`;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => onPasteImage(idx, -1)}
+                      className="px-2 py-1 bg-purple-900/50 hover:bg-purple-600 text-purple-200 hover:text-white rounded-lg text-[9.5px] font-bold text-left truncate cursor-pointer transition-all border border-purple-500/20 flex items-center justify-between"
+                      title={`Create a new row in ${secLabel} and paste copied image`}
+                    >
+                      <span className="truncate">#{idx + 1} {secLabel}</span>
+                      <span className="text-[8px] uppercase shrink-0 font-mono bg-purple-950/80 px-1 py-0.2 rounded">+ New Row</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* 2. ADD NEW SECTION CARD */}
       <div className="bg-neutral-950/90 border border-white/10 rounded-2xl p-4 flex flex-col gap-3 shadow-xl backdrop-blur-md">
@@ -2106,13 +2169,35 @@ function ProjectEditorStickyRail({
               {sections.length}
             </span>
           </div>
-          <button
-            type="button"
-            onClick={() => setIsOutlineCollapsed(!isOutlineCollapsed)}
-            className="text-[9px] text-neutral-400 hover:text-white uppercase font-bold px-1.5 py-0.5 rounded hover:bg-white/5 transition-colors cursor-pointer"
-          >
-            {isOutlineCollapsed ? "Expand" : "Collapse"}
-          </button>
+          <div className="flex items-center gap-1.5">
+            {onExpandAll && onCollapseAll && (
+              <div className="flex items-center gap-1 bg-neutral-900 p-0.5 rounded-lg border border-white/5">
+                <button
+                  type="button"
+                  onClick={onExpandAll}
+                  className="p-1 hover:bg-white/10 rounded text-[9px] text-neutral-300 hover:text-brand-green"
+                  title="Expand All Sections"
+                >
+                  <ChevronsUpDown size={11} />
+                </button>
+                <button
+                  type="button"
+                  onClick={onCollapseAll}
+                  className="p-1 hover:bg-white/10 rounded text-[9px] text-neutral-300 hover:text-brand-green"
+                  title="Collapse All Sections"
+                >
+                  <ChevronsDownUp size={11} />
+                </button>
+              </div>
+            )}
+            <button
+              type="button"
+              onClick={() => setIsOutlineCollapsed(!isOutlineCollapsed)}
+              className="text-[9px] text-neutral-400 hover:text-white uppercase font-bold px-1.5 py-0.5 rounded hover:bg-white/5 transition-colors cursor-pointer"
+            >
+              {isOutlineCollapsed ? "Show" : "Hide"}
+            </button>
+          </div>
         </div>
 
         {!isOutlineCollapsed && (
@@ -2122,7 +2207,7 @@ function ProjectEditorStickyRail({
                 No sections added yet. Use the buttons above to add your first section.
               </div>
             ) : (
-              <div className="flex flex-col gap-1.5 max-h-[44vh] overflow-y-auto pr-1">
+              <div className="flex flex-col gap-1.5 max-h-[44vh] overflow-y-auto pr-1 custom-scrollbar">
                 {sections.map((sec: any, idx: number) => {
                   const isHighlighted = highlightedSectionIdx === idx;
                   const hasCustomLabel = sec.label && sec.label.trim().length > 0;
@@ -2147,6 +2232,9 @@ function ProjectEditorStickyRail({
                       <LayoutGrid size={13} className="text-brand-green shrink-0" />
                     );
 
+                  const imgCount = sec.images ? sec.images.length : 0;
+                  const rowCount = sec.type === "grid" ? (sec.rows ? sec.rows.length : (imgCount > 0 ? 1 : 0)) : 1;
+
                   return (
                     <div
                       key={sec.id || idx}
@@ -2163,9 +2251,14 @@ function ProjectEditorStickyRail({
                           #{idx + 1}
                         </span>
                         {typeIcon}
-                        <span className="truncate uppercase text-[10.5px] font-bold tracking-tight">
-                          {label}
-                        </span>
+                        <div className="flex flex-col min-w-0">
+                          <span className="truncate uppercase text-[10.5px] font-bold tracking-tight">
+                            {label}
+                          </span>
+                          <span className={`text-[8px] font-mono truncate ${isHighlighted ? "text-neutral-900 font-bold" : "text-neutral-500"}`}>
+                            {sec.type === "grid" ? `${rowCount} row${rowCount === 1 ? "" : "s"} • ${imgCount} img` : sec.type === "row" ? `${imgCount} img` : sec.type}
+                          </span>
+                        </div>
                       </div>
 
                       {/* Controls on the item: Up / Down Reorder */}
@@ -2238,6 +2331,8 @@ function CMSGallerySectionEditor({
   onCopyImage,
   onPasteImage,
   isHighlighted = false,
+  isCollapsed = false,
+  onToggleCollapse,
 }: {
   sec: ProjectSection;
   sIdx: number;
@@ -2253,6 +2348,8 @@ function CMSGallerySectionEditor({
   onCopyImage?: (imgUrl: string, mode: "copy" | "move", sourceSecIdx: number, sourceRowIdx: number, sourceImgIdx: number) => void;
   onPasteImage?: (targetSecIdx: number, targetRowIdx: number) => void;
   isHighlighted?: boolean;
+  isCollapsed?: boolean;
+  onToggleCollapse?: () => void;
 }) {
   // Ensure rows array exists for grid type sections
   const rows: {
@@ -2452,14 +2549,14 @@ function CMSGallerySectionEditor({
   return (
     <div
       id={`cms-section-${sIdx}`}
-      className={`p-4 rounded-2xl flex flex-col gap-4 shadow-xl transition-all duration-300 scroll-mt-24 ${
+      className={`p-4 rounded-2xl flex flex-col gap-4 shadow-xl transition-all duration-300 scroll-mt-28 ${
         isHighlighted
           ? "bg-neutral-900/95 border-2 border-brand-green ring-4 ring-brand-green/30 shadow-[0_0_30px_rgba(140,255,46,0.3)] scale-[1.005]"
           : "bg-neutral-900/90 border border-white/10"
       }`}
     >
       {/* Header controls: Label, Type, Spacings & Delete */}
-      <div className="flex items-center justify-between gap-3 flex-wrap border-b border-white/5 pb-3">
+      <div className={`flex items-center justify-between gap-3 flex-wrap ${isCollapsed ? "" : "border-b border-white/5 pb-3"}`}>
         <div className="flex items-center gap-3 flex-wrap">
           <input
             type="text"
@@ -2483,11 +2580,20 @@ function CMSGallerySectionEditor({
               ? "TEXT ONLY"
               : sec.type === "image_text"
               ? "IMAGE & TEXT"
-              : `${sec.images.length} Total Image${sec.images.length === 1 ? "" : "s"}`}
+              : `${sec.images.length} Total Image${sec.images.length === 1 ? "" : "s"}${sec.type === "grid" ? ` • ${rows.length} Row${rows.length === 1 ? "" : "s"}` : ""}`}
           </span>
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onRemoveSec}
+            className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded transition-all cursor-pointer flex items-center gap-1 text-[11px] font-bold uppercase"
+            title="Remove section"
+          >
+            <Trash2 size={14} />
+            <span>Delete Section</span>
+          </button>
           {onMoveSec && canMoveUp && (
             <button
               type="button"
@@ -2510,44 +2616,52 @@ function CMSGallerySectionEditor({
               <span className="hidden sm:inline">Move Down</span>
             </button>
           )}
-          <button
-            type="button"
-            onClick={onRemoveSec}
-            className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded transition-all cursor-pointer flex items-center gap-1 text-[11px] font-bold uppercase"
-            title="Remove section"
-          >
-            <Trash2 size={14} />
-            <span>Delete Section</span>
-          </button>
+          {onToggleCollapse && (
+            <button
+              type="button"
+              onClick={onToggleCollapse}
+              className={`p-1.5 rounded-lg border transition-all cursor-pointer flex items-center gap-1.5 text-[11px] font-bold ${
+                isCollapsed
+                  ? "bg-brand-green/10 border-brand-green text-brand-green hover:bg-brand-green hover:text-black"
+                  : "bg-neutral-950 border-white/10 hover:border-brand-green text-neutral-300 hover:text-brand-green"
+              }`}
+              title={isCollapsed ? "Expand section details" : "Collapse section"}
+            >
+              {isCollapsed ? <ChevronRight size={14} /> : <ChevronDown size={14} />}
+              <span className="text-[10px] uppercase font-mono">{isCollapsed ? "Expand" : "Collapse"}</span>
+            </button>
+          )}
         </div>
       </div>
 
-      {/* SECTION SPACING CONTROLS: Vertical Margins & Inner Rows Gap (Custom Number + Saved Presets Memory) */}
-      <div className={`grid grid-cols-1 ${sec.type === "grid" ? "lg:grid-cols-2" : ""} gap-3`}>
-        <SpacingInputWithPresets
-          label="⬇️ Section Bottom Spacing (Distance to next section below)"
-          value={sec.sectionGap}
-          onChange={(newVal) => onUpdateSec({ ...sec, sectionGap: newVal })}
-          mobileValue={sec.sectionGapMobile}
-          onMobileChange={(newVal) => onUpdateSec({ ...sec, sectionGapMobile: newVal })}
-          storageKey="cms_custom_section_spacings"
-          placeholder="0"
-          helperText="Controls vertical distance/margin between this section and the next section below it (Default: 0px)."
-        />
+      {!isCollapsed && (
+        <>
+          {/* SECTION SPACING CONTROLS: Vertical Margins & Inner Rows Gap (Custom Number + Saved Presets Memory) */}
+          <div className={`grid grid-cols-1 ${sec.type === "grid" ? "lg:grid-cols-2" : ""} gap-3`}>
+            <SpacingInputWithPresets
+              label="⬇️ Section Bottom Spacing (Distance to next section below)"
+              value={sec.sectionGap}
+              onChange={(newVal) => onUpdateSec({ ...sec, sectionGap: newVal })}
+              mobileValue={sec.sectionGapMobile}
+              onMobileChange={(newVal) => onUpdateSec({ ...sec, sectionGapMobile: newVal })}
+              storageKey="cms_custom_section_spacings"
+              placeholder="0"
+              helperText="Controls vertical distance/margin between this section and the next section below it (Default: 0px)."
+            />
 
-        {sec.type === "grid" && (
-          <SpacingInputWithPresets
-            label="↕️ Rows Vertical Gap (Between rows in this grid)"
-            value={sec.rowsGap}
-            onChange={(newVal) => onUpdateSec({ ...sec, rowsGap: newVal })}
-            mobileValue={sec.rowsGapMobile}
-            onMobileChange={(newVal) => onUpdateSec({ ...sec, rowsGapMobile: newVal })}
-            storageKey="cms_custom_rows_gaps"
-            placeholder="0"
-            helperText="Controls vertical gap between consecutive rows inside this grid (Default: 0px)."
-          />
-        )}
-      </div>
+            {sec.type === "grid" && (
+              <SpacingInputWithPresets
+                label="↕️ Rows Vertical Gap (Between rows in this grid)"
+                value={sec.rowsGap}
+                onChange={(newVal) => onUpdateSec({ ...sec, rowsGap: newVal })}
+                mobileValue={sec.rowsGapMobile}
+                onMobileChange={(newVal) => onUpdateSec({ ...sec, rowsGapMobile: newVal })}
+                storageKey="cms_custom_rows_gaps"
+                placeholder="0"
+                helperText="Controls vertical gap between consecutive rows inside this grid (Default: 0px)."
+              />
+            )}
+          </div>
 
       {/* SECTION TITLE SPACING CONTROLS: Only displayed when Section Label has text */}
       {sec.label && sec.label.trim().length > 0 && (
@@ -2890,6 +3004,34 @@ function CMSGallerySectionEditor({
               />
             ))}
           </div>
+
+          {/* Bottom Actions Bar for Grid Section */}
+          <div className="flex items-center justify-between p-3 bg-neutral-950/60 border border-dashed border-white/10 rounded-xl mt-1">
+            <span className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
+              End of Section Rows ({rows.length} total)
+            </span>
+            <div className="flex items-center gap-2">
+              {imageClipboard && onPasteImage && (
+                <button
+                  type="button"
+                  onClick={() => onPasteImage(sIdx, -1)}
+                  className="px-3.5 py-1.5 bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-xs uppercase rounded-xl cursor-pointer transition-all flex items-center gap-1.5 shadow-lg animate-pulse"
+                  title="Create a new row at the bottom and paste copied image into it"
+                >
+                  <ClipboardCopy size={14} />
+                  + Paste into New Row
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={handleAddRow}
+                className="px-3.5 py-1.5 bg-brand-green/20 hover:bg-brand-green border border-brand-green/40 hover:border-brand-green text-brand-green hover:text-black font-bold text-xs uppercase rounded-xl cursor-pointer transition-all flex items-center gap-1.5 shadow-sm"
+              >
+                <Plus size={14} />
+                + Add Row
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         /* SINGLE WIDESCREEN ROW MODE */
@@ -2914,6 +3056,8 @@ function CMSGallerySectionEditor({
           onDeleteRow={onRemoveSec}
           canDelete={false}
         />
+      )}
+        </>
       )}
     </div>
   );
@@ -3226,10 +3370,18 @@ export function AdminCMS() {
   };
 
   const handleJumpToSection = (sIdx: number) => {
+    // If the section is collapsed, expand it so the user can immediately see and edit it
+    if (collapsedSectionIndices[sIdx]) {
+      setCollapsedSectionIndices((prev) => ({
+        ...prev,
+        [sIdx]: false,
+      }));
+    }
+
     setHighlightedSectionIdx(sIdx);
     const targetElement = document.getElementById(`cms-section-${sIdx}`);
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     // Remove highlight pulse after 3.5 seconds
     setTimeout(() => {
@@ -3246,6 +3398,29 @@ export function AdminCMS() {
     sourceRowIdx: number;
     sourceImgIdx: number;
   } | null>(null);
+
+  // COLLAPSIBLE SECTIONS STATE
+  const [collapsedSectionIndices, setCollapsedSectionIndices] = useState<Record<number, boolean>>({});
+
+  const toggleSectionCollapse = (sIdx: number) => {
+    setCollapsedSectionIndices((prev) => ({
+      ...prev,
+      [sIdx]: !prev[sIdx],
+    }));
+  };
+
+  const collapseAllSections = () => {
+    if (!projectEditForm?.sections) return;
+    const allCollapsed: Record<number, boolean> = {};
+    projectEditForm.sections.forEach((_, idx) => {
+      allCollapsed[idx] = true;
+    });
+    setCollapsedSectionIndices(allCollapsed);
+  };
+
+  const expandAllSections = () => {
+    setCollapsedSectionIndices({});
+  };
 
   const [newCategoryName, setNewCategoryName] = useState("");
   const [editingCategoryOldName, setEditingCategoryOldName] = useState<string | null>(null);
@@ -5436,6 +5611,7 @@ export function AdminCMS() {
 
                     {/* Portfolio Project details sections editing */}
                     <div className="flex flex-col gap-4">
+                      {/* Subpage Image Sections Header with Global Collapse Controls */}
                       <div className="flex items-center justify-between flex-wrap gap-2">
                         <div className="flex flex-col">
                           <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
@@ -5447,6 +5623,30 @@ export function AdminCMS() {
                         </div>
                         
                         <div className="flex items-center gap-1.5 flex-wrap">
+                          {(projectEditForm.sections || []).length > 0 && (
+                            <div className="flex items-center gap-1 bg-neutral-900 border border-white/10 rounded-lg p-0.5 mr-1">
+                              <button
+                                type="button"
+                                onClick={expandAllSections}
+                                className="px-2 py-1 hover:bg-white/10 text-neutral-300 hover:text-brand-green text-[10px] font-bold uppercase rounded cursor-pointer transition-all flex items-center gap-1"
+                                title="Expand all sections"
+                              >
+                                <ChevronsUpDown size={12} />
+                                Expand All
+                              </button>
+                              <span className="text-white/10">|</span>
+                              <button
+                                type="button"
+                                onClick={collapseAllSections}
+                                className="px-2 py-1 hover:bg-white/10 text-neutral-300 hover:text-brand-green text-[10px] font-bold uppercase rounded cursor-pointer transition-all flex items-center gap-1"
+                                title="Collapse all sections"
+                              >
+                                <ChevronsDownUp size={12} />
+                                Collapse All
+                              </button>
+                            </div>
+                          )}
+
                           <button
                             type="button"
                             onClick={() => handleAddNewProjectSection("grid", "STORYBOARD")}
@@ -5512,6 +5712,8 @@ export function AdminCMS() {
                               sec={sec}
                               sIdx={sIdx}
                               isHighlighted={highlightedSectionIdx === sIdx}
+                              isCollapsed={!!collapsedSectionIndices[sIdx]}
+                              onToggleCollapse={() => toggleSectionCollapse(sIdx)}
                               canMoveUp={sIdx > 0}
                               canMoveDown={sIdx < (projectEditForm.sections?.length || 0) - 1}
                               onMoveSec={(dir) => {
@@ -5587,6 +5789,10 @@ export function AdminCMS() {
                     }}
                     highlightedSectionIdx={highlightedSectionIdx}
                     isSaving={isSavingProject}
+                    imageClipboard={imageClipboard}
+                    onPasteImage={handlePasteImageFromClipboard}
+                    onExpandAll={expandAllSections}
+                    onCollapseAll={collapseAllSections}
                   />
                 </div>
                 ) : (
