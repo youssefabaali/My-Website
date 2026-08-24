@@ -51,9 +51,13 @@ import {
   Tablet,
   Smartphone,
   ChevronDown,
+  ChevronUp,
   ChevronRight,
   ChevronsUpDown,
-  ChevronsDownUp
+  ChevronsDownUp,
+  Layers,
+  Video,
+  AlignLeft
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -3621,8 +3625,44 @@ export function AdminCMS() {
     sourceImgIdx: number;
   } | null>(null);
 
-  // COLLAPSIBLE SECTIONS STATE
+  // COLLAPSIBLE SECTIONS STATE (Subpage image sections)
   const [collapsedSectionIndices, setCollapsedSectionIndices] = useState<Record<number, boolean>>({});
+
+  // COLLAPSIBLE ACCORDIONS FOR PROJECT CORE GROUPS
+  const [collapsedProjectGroups, setCollapsedProjectGroups] = useState<{
+    identity?: boolean;
+    catalogCard?: boolean;
+    metaInfo?: boolean;
+    headerVideos?: boolean;
+    storyDescription?: boolean;
+  }>({});
+
+  const toggleProjectGroupCollapse = (groupKey: "identity" | "catalogCard" | "metaInfo" | "headerVideos" | "storyDescription") => {
+    setCollapsedProjectGroups((prev) => ({
+      ...prev,
+      [groupKey]: !prev[groupKey],
+    }));
+  };
+
+  const collapseAllProjectGroups = () => {
+    setCollapsedProjectGroups({
+      identity: true,
+      catalogCard: true,
+      metaInfo: true,
+      headerVideos: true,
+      storyDescription: true,
+    });
+  };
+
+  const expandAllProjectGroups = () => {
+    setCollapsedProjectGroups({
+      identity: false,
+      catalogCard: false,
+      metaInfo: false,
+      headerVideos: false,
+      storyDescription: false,
+    });
+  };
 
   const toggleSectionCollapse = (sIdx: number) => {
     setCollapsedSectionIndices((prev) => ({
@@ -5256,599 +5296,779 @@ export function AdminCMS() {
                         </div>
                       </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-2">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">PROJECT NAME</label>
-                        <input
-                          type="text"
-                          value={projectEditForm.title || ""}
-                          onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, title: e.target.value }))}
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-2">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">DIRECT URL LINK (OPTIONAL)</label>
-                        <input
-                          type="text"
-                          value={projectEditForm.link || ""}
-                          onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, link: e.target.value }))}
-                          placeholder="e.g. https://behance.net/..."
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green font-mono text-[11px]"
-                        />
-                      </div>
-                    </div>
-
-                    {/* DYNAMIC METADATA FIELDS EDITOR (Header Titles & Content Values) */}
-                    <div className="flex flex-col gap-3 p-4 bg-neutral-900/60 border border-brand-green/20 rounded-xl">
-                      <div className="flex items-center justify-between border-b border-white/5 pb-2.5 flex-wrap gap-2">
-                        <div className="flex flex-col">
-                          <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
-                            PROJECT SUBPAGE INFO FIELDS (DYNAMIC HEADER LABELS & VALUES)
-                          </label>
-                          <span className="text-[9px] text-neutral-400">
-                            You can edit field titles (e.g. ROLE, CLIENT BRAND NAME, DATE) and input values below. Add new fields or delete any field dynamically.
+                      {/* Top Quick Global Expand/Collapse for Project Core Settings */}
+                      <div className="flex items-center justify-between gap-2 p-2.5 bg-neutral-900/80 border border-white/10 rounded-xl">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
+                            Project Settings Sections
+                          </span>
+                          <span className="text-[9px] text-neutral-500 font-mono">
+                            (5 Organized Groups)
                           </span>
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            const current = Array.isArray(projectEditForm.customFields)
-                              ? projectEditForm.customFields
-                              : [
-                                  { id: "field-role", label: "ROLE", value: projectEditForm.role || "" },
-                                  { id: "field-client", label: "CLIENT BRAND NAME", value: projectEditForm.client || "" },
-                                ];
-                            const updated = [...current, { id: `field-${Date.now()}`, label: "NEW HEADER TITLE", value: "" }];
-                            setProjectEditForm((prev: any) => ({ ...prev, customFields: updated }));
-                          }}
-                          className="px-3.5 py-1.5 bg-brand-green text-brand-black text-[10px] font-bold uppercase rounded-lg hover:opacity-90 transition-all cursor-pointer flex items-center gap-1 shrink-0"
-                        >
-                          <Plus size={13} />
-                          Add Info Field
-                        </button>
-                      </div>
-
-                      <div className="flex flex-col gap-3">
-                        {(
-                          Array.isArray(projectEditForm.customFields)
-                            ? projectEditForm.customFields
-                            : [
-                                { id: "field-role", label: "ROLE", value: projectEditForm.role || "" },
-                                { id: "field-client", label: "CLIENT BRAND NAME", value: projectEditForm.client || "" },
-                              ]
-                        ).map((field, fIdx, fieldsArr) => (
-                          <div key={field.id || fIdx} className="flex items-center gap-3 bg-neutral-950 p-3 rounded-xl border border-white/5 flex-wrap sm:flex-nowrap">
-                            {/* Header Title Input Box */}
-                            <div className="flex flex-col gap-1 w-full sm:w-1/3">
-                              <label className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">
-                                Header Title #{fIdx + 1}
-                              </label>
-                              <input
-                                type="text"
-                                value={field.label}
-                                onChange={(e) => {
-                                  const updated = [...fieldsArr];
-                                  updated[fIdx] = { ...updated[fIdx], label: e.target.value };
-                                  setProjectEditForm((prev: any) => ({
-                                    ...prev,
-                                    customFields: updated,
-                                    role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
-                                    client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
-                                  }));
-                                }}
-                                placeholder="e.g. ROLE, CLIENT, DATE"
-                                className="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs font-bold text-white uppercase focus:outline-none focus:border-brand-green"
-                              />
-                            </div>
-
-                            {/* Content Value Input Box (Supports Multiline text / Newlines) */}
-                            <div className="flex flex-col gap-1 flex-1 w-full sm:w-2/3">
-                              <label className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">
-                                Content Value
-                              </label>
-                              <textarea
-                                rows={2}
-                                value={field.value}
-                                onChange={(e) => {
-                                  const updated = [...fieldsArr];
-                                  updated[fIdx] = { ...updated[fIdx], value: e.target.value };
-                                  setProjectEditForm((prev: any) => ({
-                                    ...prev,
-                                    customFields: updated,
-                                    role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
-                                    client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
-                                  }));
-                                }}
-                                placeholder="e.g. STORYBOARD, ILLUSTRATION&#10;SECOND LINE OF TEXT"
-                                className="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-green resize-y min-h-[38px]"
-                              />
-                            </div>
-
-                            {/* Action Buttons: Move Up, Move Down, Delete */}
-                            <div className="flex items-center gap-1 shrink-0 self-end mb-0.5">
-                              <button
-                                type="button"
-                                disabled={fIdx === 0}
-                                onClick={() => {
-                                  if (fIdx === 0) return;
-                                  const updated = [...fieldsArr];
-                                  const temp = updated[fIdx];
-                                  updated[fIdx] = updated[fIdx - 1];
-                                  updated[fIdx - 1] = temp;
-                                  setProjectEditForm((prev: any) => ({
-                                    ...prev,
-                                    customFields: updated,
-                                    role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
-                                    client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
-                                  }));
-                                }}
-                                className="p-2 text-neutral-400 hover:text-white hover:bg-white/10 disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-neutral-400 rounded-lg cursor-pointer transition-colors"
-                                title="Move Up ⬆️"
-                              >
-                                <ArrowUp size={14} />
-                              </button>
-
-                              <button
-                                type="button"
-                                disabled={fIdx === fieldsArr.length - 1}
-                                onClick={() => {
-                                  if (fIdx === fieldsArr.length - 1) return;
-                                  const updated = [...fieldsArr];
-                                  const temp = updated[fIdx];
-                                  updated[fIdx] = updated[fIdx + 1];
-                                  updated[fIdx + 1] = temp;
-                                  setProjectEditForm((prev: any) => ({
-                                    ...prev,
-                                    customFields: updated,
-                                    role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
-                                    client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
-                                  }));
-                                }}
-                                className="p-2 text-neutral-400 hover:text-white hover:bg-white/10 disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-neutral-400 rounded-lg cursor-pointer transition-colors"
-                                title="Move Down ⬇️"
-                              >
-                                <ArrowDown size={14} />
-                              </button>
-
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  const updated = fieldsArr.filter((_, idx) => idx !== fIdx);
-                                  setProjectEditForm((prev: any) => ({
-                                    ...prev,
-                                    customFields: updated,
-                                    role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
-                                    client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
-                                  }));
-                                }}
-                                className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg cursor-pointer shrink-0"
-                                title="Delete field"
-                              >
-                                <Trash2 size={14} />
-                              </button>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CATEGORIES SELECTION (MULTIPLE CATEGORY TAGS SUPPORT) */}
-                    <div className="flex flex-col gap-2.5 p-4 bg-neutral-900/60 border border-white/5 rounded-xl">
-                      <div className="flex items-center justify-between">
-                        <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
-                          CATEGORY TAGS (SELECT ONE OR MULTIPLE CATEGORIES)
-                        </label>
-                        <span className="text-[10px] text-neutral-400">Checked: {(projectEditForm.categories || []).join(", ") || "None"}</span>
-                      </div>
-
-                      {/* Preset category checkboxes */}
-                      <div className="flex flex-wrap gap-2 items-center">
-                        {((data.projectCategories && data.projectCategories.length > 0)
-                          ? data.projectCategories
-                          : ["Explainer", "Brand", "Broadcast", "UI Motion", "Event", "Showreel"]
-                        ).map((catTag) => {
-                          const currentCats: string[] = projectEditForm.categories || 
-                            (projectEditForm.category ? projectEditForm.category.split(",").map((s: string) => s.trim()).filter(Boolean) : []);
-                          const isSelected = currentCats.some((c) => c.toLowerCase() === catTag.toLowerCase());
-
-                          return (
-                            <button
-                              key={catTag}
-                              type="button"
-                              onClick={() => {
-                                let updated: string[];
-                                if (isSelected) {
-                                  updated = currentCats.filter((c) => c.toLowerCase() !== catTag.toLowerCase());
-                                } else {
-                                  updated = [...currentCats, catTag];
-                                }
-                                setProjectEditForm((prev: any) => ({
-                                  ...prev,
-                                  categories: updated,
-                                  category: updated.join(", "),
-                                }));
-                              }}
-                              className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border cursor-pointer transition-all ${
-                                isSelected
-                                  ? "bg-brand-green text-brand-black border-brand-green shadow-sm"
-                                  : "bg-neutral-900 text-neutral-400 border-white/10 hover:border-white/30 hover:text-white"
-                              }`}
-                            >
-                              {isSelected ? `✓ ${catTag}` : `+ ${catTag}`}
-                            </button>
-                          );
-                        })}
-
-                        {/* Quick Add New Category inside Project Editor */}
-                        <div className="flex items-center gap-1.5 ml-1">
-                          <input
-                            type="text"
-                            value={newCategoryName}
-                            onChange={(e) => setNewCategoryName(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                e.preventDefault();
-                                handleAddCategory();
-                              }
-                            }}
-                            placeholder="+ Add new tag..."
-                            className="bg-neutral-950 border border-white/15 rounded-lg px-2.5 py-1 text-xs text-white placeholder:text-neutral-500 focus:outline-none focus:border-brand-green font-semibold w-32 sm:w-40"
-                          />
+                        <div className="flex items-center gap-1.5">
                           <button
                             type="button"
-                            onClick={handleAddCategory}
-                            className="px-2.5 py-1 rounded-lg bg-brand-green/20 text-brand-green hover:bg-brand-green hover:text-brand-black text-[11px] font-bold uppercase transition-all cursor-pointer whitespace-nowrap"
+                            onClick={expandAllProjectGroups}
+                            className="px-2.5 py-1 bg-neutral-950 hover:bg-white/10 text-[10px] text-neutral-300 hover:text-white rounded border border-white/10 transition-colors font-bold uppercase"
                           >
-                            + Tag
+                            Expand All
+                          </button>
+                          <button
+                            type="button"
+                            onClick={collapseAllProjectGroups}
+                            className="px-2.5 py-1 bg-neutral-950 hover:bg-white/10 text-[10px] text-neutral-300 hover:text-white rounded border border-white/10 transition-colors font-bold uppercase"
+                          >
+                            Collapse All
                           </button>
                         </div>
                       </div>
 
-                      {/* Custom Category Tag Input */}
-                      <div className="flex flex-col gap-1 mt-1">
-                        <label className="text-[9px] text-neutral-400 uppercase font-semibold">CUSTOM / COMBINED CATEGORY TEXT</label>
-                        <input
-                          type="text"
-                          value={projectEditForm.category || (projectEditForm.categories || []).join(", ")}
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            const splitArr = val.split(",").map((s) => s.trim()).filter(Boolean);
-                            setProjectEditForm((prev: any) => ({
-                              ...prev,
-                              category: val,
-                              categories: splitArr,
-                            }));
-                          }}
-                          placeholder="e.g. Explainer, Brand, 3D Motion"
-                          className="w-full bg-neutral-950 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green"
-                        />
-                      </div>
-                    </div>
+                      {/* 1. PROJECT NAME & CATEGORIES */}
+                      <div className="flex flex-col rounded-xl border border-white/10 bg-neutral-900/60 overflow-hidden">
+                        <button
+                          type="button"
+                          onClick={() => toggleProjectGroupCollapse("identity")}
+                          className="w-full flex items-center justify-between p-3.5 bg-neutral-900/90 hover:bg-neutral-800/80 transition-colors text-left cursor-pointer border-b border-white/5"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <span className="p-1 rounded bg-brand-green/10 text-brand-green">
+                              <Layers size={14} />
+                            </span>
+                            <div className="flex flex-col">
+                              <span className="text-xs font-bold text-white uppercase tracking-wider">
+                                1. PROJECT NAME & CATEGORIES
+                              </span>
+                              <span className="text-[10px] text-neutral-400">
+                                Project title, direct URL link, and category tags ({(projectEditForm.categories || []).join(", ") || "None"})
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono text-neutral-400">
+                              {collapsedProjectGroups.identity ? "Show" : "Hide"}
+                            </span>
+                            {collapsedProjectGroups.identity ? <ChevronDown size={16} className="text-neutral-400" /> : <ChevronUp size={16} className="text-brand-green" />}
+                          </div>
+                        </button>
 
-                    {/* PROJECT SUBPAGE SPECIFIC CONTENT (HERO VIDEOS & SUBPAGE SHORT DESCRIPTION) */}
-                    <div className="flex flex-col gap-5 p-4 bg-neutral-900/60 border border-brand-green/20 rounded-xl">
-                      {/* Header Video Layout & Title */}
-                      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
-                        <span className="text-xs text-brand-green font-bold uppercase tracking-wider flex items-center gap-2">
-                          🎬 Subpage Header Videos (Top Showreel & Videos)
-                        </span>
-                        <div className="flex items-center gap-2 text-xs">
-                          <span className="text-[10px] text-neutral-400 font-bold uppercase">Display Layout:</span>
-                          <select
-                            value={projectEditForm.headerVideoLayout || "grid"}
-                            onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, headerVideoLayout: e.target.value as "grid" | "row" }))}
-                            className="bg-neutral-950 border border-white/20 text-white text-xs font-bold rounded-lg px-2.5 py-1 focus:outline-none focus:border-brand-green cursor-pointer"
-                          >
-                            <option value="grid">Grid (Side-by-Side Columns)</option>
-                            <option value="row">Row (Full Widescreen Stacked)</option>
-                          </select>
-                        </div>
-                      </div>
+                        {!collapsedProjectGroups.identity && (
+                          <div className="p-4 flex flex-col gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                              <div className="flex flex-col gap-2">
+                                <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">PROJECT NAME</label>
+                                <input
+                                  type="text"
+                                  value={projectEditForm.title || ""}
+                                  onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, title: e.target.value }))}
+                                  className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
+                                />
+                              </div>
 
-                      {/* Header Video List */}
-                      {(() => {
-                        const list = projectEditForm.headerVideos && projectEditForm.headerVideos.length > 0
-                          ? projectEditForm.headerVideos
-                          : [{ id: "v-1", url: projectEditForm.videoUrl || "", thumbnail: projectEditForm.heroImage || "" }];
+                              <div className="flex flex-col gap-2">
+                                <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">DIRECT URL LINK (OPTIONAL)</label>
+                                <input
+                                  type="text"
+                                  value={projectEditForm.link || ""}
+                                  onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, link: e.target.value }))}
+                                  placeholder="e.g. https://behance.net/..."
+                                  className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green font-mono text-[11px]"
+                                />
+                              </div>
+                            </div>
 
-                        return (
-                          <div className="flex flex-col gap-4">
-                            {list.map((vItem, vIdx) => (
-                              <div key={vItem.id || vIdx} className="bg-neutral-950 p-3.5 rounded-xl border border-white/10 flex flex-col gap-3">
-                                <div className="flex items-center justify-between border-b border-white/5 pb-2">
-                                  <span className="text-[10px] text-white font-bold uppercase tracking-wider flex items-center gap-1">
-                                    📹 Header Video #{vIdx + 1}
-                                  </span>
-                                  <div className="flex items-center gap-1.5">
-                                    {vIdx > 0 && (
-                                      <button
-                                        type="button"
-                                        onClick={() => {
-                                          const updated = [...list];
-                                          const temp = updated[vIdx];
-                                          updated[vIdx] = updated[vIdx - 1];
-                                          updated[vIdx - 1] = temp;
-                                          setProjectEditForm((prev: any) => ({
-                                            ...prev,
-                                            headerVideos: updated,
-                                            videoUrl: updated[0]?.url || "",
-                                          }));
-                                        }}
-                                        className="p-1 px-2 bg-neutral-900 text-white hover:text-brand-green border border-white/10 rounded cursor-pointer text-[10px] uppercase font-bold"
-                                      >
-                                        Move Up
-                                      </button>
-                                    )}
-                                    {vIdx < list.length - 1 && (
-                                      <button
-                                        type="button"
-                                        onClick={() => {
-                                          const updated = [...list];
-                                          const temp = updated[vIdx];
-                                          updated[vIdx] = updated[vIdx + 1];
-                                          updated[vIdx + 1] = temp;
-                                          setProjectEditForm((prev: any) => ({
-                                            ...prev,
-                                            headerVideos: updated,
-                                            videoUrl: updated[0]?.url || "",
-                                          }));
-                                        }}
-                                        className="p-1 px-2 bg-neutral-900 text-white hover:text-brand-green border border-white/10 rounded cursor-pointer text-[10px] uppercase font-bold"
-                                      >
-                                        Move Down
-                                      </button>
-                                    )}
-                                    {list.length > 1 && (
-                                      <button
-                                        type="button"
-                                        onClick={() => {
-                                          const updated = list.filter((_, idx) => idx !== vIdx);
-                                          setProjectEditForm((prev: any) => ({
-                                            ...prev,
-                                            headerVideos: updated,
-                                            videoUrl: updated[0]?.url || "",
-                                          }));
-                                        }}
-                                        className="p-1 px-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 rounded cursor-pointer text-[10px] uppercase font-bold"
-                                      >
-                                        Remove
-                                      </button>
-                                    )}
-                                  </div>
+                            {/* CATEGORIES SELECTION (MULTIPLE CATEGORY TAGS SUPPORT) */}
+                            <div className="flex flex-col gap-2.5 p-3.5 bg-neutral-950/70 border border-white/5 rounded-xl">
+                              <div className="flex items-center justify-between">
+                                <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                                  CATEGORY TAGS (SELECT ONE OR MULTIPLE CATEGORIES)
+                                </label>
+                                <span className="text-[10px] text-neutral-400">Checked: {(projectEditForm.categories || []).join(", ") || "None"}</span>
+                              </div>
+
+                              {/* Preset category checkboxes */}
+                              <div className="flex flex-wrap gap-2 items-center">
+                                {((data.projectCategories && data.projectCategories.length > 0)
+                                  ? data.projectCategories
+                                  : ["Explainer", "Brand", "Broadcast", "UI Motion", "Event", "Showreel"]
+                                ).map((catTag) => {
+                                  const currentCats: string[] = projectEditForm.categories || 
+                                    (projectEditForm.category ? projectEditForm.category.split(",").map((s: string) => s.trim()).filter(Boolean) : []);
+                                  const isSelected = currentCats.some((c) => c.toLowerCase() === catTag.toLowerCase());
+
+                                  return (
+                                    <button
+                                      key={catTag}
+                                      type="button"
+                                      onClick={() => {
+                                        let updated: string[];
+                                        if (isSelected) {
+                                          updated = currentCats.filter((c) => c.toLowerCase() !== catTag.toLowerCase());
+                                        } else {
+                                          updated = [...currentCats, catTag];
+                                        }
+                                        setProjectEditForm((prev: any) => ({
+                                          ...prev,
+                                          categories: updated,
+                                          category: updated.join(", "),
+                                        }));
+                                      }}
+                                      className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border cursor-pointer transition-all ${
+                                        isSelected
+                                          ? "bg-brand-green text-brand-black border-brand-green shadow-sm"
+                                          : "bg-neutral-900 text-neutral-400 border-white/10 hover:border-white/30 hover:text-white"
+                                      }`}
+                                    >
+                                      {isSelected ? `✓ ${catTag}` : `+ ${catTag}`}
+                                    </button>
+                                  );
+                                })}
+
+                                {/* Quick Add New Category inside Project Editor */}
+                                <div className="flex items-center gap-1.5 ml-1">
+                                  <input
+                                    type="text"
+                                    value={newCategoryName}
+                                    onChange={(e) => setNewCategoryName(e.target.value)}
+                                    onKeyDown={(e) => {
+                                      if (e.key === "Enter") {
+                                        e.preventDefault();
+                                        handleAddCategory();
+                                      }
+                                    }}
+                                    placeholder="+ Add new tag..."
+                                    className="bg-neutral-950 border border-white/15 rounded-lg px-2.5 py-1 text-xs text-white placeholder:text-neutral-500 focus:outline-none focus:border-brand-green font-semibold w-32 sm:w-40"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={handleAddCategory}
+                                    className="px-2.5 py-1 rounded-lg bg-brand-green/20 text-brand-green hover:bg-brand-green hover:text-brand-black text-[11px] font-bold uppercase transition-all cursor-pointer whitespace-nowrap"
+                                  >
+                                    + Tag
+                                  </button>
                                 </div>
+                              </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                  <CMSImageField
-                                    label={`VIDEO #${vIdx + 1} URL (YouTube, Vimeo, MP4, WebM)`}
-                                    value={vItem.url || ""}
-                                    onChange={(val) => {
-                                      const updated = [...list];
-                                      updated[vIdx] = { ...updated[vIdx], url: val };
+                              {/* Custom Category Tag Input */}
+                              <div className="flex flex-col gap-1 mt-1">
+                                <label className="text-[9px] text-neutral-400 uppercase font-semibold">CUSTOM / COMBINED CATEGORY TEXT</label>
+                                <input
+                                  type="text"
+                                  value={projectEditForm.category || (projectEditForm.categories || []).join(", ")}
+                                  onChange={(e) => {
+                                    const val = e.target.value;
+                                    const splitArr = val.split(",").map((s) => s.trim()).filter(Boolean);
+                                    setProjectEditForm((prev: any) => ({
+                                      ...prev,
+                                      category: val,
+                                      categories: splitArr,
+                                    }));
+                                  }}
+                                  placeholder="e.g. Explainer, Brand, 3D Motion"
+                                  className="w-full bg-neutral-950 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* 2. PROJECT THUMBNAIL */}
+                      <div className="flex flex-col rounded-xl border border-white/10 bg-neutral-900/60 overflow-hidden">
+                        <button
+                          type="button"
+                          onClick={() => toggleProjectGroupCollapse("catalogCard")}
+                          className="w-full flex items-center justify-between p-3.5 bg-neutral-900/90 hover:bg-neutral-800/80 transition-colors text-left cursor-pointer border-b border-white/5"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <span className="p-1 rounded bg-brand-green/10 text-brand-green">
+                              <LayoutGrid size={14} />
+                            </span>
+                            <div className="flex flex-col">
+                              <span className="text-xs font-bold text-white uppercase tracking-wider">
+                                2. PROJECT THUMBNAIL
+                              </span>
+                              <span className="text-[10px] text-neutral-400">
+                                Main cover thumbnail and hover animated GIF for project cards
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono text-neutral-400">
+                              {collapsedProjectGroups.catalogCard ? "Show" : "Hide"}
+                            </span>
+                            {collapsedProjectGroups.catalogCard ? <ChevronDown size={16} className="text-neutral-400" /> : <ChevronUp size={16} className="text-brand-green" />}
+                          </div>
+                        </button>
+
+                        {!collapsedProjectGroups.catalogCard && (
+                          <div className="p-4 flex flex-col gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                              <CMSImageField
+                                label="1. CATALOG COVER THUMBNAIL (Homepage Card)"
+                                value={projectEditForm.thumbnail || ""}
+                                onChange={(val) => setProjectEditForm((prev: any) => ({ ...prev, thumbnail: val }))}
+                                gifMode={Boolean(projectEditForm.gifModes?.[projectEditForm.thumbnail])}
+                                onToggleGifMode={() => handleToggleProjectMediaGifMode(projectEditForm.thumbnail)}
+                                onCopy={() => handleCopyMediaToClipboard(projectEditForm.thumbnail, "copy", Boolean(projectEditForm.gifModes?.[projectEditForm.thumbnail]))}
+                                onCut={() => {
+                                  handleCopyMediaToClipboard(projectEditForm.thumbnail, "move", Boolean(projectEditForm.gifModes?.[projectEditForm.thumbnail]));
+                                  setProjectEditForm((prev: any) => ({ ...prev, thumbnail: "" }));
+                                }}
+                                onPaste={() => {
+                                  if (imageClipboard?.imgUrl) {
+                                    const pastUrl = imageClipboard.imgUrl;
+                                    setProjectEditForm((prev: any) => {
+                                      const newModes = { ...(prev.gifModes || {}) };
+                                      if (imageClipboard.gifMode !== undefined) {
+                                        newModes[pastUrl] = imageClipboard.gifMode;
+                                      }
+                                      return { ...prev, thumbnail: pastUrl, gifModes: newModes };
+                                    });
+                                    if (imageClipboard.mode === "move") setImageClipboard(null);
+                                  }
+                                }}
+                                imageClipboard={imageClipboard}
+                                recommendedText="Static cover thumbnail image shown on the project card in the homepage grid."
+                              />
+
+                              <CMSImageField
+                                label="2. HOVER GIF / ANIMATED MEDIA (Catalog Card Hover Effect)"
+                                value={projectEditForm.hoverGif || ""}
+                                onChange={(val) => setProjectEditForm((prev: any) => ({ ...prev, hoverGif: val }))}
+                                gifMode={Boolean(projectEditForm.gifModes?.[projectEditForm.hoverGif])}
+                                onToggleGifMode={() => handleToggleProjectMediaGifMode(projectEditForm.hoverGif)}
+                                onCopy={() => handleCopyMediaToClipboard(projectEditForm.hoverGif, "copy", Boolean(projectEditForm.gifModes?.[projectEditForm.hoverGif]))}
+                                onCut={() => {
+                                  handleCopyMediaToClipboard(projectEditForm.hoverGif, "move", Boolean(projectEditForm.gifModes?.[projectEditForm.hoverGif]));
+                                  setProjectEditForm((prev: any) => ({ ...prev, hoverGif: "" }));
+                                }}
+                                onPaste={() => {
+                                  if (imageClipboard?.imgUrl) {
+                                    const pastUrl = imageClipboard.imgUrl;
+                                    setProjectEditForm((prev: any) => {
+                                      const newModes = { ...(prev.gifModes || {}) };
+                                      if (imageClipboard.gifMode !== undefined) {
+                                        newModes[pastUrl] = imageClipboard.gifMode;
+                                      }
+                                      return { ...prev, hoverGif: pastUrl, gifModes: newModes };
+                                    });
+                                    if (imageClipboard.mode === "move") setImageClipboard(null);
+                                  }
+                                }}
+                                imageClipboard={imageClipboard}
+                                recommendedText="Animated GIF or media played automatically when hovering over this project card."
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* 3. CLIENT NAME & MY ROLE / TOOLS */}
+                      <div className="flex flex-col rounded-xl border border-white/10 bg-neutral-900/60 overflow-hidden">
+                        <button
+                          type="button"
+                          onClick={() => toggleProjectGroupCollapse("metaInfo")}
+                          className="w-full flex items-center justify-between p-3.5 bg-neutral-900/90 hover:bg-neutral-800/80 transition-colors text-left cursor-pointer border-b border-white/5"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <span className="p-1 rounded bg-brand-green/10 text-brand-green">
+                              <FileText size={14} />
+                            </span>
+                            <div className="flex flex-col">
+                              <span className="text-xs font-bold text-white uppercase tracking-wider">
+                                3. CLIENT NAME & MY ROLE / TOOLS
+                              </span>
+                              <span className="text-[10px] text-neutral-400">
+                                Project meta labels and values (Client, Role, Tools, Year)
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono text-neutral-400">
+                              {collapsedProjectGroups.metaInfo ? "Show" : "Hide"}
+                            </span>
+                            {collapsedProjectGroups.metaInfo ? <ChevronDown size={16} className="text-neutral-400" /> : <ChevronUp size={16} className="text-brand-green" />}
+                          </div>
+                        </button>
+
+                        {!collapsedProjectGroups.metaInfo && (
+                          <div className="p-4 flex flex-col gap-4">
+                            {/* DYNAMIC METADATA FIELDS EDITOR (Header Titles & Content Values) */}
+                            <div className="flex flex-col gap-3 p-3.5 bg-neutral-950/70 border border-brand-green/20 rounded-xl">
+                              <div className="flex items-center justify-between border-b border-white/5 pb-2.5 flex-wrap gap-2">
+                                <div className="flex flex-col">
+                                  <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                                    PROJECT SUBPAGE INFO FIELDS (DYNAMIC HEADER LABELS & VALUES)
+                                  </label>
+                                  <span className="text-[9px] text-neutral-400">
+                                    Edit field titles (e.g. ROLE, CLIENT BRAND NAME, TOOLS, DATE) and input values below.
+                                  </span>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const current = Array.isArray(projectEditForm.customFields)
+                                      ? projectEditForm.customFields
+                                      : [
+                                          { id: "field-role", label: "ROLE", value: projectEditForm.role || "" },
+                                          { id: "field-client", label: "CLIENT BRAND NAME", value: projectEditForm.client || "" },
+                                        ];
+                                    const updated = [...current, { id: `field-${Date.now()}`, label: "NEW HEADER TITLE", value: "" }];
+                                    setProjectEditForm((prev: any) => ({ ...prev, customFields: updated }));
+                                  }}
+                                  className="px-3.5 py-1.5 bg-brand-green text-brand-black text-[10px] font-bold uppercase rounded-lg hover:opacity-90 transition-all cursor-pointer flex items-center gap-1 shrink-0"
+                                >
+                                  <Plus size={13} />
+                                  Add Info Field
+                                </button>
+                              </div>
+
+                              <div className="flex flex-col gap-3">
+                                {(
+                                  Array.isArray(projectEditForm.customFields)
+                                    ? projectEditForm.customFields
+                                    : [
+                                        { id: "field-role", label: "ROLE", value: projectEditForm.role || "" },
+                                        { id: "field-client", label: "CLIENT BRAND NAME", value: projectEditForm.client || "" },
+                                      ]
+                                ).map((field, fIdx, fieldsArr) => (
+                                  <div key={field.id || fIdx} className="flex items-center gap-3 bg-neutral-950 p-3 rounded-xl border border-white/5 flex-wrap sm:flex-nowrap">
+                                    {/* Header Title Input Box */}
+                                    <div className="flex flex-col gap-1 w-full sm:w-1/3">
+                                      <label className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">
+                                        Header Title #{fIdx + 1}
+                                      </label>
+                                      <input
+                                        type="text"
+                                        value={field.label}
+                                        onChange={(e) => {
+                                          const updated = [...fieldsArr];
+                                          updated[fIdx] = { ...updated[fIdx], label: e.target.value };
+                                          setProjectEditForm((prev: any) => ({
+                                            ...prev,
+                                            customFields: updated,
+                                            role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
+                                            client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
+                                          }));
+                                        }}
+                                        placeholder="e.g. ROLE, CLIENT, DATE"
+                                        className="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs font-bold text-white uppercase focus:outline-none focus:border-brand-green"
+                                      />
+                                    </div>
+
+                                    {/* Content Value Input Box (Supports Multiline text / Newlines) */}
+                                    <div className="flex flex-col gap-1 flex-1 w-full sm:w-2/3">
+                                      <label className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">
+                                        Content Value
+                                      </label>
+                                      <textarea
+                                        rows={2}
+                                        value={field.value}
+                                        onChange={(e) => {
+                                          const updated = [...fieldsArr];
+                                          updated[fIdx] = { ...updated[fIdx], value: e.target.value };
+                                          setProjectEditForm((prev: any) => ({
+                                            ...prev,
+                                            customFields: updated,
+                                            role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
+                                            client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
+                                          }));
+                                        }}
+                                        placeholder="e.g. STORYBOARD, ILLUSTRATION&#10;SECOND LINE OF TEXT"
+                                        className="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-green resize-y min-h-[38px]"
+                                      />
+                                    </div>
+
+                                    {/* Action Buttons: Move Up, Move Down, Delete */}
+                                    <div className="flex items-center gap-1 shrink-0 self-end mb-0.5">
+                                      <button
+                                        type="button"
+                                        disabled={fIdx === 0}
+                                        onClick={() => {
+                                          if (fIdx === 0) return;
+                                          const updated = [...fieldsArr];
+                                          const temp = updated[fIdx];
+                                          updated[fIdx] = updated[fIdx - 1];
+                                          updated[fIdx - 1] = temp;
+                                          setProjectEditForm((prev: any) => ({
+                                            ...prev,
+                                            customFields: updated,
+                                            role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
+                                            client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
+                                          }));
+                                        }}
+                                        className="p-2 text-neutral-400 hover:text-white hover:bg-white/10 disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-neutral-400 rounded-lg cursor-pointer transition-colors"
+                                        title="Move Up ⬆️"
+                                      >
+                                        <ArrowUp size={14} />
+                                      </button>
+
+                                      <button
+                                        type="button"
+                                        disabled={fIdx === fieldsArr.length - 1}
+                                        onClick={() => {
+                                          if (fIdx === fieldsArr.length - 1) return;
+                                          const updated = [...fieldsArr];
+                                          const temp = updated[fIdx];
+                                          updated[fIdx] = updated[fIdx + 1];
+                                          updated[fIdx + 1] = temp;
+                                          setProjectEditForm((prev: any) => ({
+                                            ...prev,
+                                            customFields: updated,
+                                            role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
+                                            client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
+                                          }));
+                                        }}
+                                        className="p-2 text-neutral-400 hover:text-white hover:bg-white/10 disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-neutral-400 rounded-lg cursor-pointer transition-colors"
+                                        title="Move Down ⬇️"
+                                      >
+                                        <ArrowDown size={14} />
+                                      </button>
+
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          const updated = fieldsArr.filter((_, idx) => idx !== fIdx);
+                                          setProjectEditForm((prev: any) => ({
+                                            ...prev,
+                                            customFields: updated,
+                                            role: updated.find((f) => f.label.toUpperCase().includes("ROLE"))?.value || prev.role,
+                                            client: updated.find((f) => f.label.toUpperCase().includes("CLIENT"))?.value || prev.client,
+                                          }));
+                                        }}
+                                        className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg cursor-pointer shrink-0"
+                                        title="Delete field"
+                                      >
+                                        <Trash2 size={14} />
+                                      </button>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* 4. PROJECT VIDEO */}
+                      <div className="flex flex-col rounded-xl border border-white/10 bg-neutral-900/60 overflow-hidden">
+                        <button
+                          type="button"
+                          onClick={() => toggleProjectGroupCollapse("headerVideos")}
+                          className="w-full flex items-center justify-between p-3.5 bg-neutral-900/90 hover:bg-neutral-800/80 transition-colors text-left cursor-pointer border-b border-white/5"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <span className="p-1 rounded bg-brand-green/10 text-brand-green">
+                              <Video size={14} />
+                            </span>
+                            <div className="flex flex-col">
+                              <span className="text-xs font-bold text-white uppercase tracking-wider">
+                                4. PROJECT VIDEO
+                              </span>
+                              <span className="text-[10px] text-neutral-400">
+                                Top hero video, showreel, posters, and display layout
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono text-neutral-400">
+                              {collapsedProjectGroups.headerVideos ? "Show" : "Hide"}
+                            </span>
+                            {collapsedProjectGroups.headerVideos ? <ChevronDown size={16} className="text-neutral-400" /> : <ChevronUp size={16} className="text-brand-green" />}
+                          </div>
+                        </button>
+
+                        {!collapsedProjectGroups.headerVideos && (
+                          <div className="p-4 flex flex-col gap-5">
+                            {/* Header Video Layout & Title */}
+                            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
+                              <span className="text-xs text-brand-green font-bold uppercase tracking-wider flex items-center gap-2">
+                                🎬 Project Header Video (Showreel & Media)
+                              </span>
+                              <div className="flex items-center gap-2 text-xs">
+                                <span className="text-[10px] text-neutral-400 font-bold uppercase">Display Layout:</span>
+                                <select
+                                  value={projectEditForm.headerVideoLayout || "grid"}
+                                  onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, headerVideoLayout: e.target.value as "grid" | "row" }))}
+                                  className="bg-neutral-950 border border-white/20 text-white text-xs font-bold rounded-lg px-2.5 py-1 focus:outline-none focus:border-brand-green cursor-pointer"
+                                >
+                                  <option value="grid">Grid (Side-by-Side Columns)</option>
+                                  <option value="row">Row (Full Widescreen Stacked)</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            {/* Header Video List */}
+                            {(() => {
+                              const list = projectEditForm.headerVideos && projectEditForm.headerVideos.length > 0
+                                ? projectEditForm.headerVideos
+                                : [{ id: "v-1", url: projectEditForm.videoUrl || "", thumbnail: projectEditForm.heroImage || "" }];
+
+                              return (
+                                <div className="flex flex-col gap-4">
+                                  {list.map((vItem, vIdx) => (
+                                    <div key={vItem.id || vIdx} className="bg-neutral-950 p-3.5 rounded-xl border border-white/10 flex flex-col gap-3">
+                                      <div className="flex items-center justify-between border-b border-white/5 pb-2">
+                                        <span className="text-[10px] text-white font-bold uppercase tracking-wider flex items-center gap-1">
+                                          📹 Header Video #{vIdx + 1}
+                                        </span>
+                                        <div className="flex items-center gap-1.5">
+                                          {vIdx > 0 && (
+                                            <button
+                                              type="button"
+                                              onClick={() => {
+                                                const updated = [...list];
+                                                const temp = updated[vIdx];
+                                                updated[vIdx] = updated[vIdx - 1];
+                                                updated[vIdx - 1] = temp;
+                                                setProjectEditForm((prev: any) => ({
+                                                  ...prev,
+                                                  headerVideos: updated,
+                                                  videoUrl: updated[0]?.url || "",
+                                                }));
+                                              }}
+                                              className="p-1 px-2 bg-neutral-900 text-white hover:text-brand-green border border-white/10 rounded cursor-pointer text-[10px] uppercase font-bold"
+                                            >
+                                              Move Up
+                                            </button>
+                                          )}
+                                          {vIdx < list.length - 1 && (
+                                            <button
+                                              type="button"
+                                              onClick={() => {
+                                                const updated = [...list];
+                                                const temp = updated[vIdx];
+                                                updated[vIdx] = updated[vIdx + 1];
+                                                updated[vIdx + 1] = temp;
+                                                setProjectEditForm((prev: any) => ({
+                                                  ...prev,
+                                                  headerVideos: updated,
+                                                  videoUrl: updated[0]?.url || "",
+                                                }));
+                                              }}
+                                              className="p-1 px-2 bg-neutral-900 text-white hover:text-brand-green border border-white/10 rounded cursor-pointer text-[10px] uppercase font-bold"
+                                            >
+                                              Move Down
+                                            </button>
+                                          )}
+                                          {list.length > 1 && (
+                                            <button
+                                              type="button"
+                                              onClick={() => {
+                                                const updated = list.filter((_, idx) => idx !== vIdx);
+                                                setProjectEditForm((prev: any) => ({
+                                                  ...prev,
+                                                  headerVideos: updated,
+                                                  videoUrl: updated[0]?.url || "",
+                                                }));
+                                              }}
+                                              className="p-1 px-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 rounded cursor-pointer text-[10px] uppercase font-bold"
+                                            >
+                                              Remove
+                                            </button>
+                                          )}
+                                        </div>
+                                      </div>
+
+                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <CMSImageField
+                                          label={`VIDEO #${vIdx + 1} URL (YouTube, Vimeo, MP4, WebM)`}
+                                          value={vItem.url || ""}
+                                          onChange={(val) => {
+                                            const updated = [...list];
+                                            updated[vIdx] = { ...updated[vIdx], url: val };
+                                            setProjectEditForm((prev: any) => ({
+                                              ...prev,
+                                              headerVideos: updated,
+                                              videoUrl: updated[0]?.url || "",
+                                            }));
+                                          }}
+                                          gifMode={Boolean(projectEditForm.gifModes?.[vItem.url])}
+                                          onToggleGifMode={() => handleToggleProjectMediaGifMode(vItem.url)}
+                                          onCopy={() => handleCopyMediaToClipboard(vItem.url, "copy", Boolean(projectEditForm.gifModes?.[vItem.url]))}
+                                          onCut={() => {
+                                            handleCopyMediaToClipboard(vItem.url, "move", Boolean(projectEditForm.gifModes?.[vItem.url]));
+                                            const updated = [...list];
+                                            updated[vIdx] = { ...updated[vIdx], url: "" };
+                                            setProjectEditForm((prev: any) => ({ ...prev, headerVideos: updated, videoUrl: updated[0]?.url || "" }));
+                                          }}
+                                          onPaste={() => {
+                                            if (imageClipboard?.imgUrl) {
+                                              const pastUrl = imageClipboard.imgUrl;
+                                              const updated = [...list];
+                                              updated[vIdx] = { ...updated[vIdx], url: pastUrl };
+                                              setProjectEditForm((prev: any) => {
+                                                const newModes = { ...(prev.gifModes || {}) };
+                                                if (imageClipboard.gifMode !== undefined) {
+                                                  newModes[pastUrl] = imageClipboard.gifMode;
+                                                }
+                                                return { ...prev, headerVideos: updated, videoUrl: updated[0]?.url || "", gifModes: newModes };
+                                              });
+                                              if (imageClipboard.mode === "move") setImageClipboard(null);
+                                            }
+                                          }}
+                                          imageClipboard={imageClipboard}
+                                          recommendedText="YouTube, Vimeo, GitHub release MP4 link, or direct video URL"
+                                        />
+
+                                        <CMSImageField
+                                          label={`VIDEO #${vIdx + 1} CUSTOM THUMBNAIL / POSTER IMAGE`}
+                                          value={vItem.thumbnail || ""}
+                                          onChange={(val) => {
+                                            const updated = [...list];
+                                            updated[vIdx] = { ...updated[vIdx], thumbnail: val };
+                                            setProjectEditForm((prev: any) => ({ ...prev, headerVideos: updated }));
+                                          }}
+                                          gifMode={Boolean(projectEditForm.gifModes?.[vItem.thumbnail])}
+                                          onToggleGifMode={() => handleToggleProjectMediaGifMode(vItem.thumbnail)}
+                                          onCopy={() => handleCopyMediaToClipboard(vItem.thumbnail, "copy", Boolean(projectEditForm.gifModes?.[vItem.thumbnail]))}
+                                          onCut={() => {
+                                            handleCopyMediaToClipboard(vItem.thumbnail, "move", Boolean(projectEditForm.gifModes?.[vItem.thumbnail]));
+                                            const updated = [...list];
+                                            updated[vIdx] = { ...updated[vIdx], thumbnail: "" };
+                                            setProjectEditForm((prev: any) => ({ ...prev, headerVideos: updated }));
+                                          }}
+                                          onPaste={() => {
+                                            if (imageClipboard?.imgUrl) {
+                                              const pastUrl = imageClipboard.imgUrl;
+                                              const updated = [...list];
+                                              updated[vIdx] = { ...updated[vIdx], thumbnail: pastUrl };
+                                              setProjectEditForm((prev: any) => {
+                                                const newModes = { ...(prev.gifModes || {}) };
+                                                if (imageClipboard.gifMode !== undefined) {
+                                                  newModes[pastUrl] = imageClipboard.gifMode;
+                                                }
+                                                return { ...prev, headerVideos: updated, gifModes: newModes };
+                                              });
+                                              if (imageClipboard.mode === "move") setImageClipboard(null);
+                                            }
+                                          }}
+                                          imageClipboard={imageClipboard}
+                                          recommendedText="Optional custom thumbnail / poster image shown before user plays this video"
+                                        />
+                                      </div>
+                                    </div>
+                                  ))}
+
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const updated = [
+                                        ...list,
+                                        { id: `v-${Date.now()}`, url: "", thumbnail: "" },
+                                      ];
                                       setProjectEditForm((prev: any) => ({
                                         ...prev,
                                         headerVideos: updated,
-                                        videoUrl: updated[0]?.url || "",
                                       }));
                                     }}
-                                    gifMode={Boolean(projectEditForm.gifModes?.[vItem.url])}
-                                    onToggleGifMode={() => handleToggleProjectMediaGifMode(vItem.url)}
-                                    onCopy={() => handleCopyMediaToClipboard(vItem.url, "copy", Boolean(projectEditForm.gifModes?.[vItem.url]))}
-                                    onCut={() => {
-                                      handleCopyMediaToClipboard(vItem.url, "move", Boolean(projectEditForm.gifModes?.[vItem.url]));
-                                      const updated = [...list];
-                                      updated[vIdx] = { ...updated[vIdx], url: "" };
-                                      setProjectEditForm((prev: any) => ({ ...prev, headerVideos: updated, videoUrl: updated[0]?.url || "" }));
-                                    }}
-                                    onPaste={() => {
-                                      if (imageClipboard?.imgUrl) {
-                                        const pastUrl = imageClipboard.imgUrl;
-                                        const updated = [...list];
-                                        updated[vIdx] = { ...updated[vIdx], url: pastUrl };
-                                        setProjectEditForm((prev: any) => {
-                                          const newModes = { ...(prev.gifModes || {}) };
-                                          if (imageClipboard.gifMode !== undefined) {
-                                            newModes[pastUrl] = imageClipboard.gifMode;
-                                          }
-                                          return { ...prev, headerVideos: updated, videoUrl: updated[0]?.url || "", gifModes: newModes };
-                                        });
-                                        if (imageClipboard.mode === "move") setImageClipboard(null);
-                                      }
-                                    }}
-                                    imageClipboard={imageClipboard}
-                                    recommendedText="YouTube, Vimeo, GitHub release MP4 link, or direct video URL"
-                                  />
-
-                                  <CMSImageField
-                                    label={`VIDEO #${vIdx + 1} CUSTOM THUMBNAIL / POSTER IMAGE`}
-                                    value={vItem.thumbnail || ""}
-                                    onChange={(val) => {
-                                      const updated = [...list];
-                                      updated[vIdx] = { ...updated[vIdx], thumbnail: val };
-                                      setProjectEditForm((prev: any) => ({ ...prev, headerVideos: updated }));
-                                    }}
-                                    gifMode={Boolean(projectEditForm.gifModes?.[vItem.thumbnail])}
-                                    onToggleGifMode={() => handleToggleProjectMediaGifMode(vItem.thumbnail)}
-                                    onCopy={() => handleCopyMediaToClipboard(vItem.thumbnail, "copy", Boolean(projectEditForm.gifModes?.[vItem.thumbnail]))}
-                                    onCut={() => {
-                                      handleCopyMediaToClipboard(vItem.thumbnail, "move", Boolean(projectEditForm.gifModes?.[vItem.thumbnail]));
-                                      const updated = [...list];
-                                      updated[vIdx] = { ...updated[vIdx], thumbnail: "" };
-                                      setProjectEditForm((prev: any) => ({ ...prev, headerVideos: updated }));
-                                    }}
-                                    onPaste={() => {
-                                      if (imageClipboard?.imgUrl) {
-                                        const pastUrl = imageClipboard.imgUrl;
-                                        const updated = [...list];
-                                        updated[vIdx] = { ...updated[vIdx], thumbnail: pastUrl };
-                                        setProjectEditForm((prev: any) => {
-                                          const newModes = { ...(prev.gifModes || {}) };
-                                          if (imageClipboard.gifMode !== undefined) {
-                                            newModes[pastUrl] = imageClipboard.gifMode;
-                                          }
-                                          return { ...prev, headerVideos: updated, gifModes: newModes };
-                                        });
-                                        if (imageClipboard.mode === "move") setImageClipboard(null);
-                                      }
-                                    }}
-                                    imageClipboard={imageClipboard}
-                                    recommendedText="Optional custom thumbnail / poster image shown before user plays this video"
-                                  />
+                                    className="self-start px-3.5 py-2 bg-brand-green/10 hover:bg-brand-green/20 text-brand-green border border-brand-green/30 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer flex items-center gap-1.5"
+                                  >
+                                    + Add Another Header Video
+                                  </button>
                                 </div>
-                              </div>
-                            ))}
-
-                            <button
-                              type="button"
-                              onClick={() => {
-                                const updated = [
-                                  ...list,
-                                  { id: `v-${Date.now()}`, url: "", thumbnail: "" },
-                                ];
-                                setProjectEditForm((prev: any) => ({
-                                  ...prev,
-                                  headerVideos: updated,
-                                }));
-                              }}
-                              className="self-start px-3.5 py-2 bg-brand-green/10 hover:bg-brand-green/20 text-brand-green border border-brand-green/30 rounded-xl text-xs font-bold uppercase transition-colors cursor-pointer flex items-center gap-1.5"
-                            >
-                              + Add Another Header Video
-                            </button>
+                              );
+                            })()}
                           </div>
-                        );
-                      })()}
-
-                      <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
-                        <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
-                          SUBPAGE PARAGRAPH NEXT TO TITLE (HERO DESCRIPTION)
-                        </label>
-                        <textarea
-                          rows={4}
-                          value={projectEditForm.shortDescription || ""}
-                          onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, shortDescription: e.target.value }))}
-                          placeholder="e.g. 247 MAINTENANCE IS A SMART APP THAT CONNECTS YOU WITH EXPERT TECHNICIANS..."
-                          className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green"
-                        />
-                        <span className="text-[9px] text-neutral-400 uppercase">Text paragraph displayed next to the main project title at top of subpage. Respects line breaks and newlines.</span>
-                      </div>
-                    </div>
-
-                    {/* HOMEPAGE CATALOG CARDS MEDIA (Cover Image & Hover GIF) */}
-                    <div className="flex flex-col gap-4 p-4 bg-neutral-900/60 border border-brand-green/20 rounded-xl">
-                      <div className="border-b border-white/10 pb-2.5">
-                        <span className="text-xs text-brand-green font-bold uppercase tracking-wider flex items-center gap-2">
-                          🎴 Homepage Catalog Card Media
-                        </span>
-                        <p className="text-[10px] text-neutral-400 mt-0.5">
-                          Set the static cover thumbnail and animated hover GIF for this project card in the main portfolio grid.
-                        </p>
+                        )}
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <CMSImageField
-                          label="1. CATALOG COVER THUMBNAIL (Homepage Card)"
-                          value={projectEditForm.thumbnail || ""}
-                          onChange={(val) => setProjectEditForm((prev: any) => ({ ...prev, thumbnail: val }))}
-                          gifMode={Boolean(projectEditForm.gifModes?.[projectEditForm.thumbnail])}
-                          onToggleGifMode={() => handleToggleProjectMediaGifMode(projectEditForm.thumbnail)}
-                          onCopy={() => handleCopyMediaToClipboard(projectEditForm.thumbnail, "copy", Boolean(projectEditForm.gifModes?.[projectEditForm.thumbnail]))}
-                          onCut={() => {
-                            handleCopyMediaToClipboard(projectEditForm.thumbnail, "move", Boolean(projectEditForm.gifModes?.[projectEditForm.thumbnail]));
-                            setProjectEditForm((prev: any) => ({ ...prev, thumbnail: "" }));
-                          }}
-                          onPaste={() => {
-                            if (imageClipboard?.imgUrl) {
-                              const pastUrl = imageClipboard.imgUrl;
-                              setProjectEditForm((prev: any) => {
-                                const newModes = { ...(prev.gifModes || {}) };
-                                if (imageClipboard.gifMode !== undefined) {
-                                  newModes[pastUrl] = imageClipboard.gifMode;
-                                }
-                                return { ...prev, thumbnail: pastUrl, gifModes: newModes };
-                              });
-                              if (imageClipboard.mode === "move") setImageClipboard(null);
-                            }
-                          }}
-                          imageClipboard={imageClipboard}
-                          recommendedText="Static cover thumbnail image shown on the project card in the homepage grid."
-                        />
+                      {/* 5. PARAGRAPHS */}
+                      <div className="flex flex-col rounded-xl border border-white/10 bg-neutral-900/60 overflow-hidden">
+                        <button
+                          type="button"
+                          onClick={() => toggleProjectGroupCollapse("storyDescription")}
+                          className="w-full flex items-center justify-between p-3.5 bg-neutral-900/90 hover:bg-neutral-800/80 transition-colors text-left cursor-pointer border-b border-white/5"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <span className="p-1 rounded bg-brand-green/10 text-brand-green">
+                              <AlignLeft size={14} />
+                            </span>
+                            <div className="flex flex-col">
+                              <span className="text-xs font-bold text-white uppercase tracking-wider">
+                                5. PARAGRAPHS
+                              </span>
+                              <span className="text-[10px] text-neutral-400">
+                                Paragraph 1 next to title, Paragraph 2 main body text, and section spacing
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono text-neutral-400">
+                              {collapsedProjectGroups.storyDescription ? "Show" : "Hide"}
+                            </span>
+                            {collapsedProjectGroups.storyDescription ? <ChevronDown size={16} className="text-neutral-400" /> : <ChevronUp size={16} className="text-brand-green" />}
+                          </div>
+                        </button>
 
-                        <CMSImageField
-                          label="2. HOVER GIF / ANIMATED MEDIA (Catalog Card Hover Effect)"
-                          value={projectEditForm.hoverGif || ""}
-                          onChange={(val) => setProjectEditForm((prev: any) => ({ ...prev, hoverGif: val }))}
-                          gifMode={Boolean(projectEditForm.gifModes?.[projectEditForm.hoverGif])}
-                          onToggleGifMode={() => handleToggleProjectMediaGifMode(projectEditForm.hoverGif)}
-                          onCopy={() => handleCopyMediaToClipboard(projectEditForm.hoverGif, "copy", Boolean(projectEditForm.gifModes?.[projectEditForm.hoverGif]))}
-                          onCut={() => {
-                            handleCopyMediaToClipboard(projectEditForm.hoverGif, "move", Boolean(projectEditForm.gifModes?.[projectEditForm.hoverGif]));
-                            setProjectEditForm((prev: any) => ({ ...prev, hoverGif: "" }));
-                          }}
-                          onPaste={() => {
-                            if (imageClipboard?.imgUrl) {
-                              const pastUrl = imageClipboard.imgUrl;
-                              setProjectEditForm((prev: any) => {
-                                const newModes = { ...(prev.gifModes || {}) };
-                                if (imageClipboard.gifMode !== undefined) {
-                                  newModes[pastUrl] = imageClipboard.gifMode;
-                                }
-                                return { ...prev, hoverGif: pastUrl, gifModes: newModes };
-                              });
-                              if (imageClipboard.mode === "move") setImageClipboard(null);
-                            }
-                          }}
-                          imageClipboard={imageClipboard}
-                          recommendedText="Animated GIF or media played automatically when hovering over this project card."
-                        />
+                        {!collapsedProjectGroups.storyDescription && (
+                          <div className="p-4 flex flex-col gap-4">
+                            {/* PARAGRAPH 1 NEXT TO TITLE */}
+                            <div className="flex flex-col gap-2 p-3.5 bg-neutral-950/70 border border-white/5 rounded-xl">
+                              <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                                PARAGRAPH 1 NEXT TO TITLE
+                              </label>
+                              <textarea
+                                rows={4}
+                                value={projectEditForm.shortDescription || ""}
+                                onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, shortDescription: e.target.value }))}
+                                placeholder="Short paragraph displayed beside the project title..."
+                                className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green"
+                              />
+                              <span className="text-[9px] text-neutral-400 uppercase">Text paragraph displayed next to the main project title at top of subpage.</span>
+                            </div>
+
+                            {/* PARAGRAPH 2 */}
+                            <div className="flex flex-col gap-2 p-3.5 bg-neutral-950/70 border border-white/5 rounded-xl">
+                              <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">PARAGRAPH 2</label>
+                              <textarea
+                                rows={4}
+                                value={projectEditForm.description || ""}
+                                onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, description: e.target.value }))}
+                                placeholder="Main project description and story..."
+                                className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green"
+                              />
+                              <span className="text-[9px] text-neutral-400 uppercase">Main body text and project story.</span>
+                            </div>
+
+                            {/* DESCRIPTION SECTION BOTTOM SPACING */}
+                            <SpacingInputWithPresets
+                              label="⬇️ Description Section Bottom Spacing (Distance to next section below)"
+                              value={projectEditForm.descriptionBottomGap}
+                              onChange={(newVal) => setProjectEditForm((prev: any) => ({ ...prev, descriptionBottomGap: newVal }))}
+                              mobileValue={projectEditForm.descriptionBottomGapMobile}
+                              onMobileChange={(newVal) => setProjectEditForm((prev: any) => ({ ...prev, descriptionBottomGapMobile: newVal }))}
+                              storageKey="cms_custom_desc_bottom_spacings"
+                              placeholder="0"
+                              helperText="Controls vertical distance/margin between the description section and the next section below it (Default: 0px)."
+                            />
+
+                            {/* Checkboxes: Published / Featured */}
+                            <div className="flex gap-6 pt-3 border-t border-white/5">
+                              <label className="flex items-center gap-2 cursor-pointer text-xs uppercase font-bold tracking-wider">
+                                <input
+                                  type="checkbox"
+                                  checked={!!projectEditForm.isPublished}
+                                  onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, isPublished: e.target.checked }))}
+                                  className="accent-brand-green w-4 h-4 cursor-pointer"
+                                />
+                                Publish Project (Visible on work page)
+                              </label>
+
+                              <label className="flex items-center gap-2 cursor-pointer text-xs uppercase font-bold tracking-wider">
+                                <input
+                                  type="checkbox"
+                                  checked={!!projectEditForm.isFeatured}
+                                  onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, isFeatured: e.target.checked }))}
+                                  className="accent-brand-green w-4 h-4 cursor-pointer"
+                                />
+                                Featured Slider (Show on Home section)
+                              </label>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    </div>
-
-                    <div className="flex flex-col gap-3">
-                      <div className="flex flex-col gap-2">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">CATALOG DESCRIPTION (MAIN BODY TEXT)</label>
-                        <textarea
-                          rows={3}
-                          value={projectEditForm.description || ""}
-                          onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, description: e.target.value }))}
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green"
-                        />
-                      </div>
-
-                      {/* DESCRIPTION SECTION BOTTOM SPACING (Vertical distance to next section below with presets support) */}
-                      <SpacingInputWithPresets
-                        label="⬇️ Description Section Bottom Spacing (Distance to next section below)"
-                        value={projectEditForm.descriptionBottomGap}
-                        onChange={(newVal) => setProjectEditForm((prev: any) => ({ ...prev, descriptionBottomGap: newVal }))}
-                        mobileValue={projectEditForm.descriptionBottomGapMobile}
-                        onMobileChange={(newVal) => setProjectEditForm((prev: any) => ({ ...prev, descriptionBottomGapMobile: newVal }))}
-                        storageKey="cms_custom_desc_bottom_spacings"
-                        placeholder="0"
-                        helperText="Controls vertical distance/margin between the description section and the next section below it (Default: 0px)."
-                      />
-                    </div>
-
-                    {/* Checkboxes: Published / Featured */}
-                    <div className="flex gap-6 py-2 border-t border-b border-white/5">
-                      <label className="flex items-center gap-2 cursor-pointer text-xs uppercase font-bold tracking-wider">
-                        <input
-                          type="checkbox"
-                          checked={!!projectEditForm.isPublished}
-                          onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, isPublished: e.target.checked }))}
-                          className="accent-brand-green w-4 h-4 cursor-pointer"
-                        />
-                        Publish Project (Visible on work page)
-                      </label>
-
-                      <label className="flex items-center gap-2 cursor-pointer text-xs uppercase font-bold tracking-wider">
-                        <input
-                          type="checkbox"
-                          checked={!!projectEditForm.isFeatured}
-                          onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, isFeatured: e.target.checked }))}
-                          className="accent-brand-green w-4 h-4 cursor-pointer"
-                        />
-                        Featured Slider (Show on Home section)
-                      </label>
-                    </div>
 
                     {/* STICKY CLIPBOARD BAR WHEN IMAGE IS COPIED/CUT */}
                     {imageClipboard && (
