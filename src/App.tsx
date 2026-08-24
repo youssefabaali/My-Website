@@ -46,7 +46,12 @@ export default function App() {
 
     const handleDataUpdate = (newData: CMSSiteData) => {
       if (newData) {
-        setLivePreviewData(newData);
+        setLivePreviewData((prev) => {
+          try {
+            if (JSON.stringify(prev) === JSON.stringify(newData)) return prev;
+          } catch (e) {}
+          return newData;
+        });
       }
     };
 
@@ -96,7 +101,7 @@ export default function App() {
   }
 
   // Active data selection: Use live preview stream if active, else standard CMS data
-  const activeData = (isFramePreview && livePreviewData) ? livePreviewData : data;
+  const activeData = livePreviewData || data;
 
   // Scroll progress for top indicator bar
   const { scrollYProgress } = useScroll();

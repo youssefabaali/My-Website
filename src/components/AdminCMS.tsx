@@ -1210,6 +1210,8 @@ function CMSSingleRowEditor({
   const { uploadFile } = useCMS();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const pasteInputRef = useRef<HTMLInputElement>(null);
+  const [activeTab, setActiveTab] = useState<"content" | "spacing">("content");
+  const [isRowCollapsed, setIsRowCollapsed] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadCount, setUploadCount] = useState({ current: 0, total: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -1388,8 +1390,8 @@ function CMSSingleRowEditor({
       tabIndex={0}
       className="p-4 bg-neutral-950/80 border border-white/10 rounded-xl flex flex-col gap-3 transition-all focus:border-brand-green/60 outline-none"
     >
-      {/* Row Header Info & Controls */}
-      <div className="flex items-center justify-between gap-3 border-b border-white/5 pb-2.5">
+      {/* Row Header Info, Tabs & Controls */}
+      <div className={`flex items-center justify-between gap-3 flex-wrap ${isRowCollapsed ? "" : "border-b border-white/5 pb-3"}`}>
         <div className="flex items-center gap-2 flex-wrap">
           <span className="text-xs font-bold text-white uppercase tracking-wider font-mono bg-white/5 px-2.5 py-1 rounded">
             {rowTitle}
@@ -1397,17 +1399,42 @@ function CMSSingleRowEditor({
           <span className="text-[10px] text-brand-green font-mono font-bold bg-brand-green/10 px-2 py-0.5 rounded border border-brand-green/20">
             {images.length} Image{images.length === 1 ? "" : "s"} ({calcPercentage()})
           </span>
-          <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-black border border-white/15 text-neutral-300">
-            📍 {rowAlignment === "left" ? "Left" : rowAlignment === "right" ? "Right" : "Center"}
-          </span>
-          <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-black border border-white/15 text-brand-green">
-            📐 {customWidth !== undefined && customWidth !== null && customWidth !== "" ? `${customWidth}%` : "100%"}
-          </span>
-          {columnsGap !== undefined && columnsGap !== "default" && columnsGap !== "" && (
-            <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-black border border-white/15 text-neutral-400">
-              ↔ Gap: {typeof columnsGap === "number" ? `${columnsGap}px` : columnsGap}
-            </span>
+
+          {/* Micro Segmented Tabs: Media/Content vs Spacing/Layout */}
+          {!isRowCollapsed && rowTitle !== "WIDESCREEN ROW" && (
+            <div className="flex items-center p-0.5 bg-neutral-900 rounded-lg border border-white/10 ml-1">
+              <button
+                type="button"
+                onClick={() => setActiveTab("content")}
+                className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 ${
+                  activeTab === "content"
+                    ? "bg-brand-green text-black shadow-sm font-black"
+                    : "text-neutral-400 hover:text-white hover:bg-white/5"
+                }`}
+                title="Add & Manage Images & Media for this row"
+              >
+                <ImageIcon size={11} />
+                <span>Media & Images</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("spacing")}
+                className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 ${
+                  activeTab === "spacing"
+                    ? "bg-brand-green text-black shadow-sm font-black"
+                    : "text-neutral-400 hover:text-white hover:bg-white/5"
+                }`}
+                title="Manage Spacing, Alignment & Gap for this row"
+              >
+                <Sliders size={11} />
+                <span>Spacing & Layout</span>
+                {(columnsGap !== undefined && columnsGap !== "default" && columnsGap !== "") || (rowAlignment && rowAlignment !== "center") || (customWidth && customWidth !== "100%" && customWidth !== 100 && customWidth !== "") ? (
+                  <span className={`w-1.5 h-1.5 rounded-full ${activeTab === "spacing" ? "bg-black" : "bg-brand-green"}`} />
+                ) : null}
+              </button>
+            </div>
           )}
+
           {copiedNotification && (
             <span className="text-[10px] text-brand-green font-bold animate-pulse">
               ✓ {copiedNotification}
@@ -1420,7 +1447,7 @@ function CMSSingleRowEditor({
             <button
               type="button"
               onClick={() => onMoveRow("up")}
-              className="p-1 bg-neutral-900 border border-white/10 hover:border-brand-green text-white hover:text-brand-green rounded cursor-pointer"
+              className="p-1.5 bg-neutral-900 border border-white/10 hover:border-brand-green text-white hover:text-brand-green rounded cursor-pointer"
               title="Move Row Up"
             >
               <ArrowUp size={13} />
@@ -1430,17 +1457,30 @@ function CMSSingleRowEditor({
             <button
               type="button"
               onClick={() => onMoveRow("down")}
-              className="p-1 bg-neutral-900 border border-white/10 hover:border-brand-green text-white hover:text-brand-green rounded cursor-pointer"
+              className="p-1.5 bg-neutral-900 border border-white/10 hover:border-brand-green text-white hover:text-brand-green rounded cursor-pointer"
               title="Move Row Down"
             >
               <ArrowDown size={13} />
             </button>
           )}
+          <button
+            type="button"
+            onClick={() => setIsRowCollapsed(!isRowCollapsed)}
+            className={`p-1.5 rounded-lg border transition-all cursor-pointer flex items-center gap-1 text-[11px] font-bold ${
+              isRowCollapsed
+                ? "bg-brand-green/10 border-brand-green text-brand-green hover:bg-brand-green hover:text-black"
+                : "bg-neutral-900 border-white/10 hover:border-brand-green text-neutral-300 hover:text-brand-green"
+            }`}
+            title={isRowCollapsed ? "Expand row" : "Collapse row"}
+          >
+            {isRowCollapsed ? <ChevronRight size={13} /> : <ChevronDown size={13} />}
+            <span className="text-[9.5px] uppercase font-mono">{isRowCollapsed ? "Expand" : "Collapse"}</span>
+          </button>
           {canDelete !== false && (
             <button
               type="button"
               onClick={onDeleteRow}
-              className="p-1 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold uppercase ml-2"
+              className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold uppercase ml-1"
               title="Delete this row"
             >
               <Trash2 size={13} />
@@ -1450,256 +1490,268 @@ function CMSSingleRowEditor({
         </div>
       </div>
 
-      {/* Drag & Drop Upload + Paste Area */}
-      <div
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-        className={`p-3.5 rounded-xl border-2 border-dashed transition-all flex flex-col items-center justify-center gap-2 text-center relative ${
-          isDragging
-            ? "bg-brand-green/15 border-brand-green shadow-[0_0_20px_rgba(140,255,46,0.25)]"
-            : "bg-neutral-900/60 border-white/10 hover:border-white/20"
-        }`}
-      >
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-brand-green/20 border border-brand-green/30 flex items-center justify-center text-brand-green shrink-0">
-            <Upload size={14} />
-          </div>
-          <span className="text-xs font-bold text-white uppercase tracking-wider">
-            {isDragging ? "Drop image or video file(s) into this row!" : "Drag & Drop Images/Videos, Click Upload, or Copy & Paste (Ctrl+V)"}
-          </span>
-        </div>
-
-        <p className="text-[10px] text-neutral-400">
-          Upload image/video files directly or paste video & image URLs (YouTube, Vimeo, MP4, WebM, etc.).
-        </p>
-
-        <div className="flex items-center gap-2 flex-wrap justify-center mt-1">
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            disabled={uploading}
-            className="px-3.5 py-1.5 bg-brand-green hover:bg-brand-green/90 text-neutral-950 font-bold text-xs uppercase rounded-lg cursor-pointer transition-all flex items-center gap-1.5 shadow-md"
-          >
-            <Upload size={13} />
-            {uploading
-              ? `Uploading (${uploadCount.current}/${uploadCount.total})...`
-              : "Upload Image / Video File(s)"}
-          </button>
-          <input
-            ref={fileInputRef}
-            type="file"
-            multiple
-            accept="image/*,video/*,.mp4,.webm,.mov,.avi,.mkv,.ogv,.flv,.wmv,.m4v,.svg,.webp,.gif,.jpg,.jpeg,.png"
-            className="hidden"
-            onChange={handleFileChange}
-          />
-
-          {imageClipboard && onPasteImage && (
-            <button
-              type="button"
-              onClick={() => onPasteImage(currentSectionIdx ?? 0, currentRowIdx ?? 0)}
-              className="px-3.5 py-1.5 bg-brand-green hover:bg-brand-green/90 text-neutral-950 font-black text-xs uppercase rounded-lg cursor-pointer transition-all flex items-center gap-1.5 shadow-lg shadow-brand-green/20 animate-pulse border-2 border-white/20"
-              title="Paste image/media currently copied in clipboard into this row"
-            >
-              <ClipboardCopy size={14} />
-              Paste Media Here
-            </button>
-          )}
-
-          <button
-            type="button"
-            onClick={handlePasteButtonClick}
-            className="px-3 py-1.5 bg-neutral-900 border border-white/10 hover:border-brand-green text-brand-green font-bold text-xs uppercase rounded-lg cursor-pointer transition-all flex items-center gap-1.5"
-            title="Paste from clipboard or focus to press Ctrl+V"
-          >
-            <Copy size={13} />
-            Paste (Ctrl+V)
-          </button>
-
-          <input
-            ref={pasteInputRef}
-            type="text"
-            onPaste={handlePaste}
-            placeholder="Click & press Ctrl+V to paste here"
-            className="w-44 bg-neutral-950 border border-white/10 rounded px-2 py-1 text-[10px] text-neutral-300 font-mono focus:outline-none focus:border-brand-green placeholder:text-neutral-600"
-          />
-
-          <button
-            type="button"
-            onClick={() => setShowRawText(!showRawText)}
-            className="px-2.5 py-1.5 bg-neutral-900 border border-white/10 text-neutral-400 hover:text-white font-bold text-[9px] uppercase rounded-lg cursor-pointer transition-all"
-          >
-            {showRawText ? "Hide URLs" : "Bulk Edit URLs"}
-          </button>
-        </div>
-      </div>
-
-      {/* Manual URL input bar */}
-      <div className="flex items-center gap-2">
-        <input
-          type="text"
-          value={manualUrl}
-          onChange={(e) => setManualUrl(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              handleAddManualUrl();
-            }
-          }}
-          placeholder="Paste image or video URL (YouTube, Vimeo, MP4, WebM, PNG, etc.)"
-          className="flex-1 bg-neutral-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
-        />
-        <button
-          type="button"
-          onClick={handleAddManualUrl}
-          className="px-3.5 py-1.5 bg-brand-green hover:bg-brand-green/90 text-neutral-950 font-bold text-xs rounded-lg cursor-pointer transition-all shrink-0 flex items-center gap-1.5 shadow-md uppercase"
-        >
-          <Plus size={14} />
-          Add Link / Video
-        </button>
-      </div>
-
-      {/* Raw Textarea fallback */}
-      {showRawText && (
-        <div className="flex flex-col gap-1.5 animate-fade-in">
-          <label className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider">
-            Row Raw Comma-Separated Image URLs
-          </label>
-          <textarea
-            rows={2}
-            value={images.join(", ")}
-            onChange={(e) => {
-              const imagesArr = e.target.value.split(",").map((s) => s.trim()).filter(Boolean);
-              onUpdateRowImages(imagesArr);
-            }}
-            className="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-2 text-xs font-mono text-neutral-300 focus:outline-none focus:border-brand-green"
-          />
-        </div>
-      )}
-
-      {/* ROW CONTROLS (Only for Grid Gallery Rows, hidden for Full Widescreen): Alignment, Columns Horizontal Gap, Mobile Layout */}
-      {rowTitle !== "WIDESCREEN ROW" && (
-        <div className="flex flex-col gap-2.5 my-1">
-          {/* 1. ROW ALIGNMENT (LEFT / CENTER / RIGHT) */}
-          <div className="flex flex-col gap-1.5 bg-neutral-900/90 border border-white/10 p-3 rounded-xl">
-            <div className="flex items-center justify-between">
-              <span className="text-brand-green font-bold uppercase text-[10px] tracking-wider flex items-center gap-1">
-                📍 Row Horizontal Alignment:
-              </span>
-              <span className="text-[9px] font-mono text-neutral-400 uppercase">
-                {rowAlignment === "left" ? "Left Aligned" : rowAlignment === "right" ? "Right Aligned" : "Centered (Default)"}
-              </span>
-            </div>
-            <div className="grid grid-cols-3 gap-1.5 pt-0.5">
-              <button
-                type="button"
-                onClick={() => onUpdateRowAlignment && onUpdateRowAlignment("left")}
-                className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
-                  rowAlignment === "left"
-                    ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
-                    : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
+      {!isRowCollapsed && (
+        <>
+          {/* TAB 1: MEDIA & IMAGES (Default) */}
+          {activeTab === "content" && (
+            <div className="flex flex-col gap-3">
+              {/* Drag & Drop Upload + Paste Area */}
+              <div
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                className={`p-3.5 rounded-xl border-2 border-dashed transition-all flex flex-col items-center justify-center gap-2 text-center relative ${
+                  isDragging
+                    ? "bg-brand-green/15 border-brand-green shadow-[0_0_20px_rgba(140,255,46,0.25)]"
+                    : "bg-neutral-900/60 border-white/10 hover:border-white/20"
                 }`}
-                title="Align row images to the Left"
               >
-                <span>⬅️ Left</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => onUpdateRowAlignment && onUpdateRowAlignment("center")}
-                className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
-                  !rowAlignment || rowAlignment === "center"
-                    ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
-                    : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
-                }`}
-                title="Center row images (Default)"
-              >
-                <span>↔️ Center</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => onUpdateRowAlignment && onUpdateRowAlignment("right")}
-                className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
-                  rowAlignment === "right"
-                    ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
-                    : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
-                }`}
-                title="Align row images to the Right"
-              >
-                <span>➡️ Right</span>
-              </button>
-            </div>
-            <span className="text-[8.5px] text-neutral-400 leading-tight">
-              Controls whether this row sits on the Left, Center, or Right side of the widescreen canvas.
-            </span>
-          </div>
-
-          {/* HORIZONTAL GAP & MOBILE LAYOUT ROW */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {/* COLUMN HORIZONTAL GAP CONTROL */}
-            {onUpdateColumnsGap && (
-              <div className="w-full">
-                <SpacingInputWithPresets
-                  label="↔️ Columns Horizontal Gap (Between Images)"
-                  value={columnsGap ?? "default"}
-                  onChange={(newVal) => onUpdateColumnsGap(newVal)}
-                  storageKey="cms_custom_columns_gaps"
-                  placeholder="16"
-                  helperText="Horizontal gap between columns in this row (Default: 16px)."
-                />
-              </div>
-            )}
-
-            {/* MOBILE DISPLAY CONTROL (Phones & Small screens) */}
-            {onUpdateMobileColumns && (
-              <div className="flex flex-col gap-1.5 bg-neutral-900/80 border border-white/10 p-3 rounded-xl text-xs justify-between">
-                <div className="flex items-center justify-between">
-                  <span className="text-brand-green font-bold uppercase text-[10px] tracking-wider flex items-center gap-1">
-                    📱 Mobile Layout (Phones):
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-brand-green/20 border border-brand-green/30 flex items-center justify-center text-brand-green shrink-0">
+                    <Upload size={14} />
+                  </div>
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">
+                    {isDragging ? "Drop image or video file(s) into this row!" : "Drag & Drop Images/Videos, Click Upload, or Copy & Paste (Ctrl+V)"}
                   </span>
-                  <span className="text-[9px] font-mono text-neutral-400">Responsive</span>
                 </div>
-                <select
-                  value={mobileColumns || "auto"}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (val === "auto" || val === "same") {
-                      onUpdateMobileColumns(val);
-                    } else {
-                      onUpdateMobileColumns(Number(val));
+
+                <p className="text-[10px] text-neutral-400">
+                  Upload image/video files directly or paste video & image URLs (YouTube, Vimeo, MP4, WebM, etc.).
+                </p>
+
+                <div className="flex items-center gap-2 flex-wrap justify-center mt-1">
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={uploading}
+                    className="px-3.5 py-1.5 bg-brand-green hover:bg-brand-green/90 text-neutral-950 font-bold text-xs uppercase rounded-lg cursor-pointer transition-all flex items-center gap-1.5 shadow-md"
+                  >
+                    <Upload size={13} />
+                    {uploading
+                      ? `Uploading (${uploadCount.current}/${uploadCount.total})...`
+                      : "Upload Image / Video File(s)"}
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    accept="image/*,video/*,.mp4,.webm,.mov,.avi,.mkv,.ogv,.flv,.wmv,.m4v,.svg,.webp,.gif,.jpg,.jpeg,.png"
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+
+                  {imageClipboard && onPasteImage && (
+                    <button
+                      type="button"
+                      onClick={() => onPasteImage(currentSectionIdx ?? 0, currentRowIdx ?? 0)}
+                      className="px-3.5 py-1.5 bg-brand-green hover:bg-brand-green/90 text-neutral-950 font-black text-xs uppercase rounded-lg cursor-pointer transition-all flex items-center gap-1.5 shadow-lg shadow-brand-green/20 animate-pulse border-2 border-white/20"
+                      title="Paste image/media currently copied in clipboard into this row"
+                    >
+                      <ClipboardCopy size={14} />
+                      Paste Media Here
+                    </button>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={handlePasteButtonClick}
+                    className="px-3 py-1.5 bg-neutral-900 border border-white/10 hover:border-brand-green text-brand-green font-bold text-xs uppercase rounded-lg cursor-pointer transition-all flex items-center gap-1.5"
+                    title="Paste from clipboard or focus to press Ctrl+V"
+                  >
+                    <Copy size={13} />
+                    Paste (Ctrl+V)
+                  </button>
+
+                  <input
+                    ref={pasteInputRef}
+                    type="text"
+                    onPaste={handlePaste}
+                    placeholder="Click & press Ctrl+V to paste here"
+                    className="w-44 bg-neutral-950 border border-white/10 rounded px-2 py-1 text-[10px] text-neutral-300 font-mono focus:outline-none focus:border-brand-green placeholder:text-neutral-600"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setShowRawText(!showRawText)}
+                    className="px-2.5 py-1.5 bg-neutral-900 border border-white/10 text-neutral-400 hover:text-white font-bold text-[9px] uppercase rounded-lg cursor-pointer transition-all"
+                  >
+                    {showRawText ? "Hide URLs" : "Bulk Edit URLs"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Manual URL input bar */}
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={manualUrl}
+                  onChange={(e) => setManualUrl(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleAddManualUrl();
                     }
                   }}
-                  className="w-full bg-neutral-950 border border-white/20 text-white rounded-lg px-2.5 py-1.5 text-xs font-bold cursor-pointer focus:outline-none focus:border-brand-green"
+                  placeholder="Paste image or video URL (YouTube, Vimeo, MP4, WebM, PNG, etc.)"
+                  className="flex-1 bg-neutral-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
+                />
+                <button
+                  type="button"
+                  onClick={handleAddManualUrl}
+                  className="px-3.5 py-1.5 bg-brand-green hover:bg-brand-green/90 text-neutral-950 font-bold text-xs rounded-lg cursor-pointer transition-all shrink-0 flex items-center gap-1.5 shadow-md uppercase"
                 >
-                  <option value="auto">⚡ Automatic Smart Responsive</option>
-                  <option value={1}>1 Column on Mobile (Stacked 100%)</option>
-                  <option value={2}>2 Columns on Mobile (2 Grid)</option>
-                  <option value="same">Keep Same as Desktop</option>
-                </select>
+                  <Plus size={14} />
+                  Add Link / Video
+                </button>
+              </div>
+
+              {/* Raw Textarea fallback */}
+              {showRawText && (
+                <div className="flex flex-col gap-1.5 animate-fade-in">
+                  <label className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider">
+                    Row Raw Comma-Separated Image URLs
+                  </label>
+                  <textarea
+                    rows={2}
+                    value={images.join(", ")}
+                    onChange={(e) => {
+                      const imagesArr = e.target.value.split(",").map((s) => s.trim()).filter(Boolean);
+                      onUpdateRowImages(imagesArr);
+                    }}
+                    className="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-2 text-xs font-mono text-neutral-300 focus:outline-none focus:border-brand-green"
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 2: SPACING & LAYOUT (Alignment, Column Gap, Mobile Layout) */}
+          {activeTab === "spacing" && rowTitle !== "WIDESCREEN ROW" && (
+            <div className="flex flex-col gap-3 p-3 bg-neutral-900/40 border border-white/10 rounded-xl animate-fade-in">
+              <div className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1.5 pb-1 border-b border-white/5">
+                <Sliders size={12} />
+                <span>Row Layout & Spacing Controls</span>
+              </div>
+
+              {/* 1. ROW ALIGNMENT (LEFT / CENTER / RIGHT) */}
+              <div className="flex flex-col gap-1.5 bg-neutral-900/90 border border-white/10 p-3 rounded-xl">
+                <div className="flex items-center justify-between">
+                  <span className="text-brand-green font-bold uppercase text-[10px] tracking-wider flex items-center gap-1">
+                    📍 Row Horizontal Alignment:
+                  </span>
+                  <span className="text-[9px] font-mono text-neutral-400 uppercase">
+                    {rowAlignment === "left" ? "Left Aligned" : rowAlignment === "right" ? "Right Aligned" : "Centered (Default)"}
+                  </span>
+                </div>
+                <div className="grid grid-cols-3 gap-1.5 pt-0.5">
+                  <button
+                    type="button"
+                    onClick={() => onUpdateRowAlignment && onUpdateRowAlignment("left")}
+                    className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                      rowAlignment === "left"
+                        ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
+                        : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
+                    }`}
+                    title="Align row images to the Left"
+                  >
+                    <span>⬅️ Left</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onUpdateRowAlignment && onUpdateRowAlignment("center")}
+                    className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                      !rowAlignment || rowAlignment === "center"
+                        ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
+                        : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
+                    }`}
+                    title="Center row images (Default)"
+                  >
+                    <span>↔️ Center</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onUpdateRowAlignment && onUpdateRowAlignment("right")}
+                    className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                      rowAlignment === "right"
+                        ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
+                        : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
+                    }`}
+                    title="Align row images to the Right"
+                  >
+                    <span>➡️ Right</span>
+                  </button>
+                </div>
                 <span className="text-[8.5px] text-neutral-400 leading-tight">
-                  Controls how multiple images in this row wrap on mobile screens.
+                  Controls whether this row sits on the Left, Center, or Right side of the widescreen canvas.
                 </span>
               </div>
-            )}
-          </div>
-        </div>
-      )}
 
-      {/* Row Live Image Thumbnails Preview */}
-      {images.length > 0 && (
-        <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
-          <div className="flex items-center justify-between">
-            <label className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">
-              Row Layout Preview & Offsets ({images.length} item{images.length === 1 ? "" : "s"} - Equal {calcPercentage()})
-            </label>
-            <button
-              type="button"
-              onClick={() => onUpdateRowImages([])}
-              className="text-[9px] text-red-400 hover:text-red-300 font-bold uppercase"
-            >
-              Clear Row Images
-            </button>
-          </div>
+              {/* HORIZONTAL GAP & MOBILE LAYOUT ROW */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {/* COLUMN HORIZONTAL GAP CONTROL */}
+                {onUpdateColumnsGap && (
+                  <div className="w-full">
+                    <SpacingInputWithPresets
+                      label="↔️ Columns Horizontal Gap (Between Images)"
+                      value={columnsGap ?? "default"}
+                      onChange={(newVal) => onUpdateColumnsGap(newVal)}
+                      storageKey="cms_custom_columns_gaps"
+                      placeholder="16"
+                      helperText="Horizontal gap between columns in this row (Default: 16px)."
+                    />
+                  </div>
+                )}
+
+                {/* MOBILE DISPLAY CONTROL (Phones & Small screens) */}
+                {onUpdateMobileColumns && (
+                  <div className="flex flex-col gap-1.5 bg-neutral-900/80 border border-white/10 p-3 rounded-xl text-xs justify-between">
+                    <div className="flex items-center justify-between">
+                      <span className="text-brand-green font-bold uppercase text-[10px] tracking-wider flex items-center gap-1">
+                        📱 Mobile Layout (Phones):
+                      </span>
+                      <span className="text-[9px] font-mono text-neutral-400">Responsive</span>
+                    </div>
+                    <select
+                      value={mobileColumns || "auto"}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (val === "auto" || val === "same") {
+                          onUpdateMobileColumns(val);
+                        } else {
+                          onUpdateMobileColumns(Number(val));
+                        }
+                      }}
+                      className="w-full bg-neutral-950 border border-white/20 text-white rounded-lg px-2.5 py-1.5 text-xs font-bold cursor-pointer focus:outline-none focus:border-brand-green"
+                    >
+                      <option value="auto">⚡ Automatic Smart Responsive</option>
+                      <option value={1}>1 Column on Mobile (Stacked 100%)</option>
+                      <option value={2}>2 Columns on Mobile (2 Grid)</option>
+                      <option value="same">Keep Same as Desktop</option>
+                    </select>
+                    <span className="text-[8.5px] text-neutral-400 leading-tight">
+                      Controls how multiple images in this row wrap on mobile screens.
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Row Live Image Thumbnails Preview with offsets right beneath each image */}
+          {images.length > 0 && (
+            <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
+              <div className="flex items-center justify-between">
+                <label className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">
+                  Row Layout Preview & Individual Offsets ({images.length} item{images.length === 1 ? "" : "s"} - Equal {calcPercentage()})
+                </label>
+                <button
+                  type="button"
+                  onClick={() => onUpdateRowImages([])}
+                  className="text-[9px] text-red-400 hover:text-red-300 font-bold uppercase"
+                >
+                  Clear Row Images
+                </button>
+              </div>
 
           <div
             onDragOver={(e) => {
@@ -1945,6 +1997,8 @@ function CMSSingleRowEditor({
             })}
           </div>
         </div>
+      )}
+        </>
       )}
     </div>
   );
@@ -2351,6 +2405,8 @@ function CMSGallerySectionEditor({
   isCollapsed?: boolean;
   onToggleCollapse?: () => void;
 }) {
+  const [activeSectionTab, setActiveSectionTab] = useState<"content" | "spacing">("content");
+
   // Ensure rows array exists for grid type sections
   const rows: {
     id?: string;
@@ -2582,6 +2638,44 @@ function CMSGallerySectionEditor({
               ? "IMAGE & TEXT"
               : `${sec.images.length} Total Image${sec.images.length === 1 ? "" : "s"}${sec.type === "grid" ? ` • ${rows.length} Row${rows.length === 1 ? "" : "s"}` : ""}`}
           </span>
+
+          {/* Micro Segmented Tabs: Media & Content vs Spacing & Layout */}
+          {!isCollapsed && (
+            <div className="flex items-center p-0.5 bg-neutral-950 rounded-lg border border-white/10 ml-1">
+              <button
+                type="button"
+                onClick={() => setActiveSectionTab("content")}
+                className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 ${
+                  activeSectionTab === "content"
+                    ? "bg-brand-green text-black shadow-sm font-black"
+                    : "text-neutral-400 hover:text-white hover:bg-white/5"
+                }`}
+                title="Media, Images, Texts & Content"
+              >
+                <ImageIcon size={11} />
+                <span>Media & Content</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveSectionTab("spacing")}
+                className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 ${
+                  activeSectionTab === "spacing"
+                    ? "bg-brand-green text-black shadow-sm font-black"
+                    : "text-neutral-400 hover:text-white hover:bg-white/5"
+                }`}
+                title="Spacing, Gaps, Margins & Typography Layout"
+              >
+                <Sliders size={11} />
+                <span>Spacing & Layout</span>
+                {(sec.sectionGap !== undefined && sec.sectionGap !== 0 && sec.sectionGap !== "0" && sec.sectionGap !== "") ||
+                (sec.rowsGap !== undefined && sec.rowsGap !== 0 && sec.rowsGap !== "0" && sec.rowsGap !== "") ||
+                (sec.titleTopGap !== undefined && sec.titleTopGap !== 0 && sec.titleTopGap !== "0" && sec.titleTopGap !== "") ||
+                (sec.titleBottomGap !== undefined && sec.titleBottomGap !== 0 && sec.titleBottomGap !== "0" && sec.titleBottomGap !== "") ? (
+                  <span className={`w-1.5 h-1.5 rounded-full ${activeSectionTab === "spacing" ? "bg-black" : "bg-brand-green"}`} />
+                ) : null}
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="flex items-center gap-2">
@@ -2636,64 +2730,161 @@ function CMSGallerySectionEditor({
 
       {!isCollapsed && (
         <>
-          {/* SECTION SPACING CONTROLS: Vertical Margins & Inner Rows Gap (Custom Number + Saved Presets Memory) */}
-          <div className={`grid grid-cols-1 ${sec.type === "grid" ? "lg:grid-cols-2" : ""} gap-3`}>
-            <SpacingInputWithPresets
-              label="⬇️ Section Bottom Spacing (Distance to next section below)"
-              value={sec.sectionGap}
-              onChange={(newVal) => onUpdateSec({ ...sec, sectionGap: newVal })}
-              mobileValue={sec.sectionGapMobile}
-              onMobileChange={(newVal) => onUpdateSec({ ...sec, sectionGapMobile: newVal })}
-              storageKey="cms_custom_section_spacings"
-              placeholder="0"
-              helperText="Controls vertical distance/margin between this section and the next section below it (Default: 0px)."
-            />
+          {/* TAB 2: SPACING & LAYOUT TAB */}
+          {activeSectionTab === "spacing" && (
+            <div className="flex flex-col gap-3.5 p-3.5 bg-neutral-950/80 border border-white/10 rounded-xl animate-fade-in">
+              <div className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1.5 pb-1 border-b border-white/5">
+                <Sliders size={12} />
+                <span>Section Spacing & Typography Layout</span>
+              </div>
 
-            {sec.type === "grid" && (
-              <SpacingInputWithPresets
-                label="↕️ Rows Vertical Gap (Between rows in this grid)"
-                value={sec.rowsGap}
-                onChange={(newVal) => onUpdateSec({ ...sec, rowsGap: newVal })}
-                mobileValue={sec.rowsGapMobile}
-                onMobileChange={(newVal) => onUpdateSec({ ...sec, rowsGapMobile: newVal })}
-                storageKey="cms_custom_rows_gaps"
-                placeholder="0"
-                helperText="Controls vertical gap between consecutive rows inside this grid (Default: 0px)."
-              />
-            )}
-          </div>
+              {/* SECTION SPACING CONTROLS: Vertical Margins & Inner Rows Gap (Custom Number + Saved Presets Memory) */}
+              <div className={`grid grid-cols-1 ${sec.type === "grid" ? "lg:grid-cols-2" : ""} gap-3`}>
+                <SpacingInputWithPresets
+                  label="⬇️ Section Bottom Spacing (Distance to next section below)"
+                  value={sec.sectionGap}
+                  onChange={(newVal) => onUpdateSec({ ...sec, sectionGap: newVal })}
+                  mobileValue={sec.sectionGapMobile}
+                  onMobileChange={(newVal) => onUpdateSec({ ...sec, sectionGapMobile: newVal })}
+                  storageKey="cms_custom_section_spacings"
+                  placeholder="0"
+                  helperText="Controls vertical distance/margin between this section and the next section below it (Default: 0px)."
+                />
 
-      {/* SECTION TITLE SPACING CONTROLS: Only displayed when Section Label has text */}
-      {sec.label && sec.label.trim().length > 0 && (
-        <div className="flex flex-col gap-2 p-3 bg-neutral-950/60 border border-brand-green/20 rounded-xl">
-          <div className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1.5">
-            <span>🏷️ Section Title Spacing Controls ({sec.label})</span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <SpacingInputWithPresets
-              label="⬆️ Title Margin Top (Distance to section above)"
-              value={sec.titleTopGap}
-              onChange={(newVal) => onUpdateSec({ ...sec, titleTopGap: newVal })}
-              mobileValue={sec.titleTopGapMobile}
-              onMobileChange={(newVal) => onUpdateSec({ ...sec, titleTopGapMobile: newVal })}
-              storageKey="cms_custom_title_top_spacings"
-              placeholder="0"
-              helperText="Spacing above this section's title."
-            />
-            <SpacingInputWithPresets
-              label="⬇️ Title Margin Bottom (Distance to section content)"
-              value={sec.titleBottomGap}
-              onChange={(newVal) => onUpdateSec({ ...sec, titleBottomGap: newVal })}
-              mobileValue={sec.titleBottomGapMobile}
-              onMobileChange={(newVal) => onUpdateSec({ ...sec, titleBottomGapMobile: newVal })}
-              storageKey="cms_custom_title_bottom_spacings"
-              placeholder="0"
-              helperText="Spacing below this section's title before the images/content."
-            />
-          </div>
-        </div>
-      )}
+                {sec.type === "grid" && (
+                  <SpacingInputWithPresets
+                    label="↕️ Rows Vertical Gap (Between rows in this grid)"
+                    value={sec.rowsGap}
+                    onChange={(newVal) => onUpdateSec({ ...sec, rowsGap: newVal })}
+                    mobileValue={sec.rowsGapMobile}
+                    onMobileChange={(newVal) => onUpdateSec({ ...sec, rowsGapMobile: newVal })}
+                    storageKey="cms_custom_rows_gaps"
+                    placeholder="0"
+                    helperText="Controls vertical gap between consecutive rows inside this grid (Default: 0px)."
+                  />
+                )}
+              </div>
 
+              {/* SECTION TITLE SPACING CONTROLS: Only displayed when Section Label has text */}
+              {sec.label && sec.label.trim().length > 0 && (
+                <div className="flex flex-col gap-2 p-3 bg-neutral-900/90 border border-brand-green/20 rounded-xl">
+                  <div className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1.5">
+                    <span>🏷️ Section Title Spacing Controls ({sec.label})</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <SpacingInputWithPresets
+                      label="⬆️ Title Margin Top (Distance to section above)"
+                      value={sec.titleTopGap}
+                      onChange={(newVal) => onUpdateSec({ ...sec, titleTopGap: newVal })}
+                      mobileValue={sec.titleTopGapMobile}
+                      onMobileChange={(newVal) => onUpdateSec({ ...sec, titleTopGapMobile: newVal })}
+                      storageKey="cms_custom_title_top_spacings"
+                      placeholder="0"
+                      helperText="Spacing above this section's title."
+                    />
+                    <SpacingInputWithPresets
+                      label="⬇️ Title Margin Bottom (Distance to section content)"
+                      value={sec.titleBottomGap}
+                      onChange={(newVal) => onUpdateSec({ ...sec, titleBottomGap: newVal })}
+                      mobileValue={sec.titleBottomGapMobile}
+                      onMobileChange={(newVal) => onUpdateSec({ ...sec, titleBottomGapMobile: newVal })}
+                      storageKey="cms_custom_title_bottom_spacings"
+                      placeholder="0"
+                      helperText="Spacing below this section's title before the images/content."
+                    />
+                  </div>
+                </div>
+              )}
+
+              {sec.type === "text" && (
+                /* TEXT PARAGRAPH LAYOUT CONTROLS IN SPACING TAB */
+                <div className="flex flex-col gap-2.5 pt-2 border-t border-white/10">
+                  <div className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1">
+                    <span>📝 Paragraph Text Alignment & Width</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div className="flex flex-col gap-1.5 bg-neutral-900/90 border border-white/10 p-3 rounded-xl">
+                      <div className="flex items-center justify-between">
+                        <span className="text-brand-green font-bold uppercase text-[10px] tracking-wider flex items-center gap-1">
+                          📍 Text Alignment:
+                        </span>
+                        <span className="text-[9px] font-mono text-neutral-400 uppercase">
+                          {sec.textAlignment === "center" ? "Centered" : sec.textAlignment === "right" ? "Right Aligned" : "Left (Default)"}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-1.5 pt-0.5">
+                        <button
+                          type="button"
+                          onClick={() => onUpdateSec({ ...sec, textAlignment: "left" })}
+                          className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                            !sec.textAlignment || sec.textAlignment === "left"
+                              ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
+                              : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
+                          }`}
+                          title="Align text to the Left (Default)"
+                        >
+                          <span>⬅️ Left</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => onUpdateSec({ ...sec, textAlignment: "center" })}
+                          className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                            sec.textAlignment === "center"
+                              ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
+                              : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
+                          }`}
+                          title="Center text alignment"
+                        >
+                          <span>↔️ Center</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => onUpdateSec({ ...sec, textAlignment: "right" })}
+                          className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                            sec.textAlignment === "right"
+                              ? "bg-brand-green text-black border-brand-green font-extrabold shadow-sm shadow-brand-green/30"
+                              : "bg-neutral-950 text-neutral-400 border-white/10 hover:border-brand-green/40 hover:text-white"
+                          }`}
+                          title="Align text to the Right"
+                        >
+                          <span>➡️ Right</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 bg-neutral-900/90 border border-white/10 p-3 rounded-xl justify-between">
+                      <span className="text-brand-green font-bold uppercase text-[10px] tracking-wider flex items-center gap-1">
+                        📐 Text Block Width:
+                      </span>
+                      <CompactImageSizeControl
+                        widthVal={sec.textWidth}
+                        onChange={(val) => onUpdateSec({ ...sec, textWidth: val })}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <CompactOffsetControl
+                      label="↕ Y-Offset (Vertical Shift)"
+                      offset={sec.textYOffset || 0}
+                      onChange={(val) => onUpdateSec({ ...sec, textYOffset: val })}
+                      storageKey="cms_custom_text_y_offsets"
+                    />
+                    <CompactOffsetControl
+                      label="↔ X-Shift (Horizontal Shift)"
+                      offset={sec.textXOffset || 0}
+                      onChange={(val) => onUpdateSec({ ...sec, textXOffset: val })}
+                      storageKey="cms_custom_text_x_shifts"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 1: MEDIA & CONTENT TAB */}
+          {activeSectionTab === "content" && (
+            <>
       {sec.type === "text" ? (
         /* PURE TEXT PARAGRAPH MODE */
         <div className="flex flex-col gap-3.5 p-4 bg-neutral-950/80 border border-white/10 rounded-xl">
@@ -3057,6 +3248,8 @@ function CMSGallerySectionEditor({
           canDelete={false}
         />
       )}
+            </>
+          )}
         </>
       )}
     </div>
@@ -3318,7 +3511,23 @@ export function AdminCMS() {
     };
   };
 
-  // 0ms Real-time Instant Synchronization to all preview tabs, frames, and windows
+  // Persistent BroadcastChannel for 0ms Real-time Instant Synchronization to all preview tabs, frames, and windows
+  const livePreviewBusRef = useRef<BroadcastChannel | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "BroadcastChannel" in window) {
+      try {
+        livePreviewBusRef.current = new BroadcastChannel("cms_live_preview_bus");
+      } catch (err) {}
+    }
+    return () => {
+      if (livePreviewBusRef.current) {
+        livePreviewBusRef.current.close();
+        livePreviewBusRef.current = null;
+      }
+    };
+  }, []);
+
   const broadcastLiveSnapshot = () => {
     if (!data) return;
     try {
@@ -3328,10 +3537,22 @@ export function AdminCMS() {
       } catch (storageErr) {
         // Quota exceed safe ignore, BroadcastChannel handles large payloads in RAM
       }
+
       if (typeof window !== "undefined" && "BroadcastChannel" in window) {
-        const channel = new BroadcastChannel("cms_live_preview_bus");
-        channel.postMessage({ type: "SYNC_DATA", payload: liveSnapshot });
-        channel.close();
+        if (!livePreviewBusRef.current) {
+          livePreviewBusRef.current = new BroadcastChannel("cms_live_preview_bus");
+        }
+        livePreviewBusRef.current.postMessage({ type: "SYNC_DATA", payload: liveSnapshot });
+      }
+
+      // Post directly to embedded preview iframes without echoing to the CMS window itself
+      if (typeof document !== "undefined") {
+        const iframes = document.querySelectorAll("iframe");
+        iframes.forEach((iframe) => {
+          try {
+            iframe.contentWindow?.postMessage({ type: "CMS_PREVIEW_SYNC", payload: liveSnapshot }, "*");
+          } catch (err) {}
+        });
       }
     } catch (e) {}
   };
@@ -3357,9 +3578,10 @@ export function AdminCMS() {
     try {
       localStorage.setItem("cms_live_preview_snapshot", JSON.stringify(liveSnapshot));
       if (typeof window !== "undefined" && "BroadcastChannel" in window) {
-        const channel = new BroadcastChannel("cms_live_preview_bus");
-        channel.postMessage({ type: "SYNC_DATA", payload: liveSnapshot });
-        channel.close();
+        if (!livePreviewBusRef.current) {
+          livePreviewBusRef.current = new BroadcastChannel("cms_live_preview_bus");
+        }
+        livePreviewBusRef.current.postMessage({ type: "SYNC_DATA", payload: liveSnapshot });
       }
     } catch (e) {}
 

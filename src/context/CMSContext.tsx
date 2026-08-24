@@ -121,11 +121,18 @@ export function CMSProvider({ children }: { children: ReactNode }) {
     return false;
   });
 
-  // 0ms Real-time Live Preview Data Synchronization inside iframe / preview mode
+  // 0ms Real-time Live Preview Data Synchronization for preview frames, tabs and windows
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const isPreview = window.location.search.includes("preview_mode=frame") || window.location.search.includes("preview_mode=direct");
+    const isPreview = window.location.search.includes("preview_mode=frame") || 
+      window.location.search.includes("preview_mode=direct") || 
+      window.location.search.includes("preview_mode=standalone") || 
+      window.location.search.includes("preview=true") ||
+      window.location.search.includes("preview=standalone") ||
+      (window.parent && window.parent !== window);
+
+    // Only preview consumers need to listen for live streaming data updates
     if (!isPreview) return;
 
     let busChannel: BroadcastChannel | null = null;
@@ -134,28 +141,41 @@ export function CMSProvider({ children }: { children: ReactNode }) {
       if (!incoming || typeof incoming !== "object") return;
       try {
         const merged = mergeDeepData(incoming, defaultSiteData);
-        setData(merged);
+        setData((prev) => {
+          try {
+            if (JSON.stringify(prev) === JSON.stringify(merged)) return prev;
+          } catch (err) {}
+          return merged;
+        });
       } catch (e) {
         console.warn("Live Preview Sync Error", e);
       }
     };
 
-    // 1. Listen for postMessage from parent standalone emulator
+    // Immediate check of current snapshot in localStorage
+    try {
+      const snap = localStorage.getItem("cms_live_preview_snapshot");
+      if (snap) {
+        handleIncomingData(JSON.parse(snap));
+      }
+    } catch (err) {}
+
+    // 1. Listen for postMessage from parent standalone emulator or CMS window
     const onMessage = (e: MessageEvent) => {
       try {
-        if (e.data && e.data.type === "CMS_PREVIEW_SYNC" && e.data.payload) {
+        if (e.data && (e.data.type === "CMS_PREVIEW_SYNC" || e.data.type === "SYNC_DATA") && e.data.payload) {
           handleIncomingData(e.data.payload);
         }
       } catch (err) {}
     };
     window.addEventListener("message", onMessage);
 
-    // 2. Listen to BroadcastChannel
+    // 2. Listen to BroadcastChannel for 0ms cross-tab instant synchronization
     try {
       if ("BroadcastChannel" in window) {
         busChannel = new BroadcastChannel("cms_live_preview_bus");
         busChannel.onmessage = (event) => {
-          if (event.data && event.data.type === "SYNC_DATA" && event.data.payload) {
+          if (event.data && (event.data.type === "SYNC_DATA" || event.data.type === "CMS_PREVIEW_SYNC") && event.data.payload) {
             handleIncomingData(event.data.payload);
           }
         };
@@ -164,7 +184,7 @@ export function CMSProvider({ children }: { children: ReactNode }) {
 
     // 3. Listen to storage changes
     const onStorage = (e: StorageEvent) => {
-      if (e.key === "cms_live_preview_snapshot" && e.newValue) {
+      if ((e.key === "cms_live_preview_snapshot" || e.key === "cms_portfolio_data") && e.newValue) {
         try {
           handleIncomingData(JSON.parse(e.newValue));
         } catch (err) {}
@@ -172,7 +192,7 @@ export function CMSProvider({ children }: { children: ReactNode }) {
     };
     window.addEventListener("storage", onStorage);
 
-    // Handshake: Notify parent that iframe is ready to receive fresh data
+    // Handshake: Notify parent that preview is ready to receive fresh snapshot immediately
     try {
       if (window.parent && window.parent !== window) {
         window.parent.postMessage({ type: "PREVIEW_FRAME_READY" }, "*");
@@ -188,7 +208,25 @@ export function CMSProvider({ children }: { children: ReactNode }) {
 
   // Load initial data
   useEffect(() => {
+    const isPreview = typeof window !== "undefined" && (
+      window.location.search.includes("preview_mode=frame") || 
+      window.location.search.includes("preview_mode=direct") ||
+      window.location.search.includes("preview_mode=standalone") ||
+      window.location.search.includes("preview=true")
+    );
+
     const loadData = async () => {
+      // If inside live preview frame, do not overwrite the live stream with stale server data
+      if (isPreview) {
+        const snap = localStorage.getItem("cms_live_preview_snapshot");
+        if (snap) {
+          try {
+            setData(mergeDeepData(JSON.parse(snap), defaultSiteData));
+          } catch (e) {}
+        }
+        return;
+      }
+
       // Allow URL parameter ?reset=true or #reset to purge local storage cache
       if (
         typeof window !== "undefined" &&
