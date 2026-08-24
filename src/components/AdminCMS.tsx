@@ -45,6 +45,7 @@ import {
   Clipboard,
   LayoutGrid,
   Maximize2,
+  Minimize2,
   Type,
   Columns,
   Monitor,
@@ -1703,38 +1704,6 @@ function CMSSingleRowEditor({
                       placeholder="16"
                       helperText="Horizontal gap between columns in this row (Default: 16px)."
                     />
-                  </div>
-                )}
-
-                {/* MOBILE DISPLAY CONTROL (Phones & Small screens) */}
-                {onUpdateMobileColumns && (
-                  <div className="flex flex-col gap-1.5 bg-neutral-900/80 border border-white/10 p-3 rounded-xl text-xs justify-between">
-                    <div className="flex items-center justify-between">
-                      <span className="text-brand-green font-bold uppercase text-[10px] tracking-wider flex items-center gap-1">
-                        📱 Mobile Layout (Phones):
-                      </span>
-                      <span className="text-[9px] font-mono text-neutral-400">Responsive</span>
-                    </div>
-                    <select
-                      value={mobileColumns || "auto"}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        if (val === "auto" || val === "same") {
-                          onUpdateMobileColumns(val);
-                        } else {
-                          onUpdateMobileColumns(Number(val));
-                        }
-                      }}
-                      className="w-full bg-neutral-950 border border-white/20 text-white rounded-lg px-2.5 py-1.5 text-xs font-bold cursor-pointer focus:outline-none focus:border-brand-green"
-                    >
-                      <option value="auto">⚡ Automatic Smart Responsive</option>
-                      <option value={1}>1 Column on Mobile (Stacked 100%)</option>
-                      <option value={2}>2 Columns on Mobile (2 Grid)</option>
-                      <option value="same">Keep Same as Desktop</option>
-                    </select>
-                    <span className="text-[8.5px] text-neutral-400 leading-tight">
-                      Controls how multiple images in this row wrap on mobile screens.
-                    </span>
                   </div>
                 )}
               </div>
@@ -3628,14 +3597,20 @@ export function AdminCMS() {
   // COLLAPSIBLE SECTIONS STATE (Subpage image sections)
   const [collapsedSectionIndices, setCollapsedSectionIndices] = useState<Record<number, boolean>>({});
 
-  // COLLAPSIBLE ACCORDIONS FOR PROJECT CORE GROUPS
+  // COLLAPSIBLE ACCORDIONS FOR PROJECT CORE GROUPS (Collapsed by default)
   const [collapsedProjectGroups, setCollapsedProjectGroups] = useState<{
     identity?: boolean;
     catalogCard?: boolean;
     metaInfo?: boolean;
     headerVideos?: boolean;
     storyDescription?: boolean;
-  }>({});
+  }>({
+    identity: true,
+    catalogCard: true,
+    metaInfo: true,
+    headerVideos: true,
+    storyDescription: true,
+  });
 
   const toggleProjectGroupCollapse = (groupKey: "identity" | "catalogCard" | "metaInfo" | "headerVideos" | "storyDescription") => {
     setCollapsedProjectGroups((prev) => ({
@@ -3661,6 +3636,90 @@ export function AdminCMS() {
       metaInfo: false,
       headerVideos: false,
       storyDescription: false,
+    });
+  };
+
+  // COLLAPSIBLE ACCORDIONS FOR HOMEPAGE CORE GROUPS (Collapsed by default)
+  const [collapsedHomeGroups, setCollapsedHomeGroups] = useState<{
+    visibilityAndTitles?: boolean;
+    showreel?: boolean;
+    hero?: boolean;
+    contact?: boolean;
+    socials?: boolean;
+  }>({
+    visibilityAndTitles: true,
+    showreel: true,
+    hero: true,
+    contact: true,
+    socials: true,
+  });
+
+  const toggleHomeGroupCollapse = (groupKey: "visibilityAndTitles" | "showreel" | "hero" | "contact" | "socials") => {
+    setCollapsedHomeGroups((prev) => ({
+      ...prev,
+      [groupKey]: !prev[groupKey],
+    }));
+  };
+
+  const collapseAllHomeGroups = () => {
+    setCollapsedHomeGroups({
+      visibilityAndTitles: true,
+      showreel: true,
+      hero: true,
+      contact: true,
+      socials: true,
+    });
+  };
+
+  const expandAllHomeGroups = () => {
+    setCollapsedHomeGroups({
+      visibilityAndTitles: false,
+      showreel: false,
+      hero: false,
+      contact: false,
+      socials: false,
+    });
+  };
+
+  // COLLAPSIBLE ACCORDIONS FOR ABOUT ME CORE GROUPS (Collapsed by default)
+  const [collapsedAboutGroups, setCollapsedAboutGroups] = useState<{
+    profilePicture?: boolean;
+    resume?: boolean;
+    bioParagraphs?: boolean;
+    programs?: boolean;
+    socials?: boolean;
+  }>({
+    profilePicture: true,
+    resume: true,
+    bioParagraphs: true,
+    programs: true,
+    socials: true,
+  });
+
+  const toggleAboutGroupCollapse = (groupKey: "profilePicture" | "resume" | "bioParagraphs" | "programs" | "socials") => {
+    setCollapsedAboutGroups((prev) => ({
+      ...prev,
+      [groupKey]: !prev[groupKey],
+    }));
+  };
+
+  const collapseAllAboutGroups = () => {
+    setCollapsedAboutGroups({
+      profilePicture: true,
+      resume: true,
+      bioParagraphs: true,
+      programs: true,
+      socials: true,
+    });
+  };
+
+  const expandAllAboutGroups = () => {
+    setCollapsedAboutGroups({
+      profilePicture: false,
+      resume: false,
+      bioParagraphs: false,
+      programs: false,
+      socials: false,
     });
   };
 
@@ -3806,6 +3865,13 @@ export function AdminCMS() {
         customFields: initialCustomFields,
         gifModes: detailProj?.gifModes || (briefProj as any)?.gifModes || {},
       });
+      setCollapsedProjectGroups({
+        identity: true,
+        catalogCard: true,
+        metaInfo: true,
+        headerVideos: true,
+        storyDescription: true,
+      });
       setSelectedProjectId(id);
       setIsCreatingNewProject(false);
     }
@@ -3837,6 +3903,13 @@ export function AdminCMS() {
       ],
       sections: [],
     } as any);
+    setCollapsedProjectGroups({
+      identity: true,
+      catalogCard: true,
+      metaInfo: true,
+      headerVideos: true,
+      storyDescription: true,
+    });
     setSelectedProjectId(null);
     setIsCreatingNewProject(true);
   };
@@ -4752,341 +4825,530 @@ export function AdminCMS() {
                 exit={{ opacity: 0 }}
                 className="flex flex-col gap-6 text-left"
               >
-                <div>
-                  <h1 className="font-bebas text-4xl tracking-widest text-white">HOME VIEW CONTROLLER</h1>
-                  <p className="text-neutral-400 text-xs tracking-wider uppercase mt-1">Manage Hero Section, Contact CTA Graphics (myInfo.jpg & myInfo-Mobile.png), Showreel parameters, and Home Page Social Icons.</p>
+                {/* Header & Quick Controls Bar */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div>
+                    <h1 className="font-bebas text-4xl tracking-widest text-white">HOME VIEW CONTROLLER</h1>
+                    <p className="text-neutral-400 text-xs tracking-wider uppercase mt-1">
+                      Manage Hero Section, Showreel Video, Contact Graphic Banners, and Home Page Social Media Icons.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 self-start md:self-auto">
+                    <button
+                      type="button"
+                      onClick={expandAllHomeGroups}
+                      className="px-3.5 py-1.5 rounded-xl bg-neutral-900 border border-white/10 hover:border-brand-green text-neutral-300 hover:text-white text-[11px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
+                    >
+                      <Maximize2 size={13} className="text-brand-green" /> Expand All
+                    </button>
+                    <button
+                      type="button"
+                      onClick={collapseAllHomeGroups}
+                      className="px-3.5 py-1.5 rounded-xl bg-neutral-900 border border-white/10 hover:border-brand-green text-neutral-300 hover:text-white text-[11px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
+                    >
+                      <Minimize2 size={13} className="text-neutral-400" /> Collapse All
+                    </button>
+                  </div>
                 </div>
 
-                <div className="bg-neutral-950/40 border border-white/5 rounded-2xl p-6 flex flex-col gap-6">
-                  {/* SECTION VISIBILITY TOGGLES */}
-                  <div>
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green mb-1">
-                      1. HOME PAGE SECTIONS VISIBILITY (SHOW / HIDE)
-                    </h3>
-                    <p className="text-neutral-400 text-[10px] uppercase tracking-wider mb-4">
-                      Toggle sections on or off. Spacing and gaps will update automatically.
-                    </p>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-                      {[
-                        { key: "hero", label: "HERO GRAPHIC" },
-                        { key: "showreel", label: "SHOWREEL" },
-                        { key: "featuredWork", label: "FEATURED WORK" },
-                        { key: "services", label: "SERVICES" },
-                        { key: "contactCta", label: "CONTACT CTA" },
-                        { key: "socials", label: "SOCIALS" },
-                      ].map((sec) => {
-                        const isVisible = (data.homeVisibility || {})[sec.key as keyof import("../types/cms").HomeSectionVisibility] !== false;
-                        return (
-                          <label
-                            key={sec.key}
-                            className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-2 cursor-pointer transition-all ${
-                              isVisible
-                                ? "bg-brand-green/10 border-brand-green/40 text-white"
-                                : "bg-neutral-900/40 border-white/5 text-neutral-500"
-                            }`}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={isVisible}
-                              onChange={(e) => {
-                                const val = e.target.checked;
-                                updateData((prev) => ({
-                                  ...prev,
-                                  homeVisibility: { ...(prev.homeVisibility || {}), [sec.key]: val },
-                                }), "Toggle Section", `Set ${sec.label} visibility to ${val}`);
-                              }}
-                              className="accent-brand-green w-4 h-4 rounded cursor-pointer"
-                            />
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-center">{sec.label}</span>
+                <div className="flex flex-col gap-4">
+                  {/* ────────────────────────────────────────────────
+                      1. SECTIONS VISIBILITY & TITLES
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleHomeGroupCollapse("visibilityAndTitles")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          1
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            1. SECTIONS VISIBILITY & TITLES
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Show or hide homepage sections and edit their titles
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedHomeGroups.visibilityAndTitles ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedHomeGroups.visibilityAndTitles ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
+                    </div>
+
+                    {!collapsedHomeGroups.visibilityAndTitles && (
+                      <div className="p-5 flex flex-col gap-6 bg-neutral-950/40">
+                        {/* Section Visibility Checkboxes */}
+                        <div className="flex flex-col gap-2.5">
+                          <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
+                            SECTIONS VISIBILITY (SHOW / HIDE)
                           </label>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* SECTION TITLES EDITOR */}
-                  <div className="pt-4 border-t border-white/5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green mb-1">
-                      2. HOME PAGE SECTION HEADINGS
-                    </h3>
-                    <p className="text-neutral-400 text-[10px] uppercase tracking-wider mb-4">
-                      Customize section header titles displayed on the home view.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">SHOWREEL TITLE (OPTIONAL)</label>
-                        <input
-                          type="text"
-                          value={data.homeTitles?.showreel || ""}
-                          placeholder="Optional title above showreel"
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            updateData((prev) => ({
-                              ...prev,
-                              homeTitles: { ...(prev.homeTitles || {}), showreel: val },
-                            }), "Edit Section Title", `Updated Showreel title to ${val}`);
-                          }}
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">FEATURED WORK TITLE</label>
-                        <input
-                          type="text"
-                          value={data.homeTitles?.featuredWork ?? "FEATURED WORK"}
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            updateData((prev) => ({
-                              ...prev,
-                              homeTitles: { ...(prev.homeTitles || {}), featuredWork: val },
-                            }), "Edit Section Title", `Updated Featured Work title to ${val}`);
-                          }}
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">SERVICES & EXPERTISE TITLE</label>
-                        <input
-                          type="text"
-                          value={data.homeTitles?.services ?? "SERVICES & EXPERTISE"}
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            updateData((prev) => ({
-                              ...prev,
-                              homeTitles: { ...(prev.homeTitles || {}), services: val },
-                            }), "Edit Section Title", `Updated Services title to ${val}`);
-                          }}
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">SOCIALS SECTION TITLE</label>
-                        <input
-                          type="text"
-                          value={data.homeTitles?.socials ?? "I'M ALL OVER THE INTERNET"}
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            updateData((prev) => ({
-                              ...prev,
-                              homeTitles: { ...(prev.homeTitles || {}), socials: val },
-                            }), "Edit Section Title", `Updated Socials title to ${val}`);
-                          }}
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* HERO GRAPHICS */}
-                  <div className="pt-4 border-t border-white/5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green mb-3">3. HERO GRAPHICS</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <CMSImageField
-                        label="HERO GRAPHIC PATH (Desktop SVG/PNG)"
-                        value={data.heroImage || ""}
-                        onChange={(val) => updateData((prev) => ({ ...prev, heroImage: val }), "Hero Image Edit", `Updated hero image path to ${val}`)}
-                        recommendedText="Recommended: Widescreen vector SVG or high-res PNG transparency"
-                      />
-                      <CMSImageField
-                        label="HERO MOBILE GRAPHIC PATH (Mobile PNG)"
-                        value={data.heroImageMobile || ""}
-                        onChange={(val) => updateData((prev) => ({ ...prev, heroImageMobile: val }), "Hero Mobile Edit", `Updated hero mobile graphic path to ${val}`)}
-                        recommendedText="Recommended: Portrait/mobile ratio PNG graphic"
-                      />
-                    </div>
-                  </div>
-
-                  {/* CONTACT CTA GRAPHICS (myInfo.jpg & myInfo-Mobile.png) */}
-                  <div className="pt-4 border-t border-white/5">
-                    <div className="mb-3">
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green">4. CONTACT CTA GRAPHICS (myInfo.jpg & myInfo-Mobile.png)</h3>
-                      <p className="text-neutral-400 text-[10px] uppercase tracking-wider mt-0.5">Control the contact section graphic displayed on the Home Page. Upload new images or change paths directly.</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <CMSImageField
-                        label="DESKTOP CONTACT GRAPHIC (myInfo.jpg)"
-                        value={data.myInfo || ""}
-                        onChange={(val) => updateData((prev) => ({ ...prev, myInfo: val }), "Contact Graphic Edit", `Updated contact graphic path to ${val}`)}
-                        recommendedText="Recommended: Widescreen info graphic layout (1200px+ width)"
-                      />
-                      <CMSImageField
-                        label="MOBILE CONTACT GRAPHIC (myInfo-Mobile.png)"
-                        value={data.myInfoMobile || ""}
-                        onChange={(val) => updateData((prev) => ({ ...prev, myInfoMobile: val }), "Contact Mobile Graphic Edit", `Updated contact mobile graphic path to ${val}`)}
-                        recommendedText="Recommended: Mobile portrait layout (640px max-width breakpoint)"
-                      />
-                    </div>
-                  </div>
-
-                  {/* SHOWREEL VIDEO & COVER */}
-                  <div className="pt-4 border-t border-white/5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green mb-3">5. SHOWREEL VIDEO & THUMBNAIL</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-2">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">SHOWREEL VIDEO URL (Vimeo/YouTube)</label>
-                        <input
-                          type="text"
-                          value={data?.showreel?.videoUrl || ""}
-                          onChange={(e) => updateData((prev) => ({ ...prev, showreel: { ...prev.showreel, videoUrl: e.target.value } }), "Showreel Video Edit", "Modified Vimeo/YT showreel URL")}
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-green font-mono text-xs"
-                        />
-                      </div>
-                      <CMSImageField
-                        label="SHOWREEL THUMBNAIL COVER PATH"
-                        value={data?.showreel?.thumbnail || ""}
-                        onChange={(val) => updateData((prev) => ({ ...prev, showreel: { ...prev.showreel, thumbnail: val } }), "Showreel Cover Edit", "Modified showreel image cover")}
-                      />
-                    </div>
-                  </div>
-
-                  {/* HOME PAGE SOCIAL LINKS */}
-                  <div className="flex flex-col gap-4 pt-5 border-t border-white/5">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <div>
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green">6. HOME PAGE SOCIAL MEDIA LINKS & ICONS</h3>
-                        <p className="text-neutral-400 text-[10px] uppercase tracking-wider mt-0.5">Control social networks shown specifically on the Main/Home page ("I'm All Over The Internet"). Use arrows to reorder.</p>
-                      </div>
-                      <button
-                        onClick={() => {
-                          const newLink = { name: "NEW SOCIAL", href: "https://", icon: "/src/assets/Icons/Icon-LinkedIn-Color.svg" };
-                          updateData((prev) => ({ ...prev, socials: [...(prev.socials || []), newLink] }), "Add Home Social", "Appended a new social network profile to home page");
-                        }}
-                        className="px-3.5 py-2 rounded-xl bg-brand-green text-brand-black text-[11px] uppercase font-bold cursor-pointer hover:scale-105 transition-all self-start sm:self-auto flex items-center gap-1.5"
-                      >
-                        <Plus size={14} /> Add Home Social Link
-                      </button>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {(data.socials || []).map((soc, sIdx) => {
-                        const totalCount = (data.socials || []).length;
-                        return (
-                          <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3.5 relative">
-                            {/* Header: Badge & Reordering + Delete Actions */}
-                            <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
-                              <div className="flex items-center gap-2">
-                                <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-mono text-[10px] font-bold">
-                                  #{sIdx + 1}
-                                </span>
-                                <span className="text-xs font-bold text-white uppercase tracking-wider truncate max-w-[140px] sm:max-w-[200px]">
-                                  {soc.name || "Untitled Social"}
-                                </span>
-                              </div>
-
-                              <div className="flex items-center gap-1">
-                                {/* Move Up */}
-                                <button
-                                  type="button"
-                                  disabled={sIdx === 0}
-                                  onClick={() => {
-                                    if (sIdx === 0) return;
-                                    const list = [...(data.socials || [])];
-                                    const temp = list[sIdx];
-                                    list[sIdx] = list[sIdx - 1];
-                                    list[sIdx - 1] = temp;
-                                    updateData(
-                                      (prev) => ({ ...prev, socials: list }),
-                                      "Reorder Home Socials",
-                                      `Moved ${temp.name} up to position #${sIdx}`
-                                    );
-                                  }}
-                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
-                                  title="Move Up"
+                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                            {[
+                              { key: "hero", label: "HERO GRAPHIC" },
+                              { key: "showreel", label: "SHOWREEL" },
+                              { key: "featuredWork", label: "FEATURED WORK" },
+                              { key: "services", label: "SERVICES" },
+                              { key: "contactCta", label: "CONTACT CTA" },
+                              { key: "socials", label: "SOCIALS" },
+                            ].map((sec) => {
+                              const isVisible = (data.homeVisibility || {})[sec.key as keyof import("../types/cms").HomeSectionVisibility] !== false;
+                              return (
+                                <label
+                                  key={sec.key}
+                                  className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-2 cursor-pointer transition-all ${
+                                    isVisible
+                                      ? "bg-brand-green/10 border-brand-green/40 text-white"
+                                      : "bg-neutral-900/40 border-white/5 text-neutral-500"
+                                  }`}
                                 >
-                                  <ArrowUp size={13} />
-                                </button>
+                                  <input
+                                    type="checkbox"
+                                    checked={isVisible}
+                                    onChange={(e) => {
+                                      const val = e.target.checked;
+                                      updateData((prev) => ({
+                                        ...prev,
+                                        homeVisibility: { ...(prev.homeVisibility || {}), [sec.key]: val },
+                                      }), "Toggle Section", `Set ${sec.label} visibility to ${val}`);
+                                    }}
+                                    className="accent-brand-green w-4 h-4 rounded cursor-pointer"
+                                  />
+                                  <span className="text-[10px] font-bold uppercase tracking-wider text-center">{sec.label}</span>
+                                </label>
+                              );
+                            })}
+                          </div>
+                        </div>
 
-                                {/* Move Down */}
-                                <button
-                                  type="button"
-                                  disabled={sIdx === totalCount - 1}
-                                  onClick={() => {
-                                    if (sIdx >= totalCount - 1) return;
-                                    const list = [...(data.socials || [])];
-                                    const temp = list[sIdx];
-                                    list[sIdx] = list[sIdx + 1];
-                                    list[sIdx + 1] = temp;
-                                    updateData(
-                                      (prev) => ({ ...prev, socials: list }),
-                                      "Reorder Home Socials",
-                                      `Moved ${temp.name} down to position #${sIdx + 2}`
-                                    );
-                                  }}
-                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
-                                  title="Move Down"
-                                >
-                                  <ArrowDown size={13} />
-                                </button>
-
-                                {/* Delete */}
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    const list = [...(data.socials || [])];
-                                    list.splice(sIdx, 1);
-                                    updateData(
-                                      (prev) => ({ ...prev, socials: list }),
-                                      "Delete Home Social",
-                                      `Deleted social link ${soc.name}`
-                                    );
-                                  }}
-                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-500 hover:text-red-400 hover:border-red-500/50 cursor-pointer transition-all ml-1"
-                                  title="Delete Social Link"
-                                >
-                                  <Trash2 size={13} />
-                                </button>
-                              </div>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                              <div className="flex flex-col gap-1">
-                                <label className="text-[9px] text-neutral-400 font-bold uppercase">Platform Name</label>
-                                <input
-                                  type="text"
-                                  placeholder="e.g. Instagram, LinkedIn"
-                                  value={soc.name}
-                                  onChange={(e) => {
-                                    const list = [...(data.socials || [])];
-                                    list[sIdx] = { ...list[sIdx], name: e.target.value };
-                                    updateData((prev) => ({ ...prev, socials: list }), "Edit Social Name", `Updated ${soc.name} name`);
-                                  }}
-                                  className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
-                                />
-                              </div>
-                              <div className="flex flex-col gap-1">
-                                <label className="text-[9px] text-neutral-400 font-bold uppercase">Profile URL / Link</label>
-                                <input
-                                  type="text"
-                                  placeholder="https://..."
-                                  value={soc.href}
-                                  onChange={(e) => {
-                                    const list = [...(data.socials || [])];
-                                    list[sIdx] = { ...list[sIdx], href: e.target.value };
-                                    updateData((prev) => ({ ...prev, socials: list }), "Edit Social Link", `Updated ${soc.name} URL`);
-                                  }}
-                                  className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs font-mono text-white focus:outline-none focus:border-brand-green"
-                                />
-                              </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                              <CMSImageField
-                                label="Social Media Icon (Icon Path / Image)"
-                                value={soc.icon || ""}
-                                onChange={(val) => {
-                                  const list = [...(data.socials || [])];
-                                  list[sIdx] = { ...list[sIdx], icon: val };
-                                  updateData((prev) => ({ ...prev, socials: list }), "Edit Social Icon", `Updated ${soc.name} icon image`);
+                        {/* Section Titles */}
+                        <div className="flex flex-col gap-2.5 pt-4 border-t border-white/5">
+                          <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
+                            HOMEPAGE SECTION HEADINGS
+                          </label>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                            <div className="flex flex-col gap-1.5">
+                              <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">SHOWREEL TITLE (OPTIONAL)</label>
+                              <input
+                                type="text"
+                                value={data.homeTitles?.showreel || ""}
+                                placeholder="Optional title above showreel"
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  updateData((prev) => ({
+                                    ...prev,
+                                    homeTitles: { ...(prev.homeTitles || {}), showreel: val },
+                                  }), "Edit Section Title", `Updated Showreel title to ${val}`);
                                 }}
+                                className="w-full bg-neutral-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
+                              />
+                            </div>
+
+                            <div className="flex flex-col gap-1.5">
+                              <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">FEATURED WORK TITLE</label>
+                              <input
+                                type="text"
+                                value={data.homeTitles?.featuredWork ?? "FEATURED WORK"}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  updateData((prev) => ({
+                                    ...prev,
+                                    homeTitles: { ...(prev.homeTitles || {}), featuredWork: val },
+                                  }), "Edit Section Title", `Updated Featured Work title to ${val}`);
+                                }}
+                                className="w-full bg-neutral-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
+                              />
+                            </div>
+
+                            <div className="flex flex-col gap-1.5">
+                              <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">SERVICES & EXPERTISE TITLE</label>
+                              <input
+                                type="text"
+                                value={data.homeTitles?.services ?? "SERVICES & EXPERTISE"}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  updateData((prev) => ({
+                                    ...prev,
+                                    homeTitles: { ...(prev.homeTitles || {}), services: val },
+                                  }), "Edit Section Title", `Updated Services title to ${val}`);
+                                }}
+                                className="w-full bg-neutral-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
+                              />
+                            </div>
+
+                            <div className="flex flex-col gap-1.5">
+                              <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">SOCIALS SECTION TITLE</label>
+                              <input
+                                type="text"
+                                value={data.homeTitles?.socials ?? "I'M ALL OVER THE INTERNET"}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  updateData((prev) => ({
+                                    ...prev,
+                                    homeTitles: { ...(prev.homeTitles || {}), socials: val },
+                                  }), "Edit Section Title", `Updated Socials title to ${val}`);
+                                }}
+                                className="w-full bg-neutral-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-mono"
                               />
                             </div>
                           </div>
-                        );
-                      })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ────────────────────────────────────────────────
+                      2. SHOWREEL VIDEO
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleHomeGroupCollapse("showreel")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          2
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            2. SHOWREEL VIDEO
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Main homepage showreel video link and cover thumbnail
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedHomeGroups.showreel ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedHomeGroups.showreel ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
                     </div>
+
+                    {!collapsedHomeGroups.showreel && (
+                      <div className="p-5 flex flex-col gap-4 bg-neutral-950/40">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                          <div className="flex flex-col gap-2">
+                            <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">SHOWREEL VIDEO URL (Vimeo/YouTube)</label>
+                            <input
+                              type="text"
+                              value={data?.showreel?.videoUrl || ""}
+                              placeholder="e.g. https://vimeo.com/... or https://youtube.com/watch?v=..."
+                              onChange={(e) => updateData((prev) => ({ ...prev, showreel: { ...prev.showreel, videoUrl: e.target.value } }), "Showreel Video Edit", "Modified Vimeo/YT showreel URL")}
+                              className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green font-mono text-xs"
+                            />
+                          </div>
+                          <CMSImageField
+                            label="SHOWREEL THUMBNAIL COVER PATH"
+                            value={data?.showreel?.thumbnail || ""}
+                            onChange={(val) => updateData((prev) => ({ ...prev, showreel: { ...prev.showreel, thumbnail: val } }), "Showreel Cover Edit", "Modified showreel image cover")}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ────────────────────────────────────────────────
+                      3. HERO PICTURE DESKTOP & PHONE
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleHomeGroupCollapse("hero")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          3
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            3. HERO PICTURE DESKTOP & PHONE
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Hero illustration graphics for desktop and mobile screens
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedHomeGroups.hero ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedHomeGroups.hero ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
+                    </div>
+
+                    {!collapsedHomeGroups.hero && (
+                      <div className="p-5 flex flex-col gap-4 bg-neutral-950/40">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                          <CMSImageField
+                            label="HERO GRAPHIC PATH (Desktop SVG/PNG)"
+                            value={data.heroImage || ""}
+                            onChange={(val) => updateData((prev) => ({ ...prev, heroImage: val }), "Hero Image Edit", `Updated hero image path to ${val}`)}
+                            recommendedText="Recommended: Widescreen vector SVG or high-res PNG transparency"
+                          />
+                          <CMSImageField
+                            label="HERO MOBILE GRAPHIC PATH (Mobile PNG)"
+                            value={data.heroImageMobile || ""}
+                            onChange={(val) => updateData((prev) => ({ ...prev, heroImageMobile: val }), "Hero Mobile Edit", `Updated hero mobile graphic path to ${val}`)}
+                            recommendedText="Recommended: Portrait/mobile ratio PNG graphic"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ────────────────────────────────────────────────
+                      4. CONTACT PICTURE DESKTOP & PHONE
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleHomeGroupCollapse("contact")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          4
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            4. CONTACT PICTURE DESKTOP & PHONE
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Contact banners for desktop (myInfo.jpg) and mobile (myInfo-Mobile.png)
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedHomeGroups.contact ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedHomeGroups.contact ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
+                    </div>
+
+                    {!collapsedHomeGroups.contact && (
+                      <div className="p-5 flex flex-col gap-4 bg-neutral-950/40">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                          <CMSImageField
+                            label="DESKTOP CONTACT GRAPHIC (myInfo.jpg)"
+                            value={data.myInfo || ""}
+                            onChange={(val) => updateData((prev) => ({ ...prev, myInfo: val }), "Contact Graphic Edit", `Updated contact graphic path to ${val}`)}
+                            recommendedText="Recommended: Widescreen info graphic layout (1200px+ width)"
+                          />
+                          <CMSImageField
+                            label="MOBILE CONTACT GRAPHIC (myInfo-Mobile.png)"
+                            value={data.myInfoMobile || ""}
+                            onChange={(val) => updateData((prev) => ({ ...prev, myInfoMobile: val }), "Contact Mobile Graphic Edit", `Updated contact mobile graphic path to ${val}`)}
+                            recommendedText="Recommended: Mobile portrait layout (640px max-width breakpoint)"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ────────────────────────────────────────────────
+                      5. SOCIAL MEDIA LINKS & ICONS
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleHomeGroupCollapse("socials")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          5
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            5. SOCIAL MEDIA LINKS & ICONS
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Manage social media profiles, links, and icons (I'm All Over The Internet)
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedHomeGroups.socials ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedHomeGroups.socials ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
+                    </div>
+
+                    {!collapsedHomeGroups.socials && (
+                      <div className="p-5 flex flex-col gap-4 bg-neutral-950/40">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/5">
+                          <p className="text-neutral-400 text-[10px] uppercase tracking-wider">
+                            Control social networks shown specifically on the Main/Home page ("I'm All Over The Internet"). Use arrows to reorder.
+                          </p>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newLink = { name: "NEW SOCIAL", href: "https://", icon: "/src/assets/Icons/Icon-LinkedIn-Color.svg" };
+                              updateData((prev) => ({ ...prev, socials: [...(prev.socials || []), newLink] }), "Add Home Social", "Appended a new social network profile to home page");
+                            }}
+                            className="px-3.5 py-2 rounded-xl bg-brand-green text-brand-black text-[11px] uppercase font-bold cursor-pointer hover:scale-105 transition-all self-start sm:self-auto flex items-center gap-1.5 shadow-sm"
+                          >
+                            <Plus size={14} /> Add Home Social Link
+                          </button>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {(data.socials || []).map((soc, sIdx) => {
+                            const totalCount = (data.socials || []).length;
+                            return (
+                              <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3.5 relative">
+                                {/* Header: Badge & Reordering + Delete Actions */}
+                                <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
+                                  <div className="flex items-center gap-2">
+                                    <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-mono text-[10px] font-bold">
+                                      #{sIdx + 1}
+                                    </span>
+                                    <span className="text-xs font-bold text-white uppercase tracking-wider truncate max-w-[140px] sm:max-w-[200px]">
+                                      {soc.name || "Untitled Social"}
+                                    </span>
+                                  </div>
+
+                                  <div className="flex items-center gap-1">
+                                    {/* Move Up */}
+                                    <button
+                                      type="button"
+                                      disabled={sIdx === 0}
+                                      onClick={() => {
+                                        if (sIdx === 0) return;
+                                        const list = [...(data.socials || [])];
+                                        const temp = list[sIdx];
+                                        list[sIdx] = list[sIdx - 1];
+                                        list[sIdx - 1] = temp;
+                                        updateData(
+                                          (prev) => ({ ...prev, socials: list }),
+                                          "Reorder Home Socials",
+                                          `Moved ${temp.name} up to position #${sIdx}`
+                                        );
+                                      }}
+                                      className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                      title="Move Up"
+                                    >
+                                      <ArrowUp size={13} />
+                                    </button>
+
+                                    {/* Move Down */}
+                                    <button
+                                      type="button"
+                                      disabled={sIdx === totalCount - 1}
+                                      onClick={() => {
+                                        if (sIdx >= totalCount - 1) return;
+                                        const list = [...(data.socials || [])];
+                                        const temp = list[sIdx];
+                                        list[sIdx] = list[sIdx + 1];
+                                        list[sIdx + 1] = temp;
+                                        updateData(
+                                          (prev) => ({ ...prev, socials: list }),
+                                          "Reorder Home Socials",
+                                          `Moved ${temp.name} down to position #${sIdx + 2}`
+                                        );
+                                      }}
+                                      className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                      title="Move Down"
+                                    >
+                                      <ArrowDown size={13} />
+                                    </button>
+
+                                    {/* Delete */}
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        const list = [...(data.socials || [])];
+                                        list.splice(sIdx, 1);
+                                        updateData(
+                                          (prev) => ({ ...prev, socials: list }),
+                                          "Delete Home Social",
+                                          `Deleted social link ${soc.name}`
+                                        );
+                                      }}
+                                      className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-500 hover:text-red-400 hover:border-red-500/50 cursor-pointer transition-all ml-1"
+                                      title="Delete Social Link"
+                                    >
+                                      <Trash2 size={13} />
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                  <div className="flex flex-col gap-1">
+                                    <label className="text-[9px] text-neutral-400 font-bold uppercase">Platform Name</label>
+                                    <input
+                                      type="text"
+                                      placeholder="e.g. Instagram, LinkedIn"
+                                      value={soc.name}
+                                      onChange={(e) => {
+                                        const list = [...(data.socials || [])];
+                                        list[sIdx] = { ...list[sIdx], name: e.target.value };
+                                        updateData((prev) => ({ ...prev, socials: list }), "Edit Social Name", `Updated ${soc.name} name`);
+                                      }}
+                                      className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
+                                    />
+                                  </div>
+                                  <div className="flex flex-col gap-1">
+                                    <label className="text-[9px] text-neutral-400 font-bold uppercase">Profile URL / Link</label>
+                                    <input
+                                      type="text"
+                                      placeholder="https://..."
+                                      value={soc.href}
+                                      onChange={(e) => {
+                                        const list = [...(data.socials || [])];
+                                        list[sIdx] = { ...list[sIdx], href: e.target.value };
+                                        updateData((prev) => ({ ...prev, socials: list }), "Edit Social Link", `Updated ${soc.name} URL`);
+                                      }}
+                                      className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs font-mono text-white focus:outline-none focus:border-brand-green"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                  <CMSImageField
+                                    label="Social Media Icon (Icon Path / Image)"
+                                    value={soc.icon || ""}
+                                    onChange={(val) => {
+                                      const list = [...(data.socials || [])];
+                                      list[sIdx] = { ...list[sIdx], icon: val };
+                                      updateData((prev) => ({ ...prev, socials: list }), "Edit Social Icon", `Updated ${soc.name} icon image`);
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -5340,7 +5602,7 @@ export function AdminCMS() {
                                 1. PROJECT NAME & CATEGORIES
                               </span>
                               <span className="text-[10px] text-neutral-400">
-                                Project title, direct URL link, and category tags ({(projectEditForm.categories || []).join(", ") || "None"})
+                                Project title and category tags ({(projectEditForm.categories || []).join(", ") || "None"})
                               </span>
                             </div>
                           </div>
@@ -5354,27 +5616,14 @@ export function AdminCMS() {
 
                         {!collapsedProjectGroups.identity && (
                           <div className="p-4 flex flex-col gap-4">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                              <div className="flex flex-col gap-2">
-                                <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">PROJECT NAME</label>
-                                <input
-                                  type="text"
-                                  value={projectEditForm.title || ""}
-                                  onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, title: e.target.value }))}
-                                  className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
-                                />
-                              </div>
-
-                              <div className="flex flex-col gap-2">
-                                <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">DIRECT URL LINK (OPTIONAL)</label>
-                                <input
-                                  type="text"
-                                  value={projectEditForm.link || ""}
-                                  onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, link: e.target.value }))}
-                                  placeholder="e.g. https://behance.net/..."
-                                  className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green font-mono text-[11px]"
-                                />
-                              </div>
+                            <div className="flex flex-col gap-2">
+                              <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">PROJECT NAME</label>
+                              <input
+                                type="text"
+                                value={projectEditForm.title || ""}
+                                onChange={(e) => setProjectEditForm((prev: any) => ({ ...prev, title: e.target.value }))}
+                                className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
+                              />
                             </div>
 
                             {/* CATEGORIES SELECTION (MULTIPLE CATEGORY TAGS SUPPORT) */}
@@ -6454,439 +6703,647 @@ export function AdminCMS() {
                 exit={{ opacity: 0 }}
                 className="flex flex-col gap-6 text-left"
               >
-                <div>
-                  <h1 className="font-bebas text-4xl tracking-widest text-white">ABOUT ME CONFIGURATION</h1>
-                  <p className="text-neutral-400 text-xs tracking-wider uppercase mt-1">Control your biography paragraphs, technical skills bars, profile photo, and About page social media links.</p>
+                {/* Header & Quick Controls Bar */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div>
+                    <h1 className="font-bebas text-4xl tracking-widest text-white">ABOUT ME CONFIGURATION</h1>
+                    <p className="text-neutral-400 text-xs tracking-wider uppercase mt-1">
+                      Manage Profile Picture, Resume, Bio Paragraphs, Programs & Skills, and About Page Social Links.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 self-start md:self-auto">
+                    <button
+                      type="button"
+                      onClick={expandAllAboutGroups}
+                      className="px-3.5 py-1.5 rounded-xl bg-neutral-900 border border-white/10 hover:border-brand-green text-neutral-300 hover:text-white text-[11px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
+                    >
+                      <Maximize2 size={13} className="text-brand-green" /> Expand All
+                    </button>
+                    <button
+                      type="button"
+                      onClick={collapseAllAboutGroups}
+                      className="px-3.5 py-1.5 rounded-xl bg-neutral-900 border border-white/10 hover:border-brand-green text-neutral-300 hover:text-white text-[11px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
+                    >
+                      <Minimize2 size={13} className="text-neutral-400" /> Collapse All
+                    </button>
+                  </div>
                 </div>
 
-                <div className="bg-neutral-950/40 border border-white/5 rounded-2xl p-6 flex flex-col gap-5">
-                  {/* Photo Path & Headline */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <CMSImageField
-                      label="PROFILE IMAGE PATH"
-                      value={data.aboutMe.profileImage || ""}
-                      onChange={(val) =>
-                        updateData(
-                          (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, profileImage: val } }),
-                          "Profile Photo Edit",
-                          `Changed profile picture to ${val}`
-                        )
-                      }
-                      recommendedText="Recommended: Square portrait photo"
-                    />
-
-                    <div className="flex flex-col gap-2">
-                      <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">CREATIVE HEADLINE</label>
-                      <textarea
-                        rows={3}
-                        value={data.aboutMe.creativeHeadline}
-                        onChange={(e) =>
-                          updateData(
-                            (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, creativeHeadline: e.target.value } }),
-                            "Headline Edit",
-                            "Modified creative toolbox title headline"
-                          )
-                        }
-                        className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-green"
-                      />
+                <div className="flex flex-col gap-4">
+                  {/* ────────────────────────────────────────────────
+                      1. PROFILE PICTURE
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleAboutGroupCollapse("profilePicture")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          1
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            1. PROFILE PICTURE
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Profile photo image and sizing controls for desktop and mobile
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedAboutGroups.profilePicture ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedAboutGroups.profilePicture ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
                     </div>
 
-                    {/* PROFILE PHOTO DISPLAY DIMENSIONS CONTROLS */}
-                    <div className="col-span-full">
-                      <SpacingInputWithPresets
-                        label="🖼️ Profile Photo Sizing (Desktop Width & Mobile Max Width)"
-                        value={data.aboutMe.profileImageWidthDesktop || 440}
-                        onChange={(newVal) => {
-                          const val = newVal === "default" ? 440 : Number(newVal);
-                          updateData(
-                            (prev) => ({
-                              ...prev,
-                              aboutMe: { ...prev.aboutMe, profileImageWidthDesktop: val },
-                            }),
-                            "Profile Photo Desktop Width",
-                            `Set desktop profile photo width to ${val}px`
-                          );
-                        }}
-                        mobileValue={data.aboutMe.profileImageWidthMobile || 380}
-                        onMobileChange={(newVal) => {
-                          const val = newVal === "default" ? 380 : Number(newVal);
-                          updateData(
-                            (prev) => ({
-                              ...prev,
-                              aboutMe: { ...prev.aboutMe, profileImageWidthMobile: val },
-                            }),
-                            "Profile Photo Mobile Width",
-                            `Set mobile profile photo width to ${val}px`
-                          );
-                        }}
-                        storageKey="cms_custom_profile_photo_widths"
-                        placeholder="440"
-                        helperText="Maintains vertical alignment with top logo while scaling photo across desktop (Green) and mobile/tablet (Blue)."
-                      />
-                    </div>
-                  </div>
-
-                  {/* RESUME PDF & BUTTON TEXT */}
-                  <div className="pt-4 border-t border-white/5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green mb-3">MY RESUME (PDF DOCUMENT & BUTTON)</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-2">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">RESUME BUTTON TEXT</label>
-                        <input
-                          type="text"
-                          value={data.aboutMe.resumeButtonText || "My Resume"}
-                          onChange={(e) =>
+                    {!collapsedAboutGroups.profilePicture && (
+                      <div className="p-5 flex flex-col gap-5 bg-neutral-950/40">
+                        <CMSImageField
+                          label="PROFILE IMAGE PATH"
+                          value={data.aboutMe.profileImage || ""}
+                          onChange={(val) =>
                             updateData(
-                              (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, resumeButtonText: e.target.value } }),
-                              "Resume Label Edit",
-                              `Changed resume button text to ${e.target.value}`
+                              (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, profileImage: val } }),
+                              "Profile Photo Edit",
+                              `Changed profile picture to ${val}`
                             )
                           }
-                          className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-green"
+                          recommendedText="Recommended: Square portrait photo"
                         />
-                      </div>
 
-                      <CMSImageField
-                        label="RESUME PDF FILE UPLOAD OR URL"
-                        value={data.aboutMe.resumeUrl || ""}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, resumeUrl: val } }),
-                            "Resume PDF Edit",
-                            `Updated resume PDF document path to ${val}`
-                          )
-                        }
-                        recommendedText="Upload a PDF file or provide direct link to resume"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Bio Paragraphs list */}
-                  <div className="flex flex-col gap-3 pt-3 border-t border-white/5">
-                    <div className="flex items-center justify-between">
-                      <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Biography Paragraphs list</label>
-                      <button
-                        onClick={() =>
-                          updateData(
-                            (prev) => ({
-                              ...prev,
-                              aboutMe: {
-                                ...prev.aboutMe,
-                                paragraphs: [...prev.aboutMe.paragraphs, "A new story paragraph about my motion animations."],
-                              },
-                            }),
-                            "Add Biography Paragraph",
-                            "Appended a blank line to personal bio list"
-                          )
-                        }
-                        className="px-3 py-1 text-[10px] bg-neutral-900 border border-white/10 text-neutral-400 hover:text-white uppercase font-bold rounded cursor-pointer"
-                      >
-                        + Add Paragraph
-                      </button>
-                    </div>
-
-                    <div className="space-y-3.5">
-                      {data.aboutMe.paragraphs.map((pText, pIdx) => (
-                        <div key={pIdx} className="flex gap-2 items-start bg-neutral-900/50 p-2 rounded-xl border border-white/5">
-                          <textarea
-                            rows={3}
-                            value={pText}
-                            onChange={(e) => {
-                              const updatedBio = [...data.aboutMe.paragraphs];
-                              updatedBio[pIdx] = e.target.value;
+                        {/* PROFILE PHOTO SIZING (DESKTOP WIDTH & MOBILE MAX WIDTH) */}
+                        <div className="pt-4 border-t border-white/5">
+                          <SpacingInputWithPresets
+                            label="🖼️ PROFILE PHOTO SIZING (DESKTOP WIDTH & MOBILE MAX WIDTH)"
+                            value={data.aboutMe.profileImageWidthDesktop || 440}
+                            onChange={(newVal) => {
+                              const val = newVal === "default" ? 440 : Number(newVal);
                               updateData(
-                                (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, paragraphs: updatedBio } }),
-                                "Modify Paragraph",
-                                `Edited biography line entry ${pIdx}`
+                                (prev) => ({
+                                  ...prev,
+                                  aboutMe: { ...prev.aboutMe, profileImageWidthDesktop: val },
+                                }),
+                                "Profile Photo Desktop Width",
+                                `Set desktop profile photo width to ${val}px`
                               );
                             }}
-                            className="w-full bg-transparent border-none text-xs text-neutral-300 focus:outline-none resize-y py-1 px-2"
+                            mobileValue={data.aboutMe.profileImageWidthMobile || 380}
+                            onMobileChange={(newVal) => {
+                              const val = newVal === "default" ? 380 : Number(newVal);
+                              updateData(
+                                (prev) => ({
+                                  ...prev,
+                                  aboutMe: { ...prev.aboutMe, profileImageWidthMobile: val },
+                                }),
+                                "Profile Photo Mobile Width",
+                                `Set mobile profile photo width to ${val}px`
+                              );
+                            }}
+                            storageKey="cms_custom_profile_photo_widths"
+                            placeholder="440"
+                            helperText="Maintains vertical alignment with top logo while scaling photo across desktop (Green) and mobile/tablet (Blue)."
                           />
-                          <button
-                            onClick={() => {
-                              const updatedBio = [...data.aboutMe.paragraphs];
-                              updatedBio.splice(pIdx, 1);
-                              updateData(
-                                (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, paragraphs: updatedBio } }),
-                                "Delete Paragraph",
-                                "Removed a paragraph block from bio list"
-                              );
-                            }}
-                            className="text-red-400 hover:text-red-500 p-2 cursor-pointer"
-                          >
-                            <Trash2 size={13} />
-                          </button>
                         </div>
-                      ))}
-                    </div>
-
-                    {/* BIO TO EMAIL GAP CONTROLS (DESKTOP & MOBILE/TABLET) */}
-                    <div className="pt-4 border-t border-white/5">
-                      <SpacingInputWithPresets
-                        label="⬇️ Bio Description to Email Gap (Spacing)"
-                        value={data.aboutMe.bioEmailGapDesktop ?? 64}
-                        onChange={(newVal) => {
-                          const val = newVal === "default" ? 64 : Number(newVal);
-                          updateData(
-                            (prev) => ({
-                              ...prev,
-                              aboutMe: { ...prev.aboutMe, bioEmailGapDesktop: val },
-                            }),
-                            "Bio to Email Desktop Gap",
-                            `Set desktop bio-to-email spacing to ${val}px`
-                          );
-                        }}
-                        mobileValue={data.aboutMe.bioEmailGapMobile ?? 32}
-                        onMobileChange={(newVal) => {
-                          const val = newVal === "default" ? 32 : Number(newVal);
-                          updateData(
-                            (prev) => ({
-                              ...prev,
-                              aboutMe: { ...prev.aboutMe, bioEmailGapMobile: val },
-                            }),
-                            "Bio to Email Mobile Gap",
-                            `Set mobile bio-to-email spacing to ${val}px`
-                          );
-                        }}
-                        storageKey="cms_custom_bio_email_spacings"
-                        placeholder="64"
-                        helperText="Controls the vertical space between the biography paragraphs and the Gmail / Email section (Desktop: Green, Mobile: Blue)."
-                      />
-                    </div>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Skills Editor */}
-                  <div className="flex flex-col gap-3 pt-4 border-t border-white/5">
-                    <div className="flex items-center justify-between">
-                      <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Toolbox software percentages</label>
-                      <button
-                        onClick={() =>
-                          updateData(
-                            (prev) => ({
-                              ...prev,
-                              aboutMe: {
-                                ...prev.aboutMe,
-                                skills: [
-                                  ...prev.aboutMe.skills,
-                                  { name: "Unreal Engine", desc: "Real-time 3D creation tool", percent: 50 },
-                                ],
-                              },
-                            }),
-                            "Add Tech Skill",
-                            "Added technology skill to profile list"
-                          )
-                        }
-                        className="px-3 py-1 text-[10px] bg-neutral-900 border border-white/10 text-neutral-400 hover:text-white uppercase font-bold rounded cursor-pointer"
-                      >
-                        + Add Software Skill
-                      </button>
+                  {/* ────────────────────────────────────────────────
+                      2. RESUME
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleAboutGroupCollapse("resume")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          2
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            2. RESUME
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Resume download button text and PDF document file or link
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedAboutGroups.resume ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedAboutGroups.resume ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {data.aboutMe.skills.map((skill, sIdx) => (
-                        <div key={sIdx} className="p-4 bg-neutral-900/50 border border-white/5 rounded-xl flex flex-col gap-3">
-                          <div className="flex items-center justify-between">
+                    {!collapsedAboutGroups.resume && (
+                      <div className="p-5 flex flex-col gap-4 bg-neutral-950/40">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                          <div className="flex flex-col gap-2">
+                            <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">RESUME BUTTON TEXT</label>
                             <input
                               type="text"
-                              value={skill.name}
-                              onChange={(e) => {
-                                const list = [...data.aboutMe.skills];
-                                list[sIdx].name = e.target.value;
-                                updateData((prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, skills: list } }));
-                              }}
-                              className="bg-transparent border-b border-white/15 focus:border-brand-green text-xs font-bold text-white focus:outline-none"
+                              value={data.aboutMe.resumeButtonText || "My Resume"}
+                              onChange={(e) =>
+                                updateData(
+                                  (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, resumeButtonText: e.target.value } }),
+                                  "Resume Label Edit",
+                                  `Changed resume button text to ${e.target.value}`
+                                )
+                              }
+                              className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-green"
                             />
+                          </div>
+
+                          <CMSImageField
+                            label="RESUME PDF FILE UPLOAD OR URL"
+                            value={data.aboutMe.resumeUrl || ""}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, resumeUrl: val } }),
+                                "Resume PDF Edit",
+                                `Updated resume PDF document path to ${val}`
+                              )
+                            }
+                            recommendedText="Upload a PDF file or provide direct link to resume"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ────────────────────────────────────────────────
+                      3. BIOGRAPHY PARAGRAPHS
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleAboutGroupCollapse("bioParagraphs")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          3
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            3. BIOGRAPHY PARAGRAPHS
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Personal bio paragraphs and spacing distance to the email section
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedAboutGroups.bioParagraphs ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedAboutGroups.bioParagraphs ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
+                    </div>
+
+                    {!collapsedAboutGroups.bioParagraphs && (
+                      <div className="p-5 flex flex-col gap-5 bg-neutral-950/40">
+                        {/* Bio Paragraphs list */}
+                        <div className="flex flex-col gap-3">
+                          <div className="flex items-center justify-between">
+                            <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Biography Paragraphs list</label>
                             <button
-                              onClick={() => {
-                                const list = [...data.aboutMe.skills];
-                                list.splice(sIdx, 1);
-                                updateData((prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, skills: list } }));
-                              }}
-                              className="text-red-400 hover:text-red-500 cursor-pointer"
+                              type="button"
+                              onClick={() =>
+                                updateData(
+                                  (prev) => ({
+                                    ...prev,
+                                    aboutMe: {
+                                      ...prev.aboutMe,
+                                      paragraphs: [...prev.aboutMe.paragraphs, "A new story paragraph about my motion animations."],
+                                    },
+                                  }),
+                                  "Add Biography Paragraph",
+                                  "Appended a blank line to personal bio list"
+                                )
+                              }
+                              className="px-3 py-1.5 text-[10px] bg-neutral-900 border border-white/10 hover:border-brand-green text-neutral-400 hover:text-white uppercase font-bold rounded-lg cursor-pointer transition-all flex items-center gap-1 shadow-sm"
                             >
-                              <Trash2 size={13} />
+                              <Plus size={13} className="text-brand-green" /> Add Paragraph
                             </button>
                           </div>
 
-                          <input
-                            type="text"
-                            value={skill.desc}
-                            onChange={(e) => {
-                              const list = [...data.aboutMe.skills];
-                              list[sIdx].desc = e.target.value;
-                              updateData((prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, skills: list } }));
-                            }}
-                            placeholder="Software details description"
-                            className="bg-transparent text-[11px] text-neutral-400 focus:outline-none"
-                          />
-
-                          <div className="flex items-center gap-3">
-                            <input
-                              type="range"
-                              min="0"
-                              max="100"
-                              value={skill.percent}
-                              onChange={(e) => {
-                                const list = [...data.aboutMe.skills];
-                                list[sIdx].percent = parseInt(e.target.value, 10);
-                                updateData((prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, skills: list } }));
-                              }}
-                              className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
-                            />
-                            <span className="text-xs font-bold text-brand-green w-8 text-right">{skill.percent}%</span>
+                          <div className="space-y-3">
+                            {data.aboutMe.paragraphs.map((pText, pIdx) => (
+                              <div key={pIdx} className="flex gap-2 items-start bg-neutral-900/60 p-3 rounded-xl border border-white/10">
+                                <textarea
+                                  rows={3}
+                                  value={pText}
+                                  onChange={(e) => {
+                                    const updatedBio = [...data.aboutMe.paragraphs];
+                                    updatedBio[pIdx] = e.target.value;
+                                    updateData(
+                                      (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, paragraphs: updatedBio } }),
+                                      "Modify Paragraph",
+                                      `Edited biography line entry ${pIdx}`
+                                    );
+                                  }}
+                                  className="w-full bg-transparent border-none text-xs text-neutral-200 focus:outline-none resize-y py-1 px-1 font-sans leading-relaxed"
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const updatedBio = [...data.aboutMe.paragraphs];
+                                    updatedBio.splice(pIdx, 1);
+                                    updateData(
+                                      (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, paragraphs: updatedBio } }),
+                                      "Delete Paragraph",
+                                      "Removed a paragraph block from bio list"
+                                    );
+                                  }}
+                                  className="text-neutral-500 hover:text-red-400 p-1.5 rounded-lg hover:bg-neutral-800 cursor-pointer transition-colors"
+                                  title="Delete Paragraph"
+                                >
+                                  <Trash2 size={14} />
+                                </button>
+                              </div>
+                            ))}
                           </div>
                         </div>
-                      ))}
-                    </div>
+
+                        {/* BIO TO EMAIL GAP CONTROLS (DESKTOP & MOBILE/TABLET) */}
+                        <div className="pt-4 border-t border-white/5">
+                          <SpacingInputWithPresets
+                            label="⬇️ Bio Description to Email Gap (Spacing)"
+                            value={data.aboutMe.bioEmailGapDesktop ?? 64}
+                            onChange={(newVal) => {
+                              const val = newVal === "default" ? 64 : Number(newVal);
+                              updateData(
+                                (prev) => ({
+                                  ...prev,
+                                  aboutMe: { ...prev.aboutMe, bioEmailGapDesktop: val },
+                                }),
+                                "Bio to Email Desktop Gap",
+                                `Set desktop bio-to-email spacing to ${val}px`
+                              );
+                            }}
+                            mobileValue={data.aboutMe.bioEmailGapMobile ?? 32}
+                            onMobileChange={(newVal) => {
+                              const val = newVal === "default" ? 32 : Number(newVal);
+                              updateData(
+                                (prev) => ({
+                                  ...prev,
+                                  aboutMe: { ...prev.aboutMe, bioEmailGapMobile: val },
+                                }),
+                                "Bio to Email Mobile Gap",
+                                `Set mobile bio-to-email spacing to ${val}px`
+                              );
+                            }}
+                            storageKey="cms_custom_bio_email_spacings"
+                            placeholder="64"
+                            helperText="Controls the vertical space between the biography paragraphs and the Gmail / Email section (Desktop: Green, Mobile: Blue)."
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  {/* ABOUT ME PAGE SOCIAL LINKS */}
-                  <div className="flex flex-col gap-4 pt-5 border-t border-white/5">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <div>
-                        <label className="text-xs font-bold text-brand-green uppercase tracking-wider">
-                          ABOUT ME SOCIAL MEDIA LINKS & ICONS
-                        </label>
-                        <p className="text-[10px] text-neutral-400 uppercase mt-0.5">
-                          Manage and reorder social profile links and their icons displayed under the email in the About Me page.
-                        </p>
+                  {/* ────────────────────────────────────────────────
+                      4. PROGRAMS (CREATIVE HEADLINE & SOFTWARE SKILLS)
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleAboutGroupCollapse("programs")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          4
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            4. PROGRAMS
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Creative headline title and software proficiency skills list
+                          </span>
+                        </div>
                       </div>
-                      <button
-                        onClick={() => {
-                          const list = [...(data.aboutSocials || data.socials || [])];
-                          list.push({ name: "NEW SOCIAL", href: "https://", icon: "/src/assets/images/icons/instagram.png" });
-                          updateData((prev) => ({ ...prev, aboutSocials: list }), "Add About Social", "Added a new social media link to About Me");
-                        }}
-                        className="px-3.5 py-2 rounded-xl bg-brand-green text-brand-black text-[11px] uppercase font-bold cursor-pointer hover:scale-105 transition-all self-start sm:self-auto flex items-center gap-1.5"
-                      >
-                        <Plus size={14} /> Add Social Link
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedAboutGroups.programs ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedAboutGroups.programs ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {(data.aboutSocials || data.socials || []).map((soc, sIdx) => {
-                        const currentList = data.aboutSocials || data.socials || [];
-                        const totalCount = currentList.length;
-                        return (
-                          <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3.5 relative">
-                            {/* Header: Position Badge & Reorder + Delete Actions */}
-                            <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
-                              <div className="flex items-center gap-2">
-                                <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-mono text-[10px] font-bold">
-                                  #{sIdx + 1}
-                                </span>
-                                <span className="text-xs font-bold text-white uppercase tracking-wider truncate max-w-[140px] sm:max-w-[200px]">
-                                  {soc.name || "Untitled Social"}
-                                </span>
-                              </div>
+                    {!collapsedAboutGroups.programs && (
+                      <div className="p-5 flex flex-col gap-6 bg-neutral-950/40">
+                        {/* Creative Headline */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">CREATIVE HEADLINE</label>
+                          <textarea
+                            rows={2}
+                            value={data.aboutMe.creativeHeadline}
+                            onChange={(e) =>
+                              updateData(
+                                (prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, creativeHeadline: e.target.value } }),
+                                "Headline Edit",
+                                "Modified creative toolbox title headline"
+                              )
+                            }
+                            className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-green"
+                          />
+                        </div>
 
-                              <div className="flex items-center gap-1">
-                                {/* Move Up */}
-                                <button
-                                  type="button"
-                                  disabled={sIdx === 0}
-                                  onClick={() => {
-                                    if (sIdx === 0) return;
-                                    const list = [...(data.aboutSocials || data.socials || [])];
-                                    const temp = list[sIdx];
-                                    list[sIdx] = list[sIdx - 1];
-                                    list[sIdx - 1] = temp;
-                                    updateData(
-                                      (prev) => ({ ...prev, aboutSocials: list }),
-                                      "Reorder About Socials",
-                                      `Moved ${temp.name} up to position #${sIdx}`
-                                    );
-                                  }}
-                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
-                                  title="Move Up"
-                                >
-                                  <ArrowUp size={13} />
-                                </button>
-
-                                {/* Move Down */}
-                                <button
-                                  type="button"
-                                  disabled={sIdx === totalCount - 1}
-                                  onClick={() => {
-                                    if (sIdx >= totalCount - 1) return;
-                                    const list = [...(data.aboutSocials || data.socials || [])];
-                                    const temp = list[sIdx];
-                                    list[sIdx] = list[sIdx + 1];
-                                    list[sIdx + 1] = temp;
-                                    updateData(
-                                      (prev) => ({ ...prev, aboutSocials: list }),
-                                      "Reorder About Socials",
-                                      `Moved ${temp.name} down to position #${sIdx + 2}`
-                                    );
-                                  }}
-                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
-                                  title="Move Down"
-                                >
-                                  <ArrowDown size={13} />
-                                </button>
-
-                                {/* Delete */}
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    const list = [...(data.aboutSocials || data.socials || [])];
-                                    list.splice(sIdx, 1);
-                                    updateData((prev) => ({ ...prev, aboutSocials: list }), "Delete About Social", `Deleted about social link ${soc.name}`);
-                                  }}
-                                  className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-500 hover:text-red-400 hover:border-red-500/50 cursor-pointer transition-all ml-1"
-                                  title="Delete Social Link"
-                                >
-                                  <Trash2 size={13} />
-                                </button>
-                              </div>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                              <div className="flex flex-col gap-1">
-                                <label className="text-[9px] text-neutral-400 font-bold uppercase">Platform Name</label>
-                                <input
-                                  type="text"
-                                  placeholder="e.g. Instagram, LinkedIn"
-                                  value={soc.name}
-                                  onChange={(e) => {
-                                    const list = [...(data.aboutSocials || data.socials || [])];
-                                    list[sIdx] = { ...list[sIdx], name: e.target.value };
-                                    updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Name", `Updated ${soc.name} name`);
-                                  }}
-                                  className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
-                                />
-                              </div>
-                              <div className="flex flex-col gap-1">
-                                <label className="text-[9px] text-neutral-400 font-bold uppercase">Profile URL / Link</label>
-                                <input
-                                  type="text"
-                                  placeholder="https://..."
-                                  value={soc.href}
-                                  onChange={(e) => {
-                                    const list = [...(data.aboutSocials || data.socials || [])];
-                                    list[sIdx] = { ...list[sIdx], href: e.target.value };
-                                    updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Link", `Updated ${soc.name} URL`);
-                                  }}
-                                  className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs font-mono text-white focus:outline-none focus:border-brand-green"
-                                />
-                              </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                              <CMSImageField
-                                label="Social Media Icon (Icon Path / Image)"
-                                value={soc.icon || soc.iconBW || ""}
-                                onChange={(val) => {
-                                  const list = [...(data.aboutSocials || data.socials || [])];
-                                  list[sIdx] = { ...list[sIdx], icon: val, iconBW: val };
-                                  updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Icon", `Updated ${soc.name} icon image`);
-                                }}
-                              />
-                            </div>
+                        {/* Skills Editor */}
+                        <div className="flex flex-col gap-3 pt-4 border-t border-white/5">
+                          <div className="flex items-center justify-between">
+                            <label className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Toolbox software percentages</label>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                updateData(
+                                  (prev) => ({
+                                    ...prev,
+                                    aboutMe: {
+                                      ...prev.aboutMe,
+                                      skills: [
+                                        ...prev.aboutMe.skills,
+                                        { name: "Unreal Engine", desc: "Real-time 3D creation tool", percent: 50 },
+                                      ],
+                                    },
+                                  }),
+                                  "Add Tech Skill",
+                                  "Added technology skill to profile list"
+                                )
+                              }
+                              className="px-3 py-1.5 text-[10px] bg-neutral-900 border border-white/10 hover:border-brand-green text-neutral-400 hover:text-white uppercase font-bold rounded-lg cursor-pointer transition-all flex items-center gap-1 shadow-sm"
+                            >
+                              <Plus size={13} className="text-brand-green" /> Add Software Skill
+                            </button>
                           </div>
-                        );
-                      })}
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {data.aboutMe.skills.map((skill, sIdx) => (
+                              <div key={sIdx} className="p-4 bg-neutral-900/60 border border-white/10 rounded-xl flex flex-col gap-3 shadow-sm">
+                                <div className="flex items-center justify-between">
+                                  <input
+                                    type="text"
+                                    value={skill.name}
+                                    placeholder="Program name (e.g. Cinema 4D)"
+                                    onChange={(e) => {
+                                      const list = [...data.aboutMe.skills];
+                                      list[sIdx].name = e.target.value;
+                                      updateData((prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, skills: list } }));
+                                    }}
+                                    className="bg-transparent border-b border-white/15 focus:border-brand-green text-xs font-bold text-white focus:outline-none py-0.5"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const list = [...data.aboutMe.skills];
+                                      list.splice(sIdx, 1);
+                                      updateData((prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, skills: list } }));
+                                    }}
+                                    className="text-neutral-500 hover:text-red-400 p-1 cursor-pointer transition-colors"
+                                    title="Delete Skill"
+                                  >
+                                    <Trash2 size={13} />
+                                  </button>
+                                </div>
+
+                                <input
+                                  type="text"
+                                  value={skill.desc}
+                                  onChange={(e) => {
+                                    const list = [...data.aboutMe.skills];
+                                    list[sIdx].desc = e.target.value;
+                                    updateData((prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, skills: list } }));
+                                  }}
+                                  placeholder="Software details description"
+                                  className="bg-transparent text-[11px] text-neutral-400 focus:outline-none"
+                                />
+
+                                <div className="flex items-center gap-3">
+                                  <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value={skill.percent}
+                                    onChange={(e) => {
+                                      const list = [...data.aboutMe.skills];
+                                      list[sIdx].percent = parseInt(e.target.value, 10);
+                                      updateData((prev) => ({ ...prev, aboutMe: { ...prev.aboutMe, skills: list } }));
+                                    }}
+                                    className="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
+                                  />
+                                  <span className="text-xs font-bold text-brand-green w-8 text-right font-mono">{skill.percent}%</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ────────────────────────────────────────────────
+                      5. ABOUT SOCIAL MEDIA LINKS & ICONS
+                      ──────────────────────────────────────────────── */}
+                  <div className="bg-neutral-900/70 border border-white/10 rounded-xl overflow-hidden shadow-sm">
+                    <div
+                      onClick={() => toggleAboutGroupCollapse("socials")}
+                      className="p-3.5 bg-neutral-900 hover:bg-neutral-800/80 border-b border-white/5 cursor-pointer flex items-center justify-between transition-colors select-none"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-mono font-bold text-xs">
+                          5
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white uppercase tracking-wider">
+                            5. ABOUT SOCIAL MEDIA LINKS & ICONS
+                          </span>
+                          <span className="text-[10px] text-neutral-400">
+                            Manage social media profile links and icons displayed on About page
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                          {collapsedAboutGroups.socials ? "Click to expand" : "Click to collapse"}
+                        </span>
+                        {collapsedAboutGroups.socials ? (
+                          <ChevronDown size={15} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={15} className="text-brand-green" />
+                        )}
+                      </div>
                     </div>
+
+                    {!collapsedAboutGroups.socials && (
+                      <div className="p-5 flex flex-col gap-4 bg-neutral-950/40">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/5">
+                          <div>
+                            <p className="text-neutral-400 text-[10px] uppercase tracking-wider">
+                              Manage and reorder social profile links and their icons displayed under the email in the About Me page.
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const list = [...(data.aboutSocials || data.socials || [])];
+                              list.push({ name: "NEW SOCIAL", href: "https://", icon: "/src/assets/images/icons/instagram.png" });
+                              updateData((prev) => ({ ...prev, aboutSocials: list }), "Add About Social", "Added a new social media link to About Me");
+                            }}
+                            className="px-3.5 py-2 rounded-xl bg-brand-green text-brand-black text-[11px] uppercase font-bold cursor-pointer hover:scale-105 transition-all self-start sm:self-auto flex items-center gap-1.5 shadow-sm"
+                          >
+                            <Plus size={14} /> Add Social Link
+                          </button>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {(data.aboutSocials || data.socials || []).map((soc, sIdx) => {
+                            const currentList = data.aboutSocials || data.socials || [];
+                            const totalCount = currentList.length;
+                            return (
+                              <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3.5 relative shadow-sm">
+                                {/* Header: Position Badge & Reorder + Delete Actions */}
+                                <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
+                                  <div className="flex items-center gap-2">
+                                    <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-mono text-[10px] font-bold">
+                                      #{sIdx + 1}
+                                    </span>
+                                    <span className="text-xs font-bold text-white uppercase tracking-wider truncate max-w-[140px] sm:max-w-[200px]">
+                                      {soc.name || "Untitled Social"}
+                                    </span>
+                                  </div>
+
+                                  <div className="flex items-center gap-1">
+                                    {/* Move Up */}
+                                    <button
+                                      type="button"
+                                      disabled={sIdx === 0}
+                                      onClick={() => {
+                                        if (sIdx === 0) return;
+                                        const list = [...(data.aboutSocials || data.socials || [])];
+                                        const temp = list[sIdx];
+                                        list[sIdx] = list[sIdx - 1];
+                                        list[sIdx - 1] = temp;
+                                        updateData(
+                                          (prev) => ({ ...prev, aboutSocials: list }),
+                                          "Reorder About Socials",
+                                          `Moved ${temp.name} up to position #${sIdx}`
+                                        );
+                                      }}
+                                      className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                      title="Move Up"
+                                    >
+                                      <ArrowUp size={13} />
+                                    </button>
+
+                                    {/* Move Down */}
+                                    <button
+                                      type="button"
+                                      disabled={sIdx === totalCount - 1}
+                                      onClick={() => {
+                                        if (sIdx >= totalCount - 1) return;
+                                        const list = [...(data.aboutSocials || data.socials || [])];
+                                        const temp = list[sIdx];
+                                        list[sIdx] = list[sIdx + 1];
+                                        list[sIdx + 1] = temp;
+                                        updateData(
+                                          (prev) => ({ ...prev, aboutSocials: list }),
+                                          "Reorder About Socials",
+                                          `Moved ${temp.name} down to position #${sIdx + 2}`
+                                        );
+                                      }}
+                                      className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-400 hover:text-brand-green hover:border-brand-green disabled:opacity-25 disabled:hover:text-neutral-400 disabled:hover:border-white/10 cursor-pointer transition-all"
+                                      title="Move Down"
+                                    >
+                                      <ArrowDown size={13} />
+                                    </button>
+
+                                    {/* Delete */}
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        const list = [...(data.aboutSocials || data.socials || [])];
+                                        list.splice(sIdx, 1);
+                                        updateData((prev) => ({ ...prev, aboutSocials: list }), "Delete About Social", `Deleted about social link ${soc.name}`);
+                                      }}
+                                      className="p-1.5 rounded-lg bg-neutral-950 border border-white/10 text-neutral-500 hover:text-red-400 hover:border-red-500/50 cursor-pointer transition-all ml-1"
+                                      title="Delete Social Link"
+                                    >
+                                      <Trash2 size={13} />
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                  <div className="flex flex-col gap-1">
+                                    <label className="text-[9px] text-neutral-400 font-bold uppercase">Platform Name</label>
+                                    <input
+                                      type="text"
+                                      placeholder="e.g. Instagram, LinkedIn"
+                                      value={soc.name}
+                                      onChange={(e) => {
+                                        const list = [...(data.aboutSocials || data.socials || [])];
+                                        list[sIdx] = { ...list[sIdx], name: e.target.value };
+                                        updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Name", `Updated ${soc.name} name`);
+                                      }}
+                                      className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs text-white focus:outline-none focus:border-brand-green font-semibold"
+                                    />
+                                  </div>
+                                  <div className="flex flex-col gap-1">
+                                    <label className="text-[9px] text-neutral-400 font-bold uppercase">Profile URL / Link</label>
+                                    <input
+                                      type="text"
+                                      placeholder="https://..."
+                                      value={soc.href}
+                                      onChange={(e) => {
+                                        const list = [...(data.aboutSocials || data.socials || [])];
+                                        list[sIdx] = { ...list[sIdx], href: e.target.value };
+                                        updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Link", `Updated ${soc.name} URL`);
+                                      }}
+                                      className="w-full bg-neutral-950 border border-white/10 rounded px-2.5 py-2 text-xs font-mono text-white focus:outline-none focus:border-brand-green"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                  <CMSImageField
+                                    label="Social Media Icon (Icon Path / Image)"
+                                    value={soc.icon || soc.iconBW || ""}
+                                    onChange={(val) => {
+                                      const list = [...(data.aboutSocials || data.socials || [])];
+                                      list[sIdx] = { ...list[sIdx], icon: val, iconBW: val };
+                                      updateData((prev) => ({ ...prev, aboutSocials: list }), "Edit Social Icon", `Updated ${soc.name} icon image`);
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
