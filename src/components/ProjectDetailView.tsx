@@ -539,18 +539,18 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
           // Calculate max positive Y-offset inside this section to ensure bottom margin accounts for pushed-down items
           let maxPositiveYOffset = 0;
           if (sec.type === "grid" && sectionRows) {
-            sectionRows.forEach((rowItem) => {
-              if (rowItem.images) {
-                rowItem.images.forEach((_, imgIdx) => {
-                  const off = Array.isArray(rowItem.itemOffsets)
-                    ? (rowItem.itemOffsets[imgIdx] || 0)
-                    : (rowItem.itemOffsets?.[imgIdx] || 0);
-                  if (typeof off === "number" && off > maxPositiveYOffset) {
-                    maxPositiveYOffset = off;
-                  }
-                });
-              }
-            });
+            // Only the last row extends below the section container (since preceding rows push down succeeding rows)
+            const lastRow = sectionRows[sectionRows.length - 1];
+            if (lastRow && lastRow.images) {
+              lastRow.images.forEach((_, imgIdx) => {
+                const off = Array.isArray(lastRow.itemOffsets)
+                  ? (lastRow.itemOffsets[imgIdx] || 0)
+                  : (lastRow.itemOffsets?.[imgIdx] || 0);
+                if (typeof off === "number" && off > maxPositiveYOffset) {
+                  maxPositiveYOffset = off;
+                }
+              });
+            }
           } else if (sec.type === "image_text") {
             const yOff = sec.imageYOffset || 0;
             if (typeof yOff === "number" && yOff > maxPositiveYOffset) {
@@ -923,10 +923,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                   </div>
 
                   {/* 3. DESKTOP VIEW (>= lg / >= 1024px): Full Custom Control with exact user X/Y offsets, custom widths, and alignment */}
-                  <div
-                    style={rowsSpacingObj.num > 0 ? { rowGap: rowsSpacingObj.desktop, gap: rowsSpacingObj.desktop } : undefined}
-                    className={`hidden lg:flex lg:flex-col ${rowsSpacingObj.num > 0 ? "" : "gap-6 md:gap-8"} w-full`}
-                  >
+                  <div className="hidden lg:flex lg:flex-col w-full">
                     {sectionRows.map((rowItem, rIdx) => {
                       if (!rowItem.images || rowItem.images.length === 0) return null;
                       const cols =
@@ -951,6 +948,22 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                       const customColGap = parseSpacingValue(rowItem.columnsGap);
 
+                      // Calculate max positive Y-offset for this specific row
+                      const isLastRow = rIdx === sectionRows.length - 1;
+                      let maxRowYOffset = 0;
+                      if (rowItem.images) {
+                        rowItem.images.forEach((_, imgIdx) => {
+                          const off = Array.isArray(rowItem.itemOffsets)
+                            ? (rowItem.itemOffsets[imgIdx] || 0)
+                            : (rowItem.itemOffsets?.[imgIdx] || 0);
+                          if (typeof off === "number" && off > maxRowYOffset) {
+                            maxRowYOffset = off;
+                          }
+                        });
+                      }
+                      const baseRowGap = rowsSpacingObj.num || 0;
+                      const desktopRowBottomMargin = !isLastRow ? `${baseRowGap + maxRowYOffset}px` : undefined;
+
                       return (
                         <div
                           key={rIdx}
@@ -958,6 +971,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             maxWidth: desktopMaxWidth,
                             width: "100%",
                             gap: customColGap ?? (rowItem.images.length > 1 ? "1.5rem" : undefined),
+                            marginBottom: desktopRowBottomMargin,
                             ...alignStyle,
                           }}
                           className="flex flex-row flex-nowrap items-start"
