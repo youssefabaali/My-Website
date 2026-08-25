@@ -58,7 +58,10 @@ import {
   ChevronsDownUp,
   Layers,
   Video,
-  AlignLeft
+  AlignLeft,
+  ShieldCheck,
+  Lock,
+  Key
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -3240,6 +3243,7 @@ export function AdminCMS() {
     | "contact"
     | "nav-footer"
     | "design"
+    | "security"
     | "media"
     | "docs"
   >("dashboard");
@@ -3741,6 +3745,40 @@ export function AdminCMS() {
 
   const expandAllSections = () => {
     setCollapsedSectionIndices({});
+  };
+
+  // COLLAPSIBLE ACCORDIONS FOR GLOBAL DESIGN SYSTEM GROUPS (Collapsed by default)
+  const [collapsedDesignGroups, setCollapsedDesignGroups] = useState<{
+    colors?: boolean;
+    spacing?: boolean;
+    typography?: boolean;
+  }>({
+    colors: true,
+    spacing: true,
+    typography: true,
+  });
+
+  const toggleDesignGroupCollapse = (groupKey: "colors" | "spacing" | "typography") => {
+    setCollapsedDesignGroups((prev) => ({
+      ...prev,
+      [groupKey]: !prev[groupKey],
+    }));
+  };
+
+  const collapseAllDesignGroups = () => {
+    setCollapsedDesignGroups({
+      colors: true,
+      spacing: true,
+      typography: true,
+    });
+  };
+
+  const expandAllDesignGroups = () => {
+    setCollapsedDesignGroups({
+      colors: false,
+      spacing: false,
+      typography: false,
+    });
   };
 
   const [newCategoryName, setNewCategoryName] = useState("");
@@ -4553,6 +4591,7 @@ export function AdminCMS() {
             { id: "contact", label: "Contact Info", icon: Mail },
             { id: "nav-footer", label: "Footer & Copyright", icon: MenuIcon },
             { id: "design", label: "Layout & Spacing", icon: Palette },
+            { id: "security", label: "Security & Passcode", icon: ShieldCheck },
             { id: "media", label: "Media Library", icon: ImageIcon },
             { id: "docs", label: "Help & Guidelines", icon: BookOpen },
           ].map((item) => {
@@ -7759,592 +7798,825 @@ export function AdminCMS() {
                 exit={{ opacity: 0 }}
                 className="flex flex-col gap-6 text-left"
               >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <h1 className="font-bebas text-4xl tracking-widest text-white">GLOBAL DESIGN SYSTEM</h1>
+                    <p className="text-neutral-400 text-xs tracking-wider uppercase mt-1">
+                      Instantly customize colors, font weight layouts, spacing paddings and elements gaps without editing CSS.
+                    </p>
+                  </div>
+
+                  {/* Collapse All / Expand All Action Buttons */}
+                  <div className="flex items-center gap-2 bg-neutral-900 border border-white/10 rounded-xl p-1 shrink-0">
+                    <button
+                      type="button"
+                      onClick={expandAllDesignGroups}
+                      className="px-3 py-1.5 hover:bg-white/10 text-neutral-300 hover:text-brand-green text-xs font-bold uppercase rounded-lg cursor-pointer transition-all flex items-center gap-1.5"
+                      title="Expand all design system groups"
+                    >
+                      <ChevronsUpDown size={14} />
+                      <span>Expand All</span>
+                    </button>
+                    <span className="text-white/10">|</span>
+                    <button
+                      type="button"
+                      onClick={collapseAllDesignGroups}
+                      className="px-3 py-1.5 hover:bg-white/10 text-neutral-300 hover:text-brand-green text-xs font-bold uppercase rounded-lg cursor-pointer transition-all flex items-center gap-1.5"
+                      title="Collapse all design system groups"
+                    >
+                      <ChevronsDownUp size={14} />
+                      <span>Collapse All</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  {/* GROUP 1: DYNAMIC COLOR PALETTE */}
+                  <div className="bg-neutral-950/60 border border-white/5 rounded-2xl overflow-hidden shadow-lg transition-all">
+                    <button
+                      type="button"
+                      onClick={() => toggleDesignGroupCollapse("colors")}
+                      className="w-full flex items-center justify-between p-4 bg-neutral-900/90 hover:bg-neutral-800/80 transition-colors text-left cursor-pointer border-b border-white/5"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="p-1.5 rounded-lg bg-brand-green/10 text-brand-green">
+                          <Palette size={16} />
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                            1. DYNAMIC COLOR PALETTE
+                            <span className="text-[10px] text-brand-green font-mono font-normal">
+                              (التحكم الشامل بكل ألوان الموقع)
+                            </span>
+                          </span>
+                          <span className="text-[11px] text-neutral-400">
+                            14 HEX color controls for highlights, canvas, cards, footer, navbars, badges and borders
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-400">
+                          {collapsedDesignGroups.colors ? "Show" : "Hide"}
+                        </span>
+                        {collapsedDesignGroups.colors ? (
+                          <ChevronDown size={18} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={18} className="text-brand-green" />
+                        )}
+                      </div>
+                    </button>
+
+                    {!collapsedDesignGroups.colors && (
+                      <div className="p-6 flex flex-col gap-4">
+                        <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
+                          <span className="text-xs text-neutral-300 font-medium">
+                            يمكنك اختيار ألوان الموقع بالكامل أو لصق أي كود لون ينتهي أو يبدأ بـ #HEX مباشرة
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                          {/* 1. Primary Highlight */}
+                          <HexColorPickerItem
+                            label="PRIMARY HIGHLIGHT"
+                            arabicLabel="اللون الرئيسي للموقع"
+                            description="اللون الأخضر المضيء للتميزات والمؤشرات"
+                            value={data.design.colors.primary || "#8cff2e"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, primary: val } } }),
+                                "Primary Color Edit",
+                                `Updated primary color to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 2. Main Canvas Background */}
+                          <HexColorPickerItem
+                            label="CANVAS BACKGROUND"
+                            arabicLabel="خلفية الموقع الرئيسية"
+                            description="خلفية جميع صفحات الموقع"
+                            value={data.design.colors.background || "#131313"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, background: val } } }),
+                                "Background Color Edit",
+                                `Updated canvas background to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 3. Main Text */}
+                          <HexColorPickerItem
+                            label="MAIN TEXT & HEADINGS"
+                            arabicLabel="لون النصوص والعناوين"
+                            description="لون الخط الرئيسي في المحتوى"
+                            value={data.design.colors.text || "#ffffff"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, text: val } } }),
+                                "Text Color Edit",
+                                `Updated text color to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 4. Card Shells */}
+                          <HexColorPickerItem
+                            label="CARD SHELLS"
+                            arabicLabel="خلفية البطاقات والخدمات"
+                            description="خلفية مربعات المشاريع والخدمات"
+                            value={data.design.colors.card || "#1a1a1a"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, card: val } } }),
+                                "Card Color Edit",
+                                `Updated card background to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 5. Footer Background */}
+                          <HexColorPickerItem
+                            label="FOOTER BACKGROUND"
+                            arabicLabel="خلفية الفوتر السفلي"
+                            description="خلفية قسم الفوتر أسفل الموقع"
+                            value={data.design.colors.footer || "#c8c5ae"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, footer: val } } }),
+                                "Footer Color Edit",
+                                `Updated footer background to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 6. Accent Color */}
+                          <HexColorPickerItem
+                            label="ACCENT HIGHLIGHT"
+                            arabicLabel="لون التأكيد والتفاعل"
+                            description="تأثيرات التمرير والتميزات الثانوية"
+                            value={data.design.colors.accent || data.design.colors.primary || "#8cff2e"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, accent: val } } }),
+                                "Accent Color Edit",
+                                `Updated accent color to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 7. Borders & Dividers */}
+                          <HexColorPickerItem
+                            label="BORDERS & DIVIDERS"
+                            arabicLabel="لون الحدود والفاصل"
+                            description="حدود البطاقات والخطوط الفاصلة"
+                            value={data.design.colors.border || "#262626"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, border: val } } }),
+                                "Border Color Edit",
+                                `Updated border color to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 8. Button Background */}
+                          <HexColorPickerItem
+                            label="BUTTON BACKGROUND"
+                            arabicLabel="خلفية الأزرار الرئيسية"
+                            description="خلفية أزرار التواصل والمشاهدة"
+                            value={data.design.colors.buttonBg || data.design.colors.primary || "#8cff2e"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, buttonBg: val } } }),
+                                "Button Bg Color Edit",
+                                `Updated button background to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 9. Button Text Color */}
+                          <HexColorPickerItem
+                            label="BUTTON TEXT COLOR"
+                            arabicLabel="لون نص الأزرار"
+                            description="لون النص المكتوب داخل الأزرار"
+                            value={data.design.colors.buttonText || "#131313"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, buttonText: val } } }),
+                                "Button Text Color Edit",
+                                `Updated button text color to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 10. Muted / Secondary Text */}
+                          <HexColorPickerItem
+                            label="MUTED TEXT"
+                            arabicLabel="لون النصوص الفرعية"
+                            description="الوصف الفرعي والتفاصيل الثانوية"
+                            value={data.design.colors.mutedText || "#a3a3a3"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, mutedText: val } } }),
+                                "Muted Text Edit",
+                                `Updated muted text color to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 11. Navbar Background */}
+                          <HexColorPickerItem
+                            label="NAVBAR BACKGROUND"
+                            arabicLabel="خلفية الهيدر العلوي"
+                            description="خلفية شريط القائمة الرئيسي"
+                            value={data.design.colors.navBg || data.design.colors.background || "#131313"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, navBg: val } } }),
+                                "Navbar Bg Edit",
+                                `Updated navbar background to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 12. Navbar Links */}
+                          <HexColorPickerItem
+                            label="NAVBAR LINKS"
+                            arabicLabel="لون روابط الهيدر"
+                            description="لون نصوص وأزرار القائمة"
+                            value={data.design.colors.navText || data.design.colors.text || "#ffffff"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, navText: val } } }),
+                                "Navbar Link Edit",
+                                `Updated navbar text color to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 13. Category Badges Background */}
+                          <HexColorPickerItem
+                            label="BADGE BACKGROUND"
+                            arabicLabel="خلفية الوسوم والتصنيفات"
+                            description="خلفية تصنيفات المشاريع والمهارات"
+                            value={data.design.colors.badgeBg || "#262626"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, badgeBg: val } } }),
+                                "Badge Bg Edit",
+                                `Updated badge background to ${val}`
+                              )
+                            }
+                          />
+
+                          {/* 14. Category Badges Text */}
+                          <HexColorPickerItem
+                            label="BADGE TEXT COLOR"
+                            arabicLabel="لون خط الوسوم والتصنيفات"
+                            description="لون النص داخل بطاقات التصنيف"
+                            value={data.design.colors.badgeText || data.design.colors.primary || "#8cff2e"}
+                            onChange={(val) =>
+                              updateData(
+                                (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, badgeText: val } } }),
+                                "Badge Text Edit",
+                                `Updated badge text color to ${val}`
+                              )
+                            }
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* GROUP 2: DYNAMIC SPACING & LAYOUT SLIDERS */}
+                  <div className="bg-neutral-950/60 border border-white/5 rounded-2xl overflow-hidden shadow-lg transition-all">
+                    <button
+                      type="button"
+                      onClick={() => toggleDesignGroupCollapse("spacing")}
+                      className="w-full flex items-center justify-between p-4 bg-neutral-900/90 hover:bg-neutral-800/80 transition-colors text-left cursor-pointer border-b border-white/5"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="p-1.5 rounded-lg bg-brand-green/10 text-brand-green">
+                          <Sliders size={16} />
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                            2. DYNAMIC SPACING & LAYOUT SLIDERS
+                            <span className="text-[10px] text-brand-green font-mono font-normal">
+                              (التحكم في المسافات والتباعدات)
+                            </span>
+                          </span>
+                          <span className="text-[11px] text-neutral-400">
+                            Section padding Y, Desktop/Mobile section gaps, paragraph gaps, and heading gaps
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-400">
+                          {collapsedDesignGroups.spacing ? "Show" : "Hide"}
+                        </span>
+                        {collapsedDesignGroups.spacing ? (
+                          <ChevronDown size={18} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={18} className="text-brand-green" />
+                        )}
+                      </div>
+                    </button>
+
+                    {!collapsedDesignGroups.spacing && (
+                      <div className="p-6 flex flex-col gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                          {/* Section Padding Top/Bottom Y */}
+                          <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
+                            <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
+                              <span>SECTION PADDING Y (PX)</span>
+                              <div className="flex items-center gap-1">
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max="500"
+                                  value={data.design?.layout?.paddingTop ?? 128}
+                                  onChange={(e) => {
+                                    const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
+                                    const clamped = isNaN(val) ? 0 : val;
+                                    updateData((prev) => ({
+                                      ...prev,
+                                      design: {
+                                        ...prev.design,
+                                        layout: { ...prev.design.layout, paddingTop: clamped, paddingBottom: clamped },
+                                      },
+                                    }));
+                                  }}
+                                  className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
+                                />
+                                <span className="text-brand-green font-mono text-xs font-bold">px</span>
+                              </div>
+                            </div>
+                            <input
+                              type="range"
+                              min="20"
+                              max="250"
+                              value={data.design?.layout?.paddingTop ?? 128}
+                              onChange={(e) => {
+                                const val = parseInt(e.target.value, 10);
+                                updateData((prev) => ({
+                                  ...prev,
+                                  design: {
+                                    ...prev.design,
+                                    layout: { ...prev.design.layout, paddingTop: val, paddingBottom: val },
+                                  },
+                                }));
+                              }}
+                              className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
+                            />
+                            <span className="text-[9px] text-neutral-400 uppercase">Top & Bottom section padding</span>
+                          </div>
+
+                          {/* Section gap Desktop / Laptop */}
+                          <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
+                            <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
+                              <span>SECTION GAP - LAPTOP / DESKTOP (PX)</span>
+                              <div className="flex items-center gap-1">
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max="800"
+                                  value={data.design?.layout?.sectionGap ?? 250}
+                                  onChange={(e) => {
+                                    const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
+                                    const clamped = isNaN(val) ? 0 : val;
+                                    updateData((prev) => ({
+                                      ...prev,
+                                      design: {
+                                        ...prev.design,
+                                        layout: { ...prev.design.layout, sectionGap: clamped },
+                                      },
+                                    }));
+                                  }}
+                                  className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
+                                />
+                                <span className="text-brand-green font-mono text-xs font-bold">px</span>
+                              </div>
+                            </div>
+                            <input
+                              type="range"
+                              min="40"
+                              max="500"
+                              value={data.design?.layout?.sectionGap ?? 250}
+                              onChange={(e) => {
+                                const val = parseInt(e.target.value, 10);
+                                updateData((prev) => ({
+                                  ...prev,
+                                  design: {
+                                    ...prev.design,
+                                    layout: { ...prev.design.layout, sectionGap: val },
+                                  },
+                                }));
+                              }}
+                              className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
+                            />
+                            <span className="text-[9px] text-neutral-400 uppercase">Spacing on screens ≥ 768px</span>
+                          </div>
+
+                          {/* Section gap Mobile / Tablet */}
+                          <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
+                            <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
+                              <span>SECTION GAP - PHONE / TABLET (PX)</span>
+                              <div className="flex items-center gap-1">
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max="400"
+                                  value={data.design?.layout?.sectionGapMobile ?? 100}
+                                  onChange={(e) => {
+                                    const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
+                                    const clamped = isNaN(val) ? 0 : val;
+                                    updateData((prev) => ({
+                                      ...prev,
+                                      design: {
+                                        ...prev.design,
+                                        layout: { ...prev.design.layout, sectionGapMobile: clamped },
+                                      },
+                                    }));
+                                  }}
+                                  className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
+                                />
+                                <span className="text-brand-green font-mono text-xs font-bold">px</span>
+                              </div>
+                            </div>
+                            <input
+                              type="range"
+                              min="20"
+                              max="250"
+                              value={data.design?.layout?.sectionGapMobile ?? 100}
+                              onChange={(e) => {
+                                const val = parseInt(e.target.value, 10);
+                                updateData((prev) => ({
+                                  ...prev,
+                                  design: {
+                                    ...prev.design,
+                                    layout: { ...prev.design.layout, sectionGapMobile: val },
+                                  },
+                                }));
+                              }}
+                              className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
+                            />
+                            <span className="text-[9px] text-neutral-400 uppercase">Spacing on screens &lt; 768px</span>
+                          </div>
+
+                          {/* Paragraph Spacing Gap */}
+                          <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
+                            <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
+                              <span>PARAGRAPH SPACING GAP (PX)</span>
+                              <div className="flex items-center gap-1">
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max="200"
+                                  value={data.design?.layout?.paragraphGap ?? 24}
+                                  onChange={(e) => {
+                                    const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
+                                    const clamped = isNaN(val) ? 0 : val;
+                                    updateData((prev) => ({
+                                      ...prev,
+                                      design: {
+                                        ...prev.design,
+                                        layout: { ...prev.design.layout, paragraphGap: clamped },
+                                      },
+                                    }));
+                                  }}
+                                  className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
+                                />
+                                <span className="text-brand-green font-mono text-xs font-bold">px</span>
+                              </div>
+                            </div>
+                            <input
+                              type="range"
+                              min="8"
+                              max="120"
+                              value={data.design?.layout?.paragraphGap ?? 24}
+                              onChange={(e) => {
+                                const val = parseInt(e.target.value, 10);
+                                updateData((prev) => ({
+                                  ...prev,
+                                  design: {
+                                    ...prev.design,
+                                    layout: { ...prev.design.layout, paragraphGap: val },
+                                  },
+                                }));
+                              }}
+                              className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
+                            />
+                            <span className="text-[9px] text-neutral-400 uppercase">Distance between biography/text paragraphs</span>
+                          </div>
+
+                          {/* Heading Spacing Gap - Laptop/Desktop */}
+                          <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
+                            <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
+                              <span>TITLE / HEADING SPACING GAP - LAPTOP / DESKTOP (PX)</span>
+                              <div className="flex items-center gap-1">
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max="200"
+                                  value={data.design?.layout?.headingGap ?? 24}
+                                  onChange={(e) => {
+                                    const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
+                                    const clamped = isNaN(val) ? 0 : val;
+                                    updateData((prev) => ({
+                                      ...prev,
+                                      design: {
+                                        ...prev.design,
+                                        layout: { ...prev.design.layout, headingGap: clamped },
+                                      },
+                                    }));
+                                  }}
+                                  className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
+                                />
+                                <span className="text-brand-green font-mono text-xs font-bold">px</span>
+                              </div>
+                            </div>
+                            <input
+                              type="range"
+                              min="8"
+                              max="150"
+                              value={data.design?.layout?.headingGap ?? 24}
+                              onChange={(e) => {
+                                const val = parseInt(e.target.value, 10);
+                                updateData((prev) => ({
+                                  ...prev,
+                                  design: {
+                                    ...prev.design,
+                                    layout: { ...prev.design.layout, headingGap: val },
+                                  },
+                                }));
+                              }}
+                              className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
+                            />
+                            <span className="text-[9px] text-neutral-400 uppercase">Distance between headings and content on desktop</span>
+                          </div>
+
+                          {/* Heading Spacing Gap - Phone/Tablet */}
+                          <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
+                            <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
+                              <span>TITLE / HEADING SPACING GAP - PHONE / TABLET (PX)</span>
+                              <div className="flex items-center gap-1">
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max="150"
+                                  value={data.design?.layout?.headingGapMobile ?? 16}
+                                  onChange={(e) => {
+                                    const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
+                                    const clamped = isNaN(val) ? 0 : val;
+                                    updateData((prev) => ({
+                                      ...prev,
+                                      design: {
+                                        ...prev.design,
+                                        layout: { ...prev.design.layout, headingGapMobile: clamped },
+                                      },
+                                    }));
+                                  }}
+                                  className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
+                                />
+                                <span className="text-brand-green font-mono text-xs font-bold">px</span>
+                              </div>
+                            </div>
+                            <input
+                              type="range"
+                              min="4"
+                              max="100"
+                              value={data.design?.layout?.headingGapMobile ?? 16}
+                              onChange={(e) => {
+                                const val = parseInt(e.target.value, 10);
+                                updateData((prev) => ({
+                                  ...prev,
+                                  design: {
+                                    ...prev.design,
+                                    layout: { ...prev.design.layout, headingGapMobile: val },
+                                  },
+                                }));
+                              }}
+                              className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
+                            />
+                            <span className="text-[9px] text-neutral-400 uppercase">Distance between headings and content on screens &lt; 768px</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* GROUP 3: TYPOGRAPHY PAIRING CONTROLS */}
+                  <div className="bg-neutral-950/60 border border-white/5 rounded-2xl overflow-hidden shadow-lg transition-all">
+                    <button
+                      type="button"
+                      onClick={() => toggleDesignGroupCollapse("typography")}
+                      className="w-full flex items-center justify-between p-4 bg-neutral-900/90 hover:bg-neutral-800/80 transition-colors text-left cursor-pointer border-b border-white/5"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="p-1.5 rounded-lg bg-brand-green/10 text-brand-green">
+                          <BookOpen size={16} />
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                            3. TYPOGRAPHY PAIRING CONTROLS
+                            <span className="text-[10px] text-brand-green font-mono font-normal">
+                              (الخطوط والطباعة)
+                            </span>
+                          </span>
+                          <span className="text-[11px] text-neutral-400">
+                            Select heading display fonts and body paragraph fonts
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-neutral-400">
+                          {collapsedDesignGroups.typography ? "Show" : "Hide"}
+                        </span>
+                        {collapsedDesignGroups.typography ? (
+                          <ChevronDown size={18} className="text-neutral-400" />
+                        ) : (
+                          <ChevronUp size={18} className="text-brand-green" />
+                        )}
+                      </div>
+                    </button>
+
+                    {!collapsedDesignGroups.typography && (
+                      <div className="p-6 flex flex-col gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                          <div className="flex flex-col gap-2 bg-neutral-900/50 p-4 rounded-xl border border-white/5">
+                            <label className="text-[10px] text-neutral-400 font-bold uppercase">HEADING DISPLAY FONT</label>
+                            <select
+                              value={data.design.typography.headingFont}
+                              onChange={(e) =>
+                                updateData(
+                                  (prev) => ({ ...prev, design: { ...prev.design, typography: { ...prev.design.typography, headingFont: e.target.value } } }),
+                                  "Heading Font Edit",
+                                  `Switched titles font to ${e.target.value}`
+                                )
+                              }
+                              className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white cursor-pointer"
+                            >
+                              <option value="Bebas Neue">Bebas Neue (Swiss Tech Bold)</option>
+                              <option value="Space Grotesk">Space Grotesk (Neo-Brutalist)</option>
+                              <option value="Inter">Inter (Swiss Minimalist)</option>
+                              <option value="JetBrains Mono">JetBrains Mono (Developer Technical)</option>
+                            </select>
+                          </div>
+
+                          <div className="flex flex-col gap-2 bg-neutral-900/50 p-4 rounded-xl border border-white/5">
+                            <label className="text-[10px] text-neutral-400 font-bold uppercase">BODY GENERAL CODES FONT</label>
+                            <select
+                              value={data.design.typography.bodyFont}
+                              onChange={(e) =>
+                                updateData(
+                                  (prev) => ({ ...prev, design: { ...prev.design, typography: { ...prev.design.typography, bodyFont: e.target.value } } }),
+                                  "Body Font Edit",
+                                  `Switched paragraphs font to ${e.target.value}`
+                                )
+                              }
+                              className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white cursor-pointer"
+                            >
+                              <option value="Space Grotesk">Space Grotesk (Standard Body)</option>
+                              <option value="Inter">Inter (Swiss Minimalist)</option>
+                              <option value="JetBrains Mono">JetBrains Mono (Developer Technical)</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* ══════════════════════════════════════════
+                 TAB: SECURITY & PASSCODE
+               ══════════════════════════════════════════ */}
+            {activeTab === "security" && (
+              <motion.div
+                key="security"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col gap-6 text-left"
+              >
                 <div>
-                  <h1 className="font-bebas text-4xl tracking-widest text-white">GLOBAL DESIGN SYSTEM</h1>
+                  <h1 className="font-bebas text-4xl tracking-widest text-white flex items-center gap-3">
+                    <ShieldCheck size={32} className="text-brand-green" />
+                    SECURITY & CMS ACCESS CONTROL
+                  </h1>
                   <p className="text-neutral-400 text-xs tracking-wider uppercase mt-1">
-                    Instantly customize colors, font weight layouts, spacing paddings and elements gaps without editing CSS.
+                    إدارة كلمة المرور والوصول الآمن إلى لوحة التحكم (CMS Security Settings & Authentication).
                   </p>
                 </div>
 
-                <div className="bg-neutral-950/40 border border-white/5 rounded-2xl p-6 flex flex-col gap-6">
-                  {/* Global theme colors */}
-                  <div>
-                    <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center gap-1.5">
-                        <Palette size={14} className="text-brand-green" />
-                        التحكم الشامل بكل ألوان الموقع (DYNAMIC COLOR PALETTE - HEX CODES ONLY)
-                      </h3>
-                      <span className="text-[10px] text-neutral-400 font-mono">
-                        يمكنك اختيار ألوان الموقع بالكامل أو لصق أي كود لون ينتهي أو يبدأ بـ #HEX مباشرة
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {/* Password Modification Card */}
+                  <div className="lg:col-span-2 bg-neutral-950/60 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-6 shadow-xl relative overflow-hidden">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2.5 rounded-xl bg-brand-green/10 text-brand-green border border-brand-green/20">
+                          <Lock size={20} />
+                        </div>
+                        <div>
+                          <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+                            تغيير كلمة مرور لوحة التحكم (CMS Passcode)
+                          </h3>
+                          <span className="text-[11px] text-neutral-400">
+                            كلمة المرور المطلوبة عند تسجيل الدخول إلى رابط #admin
+                          </span>
+                        </div>
+                      </div>
+                      <span className="text-[10px] font-mono text-brand-green bg-brand-green/10 px-2.5 py-1 rounded-full border border-brand-green/20">
+                        Active Protection
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                      {/* 1. Primary Highlight */}
-                      <HexColorPickerItem
-                        label="PRIMARY HIGHLIGHT"
-                        arabicLabel="اللون الرئيسي للموقع"
-                        description="اللون الأخضر المضيء للتميزات والمؤشرات"
-                        value={data.design.colors.primary || "#8cff2e"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, primary: val } } }),
-                            "Primary Color Edit",
-                            `Updated primary color to ${val}`
-                          )
-                        }
-                      />
+                    <div className="flex flex-col gap-4 max-w-lg">
+                      <div className="flex flex-col gap-2">
+                        <label className="text-xs text-neutral-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                          <Key size={14} className="text-brand-green" />
+                          كلمة المرور الحالية للوحة التحكم (Current Passcode)
+                        </label>
+                        <div className="relative flex items-center">
+                          <input
+                            type="text"
+                            value={data.settings?.passcode || "admin"}
+                            onChange={(e) =>
+                              updateData(
+                                (prev) => ({ ...prev, settings: { ...prev.settings, passcode: e.target.value } }),
+                                "Passcode Change",
+                                "Changed secure CMS workspace passkey"
+                              )
+                            }
+                            placeholder="Type new passcode..."
+                            className="w-full bg-neutral-900 border border-white/20 rounded-xl px-4 py-3 text-sm text-brand-green font-mono font-bold tracking-widest focus:outline-none focus:border-brand-green transition-all shadow-inner"
+                          />
+                        </div>
+                        <span className="text-[11px] text-neutral-400 leading-relaxed">
+                          يتم حفظ كلمة المرور تلقائياً وفوراً بمجرد كتابتها. يمكنك استخدام أي كلمة مرور تفضلها (حروف أو أرقام).
+                        </span>
+                      </div>
 
-                      {/* 2. Main Canvas Background */}
-                      <HexColorPickerItem
-                        label="CANVAS BACKGROUND"
-                        arabicLabel="خلفية الموقع الرئيسية"
-                        description="خلفية جميع صفحات الموقع"
-                        value={data.design.colors.background || "#131313"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, background: val } } }),
-                            "Background Color Edit",
-                            `Updated canvas background to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 3. Main Text */}
-                      <HexColorPickerItem
-                        label="MAIN TEXT & HEADINGS"
-                        arabicLabel="لون النصوص والعناوين"
-                        description="لون الخط الرئيسي في المحتوى"
-                        value={data.design.colors.text || "#ffffff"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, text: val } } }),
-                            "Text Color Edit",
-                            `Updated text color to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 4. Card Shells */}
-                      <HexColorPickerItem
-                        label="CARD SHELLS"
-                        arabicLabel="خلفية البطاقات والخدمات"
-                        description="خلفية مربعات المشاريع والخدمات"
-                        value={data.design.colors.card || "#1a1a1a"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, card: val } } }),
-                            "Card Color Edit",
-                            `Updated card background to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 5. Footer Background */}
-                      <HexColorPickerItem
-                        label="FOOTER BACKGROUND"
-                        arabicLabel="خلفية الفوتر السفلي"
-                        description="خلفية قسم الفوتر أسفل الموقع"
-                        value={data.design.colors.footer || "#c8c5ae"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, footer: val } } }),
-                            "Footer Color Edit",
-                            `Updated footer background to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 6. Accent Color */}
-                      <HexColorPickerItem
-                        label="ACCENT HIGHLIGHT"
-                        arabicLabel="لون التأكيد والتفاعل"
-                        description="تأثيرات التمرير والتميزات الثانوية"
-                        value={data.design.colors.accent || data.design.colors.primary || "#8cff2e"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, accent: val } } }),
-                            "Accent Color Edit",
-                            `Updated accent color to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 7. Borders & Dividers */}
-                      <HexColorPickerItem
-                        label="BORDERS & DIVIDERS"
-                        arabicLabel="لون الحدود والفاصل"
-                        description="حدود البطاقات والخطوط الفاصلة"
-                        value={data.design.colors.border || "#262626"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, border: val } } }),
-                            "Border Color Edit",
-                            `Updated border color to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 8. Button Background */}
-                      <HexColorPickerItem
-                        label="BUTTON BACKGROUND"
-                        arabicLabel="خلفية الأزرار الرئيسية"
-                        description="خلفية أزرار التواصل والمشاهدة"
-                        value={data.design.colors.buttonBg || data.design.colors.primary || "#8cff2e"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, buttonBg: val } } }),
-                            "Button Bg Color Edit",
-                            `Updated button background to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 9. Button Text Color */}
-                      <HexColorPickerItem
-                        label="BUTTON TEXT COLOR"
-                        arabicLabel="لون نص الأزرار"
-                        description="لون النص المكتوب داخل الأزرار"
-                        value={data.design.colors.buttonText || "#131313"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, buttonText: val } } }),
-                            "Button Text Color Edit",
-                            `Updated button text color to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 10. Muted / Secondary Text */}
-                      <HexColorPickerItem
-                        label="MUTED TEXT"
-                        arabicLabel="لون النصوص الفرعية"
-                        description="الوصف الفرعي والتفاصيل الثانوية"
-                        value={data.design.colors.mutedText || "#a3a3a3"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, mutedText: val } } }),
-                            "Muted Text Edit",
-                            `Updated muted text color to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 11. Navbar Background */}
-                      <HexColorPickerItem
-                        label="NAVBAR BACKGROUND"
-                        arabicLabel="خلفية الهيدر العلوي"
-                        description="خلفية شريط القائمة الرئيسي"
-                        value={data.design.colors.navBg || data.design.colors.background || "#131313"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, navBg: val } } }),
-                            "Navbar Bg Edit",
-                            `Updated navbar background to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 12. Navbar Links */}
-                      <HexColorPickerItem
-                        label="NAVBAR LINKS"
-                        arabicLabel="لون روابط الهيدر"
-                        description="لون نصوص وأزرار القائمة"
-                        value={data.design.colors.navText || data.design.colors.text || "#ffffff"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, navText: val } } }),
-                            "Navbar Link Edit",
-                            `Updated navbar text color to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 13. Category Badges Background */}
-                      <HexColorPickerItem
-                        label="BADGE BACKGROUND"
-                        arabicLabel="خلفية الوسوم والتصنيفات"
-                        description="خلفية تصنيفات المشاريع والمهارات"
-                        value={data.design.colors.badgeBg || "#262626"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, badgeBg: val } } }),
-                            "Badge Bg Edit",
-                            `Updated badge background to ${val}`
-                          )
-                        }
-                      />
-
-                      {/* 14. Category Badges Text */}
-                      <HexColorPickerItem
-                        label="BADGE TEXT COLOR"
-                        arabicLabel="لون خط الوسوم والتصنيفات"
-                        description="لون النص داخل بطاقات التصنيف"
-                        value={data.design.colors.badgeText || data.design.colors.primary || "#8cff2e"}
-                        onChange={(val) =>
-                          updateData(
-                            (prev) => ({ ...prev, design: { ...prev.design, colors: { ...prev.design.colors, badgeText: val } } }),
-                            "Badge Text Edit",
-                            `Updated badge text color to ${val}`
-                          )
-                        }
-                      />
-                    </div>
-                  </div>
-
-                  {/* Typography select */}
-                  <div className="border-t border-white/5 pt-5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-1.5">
-                      <BookOpen size={14} className="text-brand-green" />
-                      Typography Pairing Controls
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-2 bg-neutral-900/50 p-4 rounded-xl border border-white/5">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase">HEADING DISPLAY FONT</label>
-                        <select
-                          value={data.design.typography.headingFont}
-                          onChange={(e) =>
+                      <div className="bg-neutral-900/80 border border-white/5 rounded-xl p-4 flex items-center justify-between mt-2">
+                        <div className="flex flex-col">
+                          <span className="text-xs text-neutral-200 font-bold">كلمة المرور الافتراضية عند إعادة الضبط:</span>
+                          <span className="text-[11px] text-neutral-400 font-mono">admin</span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
                             updateData(
-                              (prev) => ({ ...prev, design: { ...prev.design, typography: { ...prev.design.typography, headingFont: e.target.value } } }),
-                              "Heading Font Edit",
-                              `Switched titles font to ${e.target.value}`
-                            )
-                          }
-                          className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white cursor-pointer"
+                              (prev) => ({ ...prev, settings: { ...prev.settings, passcode: "admin" } }),
+                              "Passcode Reset",
+                              "Reset passkey to default 'admin'"
+                            );
+                            showNotification("Reset passcode to default (admin)", "info");
+                          }}
+                          className="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white text-xs font-bold rounded-lg cursor-pointer transition-all border border-white/10"
                         >
-                          <option value="Bebas Neue">Bebas Neue (Swiss Tech Bold)</option>
-                          <option value="Space Grotesk">Space Grotesk (Neo-Brutalist)</option>
-                          <option value="Inter">Inter (Swiss Minimalist)</option>
-                          <option value="JetBrains Mono">JetBrains Mono (Developer Technical)</option>
-                        </select>
-                      </div>
-
-                      <div className="flex flex-col gap-2 bg-neutral-900/50 p-4 rounded-xl border border-white/5">
-                        <label className="text-[10px] text-neutral-400 font-bold uppercase">BODY GENERAL CODES FONT</label>
-                        <select
-                          value={data.design.typography.bodyFont}
-                          onChange={(e) =>
-                            updateData(
-                              (prev) => ({ ...prev, design: { ...prev.design, typography: { ...prev.design.typography, bodyFont: e.target.value } } }),
-                              "Body Font Edit",
-                              `Switched paragraphs font to ${e.target.value}`
-                            )
-                          }
-                          className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white cursor-pointer"
-                        >
-                          <option value="Space Grotesk">Space Grotesk (Standard Body)</option>
-                          <option value="Inter">Inter (Swiss Minimalist)</option>
-                          <option value="JetBrains Mono">JetBrains Mono (Developer Technical)</option>
-                        </select>
+                          استعادة الافتراضي (admin)
+                        </button>
                       </div>
                     </div>
                   </div>
 
-                  {/* Layout spacing control sliders */}
-                  <div className="border-t border-white/5 pt-5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-1.5">
-                      <Sliders size={14} className="text-brand-green" />
-                      Dynamic Spacing Layout Sliders
+                  {/* Security Advice & Information Box */}
+                  <div className="bg-neutral-950/60 border border-white/10 rounded-2xl p-6 flex flex-col gap-4 shadow-xl">
+                    <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                      <ShieldCheck size={16} className="text-brand-green" />
+                      إرشادات الأمان والحفظ الدائم
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                      {/* Section Padding Top/Bottom Y */}
-                      <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
-                        <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
-                          <span>SECTION PADDING Y (PX)</span>
-                          <div className="flex items-center gap-1">
-                            <input
-                              type="number"
-                              min="0"
-                              max="500"
-                              value={data.design?.layout?.paddingTop ?? 128}
-                              onChange={(e) => {
-                                const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-                                const clamped = isNaN(val) ? 0 : val;
-                                updateData((prev) => ({
-                                  ...prev,
-                                  design: {
-                                    ...prev.design,
-                                    layout: { ...prev.design.layout, paddingTop: clamped, paddingBottom: clamped },
-                                  },
-                                }));
-                              }}
-                              className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
-                            />
-                            <span className="text-brand-green font-mono text-xs font-bold">px</span>
-                          </div>
-                        </div>
-                        <input
-                          type="range"
-                          min="20"
-                          max="250"
-                          value={data.design?.layout?.paddingTop ?? 128}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            updateData((prev) => ({
-                              ...prev,
-                              design: {
-                                ...prev.design,
-                                layout: { ...prev.design.layout, paddingTop: val, paddingBottom: val },
-                              },
-                            }));
-                          }}
-                          className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
-                        />
-                        <span className="text-[9px] text-neutral-400 uppercase">Top & Bottom section padding</span>
+                    
+                    <div className="flex flex-col gap-3 text-xs text-neutral-300 leading-relaxed">
+                      <div className="p-3 bg-neutral-900/60 rounded-xl border border-white/5 flex flex-col gap-1">
+                        <strong className="text-white flex items-center gap-1.5">
+                          <span>1.</span> الحفظ المحلي الفوري:
+                        </strong>
+                        <span className="text-neutral-400 text-[11px]">
+                          التغيير يُحفظ مباشرة في الذاكرة المحلية لمتصفحك، ولن تحتاج لإدخال كلمة المرور القديمة مجدداً طالما جلستك نشطة.
+                        </span>
                       </div>
 
-                      {/* Section gap Desktop / Laptop */}
-                      <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
-                        <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
-                          <span>SECTION GAP - LAPTOP / DESKTOP (PX)</span>
-                          <div className="flex items-center gap-1">
-                            <input
-                              type="number"
-                              min="0"
-                              max="800"
-                              value={data.design?.layout?.sectionGap ?? 250}
-                              onChange={(e) => {
-                                const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-                                const clamped = isNaN(val) ? 0 : val;
-                                updateData((prev) => ({
-                                  ...prev,
-                                  design: {
-                                    ...prev.design,
-                                    layout: { ...prev.design.layout, sectionGap: clamped },
-                                  },
-                                }));
-                              }}
-                              className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
-                            />
-                            <span className="text-brand-green font-mono text-xs font-bold">px</span>
-                          </div>
-                        </div>
-                        <input
-                          type="range"
-                          min="40"
-                          max="500"
-                          value={data.design?.layout?.sectionGap ?? 250}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            updateData((prev) => ({
-                              ...prev,
-                              design: {
-                                ...prev.design,
-                                layout: { ...prev.design.layout, sectionGap: val },
-                              },
-                            }));
-                          }}
-                          className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
-                        />
-                        <span className="text-[9px] text-neutral-400 uppercase">Spacing on screens ≥ 768px</span>
+                      <div className="p-3 bg-neutral-900/60 rounded-xl border border-white/5 flex flex-col gap-1">
+                        <strong className="text-white flex items-center gap-1.5">
+                          <span>2.</span> التثبيت على GitHub:
+                        </strong>
+                        <span className="text-neutral-400 text-[11px]">
+                          إذا قمت بتحميل ملف <code className="text-brand-green font-mono">defaultData.ts</code> من الـ Dashboard ورفعته إلى GitHub، سيتم تثبيت كلمة المرور الجديدة كقيمة افتراضية لجميع الأجهزة.
+                        </span>
                       </div>
 
-                      {/* Section gap Mobile / Tablet */}
-                      <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
-                        <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
-                          <span>SECTION GAP - PHONE / TABLET (PX)</span>
-                          <div className="flex items-center gap-1">
-                            <input
-                              type="number"
-                              min="0"
-                              max="400"
-                              value={data.design?.layout?.sectionGapMobile ?? 100}
-                              onChange={(e) => {
-                                const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-                                const clamped = isNaN(val) ? 0 : val;
-                                updateData((prev) => ({
-                                  ...prev,
-                                  design: {
-                                    ...prev.design,
-                                    layout: { ...prev.design.layout, sectionGapMobile: clamped },
-                                  },
-                                }));
-                              }}
-                              className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
-                            />
-                            <span className="text-brand-green font-mono text-xs font-bold">px</span>
-                          </div>
-                        </div>
-                        <input
-                          type="range"
-                          min="20"
-                          max="250"
-                          value={data.design?.layout?.sectionGapMobile ?? 100}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            updateData((prev) => ({
-                              ...prev,
-                              design: {
-                                ...prev.design,
-                                layout: { ...prev.design.layout, sectionGapMobile: val },
-                              },
-                            }));
-                          }}
-                          className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
-                        />
-                        <span className="text-[9px] text-neutral-400 uppercase">Spacing on screens &lt; 768px</span>
+                      <div className="p-3 bg-neutral-900/60 rounded-xl border border-white/5 flex flex-col gap-1">
+                        <strong className="text-white flex items-center gap-1.5">
+                          <span>3.</span> تسجيل الخروج:
+                        </strong>
+                        <span className="text-neutral-400 text-[11px]">
+                          يمكنك النقر على زر <span className="text-red-400 font-bold">LOG OUT SYSTEM</span> في أسفل القائمة لاختبار تسجيل الدخول بكلمة المرور الجديدة في أي وقت.
+                        </span>
                       </div>
-
-                      {/* Paragraph Spacing Gap */}
-                      <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
-                        <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
-                          <span>PARAGRAPH SPACING GAP (PX)</span>
-                          <div className="flex items-center gap-1">
-                            <input
-                              type="number"
-                              min="0"
-                              max="200"
-                              value={data.design?.layout?.paragraphGap ?? 24}
-                              onChange={(e) => {
-                                const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-                                const clamped = isNaN(val) ? 0 : val;
-                                updateData((prev) => ({
-                                  ...prev,
-                                  design: {
-                                    ...prev.design,
-                                    layout: { ...prev.design.layout, paragraphGap: clamped },
-                                  },
-                                }));
-                              }}
-                              className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
-                            />
-                            <span className="text-brand-green font-mono text-xs font-bold">px</span>
-                          </div>
-                        </div>
-                        <input
-                          type="range"
-                          min="8"
-                          max="120"
-                          value={data.design?.layout?.paragraphGap ?? 24}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            updateData((prev) => ({
-                              ...prev,
-                              design: {
-                                ...prev.design,
-                                layout: { ...prev.design.layout, paragraphGap: val },
-                              },
-                            }));
-                          }}
-                          className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
-                        />
-                        <span className="text-[9px] text-neutral-400 uppercase">Distance between biography/text paragraphs</span>
-                      </div>
-
-                      {/* Heading Spacing Gap - Laptop/Desktop */}
-                      <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
-                        <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
-                          <span>TITLE / HEADING SPACING GAP - LAPTOP / DESKTOP (PX)</span>
-                          <div className="flex items-center gap-1">
-                            <input
-                              type="number"
-                              min="0"
-                              max="200"
-                              value={data.design?.layout?.headingGap ?? 24}
-                              onChange={(e) => {
-                                const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-                                const clamped = isNaN(val) ? 0 : val;
-                                updateData((prev) => ({
-                                  ...prev,
-                                  design: {
-                                    ...prev.design,
-                                    layout: { ...prev.design.layout, headingGap: clamped },
-                                  },
-                                }));
-                              }}
-                              className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
-                            />
-                            <span className="text-brand-green font-mono text-xs font-bold">px</span>
-                          </div>
-                        </div>
-                        <input
-                          type="range"
-                          min="8"
-                          max="150"
-                          value={data.design?.layout?.headingGap ?? 24}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            updateData((prev) => ({
-                              ...prev,
-                              design: {
-                                ...prev.design,
-                                layout: { ...prev.design.layout, headingGap: val },
-                              },
-                            }));
-                          }}
-                          className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
-                        />
-                        <span className="text-[9px] text-neutral-400 uppercase">Distance between headings and content on desktop</span>
-                      </div>
-
-                      {/* Heading Spacing Gap - Phone/Tablet */}
-                      <div className="bg-neutral-900/50 p-4 rounded-xl border border-white/5 flex flex-col gap-3">
-                        <div className="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase">
-                          <span>TITLE / HEADING SPACING GAP - PHONE / TABLET (PX)</span>
-                          <div className="flex items-center gap-1">
-                            <input
-                              type="number"
-                              min="0"
-                              max="150"
-                              value={data.design?.layout?.headingGapMobile ?? 16}
-                              onChange={(e) => {
-                                const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-                                const clamped = isNaN(val) ? 0 : val;
-                                updateData((prev) => ({
-                                  ...prev,
-                                  design: {
-                                    ...prev.design,
-                                    layout: { ...prev.design.layout, headingGapMobile: clamped },
-                                  },
-                                }));
-                              }}
-                              className="w-16 bg-neutral-950 border border-white/20 rounded px-1.5 py-0.5 text-xs text-brand-green font-mono font-bold text-right focus:outline-none focus:border-brand-green"
-                            />
-                            <span className="text-brand-green font-mono text-xs font-bold">px</span>
-                          </div>
-                        </div>
-                        <input
-                          type="range"
-                          min="4"
-                          max="100"
-                          value={data.design?.layout?.headingGapMobile ?? 16}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            updateData((prev) => ({
-                              ...prev,
-                              design: {
-                                ...prev.design,
-                                layout: { ...prev.design.layout, headingGapMobile: val },
-                              },
-                            }));
-                          }}
-                          className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-brand-green"
-                        />
-                        <span className="text-[9px] text-neutral-400 uppercase">Distance between headings and content on screens &lt; 768px</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Password settings security */}
-                  <div className="border-t border-white/5 pt-5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-1.5">
-                      <Settings size={14} className="text-brand-green" />
-                      CMS Security Settings
-                    </h3>
-                    <div className="flex flex-col gap-2 bg-neutral-900/50 p-4 rounded-xl border border-white/5 max-w-md">
-                      <label className="text-[10px] text-neutral-400 font-bold uppercase">CUSTOM SECURE PASSCODE</label>
-                      <input
-                        type="text"
-                        value={data.settings?.passcode || "admin"}
-                        onChange={(e) =>
-                          updateData(
-                            (prev) => ({ ...prev, settings: { ...prev.settings, passcode: e.target.value } }),
-                            "Passcode Change",
-                            "Changed secure CMS workspace passkey"
-                          )
-                        }
-                        className="w-full bg-neutral-950 border border-white/10 rounded-xl px-4 py-2 text-xs text-white font-mono tracking-widest focus:outline-none focus:border-brand-green"
-                      />
                     </div>
                   </div>
                 </div>
@@ -8674,7 +8946,7 @@ export function AdminCMS() {
                       </div>
                       <div className="bg-neutral-900/50 p-3.5 rounded-xl border border-white/5 flex flex-col gap-1">
                         <strong className="text-white">كلمة المرور الافتراضية:</strong>
-                        <span className="text-brand-green font-mono font-bold">admin</span> (يمكن تغييرها من إعدادات التصميم)
+                        <span className="text-brand-green font-mono font-bold">admin</span> (يمكن تغييرها من تبويب Security & Passcode)
                       </div>
                       <div className="bg-neutral-900/50 p-3.5 rounded-xl border border-white/5 flex flex-col gap-1">
                         <strong className="text-white">تحميل نسخة البيانات:</strong>
