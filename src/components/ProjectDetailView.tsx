@@ -439,10 +439,10 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
               }
             `}</style>
             {rawFields.length > 0 && (
-              <div className={`flex flex-col md:flex-row md:flex-wrap justify-start md:justify-center items-start md:items-center gap-6 md:gap-12 w-full ${hasDescription ? "border-b border-white/5 pb-8 mb-6" : ""}`}>
+              <div className={`flex flex-col md:flex-row md:flex-wrap justify-start md:justify-center items-start md:items-stretch gap-6 md:gap-12 w-full ${hasDescription ? "border-b border-white/5 pb-8 mb-6" : ""}`}>
                 {rawFields.map((field, fIdx) => (
-                  <div key={fIdx} className="w-full md:w-auto flex flex-col gap-1.5 pl-4 border-l-2 border-brand-green text-left">
-                    <span className="font-sans text-[11px] tracking-widest text-white/50 uppercase">
+                  <div key={fIdx} className="w-full md:w-auto flex flex-col justify-start gap-1.5 pl-4 border-l-2 border-brand-green text-left md:min-h-[56px]">
+                    <span className="font-sans text-[13px] md:text-sm tracking-widest text-white/50 uppercase">
                       {field.label}
                     </span>
                     <span className="font-sans text-sm font-bold tracking-wider text-white uppercase whitespace-pre-line">
@@ -536,10 +536,40 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
             return "100%";
           };
 
+          // Calculate max positive Y-offset inside this section to ensure bottom margin accounts for pushed-down items
+          let maxPositiveYOffset = 0;
+          if (sec.type === "grid" && sectionRows) {
+            sectionRows.forEach((rowItem) => {
+              if (rowItem.images) {
+                rowItem.images.forEach((_, imgIdx) => {
+                  const off = Array.isArray(rowItem.itemOffsets)
+                    ? (rowItem.itemOffsets[imgIdx] || 0)
+                    : (rowItem.itemOffsets?.[imgIdx] || 0);
+                  if (typeof off === "number" && off > maxPositiveYOffset) {
+                    maxPositiveYOffset = off;
+                  }
+                });
+              }
+            });
+          } else if (sec.type === "image_text") {
+            const yOff = sec.imageYOffset || 0;
+            if (typeof yOff === "number" && yOff > maxPositiveYOffset) {
+              maxPositiveYOffset = yOff;
+            }
+          } else if (sec.type === "text") {
+            const yOff = sec.textYOffset || 0;
+            if (typeof yOff === "number" && yOff > maxPositiveYOffset) {
+              maxPositiveYOffset = yOff;
+            }
+          }
+
           const sectionSpacingObj = getProportionalSpacing(sec.sectionGap, 0, sec.sectionGapMobile);
           const rowsSpacingObj = getProportionalSpacing(sec.rowsGap, 0, sec.rowsGapMobile);
           const titleTopSpacingObj = getProportionalSpacing(sec.titleTopGap, 0, sec.titleTopGapMobile);
           const titleBottomSpacingObj = getProportionalSpacing(sec.titleBottomGap, 0, sec.titleBottomGapMobile);
+
+          // On desktop (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
+          const desktopEffectiveBottomMargin = `${sectionSpacingObj.num + maxPositiveYOffset}px`;
 
           const secClass = `cms-sec-item-${secIdx}`;
           const titleClass = `cms-sec-title-${secIdx}`;
@@ -560,7 +590,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                 }
                 @media (min-width: 1024px) {
                   .${secClass} {
-                    margin-bottom: ${sectionSpacingObj.desktop} !important;
+                    margin-bottom: ${desktopEffectiveBottomMargin} !important;
                   }
                 }
 
