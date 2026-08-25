@@ -44,6 +44,13 @@ body {
   color: var(--brand-white, #ffffff);
   font-family: var(--font-grotesk);
   overflow-x: hidden;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+button, input[type="button"], input[type="submit"] {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Scrollbar styling */

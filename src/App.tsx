@@ -319,7 +319,7 @@ export default function App() {
   return (
     <div
       style={styleVars}
-      className="min-h-screen bg-brand-black text-brand-white flex flex-col font-grotesk overflow-x-hidden select-none selection:bg-brand-green selection:text-brand-black"
+      className="min-h-screen bg-brand-black text-brand-white flex flex-col font-grotesk overflow-x-hidden selection:bg-brand-green selection:text-brand-black"
     >
       {/* Dynamic scroll progress bar indicator */}
       <motion.div
