@@ -437,7 +437,63 @@ export const defaultSiteData: CMSSiteData = {
       }
     }
   ],
-  "projects": [],
+  "projects": [
+    {
+      "id": 3,
+      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
+      },
+      "description": "Custom slide description.",
+      "imageLeft": true
+    },
+    {
+      "id": 1,
+      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      },
+      "description": "Custom slide description.",
+      "imageLeft": false
+    },
+    {
+      "id": 11,
+      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      },
+      "description": "Custom slide description.",
+      "imageLeft": true
+    }
+  ],
   "projectDetails": [
     {
       "id": 1,
@@ -2964,9 +3020,7 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "title": "LOGO ANIMATION",
-      "items": [
-        "FRAME BY FRAME"
-      ]
+      "items": []
     },
     {
       "title": "UX-UI ANIMATION",
@@ -3116,7 +3170,7 @@ export const defaultSiteData: CMSSiteData = {
     }
   },
   "homeTitles": {
-    "showreel": "SHOWREEL",
+    "showreel": "",
     "featuredWork": "FEATURED WORK",
     "services": "SERVICES & EXPERTISE",
     "socials": "I'M ALL OVER THE INTERNET"
@@ -3126,10 +3180,9 @@ export const defaultSiteData: CMSSiteData = {
     "showreel": true,
     "featuredWork": true,
     "services": true,
-    "contactCta": true,
+    "contactCta": false,
     "socials": true
   },
-  "activityLogs": [],
   "projectCategories": [
     "Explainer",
     "Brand",
