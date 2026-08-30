@@ -148,7 +148,7 @@ export function CustomVideoPlayer({
       onMouseMove={handleMouseMove}
       onMouseLeave={() => isPlaying && setShowControls(false)}
       onClick={(e) => e.stopPropagation()}
-      className={`relative group bg-neutral-950 rounded-xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center select-none ${className}`}
+      className={`relative group bg-neutral-950 overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center select-none ${className}`}
     >
       <video
         ref={videoRef}

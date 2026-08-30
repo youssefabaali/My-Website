@@ -116,6 +116,8 @@ export interface ProjectDetail {
   description: string;
   descriptionBottomGap?: number | string;
   descriptionBottomGapMobile?: number | string;
+  metaInfoBottomGap?: number | string;
+  metaInfoBottomGapMobile?: number | string;
   videoUrl?: string;
   headerVideos?: HeaderVideoItem[];
   headerVideoLayout?: "grid" | "row";

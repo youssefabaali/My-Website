@@ -186,7 +186,7 @@ export function ImageFallback({
         <iframe
           src={embedUrl}
           title={alt || "YouTube GIF Video"}
-          className={`w-full aspect-video rounded-lg pointer-events-none select-none ${className}`}
+          className={`w-full aspect-video pointer-events-none select-none ${className}`}
         />
       );
     }
@@ -195,7 +195,7 @@ export function ImageFallback({
       <iframe
         src={embedUrl}
         title={alt || "YouTube Video"}
-        className={`w-full aspect-video rounded-lg ${className}`}
+        className={`w-full aspect-video ${className}`}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
@@ -213,7 +213,7 @@ export function ImageFallback({
         <iframe
           src={embedUrl}
           title={alt || "Vimeo GIF Video"}
-          className={`w-full aspect-video rounded-lg pointer-events-none select-none ${className}`}
+          className={`w-full aspect-video pointer-events-none select-none ${className}`}
         />
       );
     }
@@ -222,7 +222,7 @@ export function ImageFallback({
       <iframe
         src={embedUrl}
         title={alt || "Vimeo Video"}
-        className={`w-full aspect-video rounded-lg ${className}`}
+        className={`w-full aspect-video ${className}`}
         allow="autoplay; fullscreen; picture-in-picture"
         allowFullScreen
       />
@@ -241,7 +241,7 @@ export function ImageFallback({
           muted
           playsInline
           preload="metadata"
-          className={`w-full ${customSize} ${customFit} rounded-lg pointer-events-none select-none ${className}`}
+          className={`w-full ${customSize} ${customFit} pointer-events-none select-none ${className}`}
         />
       );
     }

@@ -3901,6 +3901,9 @@ export function AdminCMS() {
         headerVideoLayout: detailProj?.headerVideoLayout || "grid",
         shortDescription: detailProj?.shortDescription || (briefProj as any).description || "",
         descriptionBottomGap: detailProj?.descriptionBottomGap !== undefined ? detailProj.descriptionBottomGap : 0,
+        descriptionBottomGapMobile: detailProj?.descriptionBottomGapMobile !== undefined ? detailProj.descriptionBottomGapMobile : undefined,
+        metaInfoBottomGap: detailProj?.metaInfoBottomGap !== undefined ? detailProj.metaInfoBottomGap : 0,
+        metaInfoBottomGapMobile: detailProj?.metaInfoBottomGapMobile !== undefined ? detailProj.metaInfoBottomGapMobile : undefined,
         customFields: initialCustomFields,
         gifModes: detailProj?.gifModes || (briefProj as any)?.gifModes || {},
       });
@@ -3928,6 +3931,8 @@ export function AdminCMS() {
       categories: [defaultCat],
       description: "Short catalog description.",
       shortDescription: "Short detail description next to video header.",
+      descriptionBottomGap: 0,
+      metaInfoBottomGap: 0,
       videoUrl: "",
       thumbnail: "/src/assets/images/showreel-Thumbnail.png",
       heroImage: "/src/assets/images/showreel-Thumbnail.png",
@@ -4187,6 +4192,9 @@ export function AdminCMS() {
             client: projectEditForm.client?.toUpperCase() || "CLIENT",
             description: projectEditForm.description || "",
             descriptionBottomGap: projectEditForm.descriptionBottomGap !== undefined ? projectEditForm.descriptionBottomGap : 0,
+            descriptionBottomGapMobile: projectEditForm.descriptionBottomGapMobile !== undefined ? projectEditForm.descriptionBottomGapMobile : undefined,
+            metaInfoBottomGap: projectEditForm.metaInfoBottomGap !== undefined ? projectEditForm.metaInfoBottomGap : 0,
+            metaInfoBottomGapMobile: projectEditForm.metaInfoBottomGapMobile !== undefined ? projectEditForm.metaInfoBottomGapMobile : undefined,
             videoUrl: projectEditForm.headerVideos && projectEditForm.headerVideos[0]?.url ? projectEditForm.headerVideos[0].url : (projectEditForm.videoUrl || ""),
             headerVideos: projectEditForm.headerVideos || [],
             headerVideoLayout: projectEditForm.headerVideoLayout || "grid",
@@ -6069,6 +6077,18 @@ export function AdminCMS() {
                                 ))}
                               </div>
                             </div>
+
+                            {/* CLIENT & ROLE SECTION SPACING */}
+                            <SpacingInputWithPresets
+                              label="Client & Role Section Spacing (Distance to next section below)"
+                              value={projectEditForm.metaInfoBottomGap}
+                              onChange={(newVal) => setProjectEditForm((prev: any) => ({ ...prev, metaInfoBottomGap: newVal }))}
+                              mobileValue={projectEditForm.metaInfoBottomGapMobile}
+                              onMobileChange={(newVal) => setProjectEditForm((prev: any) => ({ ...prev, metaInfoBottomGapMobile: newVal }))}
+                              storageKey="cms_custom_metainfo_bottom_spacings"
+                              placeholder="0"
+                              helperText="Controls vertical distance/margin between the Client & Role info section and the next section below it (Default: 0px)."
+                            />
                           </div>
                         )}
                       </div>

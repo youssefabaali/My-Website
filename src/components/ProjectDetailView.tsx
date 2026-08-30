@@ -415,31 +415,57 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
         // Custom bottom spacing for description: 100% on desktop, manual override or 50% on mobile/tablet
         const descSpacing = resolveResponsiveSpacing(project.descriptionBottomGap, 0, project.descriptionBottomGapMobile);
+        // Custom bottom spacing for Client & Role section: 100% on desktop, manual override or 50% on mobile/tablet
+        const metaSpacing = resolveResponsiveSpacing(project.metaInfoBottomGap, 0, project.metaInfoBottomGapMobile);
+
+        // If there's no description, the section's margin-bottom to the next section is determined by metaSpacing (or descSpacing)
+        const finalSectionBottomSpacing = hasDescription
+          ? descSpacing
+          : (metaSpacing.num > 0 || metaSpacing.mobileNum !== null ? metaSpacing : descSpacing);
 
         return (
           <section
             style={{
-              marginBottom: descSpacing.desktop,
+              marginBottom: finalSectionBottomSpacing.desktop,
             }}
             className="px-6 md:px-10 lg:px-12 xl:px-16 max-w-[1920px] mx-auto w-full transition-all duration-300 cms-desc-gap"
           >
             <style>{`
               .cms-desc-gap {
-                margin-bottom: ${descSpacing.mobile} !important;
+                margin-bottom: ${finalSectionBottomSpacing.mobile} !important;
               }
               @media (min-width: 768px) {
                 .cms-desc-gap {
-                  margin-bottom: ${descSpacing.tablet} !important;
+                  margin-bottom: ${finalSectionBottomSpacing.tablet} !important;
                 }
               }
               @media (min-width: 1024px) {
                 .cms-desc-gap {
-                  margin-bottom: ${descSpacing.desktop} !important;
+                  margin-bottom: ${finalSectionBottomSpacing.desktop} !important;
+                }
+              }
+
+              .cms-meta-gap {
+                margin-bottom: ${metaSpacing.num > 0 || metaSpacing.mobileNum !== null ? metaSpacing.mobile : (hasDescription ? "1.5rem" : "0px")} !important;
+              }
+              @media (min-width: 768px) {
+                .cms-meta-gap {
+                  margin-bottom: ${metaSpacing.num > 0 || metaSpacing.mobileNum !== null ? metaSpacing.tablet : (hasDescription ? "1.5rem" : "0px")} !important;
+                }
+              }
+              @media (min-width: 1024px) {
+                .cms-meta-gap {
+                  margin-bottom: ${metaSpacing.num > 0 || metaSpacing.mobileNum !== null ? metaSpacing.desktop : (hasDescription ? "1.5rem" : "0px")} !important;
                 }
               }
             `}</style>
             {rawFields.length > 0 && (
-              <div className={`flex flex-col md:flex-row md:flex-wrap justify-start md:justify-center items-start md:items-stretch gap-6 md:gap-12 w-full ${hasDescription ? "border-b border-white/5 pb-8 mb-6" : ""}`}>
+              <div
+                style={{
+                  marginBottom: metaSpacing.num > 0 || metaSpacing.mobileNum !== null ? metaSpacing.desktop : (hasDescription ? "1.5rem" : 0),
+                }}
+                className={`flex flex-col md:flex-row md:flex-wrap justify-start md:justify-center items-start md:items-stretch gap-6 md:gap-12 w-full cms-meta-gap ${hasDescription ? "border-b border-white/5 pb-8" : ""}`}
+              >
                 {rawFields.map((field, fIdx) => (
                   <div key={fIdx} className="w-full md:w-auto flex flex-col justify-start gap-1.5 pl-4 border-l-2 border-brand-green text-left md:min-h-[56px]">
                     <span className="font-sans text-[13px] md:text-sm tracking-widest text-white/50 uppercase">
