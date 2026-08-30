@@ -194,7 +194,7 @@ app.post("/api/login", (req, res) => {
 });
 
 // 4. File Upload (Protected)
-app.post("/api/upload", verifyAdminAuth, upload.single("file"), (req, res) => {
+app.post("/api/upload", verifyAdminAuth, upload.single("file") as any, (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: "No file uploaded." });

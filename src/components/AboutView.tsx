@@ -245,7 +245,7 @@ export function AboutView() {
           )}
 
           {/* Social connections — Interactive Bento / Platform Cards */}
-          {((data.aboutSocials || data.socials) && (data.aboutSocials || data.socials).length > 0) && (
+          {((data.socials || data.aboutSocials) && (data.socials || data.aboutSocials).length > 0) && (
             <motion.div
               variants={socialContainerVariants}
               initial="hidden"
@@ -254,7 +254,7 @@ export function AboutView() {
               className="w-full max-w-6xl mx-auto mt-4 px-2"
             >
               <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-stretch sm:items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-sm sm:max-w-none mx-auto">
-                {(data.aboutSocials || data.socials).map((social) => (
+                {(data.socials || data.aboutSocials).map((social) => (
                   <motion.a
                     key={social.name}
                     variants={socialCardVariants}

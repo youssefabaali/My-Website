@@ -3020,7 +3020,9 @@ export const defaultSiteData: CMSSiteData = {
     },
     {
       "title": "LOGO ANIMATION",
-      "items": []
+      "items": [
+        "FRAME BY FRAME"
+      ]
     },
     {
       "title": "UX-UI ANIMATION",
@@ -3032,31 +3034,31 @@ export const defaultSiteData: CMSSiteData = {
   "socials": [
     {
       "name": "LinkedIn",
-      "href": "https://linkedin.com",
+      "href": "https://www.linkedin.com/in/youssefabaali/",
       "icon": "src/assets/Icons/Icon-LinkedIn-Color.svg",
       "iconBW": "src/assets/Icons/Icon-LinkedIn-BW.svg"
     },
     {
       "name": "Behance",
-      "href": "https://behance.net",
+      "href": "https://www.behance.net/youssef_abaali",
       "icon": "src/assets/Icons/Icon-Behance-Color.svg",
       "iconBW": "src/assets/Icons/Icon-Behance-BW.svg"
     },
     {
       "name": "X",
-      "href": "https://x.com",
+      "href": "https://x.com/youabaali",
       "icon": "src/assets/Icons/Icon-X-Color.svg",
       "iconBW": "src/assets/Icons/Icon-X-BW.svg"
     },
     {
       "name": "Instagram",
-      "href": "https://instagram.com",
+      "href": "https://www.instagram.com/youssef.abaalii/",
       "icon": "src/assets/Icons/Icon-Instagram-Color.svg",
       "iconBW": "src/assets/Icons/Icon-Instagram-BW.svg"
     },
     {
       "name": "Facebook",
-      "href": "https://facebook.com",
+      "href": "https://www.facebook.com/profile.php?id=61581777346086",
       "icon": "src/assets/Icons/Icon-Facebook-Color.svg",
       "iconBW": "src/assets/Icons/Icon-Facebook-BW.svg"
     }
@@ -3150,7 +3152,7 @@ export const defaultSiteData: CMSSiteData = {
   },
   "showreel": {
     "videoUrl": "https://vimeo.com/1153984527?fl=pl&fe=sh",
-    "thumbnail": "/src/assets/images/showreel-Thumbnail.png"
+    "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg"
   },
   "seo": {
     "home": {

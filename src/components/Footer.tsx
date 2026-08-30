@@ -13,9 +13,11 @@ export function Footer({ onNavigate }: FooterProps) {
 
   const displayEmail = data.contact?.email || data.email;
 
-  const rawSocials = (data.footer.footerSocials && data.footer.footerSocials.length > 0)
-    ? data.footer.footerSocials
-    : (data.socials || []).map((s) => ({ label: s.name, href: s.href, isVisible: true }));
+  const rawSocials = (data.socials && data.socials.length > 0)
+    ? data.socials.map((s) => ({ label: s.name, href: s.href, isVisible: true }))
+    : ((data.footer?.footerSocials && data.footer?.footerSocials.length > 0)
+      ? data.footer.footerSocials
+      : []);
 
   const activeSocials = rawSocials.filter((s: any) => s.isVisible !== false);
   const copyrightText = data.footer.copyrightText || `© ${data.footer.year} ${data.name.toLowerCase()}. All rights reserved.`;
