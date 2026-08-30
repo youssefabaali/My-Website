@@ -254,7 +254,9 @@ export function AboutView() {
               className="w-full max-w-6xl mx-auto mt-4 px-2"
             >
               <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-stretch sm:items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-sm sm:max-w-none mx-auto">
-                {(data.socials || data.aboutSocials).map((social) => (
+                {(data.socials || data.aboutSocials)
+                  .filter((s: any) => s.isVisible !== false)
+                  .map((social) => (
                   <motion.a
                     key={social.name}
                     variants={socialCardVariants}

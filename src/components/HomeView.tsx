@@ -438,7 +438,9 @@ export function HomeView({
               viewport={{ once: true, margin: "-120px" }}
               className="flex flex-col border-t border-white/10 w-full"
             >
-              {data.socials.map((social, idx) => (
+              {data.socials
+                .filter((s: any) => s.isVisible !== false)
+                .map((social, idx) => (
                 <motion.a
                   key={social.name}
                   variants={itemVariants}

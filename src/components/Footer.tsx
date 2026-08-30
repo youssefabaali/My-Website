@@ -14,7 +14,7 @@ export function Footer({ onNavigate }: FooterProps) {
   const displayEmail = data.contact?.email || data.email;
 
   const rawSocials = (data.socials && data.socials.length > 0)
-    ? data.socials.map((s) => ({ label: s.name, href: s.href, isVisible: true }))
+    ? data.socials.map((s: any) => ({ label: s.name, href: s.href, isVisible: s.isVisible !== false }))
     : ((data.footer?.footerSocials && data.footer?.footerSocials.length > 0)
       ? data.footer.footerSocials
       : []);
