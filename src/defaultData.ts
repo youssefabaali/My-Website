@@ -458,24 +458,6 @@ export const defaultSiteData: CMSSiteData = {
       "imageLeft": true
     },
     {
-      "id": 1,
-      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      },
-      "description": "Custom slide description.",
-      "imageLeft": false
-    },
-    {
       "id": 11,
       "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
       "category": "Explainer",
@@ -503,6 +485,9 @@ export const defaultSiteData: CMSSiteData = {
       "role": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX",
       "client": "247 MAINTENANCE",
       "description": "To give the video a polished feel, I combined 3D elements with a flat 2D world. \n\nThis contrast added visual depth, helping key elements pop on screen and hold the viewer's attention throughout the video.",
+      "descriptionBottomGap": 0,
+      "metaInfoBottomGap": "default",
+      "metaInfoBottomGapMobile": 1000,
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
       "headerVideos": [
         {
@@ -3036,19 +3021,22 @@ export const defaultSiteData: CMSSiteData = {
       "name": "LinkedIn",
       "href": "https://www.linkedin.com/in/youssefabaali/",
       "icon": "src/assets/Icons/Icon-LinkedIn-Color.svg",
-      "iconBW": "src/assets/Icons/Icon-LinkedIn-BW.svg"
+      "iconBW": "src/assets/Icons/Icon-LinkedIn-BW.svg",
+      "isVisible": true
     },
     {
       "name": "Behance",
       "href": "https://www.behance.net/youssef_abaali",
       "icon": "src/assets/Icons/Icon-Behance-Color.svg",
-      "iconBW": "src/assets/Icons/Icon-Behance-BW.svg"
+      "iconBW": "src/assets/Icons/Icon-Behance-BW.svg",
+      "isVisible": true
     },
     {
       "name": "X",
       "href": "https://x.com/youabaali",
       "icon": "src/assets/Icons/Icon-X-Color.svg",
-      "iconBW": "src/assets/Icons/Icon-X-BW.svg"
+      "iconBW": "src/assets/Icons/Icon-X-BW.svg",
+      "isVisible": false
     },
     {
       "name": "Instagram",
@@ -3060,7 +3048,8 @@ export const defaultSiteData: CMSSiteData = {
       "name": "Facebook",
       "href": "https://www.facebook.com/profile.php?id=61581777346086",
       "icon": "src/assets/Icons/Icon-Facebook-Color.svg",
-      "iconBW": "src/assets/Icons/Icon-Facebook-BW.svg"
+      "iconBW": "src/assets/Icons/Icon-Facebook-BW.svg",
+      "isVisible": false
     }
   ],
   "aboutSocials": [
