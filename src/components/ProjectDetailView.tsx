@@ -496,7 +496,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
           const parseSpacingValue = (val: number | string | undefined): string | undefined => {
             if (val === undefined || val === null || val === "" || val === "default") return undefined;
-            if (val === 0 || val === "0" || val === "none") return "0px";
+            if (val === 0 || val === "0" || val === "0px" || val === "none") return "0px";
             if (val === "tight" || val === "small") return "8px";
             if (val === "medium") return "20px";
             if (val === "large") return "40px";
@@ -504,8 +504,9 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
             if (typeof val === "number") return `${val}px`;
             if (typeof val === "string") {
               const trimmed = val.trim();
+              if (trimmed === "0" || trimmed === "0px" || trimmed === "none") return "0px";
               if (!isNaN(Number(trimmed))) return `${Number(trimmed)}px`;
-              if (trimmed.endsWith("px") || trimmed.endsWith("rem") || trimmed.endsWith("em") || trimmed.endsWith("%") || trimmed.endsWith("vh")) {
+              if (trimmed.endsWith("px") || trimmed.endsWith("rem") || trimmed.endsWith("em") || trimmed.endsWith("%") || trimmed.endsWith("vh") || trimmed.endsWith("vw")) {
                 return trimmed;
               }
               return `${trimmed}px`;
@@ -843,7 +844,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                       }
 
                       const rowCustomColGap = rowItem.columnsGap !== undefined && rowItem.columnsGap !== null && rowItem.columnsGap !== ""
-                        ? resolveResponsiveSpacing(rowItem.columnsGap).tablet
+                        ? (parseSpacingValue(rowItem.columnsGap) || resolveResponsiveSpacing(rowItem.columnsGap).tablet)
                         : "1.25rem";
 
                       if (isSingle) {
@@ -864,7 +865,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                   alt={`${sec.label} Tablet Single Frame ${rIdx + 1}`}
                                   category={project.title}
                                   gifMode={isGifModeForUrl(imgSrc)}
-                                  className="w-full h-auto max-h-[750px] object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+                                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
                                 />
                               </button>
                             </div>
@@ -1006,6 +1007,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                               ...(parsedItemWidth ? { width: parsedItemWidth, maxWidth: parsedItemWidth, flex: `0 0 ${parsedItemWidth}` } : {}),
                             };
 
+                            const isSingleRowImage = rowItem.images.length === 1;
+
                             return (
                               <button
                                 key={imgIdx}
@@ -1020,7 +1023,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                   alt={`${sec.label} Row ${rIdx + 1} Image ${imgIdx + 1}`}
                                   category={project.title}
                                   gifMode={isGifModeForUrl(imgSrc)}
-                                  className="w-full h-auto max-h-[750px] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                                  className={`w-full h-auto ${isSingleRowImage ? "" : "max-h-[850px]"} object-contain transition-transform duration-500 group-hover:scale-[1.01]`}
                                 />
                               </button>
                             );
