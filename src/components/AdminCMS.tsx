@@ -5263,9 +5263,15 @@ export function AdminCMS() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {(data.socials || []).map((soc, sIdx) => {
                             const totalCount = (data.socials || []).length;
+                            const isVis = (soc as any).isVisible !== false;
                             return (
-                              <div key={sIdx} className="bg-neutral-900/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3.5 relative">
-                                {/* Header: Badge & Reordering + Delete Actions */}
+                              <div
+                                key={sIdx}
+                                className={`border p-4 rounded-xl flex flex-col gap-3.5 relative transition-all ${
+                                  isVis ? "bg-neutral-900/60 border-white/10" : "bg-neutral-950/70 border-white/5 opacity-70"
+                                }`}
+                              >
+                                {/* Header: Badge & Reordering + Visibility + Delete Actions */}
                                 <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
                                   <div className="flex items-center gap-2">
                                     <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-mono text-[10px] font-bold">
@@ -5274,9 +5280,36 @@ export function AdminCMS() {
                                     <span className="text-xs font-bold text-white uppercase tracking-wider truncate max-w-[140px] sm:max-w-[200px]">
                                       {soc.name || "Untitled Social"}
                                     </span>
+                                    {!isVis && (
+                                      <span className="px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-400 font-mono text-[9px] uppercase">
+                                        Hidden
+                                      </span>
+                                    )}
                                   </div>
 
                                   <div className="flex items-center gap-1">
+                                    {/* Visibility Toggle Button */}
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        const list = [...(data.socials || [])];
+                                        list[sIdx] = { ...list[sIdx], isVisible: !isVis } as any;
+                                        updateData(
+                                          (prev) => ({ ...prev, socials: list }),
+                                          "Toggle Social Visibility",
+                                          `Toggled visibility for ${soc.name} to ${!isVis ? "visible" : "hidden"}`
+                                        );
+                                      }}
+                                      className={`p-1.5 rounded-lg border cursor-pointer transition-all ${
+                                        isVis
+                                          ? "bg-brand-green/10 border-brand-green/30 text-brand-green hover:bg-brand-green/20"
+                                          : "bg-neutral-950 border-white/10 text-neutral-500 hover:text-neutral-300"
+                                      }`}
+                                      title={isVis ? "Click to hide from website" : "Click to show on website"}
+                                    >
+                                      {isVis ? <Eye size={13} /> : <EyeOff size={13} />}
+                                    </button>
+
                                     {/* Move Up */}
                                     <button
                                       type="button"
