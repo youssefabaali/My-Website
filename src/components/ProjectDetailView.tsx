@@ -894,9 +894,32 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         const activeGlobalIdx =
                           imgGlobalIdx !== -1 ? imgGlobalIdx : startingGlobalIndex;
 
+                        const rawItemWidth = Array.isArray(rowItem.itemWidths)
+                          ? rowItem.itemWidths[0]
+                          : rowItem.itemWidths?.[0];
+
+                        // If user explicitly set customWidth or itemWidths[0]
+                        const customItemWidth = rawItemWidth ?? rowItem.customWidth;
+                        const isNotFullWidth = customItemWidth !== undefined &&
+                          customItemWidth !== null &&
+                          customItemWidth !== "" &&
+                          customItemWidth !== "100%" &&
+                          customItemWidth !== 100 &&
+                          customItemWidth !== "100";
+
+                        // If 100% -> 100%, if any other size (50, 70, 80, etc.) -> exactly 50% on tablet
+                        const finalTabletWidth = isNotFullWidth ? "50%" : tabletMaxWidth;
+
+                        const tabletAlignStyle: React.CSSProperties =
+                          rowItem.rowAlignment === "left"
+                            ? { marginLeft: 0, marginRight: "auto", justifyContent: "flex-start" }
+                            : rowItem.rowAlignment === "right"
+                            ? { marginLeft: "auto", marginRight: 0, justifyContent: "flex-end" }
+                            : { marginLeft: "auto", marginRight: "auto", justifyContent: "center" };
+
                         return (
-                          <div key={rIdx} className="w-full flex justify-center">
-                            <div style={{ maxWidth: tabletMaxWidth, width: "100%" }} className="flex justify-center">
+                          <div key={rIdx} style={tabletAlignStyle} className="w-full flex">
+                            <div style={{ maxWidth: finalTabletWidth, width: "100%" }} className="flex justify-center">
                               <button
                                 onClick={() => setLightboxIndex(activeGlobalIdx)}
                                 className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0"

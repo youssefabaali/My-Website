@@ -296,4 +296,5 @@ export interface CMSSiteData {
   homeTitles?: HomeSectionTitles;
   homeVisibility?: HomeSectionVisibility;
   projectCategories?: string[]; // Custom dynamic list of project categories
+  cmsPresets?: Record<string, number[]>; // Saved custom gap, offset and spacing presets
 }

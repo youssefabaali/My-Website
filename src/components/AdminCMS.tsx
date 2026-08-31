@@ -576,6 +576,66 @@ function CompactImageSizeControl({
   );
 }
 
+// ════════════════════════════════════════════════════════════════
+// HELPER: Gather all custom gap / spacing / offset presets from localStorage
+// ════════════════════════════════════════════════════════════════
+export const getAllCmsPresetsFromStorage = (currentPresets?: Record<string, number[]>): Record<string, number[]> => {
+  const result: Record<string, number[]> = { ...(currentPresets || {}) };
+  if (typeof window === "undefined" || !window.localStorage) return result;
+
+  const knownKeys = [
+    "cms_custom_y_offsets",
+    "cms_custom_x_shifts",
+    "cms_custom_split_y_offsets",
+    "cms_custom_split_x_shifts",
+    "cms_custom_text_y_offsets",
+    "cms_custom_text_x_shifts",
+    "cms_custom_section_spacings",
+    "cms_custom_section_spacings_mobile",
+    "cms_custom_rows_gaps",
+    "cms_custom_rows_gaps_mobile",
+    "cms_custom_title_top_spacings",
+    "cms_custom_title_top_spacings_mobile",
+    "cms_custom_title_bottom_spacings",
+    "cms_custom_title_bottom_spacings_mobile",
+    "cms_custom_description_bottom_spacings",
+    "cms_custom_description_bottom_spacings_mobile",
+    "cms_custom_meta_bottom_spacings",
+    "cms_custom_meta_bottom_spacings_mobile",
+  ];
+
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && (k.startsWith("cms_custom_") || k.includes("spacing") || k.includes("offset"))) {
+        const val = localStorage.getItem(k);
+        if (val) {
+          try {
+            const parsed = JSON.parse(val);
+            if (Array.isArray(parsed)) {
+              result[k] = parsed.filter((n) => typeof n === "number" && !isNaN(n));
+            }
+          } catch {}
+        }
+      }
+    }
+  } catch {}
+
+  knownKeys.forEach((k) => {
+    try {
+      const val = localStorage.getItem(k);
+      if (val) {
+        const parsed = JSON.parse(val);
+        if (Array.isArray(parsed)) {
+          result[k] = parsed.filter((n) => typeof n === "number" && !isNaN(n));
+        }
+      }
+    } catch {}
+  });
+
+  return result;
+};
+
 function CompactOffsetControl({
   offset,
   onChange,
@@ -608,6 +668,26 @@ function CompactOffsetControl({
     setInputVal(String(offset || 0));
   }, [offset]);
 
+  useEffect(() => {
+    const handleStorageUpdate = () => {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) {
+            setCustomPresets(parsed.filter((n) => typeof n === "number" && !isNaN(n)));
+          }
+        }
+      } catch {}
+    };
+    window.addEventListener("storage", handleStorageUpdate);
+    window.addEventListener("cms_presets_updated", handleStorageUpdate);
+    return () => {
+      window.removeEventListener("storage", handleStorageUpdate);
+      window.removeEventListener("cms_presets_updated", handleStorageUpdate);
+    };
+  }, [storageKey]);
+
   // Only display user-saved custom presets (no hardcoded visual noise)
   const allPresets = Array.from(new Set([...defaultPresets, ...customPresets])).sort((a, b) => a - b);
 
@@ -617,6 +697,7 @@ function CompactOffsetControl({
     setCustomPresets(updated);
     try {
       localStorage.setItem(storageKey, JSON.stringify(updated));
+      window.dispatchEvent(new Event("cms_presets_updated"));
     } catch {}
   };
 
@@ -626,6 +707,7 @@ function CompactOffsetControl({
     setCustomPresets(updated);
     try {
       localStorage.setItem(storageKey, JSON.stringify(updated));
+      window.dispatchEvent(new Event("cms_presets_updated"));
     } catch {}
   };
 
@@ -773,6 +855,33 @@ function SpacingInputWithPresets({
     return [];
   });
 
+  useEffect(() => {
+    const handleStorageUpdate = () => {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) {
+            setCustomPresets(parsed.filter((n) => typeof n === "number" && !isNaN(n)));
+          }
+        }
+        const savedMobile = localStorage.getItem(mobileStorageKey);
+        if (savedMobile) {
+          const parsedM = JSON.parse(savedMobile);
+          if (Array.isArray(parsedM)) {
+            setCustomMobilePresets(parsedM.filter((n) => typeof n === "number" && !isNaN(n)));
+          }
+        }
+      } catch {}
+    };
+    window.addEventListener("storage", handleStorageUpdate);
+    window.addEventListener("cms_presets_updated", handleStorageUpdate);
+    return () => {
+      window.removeEventListener("storage", handleStorageUpdate);
+      window.removeEventListener("cms_presets_updated", handleStorageUpdate);
+    };
+  }, [storageKey, mobileStorageKey]);
+
   // Calculate current numerical value or string for Desktop
   const currentNum =
     value === undefined || value === null || value === "default" || value === ""
@@ -835,6 +944,7 @@ function SpacingInputWithPresets({
     setCustomPresets(updated);
     try {
       localStorage.setItem(storageKey, JSON.stringify(updated));
+      window.dispatchEvent(new Event("cms_presets_updated"));
     } catch {}
   };
 
@@ -844,6 +954,7 @@ function SpacingInputWithPresets({
     setCustomPresets(updated);
     try {
       localStorage.setItem(storageKey, JSON.stringify(updated));
+      window.dispatchEvent(new Event("cms_presets_updated"));
     } catch {}
   };
 
@@ -853,6 +964,7 @@ function SpacingInputWithPresets({
     setCustomMobilePresets(updated);
     try {
       localStorage.setItem(mobileStorageKey, JSON.stringify(updated));
+      window.dispatchEvent(new Event("cms_presets_updated"));
     } catch {}
   };
 
@@ -862,6 +974,7 @@ function SpacingInputWithPresets({
     setCustomMobilePresets(updated);
     try {
       localStorage.setItem(mobileStorageKey, JSON.stringify(updated));
+      window.dispatchEvent(new Event("cms_presets_updated"));
     } catch {}
   };
 
@@ -4361,7 +4474,12 @@ export function AdminCMS() {
 
   // Backup file logic
   const handleBackupDownload = () => {
-    const jsonStr = JSON.stringify(data, null, 2);
+    const allPresetsMap = getAllCmsPresetsFromStorage(data?.cmsPresets);
+    const backupDataWithPresets = {
+      ...data,
+      cmsPresets: allPresetsMap,
+    };
+    const jsonStr = JSON.stringify(backupDataWithPresets, null, 2);
     const blob = new Blob([jsonStr], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -4370,11 +4488,12 @@ export function AdminCMS() {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    showNotification("Downloaded JSON site backup!", "success");
+    showNotification("Downloaded JSON site backup with all saved presets & numbers!", "success");
   };
 
   const handleDownloadDefaultDataTs = () => {
     const assetMap = buildAssetMapping(data);
+    const allPresetsMap = getAllCmsPresetsFromStorage(data?.cmsPresets);
 
     const cleanObject = (obj: any): any => {
       if (!obj) return obj;
@@ -4397,7 +4516,10 @@ export function AdminCMS() {
       return obj;
     };
 
-    const cleanData = cleanObject(data);
+    const cleanData = cleanObject({
+      ...data,
+      cmsPresets: allPresetsMap,
+    });
     const fileContent = `import { CMSSiteData } from "./types/cms";\n\nexport const defaultSiteData: CMSSiteData = ${JSON.stringify(cleanData, null, 2)};\n`;
     const blob = new Blob([fileContent], { type: "text/typescript" });
     const url = URL.createObjectURL(blob);
@@ -4408,7 +4530,7 @@ export function AdminCMS() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    showNotification("تم تحميل ملف defaultData.ts النظيف (مفصول عن Base64 وموجه لـ src/assets/images) بنجاح!", "success");
+    showNotification("تم تحميل ملف defaultData.ts النظيف (محتفظ بكافة الأرقام، المسافات، والـ Presets) بنجاح!", "success");
   };
 
   const handleResetData = async () => {

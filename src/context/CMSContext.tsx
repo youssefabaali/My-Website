@@ -84,6 +84,7 @@ export function mergeDeepData(serverData: any, defaultData: CMSSiteData): CMSSit
     homeTitles: { ...defaultData.homeTitles, ...(serverData.homeTitles || {}) },
     homeVisibility: { ...defaultData.homeVisibility, ...(serverData.homeVisibility || {}) },
     projectCategories: Array.isArray(serverData.projectCategories) ? serverData.projectCategories : defaultData.projectCategories || [],
+    cmsPresets: { ...(defaultData.cmsPresets || {}), ...(serverData.cmsPresets || {}) },
   };
 }
 
@@ -448,6 +449,16 @@ export function CMSProvider({ children }: { children: ReactNode }) {
 
   const restoreBackup = async (backupData: CMSSiteData): Promise<boolean> => {
     const merged = mergeDeepData(backupData, defaultSiteData);
+    if (merged.cmsPresets && typeof merged.cmsPresets === "object") {
+      try {
+        Object.entries(merged.cmsPresets).forEach(([k, v]) => {
+          if (Array.isArray(v)) {
+            localStorage.setItem(k, JSON.stringify(v));
+          }
+        });
+        window.dispatchEvent(new Event("storage"));
+      } catch (err) {}
+    }
     return updateData(() => merged, "Restored Backup", "Imported and applied complete JSON backup configuration");
   };
 
