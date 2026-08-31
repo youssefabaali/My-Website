@@ -326,13 +326,26 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
               const embedUrl = getEmbedUrl(rawUrl);
               const vCover = (vItem.thumbnail || "").trim();
               const isPlaying = Boolean(playingVideoMap[vIdx]);
+              const isHeaderGifMode = isGifModeForUrl(rawUrl) || (vCover ? isGifModeForUrl(vCover) : false) || Boolean((vItem as any).gifMode);
+              const mediaSourceToRender = rawUrl || vCover;
 
               return (
                 <div
                   key={vItem.id || vIdx}
                   className="overflow-hidden bg-black aspect-video w-full relative"
                 >
-                  {isPlaying ? (
+                  {isHeaderGifMode && mediaSourceToRender ? (
+                    <div className="w-full h-full relative overflow-hidden flex items-center justify-center bg-black">
+                      <ImageFallback
+                        src={mediaSourceToRender}
+                        alt={`${project.title} Video ${vIdx + 1}`}
+                        gifMode={true}
+                        loading={vIdx === 0 ? "eager" : "lazy"}
+                        decoding={vIdx === 0 ? "sync" : "async"}
+                        className="w-full h-full object-cover pointer-events-none select-none"
+                      />
+                    </div>
+                  ) : isPlaying ? (
                     /youtube|vimeo|embed/i.test(embedUrl) ? (
                       <iframe
                         src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
@@ -364,7 +377,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         <ImageFallback
                           src={vCover}
                           alt={`${project.title} Video Thumbnail ${vIdx + 1}`}
-                          gifMode={isGifModeForUrl(vCover) || Boolean((vItem as any).gifMode)}
+                          gifMode={false}
                           loading={vIdx === 0 ? "eager" : "lazy"}
                           decoding={vIdx === 0 ? "sync" : "async"}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -464,10 +477,10 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                 style={{
                   marginBottom: metaSpacing.num > 0 || metaSpacing.mobileNum !== null ? metaSpacing.desktop : (hasDescription ? "1.5rem" : 0),
                 }}
-                className={`flex flex-col md:flex-row md:flex-wrap justify-start md:justify-center items-start md:items-stretch gap-6 md:gap-12 w-full cms-meta-gap ${hasDescription ? "border-b border-white/5 pb-8" : ""}`}
+                className={`grid grid-cols-1 sm:grid-cols-3 lg:flex lg:flex-row lg:flex-wrap justify-start lg:justify-center items-start gap-6 sm:gap-4 md:gap-6 lg:gap-12 w-full cms-meta-gap ${hasDescription ? "border-b border-white/5 pb-8" : ""}`}
               >
                 {rawFields.map((field, fIdx) => (
-                  <div key={fIdx} className="w-full md:w-auto flex flex-col justify-start gap-1.5 pl-4 border-l-2 border-brand-green text-left md:min-h-[56px]">
+                  <div key={fIdx} className="w-full lg:w-auto flex flex-col justify-start gap-1.5 pl-4 border-l-2 border-brand-green text-left min-h-[52px]">
                     <span className="font-sans text-[13px] md:text-sm tracking-widest text-white/50 uppercase">
                       {field.label}
                     </span>

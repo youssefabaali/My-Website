@@ -240,8 +240,8 @@ export function ImageFallback({
           loop
           muted
           playsInline
-          preload="metadata"
-          className={`w-full ${customSize} ${customFit} pointer-events-none select-none ${className}`}
+          preload="auto"
+          className={`w-full h-full ${customSize} ${customFit} pointer-events-none select-none ${className}`}
         />
       );
     }
