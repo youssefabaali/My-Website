@@ -595,8 +595,10 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
           const titleTopSpacingObj = getProportionalSpacing(sec.titleTopGap, 0, sec.titleTopGapMobile);
           const titleBottomSpacingObj = getProportionalSpacing(sec.titleBottomGap, 0, sec.titleBottomGapMobile);
 
-          // On desktop (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
+          // On desktop & tablet (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
           const desktopEffectiveBottomMargin = `${sectionSpacingObj.num + maxPositiveYOffset}px`;
+          const tabletBaseGap = parseFloat(sectionSpacingObj.tablet.replace("px", "").replace("rem", "")) || sectionSpacingObj.num;
+          const tabletEffectiveBottomMargin = `${tabletBaseGap + maxPositiveYOffset}px`;
 
           const secClass = `cms-sec-item-${secIdx}`;
           const titleClass = `cms-sec-title-${secIdx}`;
@@ -612,7 +614,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                 }
                 @media (min-width: 768px) {
                   .${secClass} {
-                    margin-bottom: ${sectionSpacingObj.tablet} !important;
+                    margin-bottom: ${tabletEffectiveBottomMargin} !important;
                   }
                 }
                 @media (min-width: 1024px) {
@@ -737,47 +739,32 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                   const yOff = sec.imageYOffset || 0;
                   const xOff = sec.imageXOffset || 0;
-                  const transformStyle = (yOff || xOff)
-                    ? { transform: `translate(${xOff}px, ${yOff}px)` }
-                    : undefined;
-
-                  const imgButtonStyle: React.CSSProperties = {
-                    ...transformStyle,
-                    width: "100%",
-                  };
+                  const splitSecClass = `cms-split-img-${secIdx}`;
 
                   return (
                     <div className="flex flex-col md:flex-row gap-8 md:gap-14 items-center py-2 w-full">
-                      {/* Image Column */}
-                      <div
-                        style={{ width: `${safeImgPercent}%` }}
-                        className={`w-full flex justify-center ${sec.imagePosition === "right" ? "md:order-2" : "md:order-1"}`}
-                      >
-                        {(sec.imageSrc || (sec.images && sec.images[0])) && (
-                          <button
-                            onClick={() => {
-                              const imgSrc = sec.imageSrc || sec.images[0];
-                              const imgIdx = allImages.indexOf(imgSrc);
-                              if (imgIdx !== -1) setLightboxIndex(imgIdx);
-                            }}
-                            style={imgButtonStyle}
-                            className="overflow-hidden group cursor-pointer focus:outline-none flex items-center justify-center p-0 transition-transform duration-300"
-                          >
-                            <ImageFallback
-                              src={sec.imageSrc || sec.images[0]}
-                              alt={sec.textTitle || sec.label}
-                              category={project.title}
-                              gifMode={isGifModeForUrl(sec.imageSrc || sec.images[0])}
-                              className="w-full h-auto max-h-[750px] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                            />
-                          </button>
-                        )}
-                      </div>
+                      <style>{`
+                        .${splitSecClass} {
+                          transform: none !important;
+                          width: 100% !important;
+                        }
+                        @media (min-width: 768px) {
+                          .${splitSecClass} {
+                            ${yOff || xOff ? `transform: translate(${xOff}px, ${yOff}px) !important;` : ""}
+                            width: 100% !important;
+                          }
+                          .cms-split-img-col-${secIdx} {
+                            width: ${safeImgPercent}% !important;
+                          }
+                          .cms-split-text-col-${secIdx} {
+                            width: ${textPercent}% !important;
+                          }
+                        }
+                      `}</style>
 
-                      {/* Text Column */}
+                      {/* Text Column - on mobile: order-1 (on top) and width 100%, on desktop md: responsive order and calculated % width */}
                       <div
-                        style={{ width: `${textPercent}%` }}
-                        className={`w-full flex flex-col gap-4 text-left ${sec.imagePosition === "right" ? "md:order-1" : "md:order-2"}`}
+                        className={`w-full flex flex-col gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "md:order-1" : "md:order-2"}`}
                       >
                         {sec.textTitle && (
                           <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
@@ -788,6 +775,30 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           <p className="font-sans text-sm md:text-base tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
                             {sec.textContent}
                           </p>
+                        )}
+                      </div>
+
+                      {/* Image Column - on mobile: order-2 (below text) and width 100%, on desktop md: responsive order and calculated % width */}
+                      <div
+                        className={`w-full flex justify-center order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "md:order-2" : "md:order-1"}`}
+                      >
+                        {(sec.imageSrc || (sec.images && sec.images[0])) && (
+                          <button
+                            onClick={() => {
+                              const imgSrc = sec.imageSrc || sec.images[0];
+                              const imgIdx = allImages.indexOf(imgSrc);
+                              if (imgIdx !== -1) setLightboxIndex(imgIdx);
+                            }}
+                            className={`overflow-hidden group cursor-pointer focus:outline-none flex items-center justify-center p-0 transition-transform duration-300 ${splitSecClass}`}
+                          >
+                            <ImageFallback
+                              src={sec.imageSrc || sec.images[0]}
+                              alt={sec.textTitle || sec.label}
+                              category={project.title}
+                              gifMode={isGifModeForUrl(sec.imageSrc || sec.images[0])}
+                              className="w-full h-auto max-h-[750px] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                            />
+                          </button>
                         )}
                       </div>
                     </div>
