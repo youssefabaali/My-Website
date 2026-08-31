@@ -485,9 +485,9 @@ export const defaultSiteData: CMSSiteData = {
       "role": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX",
       "client": "247 MAINTENANCE",
       "description": "To give the video a polished feel, I combined 3D elements with a flat 2D world. \n\nThis contrast added visual depth, helping key elements pop on screen and hold the viewer's attention throughout the video.",
-      "descriptionBottomGap": 0,
-      "metaInfoBottomGap": "default",
-      "metaInfoBottomGapMobile": 1000,
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": "default",
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
       "headerVideos": [
         {
@@ -506,37 +506,11 @@ export const defaultSiteData: CMSSiteData = {
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4"
-              ],
-              "gifModes": {
-                "src/assets/images/upload-1785782854542-397219208.gif": false,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
-              }
-            }
-          ],
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
-          }
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.3.PNG",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.4.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.6.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG",
@@ -548,40 +522,109 @@ export const defaultSiteData: CMSSiteData = {
             {
               "id": "row-1",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.3.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.4.PNG"
-              ]
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4"
+              ],
+              "gifModes": {
+                "src/assets/images/upload-1785782854542-397219208.gif": false,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
+              }
             },
             {
-              "id": "row-1785783071720",
+              "id": "row-1788171640659",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.6.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG"
-              ]
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG"
+              ],
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "left"
             },
             {
-              "id": "row-1785783082312",
+              "id": "row-1788171649519",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.4.PNG"
+              ],
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "70%"
+              }
+            },
+            {
+              "id": "row-1788171630567",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
+              }
+            },
+            {
+              "id": "row-1788171858018",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
+              ],
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "center",
+              "itemOffsets": {
+                "1": 150
+              }
+            },
+            {
+              "id": "row-1788171964112",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
-              ]
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG"
+              ],
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "left",
+              "itemOffsets": {
+                "1": 150
+              }
             },
             {
-              "id": "row-1785783099847",
+              "id": "row-1788171973504",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
+              ],
+              "itemWidths": {
+                "0": "80%"
+              }
+            },
+            {
+              "id": "row-1788172209393",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG"
+              ],
+              "itemOffsets": {
+                "1": 150
+              }
+            },
+            {
+              "id": "row-1788172214529",
               "images": []
             },
             {
-              "id": "row-1786106842221",
+              "id": "row-1788172281654",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
-              ]
+              ],
+              "itemWidths": {
+                "0": "80%"
+              }
             }
-          ]
+          ],
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
+          },
+          "rowsGap": 120
         }
       ],
       "date": "2024",
