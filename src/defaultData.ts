@@ -439,6 +439,42 @@ export const defaultSiteData: CMSSiteData = {
   ],
   "projects": [
     {
+      "id": 11,
+      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      },
+      "description": "Custom slide description.",
+      "imageLeft": true
+    },
+    {
+      "id": 1,
+      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      },
+      "description": "Custom slide description.",
+      "imageLeft": true
+    },
+    {
       "id": 3,
       "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
       "category": "Brand",
@@ -453,24 +489,6 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
-      },
-      "description": "Custom slide description.",
-      "imageLeft": true
-    },
-    {
-      "id": 11,
-      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
       },
       "description": "Custom slide description.",
       "imageLeft": true
@@ -753,6 +771,8 @@ export const defaultSiteData: CMSSiteData = {
       "role": "ANIMATION",
       "client": "STUDIO COMETE",
       "description": "To capture the psychological weight of the narrative, the core execution focused on translating static visual concepts into deliberate, meaningful movement. \nI crafted fluid, seamless transitions between scenes, giving physical rhythm to the artwork so that every motion directly reinforces the emotional progression of the story.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4",
       "headerVideos": [
         {
@@ -770,65 +790,89 @@ export const defaultSiteData: CMSSiteData = {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
           ],
           "rows": [
             {
-              "id": "row-1",
+              "id": "row-1788173164889",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
               ],
               "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4": true
-              }
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "left"
             },
             {
-              "id": "row-1785853414490",
+              "id": "row-1788173746892",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4"
               ],
               "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "70%"
               }
-            }
-          ]
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
-              ]
             },
             {
-              "id": "row-1785853749903",
+              "id": "row-1788173209901",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
               ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-5.jpg": false
+              "itemWidths": {
+                "0": "100%"
               },
-              "singleImageColumns": 1
+              "rowAlignment": "left",
+              "itemOffsets": {
+                "1": 150
+              }
+            },
+            {
+              "id": "row-1788174260789",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4": true
+              }
+            },
+            {
+              "id": "row-1788174284742",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
+              ],
+              "itemOffsets": {
+                "1": 150
+              }
+            },
+            {
+              "id": "row-1788174309566",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true
+              }
             }
-          ]
+          ],
+          "sectionGap": 0,
+          "rowsGap": 120,
+          "titleTopGap": 0,
+          "titleBottomGap": 0
         }
       ],
       "date": "2024",
@@ -869,6 +913,8 @@ export const defaultSiteData: CMSSiteData = {
       "role": "ANIMATION",
       "client": "WORKLEAP",
       "description": "",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4",
       "headerVideos": [
         {
@@ -912,7 +958,10 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4": true
           },
           "textContent": "Animating graphics for a large physical sphere comes with a unique challenge: flat designs can easily stretch or warp when projected onto a round surface. \n\nWorking within a 3780×1080 pixel canvas, I carefully adjusted the scale, positioning, and movement speed of the visual elements. \n\nThis ensured that every animation wrapped naturally around the curved display, delivering a clear and distortion-free experience for everyone in the room.",
-          "imagePosition": "right"
+          "imagePosition": "left",
+          "imageYOffset": 150,
+          "imageCustomWidth": "50%",
+          "sectionGap": 120
         },
         {
           "type": "grid",
@@ -920,7 +969,12 @@ export const defaultSiteData: CMSSiteData = {
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-1.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-3.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
           ],
           "rows": [
             {
@@ -932,15 +986,36 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-1.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-3.mp4": true
+              },
+              "itemOffsets": {
+                "1": 0
+              },
+              "rowAlignment": "left",
+              "itemWidths": {
+                "0": "100%"
               }
             },
             {
-              "id": "row-1785959080750",
+              "id": "row-1788174679337",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4": true
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "100%"
+              }
+            },
+            {
+              "id": "row-1788174800140",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg"
+              ],
+              "itemOffsets": {
+                "1": 100
               }
             },
             {
@@ -951,15 +1026,54 @@ export const defaultSiteData: CMSSiteData = {
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-3.mp4": true
               }
+            },
+            {
+              "id": "row-1788175052249",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg"
+              ],
+              "itemOffsets": {
+                "1": 250
+              }
+            },
+            {
+              "id": "row-1788175086297",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
+              ],
+              "itemWidths": {
+                "0": "50%"
+              },
+              "rowAlignment": "left",
+              "itemOffsets": {
+                "0": -80
+              }
             }
-          ]
+          ],
+          "rowsGap": 120,
+          "sectionGap": 0
+        },
+        {
+          "type": "image_text",
+          "label": "",
+          "textTitle": "SPHERE PROJECTION BLUEPRINT",
+          "textContent": "",
+          "sectionGap": 250,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png"
+          ],
+          "imagePosition": "right",
+          "imageYOffset": 250
         },
         {
           "type": "grid",
-          "label": "SPHERE PROJECTION BLUEPRINT",
+          "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.2.png",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.3.png"
           ],
           "rows": [
@@ -967,39 +1081,15 @@ export const defaultSiteData: CMSSiteData = {
               "id": "row-1",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.2.png",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.3.png"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/15.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/15.jpg"
-              ]
-            },
-            {
-              "id": "row-1785967017084",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
-              ]
+              ],
+              "itemOffsets": {
+                "1": 150
+              },
+              "rowAlignment": "left",
+              "itemWidths": {
+                "0": "100%"
+              }
             }
           ]
         }
