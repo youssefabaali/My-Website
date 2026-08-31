@@ -595,10 +595,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
           const titleTopSpacingObj = getProportionalSpacing(sec.titleTopGap, 0, sec.titleTopGapMobile);
           const titleBottomSpacingObj = getProportionalSpacing(sec.titleBottomGap, 0, sec.titleBottomGapMobile);
 
-          // On desktop & tablet (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
+          // On desktop (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
           const desktopEffectiveBottomMargin = `${sectionSpacingObj.num + maxPositiveYOffset}px`;
-          const tabletBaseGap = parseFloat(sectionSpacingObj.tablet.replace("px", "").replace("rem", "")) || sectionSpacingObj.num;
-          const tabletEffectiveBottomMargin = `${tabletBaseGap + maxPositiveYOffset}px`;
 
           const secClass = `cms-sec-item-${secIdx}`;
           const titleClass = `cms-sec-title-${secIdx}`;
@@ -614,7 +612,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                 }
                 @media (min-width: 768px) {
                   .${secClass} {
-                    margin-bottom: ${tabletEffectiveBottomMargin} !important;
+                    margin-bottom: ${sectionSpacingObj.tablet} !important;
                   }
                 }
                 @media (min-width: 1024px) {
@@ -750,7 +748,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         }
                         @media (min-width: 768px) {
                           .${splitSecClass} {
-                            ${yOff || xOff ? `transform: translate(${xOff}px, ${yOff}px) !important;` : ""}
+                            transform: none !important;
                             width: 100% !important;
                           }
                           .cms-split-img-col-${secIdx} {
@@ -758,6 +756,12 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           }
                           .cms-split-text-col-${secIdx} {
                             width: ${textPercent}% !important;
+                          }
+                        }
+                        @media (min-width: 1024px) {
+                          .${splitSecClass} {
+                            ${yOff || xOff ? `transform: translate(${xOff}px, ${yOff}px) !important;` : "transform: none !important;"}
+                            width: 100% !important;
                           }
                         }
                       `}</style>
