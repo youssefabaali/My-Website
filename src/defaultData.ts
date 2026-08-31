@@ -1052,7 +1052,9 @@ export const defaultSiteData: CMSSiteData = {
             }
           ],
           "rowsGap": 120,
-          "sectionGap": 0
+          "sectionGap": 0,
+          "rowsGapMobile": 20,
+          "sectionGapMobile": 40
         },
         {
           "type": "image_text",
@@ -1067,7 +1069,8 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png"
           ],
           "imagePosition": "right",
-          "imageYOffset": 250
+          "imageYOffset": 250,
+          "sectionGapMobile": 20
         },
         {
           "type": "grid",
@@ -1091,7 +1094,9 @@ export const defaultSiteData: CMSSiteData = {
                 "0": "100%"
               }
             }
-          ]
+          ],
+          "sectionGapMobile": "default",
+          "rowsGapMobile": 20
         }
       ],
       "date": "2024",
@@ -1150,7 +1155,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 0,
+          "sectionGap": "default",
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1160,7 +1165,7 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet-Screen.mp4": true,
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet.mp4": true
           },
-          "imageYOffset": 200
+          "imageYOffset": 0
         },
         {
           "type": "grid",
@@ -1187,11 +1192,11 @@ export const defaultSiteData: CMSSiteData = {
               }
             }
           ],
-          "sectionGap": 0,
+          "sectionGap": 250,
           "rowsGap": 0,
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "sectionGapMobile": 20
+          "sectionGapMobile": 50
         },
         {
           "type": "image_text",
@@ -1199,7 +1204,7 @@ export const defaultSiteData: CMSSiteData = {
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4",
           "textTitle": "EPISODE 7 ",
           "textContent": "",
-          "imagePosition": "right",
+          "imagePosition": "left",
           "imageWidthRatio": "50",
           "sectionGap": 0,
           "titleTopGap": 0,
@@ -1211,17 +1216,17 @@ export const defaultSiteData: CMSSiteData = {
             "EPISODE 8 - DEVICES CONNECTED TO INTERNET": true,
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4": true
           },
-          "imageYOffset": 200
+          "imageYOffset": 0
         },
         {
           "type": "grid",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4"
           ],
           "rows": [
             {
@@ -1233,50 +1238,51 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
               },
-              "rowAlignment": "left",
+              "rowAlignment": "right",
               "itemWidths": {
                 "0": "50%"
               },
               "itemOffsets": {
-                "0": -100,
+                "0": 0,
                 "1": 150
               }
             },
             {
               "id": "row-1788185928876",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4": true
               },
               "itemOffsets": {
-                "0": 400,
-                "1": 100
+                "0": 0,
+                "1": 450
               }
             },
             {
               "id": "row-1788186155002",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4": true
               },
               "itemOffsets": {
-                "0": 500,
-                "1": 250
+                "0": 0,
+                "1": 450
               }
             }
           ],
-          "sectionGap": 100,
+          "sectionGap": 250,
           "rowsGap": 0,
           "titleTopGap": 0,
-          "titleBottomGap": 0
+          "titleBottomGap": 0,
+          "sectionGapMobile": 50
         },
         {
           "type": "image_text",
@@ -1284,7 +1290,7 @@ export const defaultSiteData: CMSSiteData = {
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4",
           "textTitle": "EPISODE 6 - COMPUTER ENCRYPTED",
           "textContent": "",
-          "imagePosition": "right",
+          "imagePosition": "left",
           "imageWidthRatio": "50",
           "sectionGap": "default",
           "titleTopGap": 0,
@@ -1295,7 +1301,7 @@ export const defaultSiteData: CMSSiteData = {
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4": true
           },
-          "imageYOffset": 200
+          "imageYOffset": 0
         },
         {
           "type": "grid",
@@ -1313,17 +1319,17 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted-screen.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4": true
               },
-              "rowAlignment": "left",
+              "rowAlignment": "right",
               "itemWidths": {
                 "0": "50%"
               },
               "itemOffsets": {
-                "0": -150
+                "0": 0
               }
             }
           ],
-          "sectionGap": "default",
-          "sectionGapMobile": 20
+          "sectionGap": 250,
+          "sectionGapMobile": 50
         },
         {
           "type": "image_text",
@@ -1331,7 +1337,7 @@ export const defaultSiteData: CMSSiteData = {
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4",
           "textTitle": "EPISODE 5 - MESSAGE TEXT BUBBLE",
           "textContent": "",
-          "imagePosition": "right",
+          "imagePosition": "left",
           "imageWidthRatio": "50",
           "sectionGap": 0,
           "titleTopGap": 0,
@@ -1342,15 +1348,15 @@ export const defaultSiteData: CMSSiteData = {
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4": true
           },
-          "imageYOffset": 200
+          "imageYOffset": 0
         },
         {
           "type": "grid",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE-Screen.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4"
           ],
           "rows": [
             {
@@ -1365,29 +1371,31 @@ export const defaultSiteData: CMSSiteData = {
               "itemWidths": {
                 "0": "50%"
               },
-              "rowAlignment": "left",
+              "rowAlignment": "right",
               "itemOffsets": {
-                "0": -150
+                "0": 0
               }
             },
             {
               "id": "row-1786117545014",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4": true
               },
               "itemOffsets": {
-                "0": 300
+                "0": 0,
+                "1": 450
               }
             }
           ],
           "rowsGap": 120,
           "rowsGapMobile": 20,
-          "sectionGapMobile": 20
+          "sectionGapMobile": 50,
+          "sectionGap": 250
         },
         {
           "type": "image_text",
@@ -1395,7 +1403,7 @@ export const defaultSiteData: CMSSiteData = {
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4",
           "textTitle": "EPISODE 4 - APP MUSIC",
           "textContent": "",
-          "imagePosition": "right",
+          "imagePosition": "left",
           "imageWidthRatio": "50",
           "sectionGap": 0,
           "titleTopGap": 0,
@@ -1406,7 +1414,7 @@ export const defaultSiteData: CMSSiteData = {
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4": true
           },
-          "imageYOffset": 200,
+          "imageYOffset": 0,
           "sectionGapMobile": 20
         },
         {
@@ -1425,18 +1433,19 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4": true
               },
               "itemWidths": {
-                "0": "30%"
+                "0": "20%"
               },
-              "rowAlignment": "left",
+              "rowAlignment": "right",
               "itemHorizontalOffsets": {
-                "0": 100
+                "0": -150
               },
               "itemOffsets": {
-                "0": -200
+                "0": 0
               }
             }
           ],
-          "sectionGapMobile": 20
+          "sectionGapMobile": 50,
+          "sectionGap": 250
         },
         {
           "type": "image_text",
@@ -1444,7 +1453,7 @@ export const defaultSiteData: CMSSiteData = {
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4",
           "textTitle": "EPISODE 3 - WALLPAPER PHONE",
           "textContent": "",
-          "imagePosition": "right",
+          "imagePosition": "left",
           "imageWidthRatio": "50",
           "sectionGap": 0,
           "titleTopGap": 0,
@@ -1455,7 +1464,7 @@ export const defaultSiteData: CMSSiteData = {
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4": true
           },
-          "imageYOffset": 200,
+          "imageYOffset": 0,
           "sectionGapMobile": 20
         },
         {
@@ -1475,19 +1484,20 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4": true
               },
               "itemWidths": {
-                "0": "30%"
+                "0": "20%"
               },
-              "rowAlignment": "left",
+              "rowAlignment": "right",
               "itemOffsets": {
-                "0": -200
+                "0": 0
               },
               "itemHorizontalOffsets": {
-                "0": 100
+                "0": -150
               }
             }
           ],
           "rowsGapMobile": "default",
-          "sectionGapMobile": 20
+          "sectionGapMobile": 50,
+          "sectionGap": 250
         },
         {
           "type": "image_text",
@@ -1495,7 +1505,7 @@ export const defaultSiteData: CMSSiteData = {
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2-Air.Tag.mp4",
           "textTitle": "EPISODE 2 - AIR TAG",
           "textContent": "",
-          "imagePosition": "right",
+          "imagePosition": "left",
           "imageWidthRatio": "50",
           "sectionGap": 0,
           "titleTopGap": 0,
@@ -1506,7 +1516,7 @@ export const defaultSiteData: CMSSiteData = {
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2-Air.Tag.mp4": true
           },
-          "imageYOffset": 200,
+          "imageYOffset": 0,
           "sectionGapMobile": 20
         },
         {
@@ -1527,17 +1537,18 @@ export const defaultSiteData: CMSSiteData = {
               },
               "singleImageColumns": 1,
               "itemWidths": {
-                "0": "30%"
+                "0": "20%"
               },
               "itemOffsets": {
-                "0": -200
+                "0": 0
               },
               "itemHorizontalOffsets": {
-                "0": 100
+                "0": -150
               },
-              "rowAlignment": "left"
+              "rowAlignment": "right"
             }
-          ]
+          ],
+          "sectionGap": 250
         }
       ],
       "date": "2024",
@@ -1576,6 +1587,9 @@ export const defaultSiteData: CMSSiteData = {
       "role": "ANIMATION",
       "client": "POKA",
       "description": "The main challenge was making smart software concepts easy to understand for everyone. \nI animated the visual elements to show the AI in action clearly showing how long documents break down into short steps using smooth movements to keep the video clear, engaging, and professional.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-Main-Video.mp4",
       "headerVideos": [
         {
@@ -1594,80 +1608,92 @@ export const defaultSiteData: CMSSiteData = {
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
           ],
           "rows": [
             {
-              "id": "row-1",
+              "id": "row-1788197576602",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4": true
+                "sha256:4a02d2f904dd9dee8e356d14e8be97f7d226e7213d7beab6e53396132c49dc4b": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
+              },
+              "itemOffsets": {
+                "1": 280
+              },
+              "rowAlignment": "left",
+              "itemWidths": {
+                "0": "70%"
               }
             },
             {
-              "id": "row-1786200609013",
+              "id": "row-1788198617338",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "70%"
               }
-            }
-          ]
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-1.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-5.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-6.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-8.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-29.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-13.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-26.jpg"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-1.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-5.jpg"
-              ]
             },
             {
-              "id": "row-1786199470204",
+              "id": "row-1788198189224",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-6.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-8.jpg"
-              ]
-            },
-            {
-              "id": "row-1786469163175",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-29.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
-              ]
-            },
-            {
-              "id": "row-1786199352025",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-13.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-26.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4"
               ],
-              "singleImageColumns": 1
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4": true
+              },
+              "itemOffsets": {
+                "1": 280
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "left"
+            },
+            {
+              "id": "row-1788198768743",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4": true
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "70%"
+              }
+            },
+            {
+              "id": "row-1788198524661",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
+              ],
+              "itemWidths": {
+                "0": "70%"
+              },
+              "itemOffsets": {
+                "1": 250
+              },
+              "rowAlignment": "center"
             }
-          ]
+          ],
+          "sectionGap": 0,
+          "rowsGap": 120,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "rowsGapMobile": 40
         }
       ],
       "date": "2024",
@@ -1708,6 +1734,9 @@ export const defaultSiteData: CMSSiteData = {
       "role": "ANIMATION ",
       "client": "247 MAINTENANCE",
       "description": "Creating a fast 2-second animation meant every single frame mattered. Before animating, I built a step-by-step storyboard to plan out the exact movement and timing. \n\nSharing this plan early ensured we were fully aligned on the motion, making the final animation feel smooth and clear rather than rushed.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4",
       "headerVideos": [
         {
@@ -1733,18 +1762,33 @@ export const defaultSiteData: CMSSiteData = {
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/storyboard.jpg"
               ]
-            },
-            {
-              "id": "row-1786206883340",
-              "images": []
             }
-          ]
+          ],
+          "sectionGap": 250,
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 50
+        },
+        {
+          "type": "image_text",
+          "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
+          "textTitle": "LOWER THIRDS",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "50",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif"
+          ],
+          "imageCustomWidth": "53%",
+          "sectionGapMobile": 10
         },
         {
           "type": "grid",
-          "label": "LOWER THIRDS",
+          "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-3.gif"
           ],
@@ -1752,12 +1796,16 @@ export const defaultSiteData: CMSSiteData = {
             {
               "id": "row-1786206997337",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-3.gif"
-              ]
+              ],
+              "itemOffsets": {
+                "0": 450,
+                "1": 0
+              }
             }
-          ]
+          ],
+          "rowsGapMobile": 20
         }
       ],
       "date": "2024",
@@ -3503,9 +3551,7 @@ export const defaultSiteData: CMSSiteData = {
     "Showreel"
   ],
   "cmsPresets": {
-    "cms_custom_rows_gaps": [
-      120
-    ],
+    "cms_custom_rows_gaps": [],
     "cms_custom_section_spacings": [
       100,
       250
