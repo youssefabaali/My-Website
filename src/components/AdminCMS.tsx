@@ -1294,6 +1294,8 @@ function CMSSingleRowEditor({
   canDelete,
   canMoveUp,
   canMoveDown,
+  isHidden = false,
+  onToggleVisibility,
 }: {
   rowTitle: string;
   images: string[];
@@ -1330,6 +1332,8 @@ function CMSSingleRowEditor({
   canDelete?: boolean;
   canMoveUp?: boolean;
   canMoveDown?: boolean;
+  isHidden?: boolean;
+  onToggleVisibility?: () => void;
 }) {
   const { uploadFile } = useCMS();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -1513,7 +1517,11 @@ function CMSSingleRowEditor({
       id={`cms-section-${currentSectionIdx}-row-${currentRowIdx}`}
       onPaste={handlePaste}
       tabIndex={0}
-      className="p-4 bg-neutral-950/80 border border-white/10 rounded-xl flex flex-col gap-3 transition-all focus:border-brand-green/60 outline-none scroll-mt-24"
+      className={`p-4 rounded-xl flex flex-col gap-3 transition-all focus:border-brand-green/60 outline-none scroll-mt-24 ${
+        isHidden
+          ? "bg-neutral-950/95 border-2 border-amber-500/40 shadow-inner ring-1 ring-amber-500/20"
+          : "bg-neutral-950/80 border border-white/10"
+      }`}
     >
       {/* Row Header Info, Tabs & Controls */}
       <div className={`flex items-center justify-between gap-3 flex-wrap ${isRowCollapsed ? "" : "border-b border-white/5 pb-3"}`}>
@@ -1521,6 +1529,12 @@ function CMSSingleRowEditor({
           <span className="text-xs font-bold text-white uppercase tracking-wider font-mono bg-white/5 px-2.5 py-1 rounded">
             {rowTitle}
           </span>
+          {isHidden && (
+            <span className="text-[9.5px] font-mono font-black px-2 py-0.5 rounded bg-amber-500/20 border border-amber-500/40 text-amber-400 uppercase tracking-wide flex items-center gap-1">
+              <EyeOff size={11} />
+              HIDDEN ROW
+            </span>
+          )}
           <span className="text-[10px] text-brand-green font-mono font-bold bg-brand-green/10 px-2 py-0.5 rounded border border-brand-green/20">
             {images.length} Image{images.length === 1 ? "" : "s"} ({calcPercentage()})
           </span>
@@ -1568,6 +1582,21 @@ function CMSSingleRowEditor({
         </div>
 
         <div className="flex items-center gap-1.5">
+          {onToggleVisibility && (
+            <button
+              type="button"
+              onClick={onToggleVisibility}
+              className={`p-1.5 rounded-lg border transition-all cursor-pointer flex items-center gap-1.5 text-[10px] font-bold uppercase ${
+                isHidden
+                  ? "bg-amber-500/20 border-amber-500/60 text-amber-400 hover:bg-amber-500 hover:text-black shadow-sm ring-1 ring-amber-400/30"
+                  : "bg-neutral-900 border-white/10 text-neutral-300 hover:border-brand-green hover:text-brand-green"
+              }`}
+              title={isHidden ? "Row is HIDDEN from site (Click to Show)" : "Row is VISIBLE on site (Click to Hide)"}
+            >
+              {isHidden ? <EyeOff size={13} className="text-amber-400" /> : <Eye size={13} />}
+              <span className="hidden sm:inline">{isHidden ? "Hidden Row" : "Visible"}</span>
+            </button>
+          )}
           {onDuplicateRow && (
             <button
               type="button"
@@ -2117,6 +2146,7 @@ function ProjectEditorStickyRail({
   onJumpToSection,
   onMoveSection,
   onDuplicateSection,
+  onToggleSectionVisibility,
   highlightedSectionIdx,
   isSaving,
   imageClipboard,
@@ -2132,6 +2162,7 @@ function ProjectEditorStickyRail({
   onJumpToSection: (sIdx: number) => void;
   onMoveSection?: (sIdx: number, dir: "up" | "down") => void;
   onDuplicateSection?: (sIdx: number) => void;
+  onToggleSectionVisibility?: (sIdx: number) => void;
   highlightedSectionIdx: number | null;
   isSaving?: boolean;
   imageClipboard?: {
@@ -2395,6 +2426,8 @@ function ProjectEditorStickyRail({
                   const imgCount = sec.images ? sec.images.length : 0;
                   const rowCount = sec.type === "grid" ? (sec.rows ? sec.rows.length : (imgCount > 0 ? 1 : 0)) : 1;
 
+                  const isHidden = Boolean(sec.hidden);
+
                   return (
                     <div
                       key={sec.id || idx}
@@ -2402,27 +2435,54 @@ function ProjectEditorStickyRail({
                       className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center justify-between gap-2 border cursor-pointer group ${
                         isHighlighted
                           ? "bg-brand-green text-black border-brand-green shadow-lg shadow-brand-green/30 scale-[1.01] font-black ring-2 ring-brand-green/40"
+                          : isHidden
+                          ? "bg-neutral-950/90 text-neutral-400 border-amber-500/30 hover:border-amber-400/60"
                           : "bg-neutral-900/80 hover:bg-neutral-800 text-neutral-200 border-white/5 hover:border-brand-green/50"
                       }`}
-                      title={`Click to scroll smoothly to Section #${idx + 1}: ${label}`}
+                      title={`Click to scroll smoothly to Section #${idx + 1}: ${label} ${isHidden ? "(HIDDEN FROM SITE)" : ""}`}
                     >
                       <div className="flex items-center gap-2 min-w-0 flex-1 overflow-hidden">
-                        <span className={`text-[9.5px] font-mono shrink-0 font-bold ${isHighlighted ? "text-black" : "text-neutral-500"}`}>
+                        <span className={`text-[9.5px] font-mono shrink-0 font-bold ${isHighlighted ? "text-black" : isHidden ? "text-amber-400" : "text-neutral-500"}`}>
                           #{idx + 1}
                         </span>
                         {typeIcon}
                         <div className="flex flex-col min-w-0">
-                          <span className="truncate uppercase text-[10.5px] font-bold tracking-tight">
-                            {label}
-                          </span>
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <span className={`truncate uppercase text-[10.5px] font-bold tracking-tight ${isHidden && !isHighlighted ? "line-through text-neutral-400" : ""}`}>
+                              {label}
+                            </span>
+                            {isHidden && (
+                              <span className={`text-[7.5px] font-mono font-bold px-1 rounded uppercase tracking-wider shrink-0 ${
+                                isHighlighted ? "bg-black text-amber-300" : "bg-amber-500/20 text-amber-400 border border-amber-500/30"
+                              }`}>
+                                Hidden
+                              </span>
+                            )}
+                          </div>
                           <span className={`text-[8px] font-mono truncate ${isHighlighted ? "text-neutral-900 font-bold" : "text-neutral-500"}`}>
                             {sec.type === "grid" ? `${rowCount} row${rowCount === 1 ? "" : "s"} • ${imgCount} img` : sec.type === "row" ? `${imgCount} img` : sec.type}
                           </span>
                         </div>
                       </div>
 
-                      {/* Controls on the item: Duplicate, Up / Down Reorder */}
+                      {/* Controls on the item: Visibility, Duplicate, Up / Down Reorder */}
                       <div className="flex items-center gap-1 shrink-0" onClick={(e) => e.stopPropagation()}>
+                        {onToggleSectionVisibility && (
+                          <button
+                            type="button"
+                            onClick={() => onToggleSectionVisibility(idx)}
+                            className={`p-1 rounded transition-colors ${
+                              isHighlighted
+                                ? "text-black hover:bg-black/20"
+                                : isHidden
+                                ? "text-amber-400 hover:text-amber-300 hover:bg-amber-400/10"
+                                : "text-neutral-400 hover:text-brand-green hover:bg-white/10"
+                            }`}
+                            title={isHidden ? "Section is Hidden from site (Click to Show)" : "Section is Visible on site (Click to Hide)"}
+                          >
+                            {isHidden ? <EyeOff size={11} className="text-amber-400" /> : <Eye size={11} />}
+                          </button>
+                        )}
                         {onDuplicateSection && (
                           <button
                             type="button"
@@ -2526,6 +2586,7 @@ function CMSGallerySectionEditor({
   onToggleCollapse?: () => void;
 }) {
   const [activeSectionTab, setActiveSectionTab] = useState<"content" | "spacing">("content");
+  const [splitMediaTab, setSplitMediaTab] = useState<"source" | "template">("source");
 
   // Ensure rows array exists for grid type sections
   const rows: {
@@ -2540,10 +2601,20 @@ function CMSGallerySectionEditor({
     gifModes?: Record<string, boolean>;
     rowAlignment?: "left" | "center" | "right";
     customWidth?: number | string;
+    hidden?: boolean;
   }[] =
     sec.rows && sec.rows.length > 0
       ? sec.rows
-      : [{ id: "row-1", images: sec.images || [], gifModes: sec.gifModes }];
+      : [{ id: "row-1", images: sec.images || [], gifModes: sec.gifModes, hidden: sec.hidden }];
+
+  const handleToggleRowVisibility = (rIdx: number) => {
+    const updatedRows = [...rows];
+    updatedRows[rIdx] = { ...updatedRows[rIdx], hidden: !updatedRows[rIdx].hidden };
+    onUpdateSec({
+      ...sec,
+      rows: updatedRows,
+    });
+  };
 
   const handleUpdateRowImages = (rIdx: number, newImgs: string[]) => {
     const updatedRows = [...rows];
@@ -2745,6 +2816,8 @@ function CMSGallerySectionEditor({
       className={`p-4 rounded-2xl flex flex-col gap-4 shadow-xl transition-all duration-300 scroll-mt-28 ${
         isHighlighted
           ? "bg-neutral-900/95 border-2 border-brand-green ring-4 ring-brand-green/30 shadow-[0_0_30px_rgba(140,255,46,0.3)] scale-[1.005]"
+          : sec.hidden
+          ? "bg-neutral-900/95 border-2 border-amber-500/40 ring-2 ring-amber-500/20 shadow-inner"
           : "bg-neutral-900/90 border border-white/10"
       }`}
     >
@@ -2768,6 +2841,12 @@ function CMSGallerySectionEditor({
             <option value="text">Text Paragraph (Pure Text Section)</option>
             <option value="image_text">Image + Text (Split Column Layout)</option>
           </select>
+          {sec.hidden && (
+            <span className="text-[10px] font-mono font-black px-2.5 py-1 rounded bg-amber-500/20 border border-amber-500/40 text-amber-400 uppercase tracking-wide flex items-center gap-1">
+              <EyeOff size={12} />
+              HIDDEN FROM SITE
+            </span>
+          )}
           <span className="text-[10px] text-brand-green font-mono font-bold bg-brand-green/10 px-2.5 py-1 rounded border border-brand-green/20">
             {sec.type === "text"
               ? "TEXT ONLY"
@@ -2816,6 +2895,20 @@ function CMSGallerySectionEditor({
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Eye Visibility Toggle for Section */}
+          <button
+            type="button"
+            onClick={() => onUpdateSec({ ...sec, hidden: !sec.hidden })}
+            className={`p-1.5 rounded-lg border transition-all cursor-pointer flex items-center gap-1.5 text-[11px] font-bold uppercase ${
+              sec.hidden
+                ? "bg-amber-500/20 border-amber-500/60 text-amber-400 hover:bg-amber-500 hover:text-black shadow-md ring-1 ring-amber-400/40"
+                : "bg-neutral-950 border-white/10 text-neutral-300 hover:border-brand-green hover:text-brand-green"
+            }`}
+            title={sec.hidden ? "Section is HIDDEN from live site (Click to Show)" : "Section is VISIBLE on live site (Click to Hide)"}
+          >
+            {sec.hidden ? <EyeOff size={14} className="text-amber-400" /> : <Eye size={14} />}
+            <span>{sec.hidden ? "Hidden from Site" : "Visible on Site"}</span>
+          </button>
           {onDuplicateSec && (
             <button
               type="button"
@@ -3150,87 +3243,172 @@ function CMSGallerySectionEditor({
           </div>
         </div>
       ) : sec.type === "image_text" ? (
-        /* IMAGE + TEXT SPLIT MODE */
+        /* IMAGE + TEXT SPLIT MODE WITH TABBED MEDIA CONTROLS */
         <div className="flex flex-col gap-4 p-4 bg-neutral-950/80 border border-white/10 rounded-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* LEFT COLUMN: TABBED MEDIA CONTROLS */}
             <div className="flex flex-col gap-3">
-              <CMSImageField
-                label="IMAGE FOR SPLIT SECTION"
-                value={sec.imageSrc || ""}
-                onChange={(val) => onUpdateSec({ ...sec, imageSrc: val, images: val ? [val] : [] })}
-                gifMode={Boolean(sec.gifModes?.[sec.imageSrc || ""])}
-                onToggleGifMode={() => {
-                  if (sec.imageSrc) handleToggleSectionGifMode(sec.imageSrc);
-                }}
-                onCopy={() => {
-                  if (sec.imageSrc && onCopyImage) {
-                    onCopyImage(sec.imageSrc, "copy", sIdx, 0, 0);
-                  }
-                }}
-                onCut={() => {
-                  if (sec.imageSrc && onCopyImage) {
-                    onCopyImage(sec.imageSrc, "move", sIdx, 0, 0);
-                    onUpdateSec({ ...sec, imageSrc: "", images: [] });
-                  }
-                }}
-                onPaste={() => {
-                  if (imageClipboard?.imgUrl) {
-                    const pastUrl = imageClipboard.imgUrl;
-                    onUpdateSec({ ...sec, imageSrc: pastUrl, images: [pastUrl] });
-                  }
-                }}
-                imageClipboard={imageClipboard}
-                recommendedText="Upload or paste image URL for this image + text section"
-              />
+              {/* Media Sub-tabs Header */}
+              <div className="flex items-center p-1 bg-neutral-900 rounded-xl border border-white/10 gap-1">
+                <button
+                  type="button"
+                  onClick={() => setSplitMediaTab("source")}
+                  className={`flex-1 py-1.5 px-2.5 rounded-lg text-[10.5px] font-bold uppercase transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                    splitMediaTab === "source"
+                      ? "bg-brand-green text-black shadow-sm font-black"
+                      : "text-neutral-300 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  <ImageIcon size={13} />
+                  <span>Image for Split Section</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSplitMediaTab("template")}
+                  className={`flex-1 py-1.5 px-2.5 rounded-lg text-[10.5px] font-bold uppercase transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                    splitMediaTab === "template"
+                      ? "bg-brand-green text-black shadow-sm font-black"
+                      : "text-neutral-300 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  <Video size={13} />
+                  <span>Video Template</span>
+                  {Boolean(sec.videoTemplateUrl || sec.posterImage) && (
+                    <span className={`w-1.5 h-1.5 rounded-full ${splitMediaTab === "template" ? "bg-black" : "bg-brand-green"}`} />
+                  )}
+                </button>
+              </div>
 
-              {/* Image Size, Y-Offset and X-Shift Controls */}
-              {Boolean(sec.imageSrc || (sec.images && sec.images.length > 0)) && (
-                <div className="flex flex-col gap-2 p-2.5 bg-neutral-900/90 border border-white/10 rounded-xl">
-                  <div className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center justify-between">
-                    <span>📐 Image Width % (Adjusts Text Column Width Automatically):</span>
-                    <span className="text-[9px] text-neutral-400 font-normal">
-                      Image: {sec.imageCustomWidth || 50}% — Text: {100 - (typeof sec.imageCustomWidth === "number" ? sec.imageCustomWidth : parseFloat(String(sec.imageCustomWidth || "50").replace("%", "")) || 50)}%
-                    </span>
-                  </div>
-                  <CompactImageSizeControl
-                    widthVal={sec.imageCustomWidth || 50}
-                    onChange={(val) => onUpdateSec({ ...sec, imageCustomWidth: val })}
+              {/* TAB 1: IMAGE / MEDIA SOURCE */}
+              {splitMediaTab === "source" && (
+                <div className="flex flex-col gap-3 animate-fade-in">
+                  <CMSImageField
+                    label="IMAGE / MEDIA FOR SPLIT SECTION"
+                    value={sec.imageSrc || ""}
+                    onChange={(val) => onUpdateSec({ ...sec, imageSrc: val, images: val ? [val] : [] })}
+                    gifMode={Boolean(sec.gifModes?.[sec.imageSrc || ""])}
+                    onToggleGifMode={() => {
+                      if (sec.imageSrc) handleToggleSectionGifMode(sec.imageSrc);
+                    }}
+                    onCopy={() => {
+                      if (sec.imageSrc && onCopyImage) {
+                        onCopyImage(sec.imageSrc, "copy", sIdx, 0, 0);
+                      }
+                    }}
+                    onCut={() => {
+                      if (sec.imageSrc && onCopyImage) {
+                        onCopyImage(sec.imageSrc, "move", sIdx, 0, 0);
+                        onUpdateSec({ ...sec, imageSrc: "", images: [] });
+                      }
+                    }}
+                    onPaste={() => {
+                      if (imageClipboard?.imgUrl) {
+                        const pastUrl = imageClipboard.imgUrl;
+                        onUpdateSec({ ...sec, imageSrc: pastUrl, images: [pastUrl] });
+                      }
+                    }}
+                    imageClipboard={imageClipboard}
+                    recommendedText="Upload or paste image or video URL for this image + text section"
                   />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <CompactOffsetControl
-                      label="↕ Y-Offset"
-                      offset={sec.imageYOffset || 0}
-                      onChange={(val) => onUpdateSec({ ...sec, imageYOffset: val })}
-                      storageKey="cms_custom_split_y_offsets"
-                    />
-                    <CompactOffsetControl
-                      label="↔ X-Shift"
-                      offset={sec.imageXOffset || 0}
-                      onChange={(val) => onUpdateSec({ ...sec, imageXOffset: val })}
-                      storageKey="cms_custom_split_x_shifts"
-                    />
+
+                  {/* Image Size, Y-Offset and X-Shift Controls */}
+                  {Boolean(sec.imageSrc || (sec.images && sec.images.length > 0)) && (
+                    <div className="flex flex-col gap-2 p-2.5 bg-neutral-900/90 border border-white/10 rounded-xl">
+                      <div className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center justify-between">
+                        <span>📐 Image Width % (Adjusts Text Column Width Automatically):</span>
+                        <span className="text-[9px] text-neutral-400 font-normal">
+                          Image: {sec.imageCustomWidth || 50}% — Text: {100 - (typeof sec.imageCustomWidth === "number" ? sec.imageCustomWidth : parseFloat(String(sec.imageCustomWidth || "50").replace("%", "")) || 50)}%
+                        </span>
+                      </div>
+                      <CompactImageSizeControl
+                        widthVal={sec.imageCustomWidth || 50}
+                        onChange={(val) => onUpdateSec({ ...sec, imageCustomWidth: val })}
+                      />
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <CompactOffsetControl
+                          label="↕ Y-Offset"
+                          offset={sec.imageYOffset || 0}
+                          onChange={(val) => onUpdateSec({ ...sec, imageYOffset: val })}
+                          storageKey="cms_custom_split_y_offsets"
+                        />
+                        <CompactOffsetControl
+                          label="↔ X-Shift"
+                          offset={sec.imageXOffset || 0}
+                          onChange={(val) => onUpdateSec({ ...sec, imageXOffset: val })}
+                          storageKey="cms_custom_split_x_shifts"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                      IMAGE POSITION ON DESKTOP
+                    </label>
+                    <select
+                      value={sec.imagePosition || "left"}
+                      onChange={(e) => onUpdateSec({ ...sec, imagePosition: e.target.value as "left" | "right" })}
+                      className="bg-neutral-900 border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-bold cursor-pointer focus:outline-none focus:border-brand-green uppercase"
+                    >
+                      <option value="left">🖼️ Image LEFT / Text RIGHT</option>
+                      <option value="right">🖼️ Image RIGHT / Text LEFT</option>
+                    </select>
                   </div>
+                  <span className="text-[9px] text-neutral-400">
+                    On mobile phones, image and text automatically stack vertically for best readability.
+                  </span>
                 </div>
               )}
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
-                  IMAGE POSITION ON DESKTOP
-                </label>
-                <select
-                  value={sec.imagePosition || "left"}
-                  onChange={(e) => onUpdateSec({ ...sec, imagePosition: e.target.value as "left" | "right" })}
-                  className="bg-neutral-900 border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-bold cursor-pointer focus:outline-none focus:border-brand-green uppercase"
-                >
-                  <option value="left">🖼️ Image LEFT / Text RIGHT</option>
-                  <option value="right">🖼️ Image RIGHT / Text LEFT</option>
-                </select>
-              </div>
-              <span className="text-[9px] text-neutral-400">
-                On mobile phones, image and text automatically stack vertically for best readability.
-              </span>
+              {/* TAB 2: VIDEO TEMPLATE (POSTER / COVER IMAGE) */}
+              {splitMediaTab === "template" && (
+                <div className="flex flex-col gap-3 animate-fade-in">
+                  <CMSImageField
+                    label="VIDEO TEMPLATE (COVER / POSTER IMAGE)"
+                    value={sec.videoTemplateUrl || sec.posterImage || ""}
+                    onChange={(val) => onUpdateSec({ ...sec, videoTemplateUrl: val, posterImage: val })}
+                    gifMode={Boolean(sec.gifModes?.[sec.videoTemplateUrl || sec.posterImage || ""])}
+                    onToggleGifMode={() => {
+                      const currentTemplate = sec.videoTemplateUrl || sec.posterImage;
+                      if (currentTemplate) handleToggleSectionGifMode(currentTemplate);
+                    }}
+                    onCopy={() => {
+                      const currentTemplate = sec.videoTemplateUrl || sec.posterImage;
+                      if (currentTemplate && onCopyImage) {
+                        onCopyImage(currentTemplate, "copy", sIdx, 0, 0);
+                      }
+                    }}
+                    onCut={() => {
+                      const currentTemplate = sec.videoTemplateUrl || sec.posterImage;
+                      if (currentTemplate && onCopyImage) {
+                        onCopyImage(currentTemplate, "move", sIdx, 0, 0);
+                        onUpdateSec({ ...sec, videoTemplateUrl: "", posterImage: "" });
+                      }
+                    }}
+                    onPaste={() => {
+                      if (imageClipboard?.imgUrl) {
+                        const pastUrl = imageClipboard.imgUrl;
+                        onUpdateSec({ ...sec, videoTemplateUrl: pastUrl, posterImage: pastUrl });
+                      }
+                    }}
+                    imageClipboard={imageClipboard}
+                    recommendedText="Upload or paste image URL to serve as the custom thumbnail/cover poster for videos in this split section."
+                  />
+
+                  <div className="p-3 bg-neutral-900/80 border border-white/10 rounded-xl flex flex-col gap-1.5">
+                    <span className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1.5">
+                      <Sparkles size={12} />
+                      Video Template Cover Helper
+                    </span>
+                    <p className="text-[10px] text-neutral-300 leading-relaxed">
+                      When you use a video (MP4, YouTube, Vimeo, etc.) in the <strong>Image for Split Section</strong> tab, this <strong>Video Template</strong> image will be displayed as the custom video cover / poster image on the project page until playback starts.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
+            {/* RIGHT COLUMN: TEXT CONTENT */}
             <div className="flex flex-col gap-3">
               <div className="flex flex-col gap-1.5">
                 <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
@@ -3318,6 +3496,8 @@ function CMSGallerySectionEditor({
                 imageClipboard={imageClipboard}
                 currentSectionIdx={sIdx}
                 currentRowIdx={rIdx}
+                isHidden={Boolean(rowItem.hidden)}
+                onToggleVisibility={() => handleToggleRowVisibility(rIdx)}
                 onUpdateRowImages={(newImgs) => handleUpdateRowImages(rIdx, newImgs)}
                 onUpdateSingleImageColumns={(cols) => handleUpdateRowSingleImageColumns(rIdx, cols)}
                 onUpdateMobileColumns={(val) => handleUpdateRowMobileColumns(rIdx, val)}
@@ -3384,6 +3564,8 @@ function CMSGallerySectionEditor({
           imageClipboard={imageClipboard}
           currentSectionIdx={sIdx}
           currentRowIdx={0}
+          isHidden={Boolean(sec.hidden)}
+          onToggleVisibility={() => onUpdateSec({ ...sec, hidden: !sec.hidden })}
           onUpdateRowImages={(newImgs) => onUpdateSec({ ...sec, images: newImgs })}
           onToggleGifMode={handleToggleSectionGifMode}
           onTransferImage={(imgIdx, targetSecIdx, targetRowIdx, mode) => {

@@ -66,9 +66,9 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
   // Flat list of all images across sections for lightbox navigation
   const allImages: string[] = [];
   if (project && Array.isArray(project.sections)) {
-    project.sections.forEach((sec) => {
+    project.sections.filter((sec) => !sec.hidden).forEach((sec) => {
       if (sec.type === "grid" && sec.rows && sec.rows.length > 0) {
-        sec.rows.forEach((r) => {
+        sec.rows.filter((r) => !r.hidden).forEach((r) => {
           if (Array.isArray(r.images)) {
             r.images.forEach((img) => {
               if (img) allImages.push(img);
@@ -506,19 +506,19 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
            DYNAMIC GALLERY SECTIONS
       ══════════════════════════════════════════ */}
       <section className="px-6 md:px-10 lg:px-12 xl:px-16 max-w-[1920px] mx-auto flex flex-col">
-        {project.sections.map((sec, secIdx) => {
+        {project.sections.filter((sec) => !sec.hidden).map((sec, secIdx) => {
           const startingGlobalIndex = cumulativeImageCount;
 
           const sectionRows =
             sec.type === "grid" && sec.rows && sec.rows.length > 0
-              ? sec.rows
+              ? sec.rows.filter((r) => !r.hidden)
               : sec.type === "grid"
               ? [{ images: sec.images || [] }]
               : null;
 
           let secImagesCount = 0;
-          if (sec.type === "grid" && sec.rows && sec.rows.length > 0) {
-            secImagesCount = sec.rows.flatMap((r) => r.images || []).length;
+          if (sec.type === "grid" && sectionRows && sectionRows.length > 0) {
+            secImagesCount = sectionRows.flatMap((r) => r.images || []).length;
           } else if (sec.type === "image_text") {
             secImagesCount = sec.imageSrc ? 1 : (Array.isArray(sec.images) ? sec.images.length : 0);
           } else if (sec.type === "text") {
@@ -810,6 +810,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           >
                             <ImageFallback
                               src={sec.imageSrc || sec.images[0]}
+                              poster={sec.videoTemplateUrl || sec.posterImage}
                               alt={sec.textTitle || sec.label}
                               category={project.title}
                               gifMode={isGifModeForUrl(sec.imageSrc || sec.images[0])}

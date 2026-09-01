@@ -85,6 +85,7 @@ interface ImageFallbackProps extends ImgHTMLAttributes<HTMLImageElement> {
   category?: string;
   fallbackType?: "project" | "profile" | "logo" | "showreel";
   gifMode?: boolean;
+  poster?: string;
 }
 
 const FALLBACK_IMAGES: Record<string, string> = {
@@ -104,11 +105,13 @@ export function ImageFallback({
   category,
   fallbackType = "project",
   gifMode = false,
+  poster,
   ...props
 }: ImageFallbackProps) {
   const [error, setError] = useState(false);
 
   const resolvedSrc = fixAssetUrl(src);
+  const resolvedPoster = fixAssetUrl(poster);
 
   const getFallbackUrl = () => {
     if (fallbackType === "profile") return FALLBACK_IMAGES.profile;
@@ -236,6 +239,7 @@ export function ImageFallback({
       return (
         <video
           src={resolvedSrc}
+          poster={resolvedPoster || undefined}
           autoPlay
           loop
           muted
@@ -248,6 +252,7 @@ export function ImageFallback({
     return (
       <CustomVideoPlayer
         src={resolvedSrc}
+        poster={resolvedPoster || undefined}
         title={alt}
         className={`w-full aspect-video ${className}`}
       />

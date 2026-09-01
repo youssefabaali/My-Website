@@ -52,6 +52,7 @@ export interface SocialLink {
 
 export interface GalleryRow {
   id?: string;
+  hidden?: boolean;
   images: string[];
   singleImageColumns?: number;
   mobileColumns?: number | "auto" | "same";
@@ -73,6 +74,7 @@ export interface CustomInfoField {
 
 export interface ProjectSection {
   id?: string;
+  hidden?: boolean;
   type: "grid" | "row" | "text" | "image_text";
   label: string;
   images: string[];
@@ -85,6 +87,8 @@ export interface ProjectSection {
   textYOffset?: number;
   textXOffset?: number;
   imageSrc?: string;
+  videoTemplateUrl?: string;
+  posterImage?: string;
   imagePosition?: "left" | "right";
   imageWidthRatio?: "30" | "40" | "50" | "60" | "70" | string;
   imageCustomWidth?: number | string;
