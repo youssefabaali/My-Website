@@ -608,8 +608,9 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
           const titleTopSpacingObj = getProportionalSpacing(sec.titleTopGap, 0, sec.titleTopGapMobile);
           const titleBottomSpacingObj = getProportionalSpacing(sec.titleBottomGap, 0, sec.titleBottomGapMobile);
 
-          // On desktop (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
+          // On desktop & tablet (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
           const desktopEffectiveBottomMargin = `${sectionSpacingObj.num + maxPositiveYOffset}px`;
+          const tabletEffectiveBottomMargin = `${Math.round(sectionSpacingObj.num * 0.5) + maxPositiveYOffset}px`;
 
           const secClass = `cms-sec-item-${secIdx}`;
           const titleClass = `cms-sec-title-${secIdx}`;
@@ -625,7 +626,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                 }
                 @media (min-width: 768px) {
                   .${secClass} {
-                    margin-bottom: ${sectionSpacingObj.tablet} !important;
+                    margin-bottom: ${tabletEffectiveBottomMargin} !important;
                   }
                 }
                 @media (min-width: 1024px) {
@@ -898,7 +899,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     })}
                   </div>
 
-                  {/* 2. TABLET VIEW (sm to lg / 640px to 1023px): Balanced 2-Column Responsive Grid with customWidth support and 3-image centering */}
+                  {/* 2. TABLET VIEW (sm to lg / 640px to 1023px): Balanced 2-Column Responsive Grid with customWidth and exact Y/X offsets */}
                   <div
                     style={rowsSpacingObj.num > 0 ? { rowGap: rowsSpacingObj.tablet, gap: rowsSpacingObj.tablet } : undefined}
                     className={`hidden sm:flex sm:flex-col lg:hidden ${rowsSpacingObj.num > 0 ? "" : "gap-5"} w-full`}
@@ -906,6 +907,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     {sectionRows.map((rowItem, rIdx) => {
                       if (!rowItem.images || rowItem.images.length === 0) return null;
                       const isSingle = rowItem.images.length === 1;
+                      const isLastRow = rIdx === sectionRows.length - 1;
                       const cols =
                         rowItem.singleImageColumns && rowItem.singleImageColumns >= 1
                           ? rowItem.singleImageColumns
@@ -922,6 +924,13 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         ? (parseSpacingValue(rowItem.columnsGap) || resolveResponsiveSpacing(rowItem.columnsGap).tablet)
                         : "1.25rem";
 
+                      const tabletAlignStyle: React.CSSProperties =
+                        rowItem.rowAlignment === "left"
+                          ? { marginLeft: 0, marginRight: "auto", justifyContent: "flex-start" }
+                          : rowItem.rowAlignment === "right"
+                          ? { marginLeft: "auto", marginRight: 0, justifyContent: "flex-end" }
+                          : { marginLeft: "auto", marginRight: "auto", justifyContent: "center" };
+
                       if (isSingle) {
                         const imgSrc = rowItem.images[0];
                         const imgGlobalIdx = allImages.indexOf(imgSrc);
@@ -932,31 +941,40 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           ? rowItem.itemWidths[0]
                           : rowItem.itemWidths?.[0];
 
-                        // If user explicitly set customWidth or itemWidths[0]
+                        // Faithfully respect user custom width (e.g. 70%, 80%, etc.)
                         const customItemWidth = rawItemWidth ?? rowItem.customWidth;
-                        const isNotFullWidth = customItemWidth !== undefined &&
-                          customItemWidth !== null &&
-                          customItemWidth !== "" &&
-                          customItemWidth !== "100%" &&
-                          customItemWidth !== 100 &&
-                          customItemWidth !== "100";
+                        const finalTabletWidth = (customItemWidth !== undefined && customItemWidth !== null && customItemWidth !== "")
+                          ? parseWidthValue(customItemWidth)
+                          : tabletMaxWidth;
 
-                        // If 100% -> 100%, if any other size (50, 70, 80, etc.) -> exactly 50% on tablet
-                        const finalTabletWidth = isNotFullWidth ? "50%" : tabletMaxWidth;
+                        const itemOffset = Array.isArray(rowItem.itemOffsets)
+                          ? (rowItem.itemOffsets[0] || 0)
+                          : (rowItem.itemOffsets?.[0] || 0);
 
-                        const tabletAlignStyle: React.CSSProperties =
-                          rowItem.rowAlignment === "left"
-                            ? { marginLeft: 0, marginRight: "auto", justifyContent: "flex-start" }
-                            : rowItem.rowAlignment === "right"
-                            ? { marginLeft: "auto", marginRight: 0, justifyContent: "flex-end" }
-                            : { marginLeft: "auto", marginRight: "auto", justifyContent: "center" };
+                        const itemHorizontalOffset = Array.isArray(rowItem.itemHorizontalOffsets)
+                          ? (rowItem.itemHorizontalOffsets[0] || 0)
+                          : (rowItem.itemHorizontalOffsets?.[0] || 0);
+
+                        const transformStyle = (itemOffset || itemHorizontalOffset)
+                          ? { transform: `translate(${itemHorizontalOffset || 0}px, ${itemOffset || 0}px)` }
+                          : undefined;
+
+                        const tabletRowBottomMargin = !isLastRow && itemOffset > 0 ? `${itemOffset}px` : undefined;
 
                         return (
-                          <div key={rIdx} style={tabletAlignStyle} className="w-full flex">
+                          <div
+                            key={rIdx}
+                            style={{
+                              ...tabletAlignStyle,
+                              marginBottom: tabletRowBottomMargin,
+                            }}
+                            className="w-full flex"
+                          >
                             <div style={{ maxWidth: finalTabletWidth, width: "100%" }} className="flex justify-center">
                               <button
                                 onClick={() => setLightboxIndex(activeGlobalIdx)}
-                                className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0"
+                                style={transformStyle}
+                                className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
                               >
                                 <ImageFallback
                                   src={imgSrc}
@@ -971,13 +989,49 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         );
                       }
 
+                      // Multi-image row (2 or more images)
+                      let maxRowYOffset = 0;
+                      if (rowItem.images) {
+                        rowItem.images.forEach((_, imgIdx) => {
+                          const off = Array.isArray(rowItem.itemOffsets)
+                            ? (rowItem.itemOffsets[imgIdx] || 0)
+                            : (rowItem.itemOffsets?.[imgIdx] || 0);
+                          if (typeof off === "number" && off > maxRowYOffset) {
+                            maxRowYOffset = off;
+                          }
+                        });
+                      }
+                      const tabletRowBottomMargin = !isLastRow && maxRowYOffset > 0 ? `${maxRowYOffset}px` : undefined;
+
                       return (
-                        <div key={rIdx} style={{ gap: rowCustomColGap }} className="grid grid-cols-2 w-full">
+                        <div
+                          key={rIdx}
+                          style={{
+                            maxWidth: tabletMaxWidth,
+                            width: "100%",
+                            gap: rowCustomColGap,
+                            marginBottom: tabletRowBottomMargin,
+                            ...tabletAlignStyle,
+                          }}
+                          className="grid grid-cols-2 w-full"
+                        >
                           {rowItem.images.map((imgSrc, imgIdx) => {
                             const imgGlobalIdx = allImages.indexOf(imgSrc);
                             const activeGlobalIdx =
                               imgGlobalIdx !== -1 ? imgGlobalIdx : startingGlobalIndex + imgIdx;
                             const isOddLast = rowItem.images.length % 2 === 1 && imgIdx === rowItem.images.length - 1;
+
+                            const itemOffset = Array.isArray(rowItem.itemOffsets)
+                              ? (rowItem.itemOffsets[imgIdx] || 0)
+                              : (rowItem.itemOffsets?.[imgIdx] || 0);
+
+                            const itemHorizontalOffset = Array.isArray(rowItem.itemHorizontalOffsets)
+                              ? (rowItem.itemHorizontalOffsets[imgIdx] || 0)
+                              : (rowItem.itemHorizontalOffsets?.[imgIdx] || 0);
+
+                            const transformStyle = (itemOffset || itemHorizontalOffset)
+                              ? { transform: `translate(${itemHorizontalOffset || 0}px, ${itemOffset || 0}px)` }
+                              : undefined;
 
                             if (isOddLast) {
                               return (
@@ -985,7 +1039,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                   <div className="w-1/2 flex justify-center">
                                     <button
                                       onClick={() => setLightboxIndex(activeGlobalIdx)}
-                                      className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0"
+                                      style={transformStyle}
+                                      className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
                                     >
                                       <ImageFallback
                                         src={imgSrc}
@@ -1004,7 +1059,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                               <button
                                 key={imgIdx}
                                 onClick={() => setLightboxIndex(activeGlobalIdx)}
-                                className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0"
+                                style={transformStyle}
+                                className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
                               >
                                 <ImageFallback
                                   src={imgSrc}
