@@ -1289,6 +1289,7 @@ function CMSSingleRowEditor({
   onCopyImage,
   onPasteImage,
   onDeleteRow,
+  onDuplicateRow,
   onMoveRow,
   canDelete,
   canMoveUp,
@@ -1324,6 +1325,7 @@ function CMSSingleRowEditor({
   onCopyImage?: (imgUrl: string, mode: "copy" | "move", sourceSecIdx: number, sourceRowIdx: number, sourceImgIdx: number) => void;
   onPasteImage?: (targetSecIdx: number, targetRowIdx: number) => void;
   onDeleteRow: () => void;
+  onDuplicateRow?: () => void;
   onMoveRow?: (dir: "up" | "down") => void;
   canDelete?: boolean;
   canMoveUp?: boolean;
@@ -1508,9 +1510,10 @@ function CMSSingleRowEditor({
 
   return (
     <div
+      id={`cms-section-${currentSectionIdx}-row-${currentRowIdx}`}
       onPaste={handlePaste}
       tabIndex={0}
-      className="p-4 bg-neutral-950/80 border border-white/10 rounded-xl flex flex-col gap-3 transition-all focus:border-brand-green/60 outline-none"
+      className="p-4 bg-neutral-950/80 border border-white/10 rounded-xl flex flex-col gap-3 transition-all focus:border-brand-green/60 outline-none scroll-mt-24"
     >
       {/* Row Header Info, Tabs & Controls */}
       <div className={`flex items-center justify-between gap-3 flex-wrap ${isRowCollapsed ? "" : "border-b border-white/5 pb-3"}`}>
@@ -1565,6 +1568,17 @@ function CMSSingleRowEditor({
         </div>
 
         <div className="flex items-center gap-1.5">
+          {onDuplicateRow && (
+            <button
+              type="button"
+              onClick={onDuplicateRow}
+              className="p-1.5 bg-neutral-900 border border-white/10 hover:border-brand-green text-brand-green hover:bg-brand-green/10 rounded-lg cursor-pointer flex items-center gap-1 text-[10px] font-bold uppercase transition-all"
+              title="Duplicate this row (creates an exact copy with same images and layout below)"
+            >
+              <Copy size={13} />
+              <span className="hidden sm:inline">Duplicate Row</span>
+            </button>
+          )}
           {onMoveRow && canMoveUp && (
             <button
               type="button"
@@ -2102,6 +2116,7 @@ function ProjectEditorStickyRail({
   sections = [],
   onJumpToSection,
   onMoveSection,
+  onDuplicateSection,
   highlightedSectionIdx,
   isSaving,
   imageClipboard,
@@ -2116,6 +2131,7 @@ function ProjectEditorStickyRail({
   sections?: any[];
   onJumpToSection: (sIdx: number) => void;
   onMoveSection?: (sIdx: number, dir: "up" | "down") => void;
+  onDuplicateSection?: (sIdx: number) => void;
   highlightedSectionIdx: number | null;
   isSaving?: boolean;
   imageClipboard?: {
@@ -2405,8 +2421,18 @@ function ProjectEditorStickyRail({
                         </div>
                       </div>
 
-                      {/* Controls on the item: Up / Down Reorder */}
+                      {/* Controls on the item: Duplicate, Up / Down Reorder */}
                       <div className="flex items-center gap-1 shrink-0" onClick={(e) => e.stopPropagation()}>
+                        {onDuplicateSection && (
+                          <button
+                            type="button"
+                            onClick={() => onDuplicateSection(idx)}
+                            className={`p-1 rounded hover:bg-white/20 transition-colors ${isHighlighted ? "text-black hover:bg-black/20" : "text-neutral-400 hover:text-brand-green"}`}
+                            title="Duplicate section"
+                          >
+                            <Copy size={11} />
+                          </button>
+                        )}
                         {onMoveSection && idx > 0 && (
                           <button
                             type="button"
@@ -2466,6 +2492,8 @@ function CMSGallerySectionEditor({
   canMoveUp,
   canMoveDown,
   onMoveSec,
+  onDuplicateSec,
+  onFocusSection,
   allSections,
   allTransferTargets,
   imageClipboard,
@@ -2483,6 +2511,8 @@ function CMSGallerySectionEditor({
   canMoveUp?: boolean;
   canMoveDown?: boolean;
   onMoveSec?: (direction: "up" | "down") => void;
+  onDuplicateSec?: () => void;
+  onFocusSection?: (sIdx: number) => void;
   allSections?: { sIdx: number; label: string }[];
   allTransferTargets?: { secIdx: number; rowIdx: number; label: string }[];
   imageClipboard?: { imgUrl: string; mode: "copy" | "move"; sourceSecIdx: number; sourceRowIdx: number; sourceImgIdx: number } | null;
@@ -2668,6 +2698,21 @@ function CMSGallerySectionEditor({
     });
   };
 
+  const handleDuplicateRow = (rIdx: number) => {
+    const rowToDuplicate = rows[rIdx];
+    if (!rowToDuplicate) return;
+    const clonedRow = JSON.parse(JSON.stringify(rowToDuplicate));
+    clonedRow.id = `row-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`;
+    const updatedRows = [...rows];
+    // Insert immediately below the duplicated row
+    updatedRows.splice(rIdx + 1, 0, clonedRow);
+    onUpdateSec({
+      ...sec,
+      rows: updatedRows,
+      images: updatedRows.flatMap((r) => r.images),
+    });
+  };
+
   const handleRemoveRow = (rIdx: number) => {
     const updatedRows = rows.filter((_, idx) => idx !== rIdx);
     const finalRows = updatedRows.length > 0 ? updatedRows : [{ id: `row-${Date.now()}`, images: [] }];
@@ -2695,6 +2740,8 @@ function CMSGallerySectionEditor({
   return (
     <div
       id={`cms-section-${sIdx}`}
+      onClick={() => onFocusSection && onFocusSection(sIdx)}
+      onFocus={() => onFocusSection && onFocusSection(sIdx)}
       className={`p-4 rounded-2xl flex flex-col gap-4 shadow-xl transition-all duration-300 scroll-mt-28 ${
         isHighlighted
           ? "bg-neutral-900/95 border-2 border-brand-green ring-4 ring-brand-green/30 shadow-[0_0_30px_rgba(140,255,46,0.3)] scale-[1.005]"
@@ -2769,6 +2816,17 @@ function CMSGallerySectionEditor({
         </div>
 
         <div className="flex items-center gap-2">
+          {onDuplicateSec && (
+            <button
+              type="button"
+              onClick={onDuplicateSec}
+              className="p-1.5 bg-neutral-950 border border-white/10 hover:border-brand-green text-brand-green hover:bg-brand-green/10 rounded-lg transition-all cursor-pointer flex items-center gap-1 text-[11px] font-bold uppercase"
+              title="Duplicate this entire section (creates a full copy below)"
+            >
+              <Copy size={14} />
+              <span>Duplicate Section</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={onRemoveSec}
@@ -3278,6 +3336,7 @@ function CMSGallerySectionEditor({
                 onCopyImage={onCopyImage}
                 onPasteImage={onPasteImage}
                 onDeleteRow={() => handleRemoveRow(rIdx)}
+                onDuplicateRow={() => handleDuplicateRow(rIdx)}
                 onMoveRow={(dir) => handleMoveRow(rIdx, dir)}
                 canDelete={rows.length > 1 || rowItem.images.length > 0}
                 canMoveUp={rIdx > 0}
@@ -3694,15 +3753,12 @@ export function AdminCMS() {
       }));
     }
 
+    // Set persistent active section highlight in the right-hand outline list
     setHighlightedSectionIdx(sIdx);
     const targetElement = document.getElementById(`cms-section-${sIdx}`);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    // Remove highlight pulse after 3.5 seconds
-    setTimeout(() => {
-      setHighlightedSectionIdx((prev) => (prev === sIdx ? null : prev));
-    }, 3500);
   };
 
   // IMAGE COPY / MOVE CLIPBOARD STATE
@@ -4258,6 +4314,42 @@ export function AdminCMS() {
     // Automatically jump to the newly created section
     setTimeout(() => {
       handleJumpToSection(newSecIdx);
+    }, 120);
+  };
+
+  const handleDuplicateProjectSection = (sIdx: number) => {
+    const currentSecs = projectEditForm?.sections || [];
+    const secToDuplicate = currentSecs[sIdx];
+    if (!secToDuplicate) return;
+
+    const clonedSec = JSON.parse(JSON.stringify(secToDuplicate));
+    clonedSec.id = `sec-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`;
+    if (clonedSec.label) {
+      clonedSec.label = `${clonedSec.label} (COPY)`;
+    }
+
+    // Ensure all cloned rows have unique ids
+    if (Array.isArray(clonedSec.rows)) {
+      clonedSec.rows = clonedSec.rows.map((row: any, rIdx: number) => ({
+        ...row,
+        id: `row-${Date.now()}-${rIdx}-${Math.random().toString(36).substr(2, 4)}`,
+      }));
+    }
+
+    const updatedSecs = [...currentSecs];
+    const insertIdx = sIdx + 1;
+    updatedSecs.splice(insertIdx, 0, clonedSec);
+
+    setProjectEditForm((prev: any) => ({
+      ...prev,
+      sections: updatedSecs,
+    }));
+
+    showNotification(`Duplicated section #${sIdx + 1} (${clonedSec.label || "Section"})!`, "success");
+
+    // Automatically jump to the newly duplicated section
+    setTimeout(() => {
+      handleJumpToSection(insertIdx);
     }, 120);
   };
 
@@ -6719,6 +6811,8 @@ export function AdminCMS() {
                                 updatedSecs.splice(sIdx, 1);
                                 setProjectEditForm((prev: any) => ({ ...prev, sections: updatedSecs }));
                               }}
+                              onDuplicateSec={() => handleDuplicateProjectSection(sIdx)}
+                              onFocusSection={(idx) => setHighlightedSectionIdx(idx)}
                               onTransferImageAcrossSections={handleTransferImageAcrossSections}
                               onCopyImage={handleCopyImageToClipboard}
                               onPasteImage={handlePasteImageFromClipboard}
@@ -6756,6 +6850,7 @@ export function AdminCMS() {
                     onAddSection={handleAddNewProjectSection}
                     sections={projectEditForm.sections || []}
                     onJumpToSection={handleJumpToSection}
+                    onDuplicateSection={handleDuplicateProjectSection}
                     onMoveSection={(sIdx, dir) => {
                       const targetIdx = dir === "up" ? sIdx - 1 : sIdx + 1;
                       const updatedSecs = [...(projectEditForm.sections || [])];
