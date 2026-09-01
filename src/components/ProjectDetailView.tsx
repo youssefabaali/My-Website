@@ -608,9 +608,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
           const titleTopSpacingObj = getProportionalSpacing(sec.titleTopGap, 0, sec.titleTopGapMobile);
           const titleBottomSpacingObj = getProportionalSpacing(sec.titleBottomGap, 0, sec.titleBottomGapMobile);
 
-          // On desktop & tablet (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
+          // On desktop (where custom item offsets are applied), add maxPositiveYOffset to the base section bottom gap
           const desktopEffectiveBottomMargin = `${sectionSpacingObj.num + maxPositiveYOffset}px`;
-          const tabletEffectiveBottomMargin = `${Math.round(sectionSpacingObj.num * 0.5) + maxPositiveYOffset}px`;
 
           const secClass = `cms-sec-item-${secIdx}`;
           const titleClass = `cms-sec-title-${secIdx}`;
@@ -626,7 +625,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                 }
                 @media (min-width: 768px) {
                   .${secClass} {
-                    margin-bottom: ${tabletEffectiveBottomMargin} !important;
+                    margin-bottom: ${sectionSpacingObj.tablet} !important;
                   }
                 }
                 @media (min-width: 1024px) {
@@ -899,7 +898,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     })}
                   </div>
 
-                  {/* 2. TABLET VIEW (sm to lg / 640px to 1023px): Balanced 2-Column Responsive Grid with customWidth and exact Y/X offsets */}
+                  {/* 2. TABLET VIEW (sm to lg / 640px to 1023px): Swiss Grid Alignment (0 Offsets, 100% or 50% Sizing, Left-aligned 3rd images) */}
                   <div
                     style={rowsSpacingObj.num > 0 ? { rowGap: rowsSpacingObj.tablet, gap: rowsSpacingObj.tablet } : undefined}
                     className={`hidden sm:flex sm:flex-col lg:hidden ${rowsSpacingObj.num > 0 ? "" : "gap-5"} w-full`}
@@ -907,18 +906,10 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     {sectionRows.map((rowItem, rIdx) => {
                       if (!rowItem.images || rowItem.images.length === 0) return null;
                       const isSingle = rowItem.images.length === 1;
-                      const isLastRow = rIdx === sectionRows.length - 1;
                       const cols =
                         rowItem.singleImageColumns && rowItem.singleImageColumns >= 1
                           ? rowItem.singleImageColumns
                           : 1;
-
-                      let tabletMaxWidth = "100%";
-                      if (rowItem.customWidth !== undefined && rowItem.customWidth !== null && rowItem.customWidth !== "") {
-                        tabletMaxWidth = parseWidthValue(rowItem.customWidth);
-                      } else if (cols > 1) {
-                        tabletMaxWidth = `${Math.round(10000 / cols) / 100}%`;
-                      }
 
                       const rowCustomColGap = rowItem.columnsGap !== undefined && rowItem.columnsGap !== null && rowItem.columnsGap !== ""
                         ? (parseSpacingValue(rowItem.columnsGap) || resolveResponsiveSpacing(rowItem.columnsGap).tablet)
@@ -941,39 +932,30 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           ? rowItem.itemWidths[0]
                           : rowItem.itemWidths?.[0];
 
-                        // Faithfully respect user custom width (e.g. 70%, 80%, etc.)
                         const customItemWidth = rawItemWidth ?? rowItem.customWidth;
-                        const finalTabletWidth = (customItemWidth !== undefined && customItemWidth !== null && customItemWidth !== "")
-                          ? parseWidthValue(customItemWidth)
-                          : tabletMaxWidth;
 
-                        const itemOffset = Array.isArray(rowItem.itemOffsets)
-                          ? (rowItem.itemOffsets[0] || 0)
-                          : (rowItem.itemOffsets?.[0] || 0);
-
-                        const itemHorizontalOffset = Array.isArray(rowItem.itemHorizontalOffsets)
-                          ? (rowItem.itemHorizontalOffsets[0] || 0)
-                          : (rowItem.itemHorizontalOffsets?.[0] || 0);
-
-                        const transformStyle = (itemOffset || itemHorizontalOffset)
-                          ? { transform: `translate(${itemHorizontalOffset || 0}px, ${itemOffset || 0}px)` }
-                          : undefined;
-
-                        const tabletRowBottomMargin = !isLastRow && itemOffset > 0 ? `${itemOffset}px` : undefined;
+                        // Binary tablet sizing: 100% if 100/full, 50% for any other value (50, 70, 80, etc.)
+                        let finalTabletWidth = "100%";
+                        if (customItemWidth !== undefined && customItemWidth !== null && customItemWidth !== "") {
+                          const parsedStr = String(customItemWidth).trim();
+                          if (parsedStr === "100" || parsedStr === "100%" || parsedStr === "100vw") {
+                            finalTabletWidth = "100%";
+                          } else {
+                            finalTabletWidth = "50%";
+                          }
+                        } else if (cols > 1) {
+                          finalTabletWidth = "50%";
+                        }
 
                         return (
                           <div
                             key={rIdx}
-                            style={{
-                              ...tabletAlignStyle,
-                              marginBottom: tabletRowBottomMargin,
-                            }}
+                            style={tabletAlignStyle}
                             className="w-full flex"
                           >
                             <div style={{ maxWidth: finalTabletWidth, width: "100%" }} className="flex justify-center">
                               <button
                                 onClick={() => setLightboxIndex(activeGlobalIdx)}
-                                style={transformStyle}
                                 className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
                               >
                                 <ImageFallback
@@ -989,28 +971,14 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         );
                       }
 
-                      // Multi-image row (2 or more images)
-                      let maxRowYOffset = 0;
-                      if (rowItem.images) {
-                        rowItem.images.forEach((_, imgIdx) => {
-                          const off = Array.isArray(rowItem.itemOffsets)
-                            ? (rowItem.itemOffsets[imgIdx] || 0)
-                            : (rowItem.itemOffsets?.[imgIdx] || 0);
-                          if (typeof off === "number" && off > maxRowYOffset) {
-                            maxRowYOffset = off;
-                          }
-                        });
-                      }
-                      const tabletRowBottomMargin = !isLastRow && maxRowYOffset > 0 ? `${maxRowYOffset}px` : undefined;
-
+                      // Multi-image row (2 or 3+ images): Clean 2-column grid, 0 offset, 3rd image sits at bottom-left
                       return (
                         <div
                           key={rIdx}
                           style={{
-                            maxWidth: tabletMaxWidth,
+                            maxWidth: "100%",
                             width: "100%",
                             gap: rowCustomColGap,
-                            marginBottom: tabletRowBottomMargin,
                             ...tabletAlignStyle,
                           }}
                           className="grid grid-cols-2 w-full"
@@ -1019,47 +987,11 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             const imgGlobalIdx = allImages.indexOf(imgSrc);
                             const activeGlobalIdx =
                               imgGlobalIdx !== -1 ? imgGlobalIdx : startingGlobalIndex + imgIdx;
-                            const isOddLast = rowItem.images.length % 2 === 1 && imgIdx === rowItem.images.length - 1;
-
-                            const itemOffset = Array.isArray(rowItem.itemOffsets)
-                              ? (rowItem.itemOffsets[imgIdx] || 0)
-                              : (rowItem.itemOffsets?.[imgIdx] || 0);
-
-                            const itemHorizontalOffset = Array.isArray(rowItem.itemHorizontalOffsets)
-                              ? (rowItem.itemHorizontalOffsets[imgIdx] || 0)
-                              : (rowItem.itemHorizontalOffsets?.[imgIdx] || 0);
-
-                            const transformStyle = (itemOffset || itemHorizontalOffset)
-                              ? { transform: `translate(${itemHorizontalOffset || 0}px, ${itemOffset || 0}px)` }
-                              : undefined;
-
-                            if (isOddLast) {
-                              return (
-                                <div key={imgIdx} className="col-span-2 flex justify-center w-full">
-                                  <div className="w-1/2 flex justify-center">
-                                    <button
-                                      onClick={() => setLightboxIndex(activeGlobalIdx)}
-                                      style={transformStyle}
-                                      className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
-                                    >
-                                      <ImageFallback
-                                        src={imgSrc}
-                                        alt={`${sec.label} Tablet Grid Frame ${imgIdx + 1}`}
-                                        category={project.title}
-                                        gifMode={isGifModeForUrl(imgSrc)}
-                                        className="w-full h-auto max-h-[600px] object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                                      />
-                                    </button>
-                                  </div>
-                                </div>
-                              );
-                            }
 
                             return (
                               <button
                                 key={imgIdx}
                                 onClick={() => setLightboxIndex(activeGlobalIdx)}
-                                style={transformStyle}
                                 className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
                               >
                                 <ImageFallback
