@@ -26,13 +26,14 @@ export function CustomVideoPlayer({
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [hasPlayed, setHasPlayed] = useState(autoPlay);
   const [isLooping, setIsLooping] = useState(loop);
   const [progress, setProgress] = useState(0); // 0 to 100
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
-  const [showControls, setShowControls] = useState(true);
+  const [showControls, setShowControls] = useState(false);
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -77,6 +78,7 @@ export function CustomVideoPlayer({
     } else {
       videoRef.current.play().catch(() => {});
       setIsPlaying(true);
+      setHasPlayed(true);
     }
   };
 
@@ -120,6 +122,7 @@ export function CustomVideoPlayer({
     videoRef.current.currentTime = 0;
     videoRef.current.play().catch(() => {});
     setIsPlaying(true);
+    setHasPlayed(true);
   };
 
   const toggleLoop = (e?: React.MouseEvent) => {
@@ -135,6 +138,7 @@ export function CustomVideoPlayer({
   };
 
   const handleMouseMove = () => {
+    if (!hasPlayed) return;
     setShowControls(true);
     if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
     controlsTimeoutRef.current = setTimeout(() => {
@@ -161,32 +165,34 @@ export function CustomVideoPlayer({
         className="w-full h-full object-contain cursor-pointer"
       />
 
-      {/* Center Big Play Button Overlay when paused */}
+      {/* Center Play Button Overlay when paused */}
       {!isPlaying && (
         <div
           onClick={(e) => togglePlay(e)}
-          className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center cursor-pointer transition-opacity duration-300"
+          className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+            hasPlayed ? "bg-black/30" : "bg-black/20 group-hover:bg-black/10"
+          }`}
         >
           <div
-            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-xl transition-transform duration-300 group-hover:scale-110"
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(140,255,46,0.5)] transition-transform duration-300 group-hover:scale-110 cursor-pointer"
             style={{
               backgroundColor: primaryColor,
               color: "#000",
-              boxShadow: `0 0 30px ${primaryColor}66`,
             }}
           >
-            <Play size={32} className="ml-1 fill-black text-black" />
+            <Play size={28} className="ml-1 fill-black text-black" />
           </div>
         </div>
       )}
 
-      {/* Control Bar Overlay */}
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className={`absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent transition-opacity duration-300 flex flex-col gap-2 ${
-          showControls || !isPlaying ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
+      {/* Control Bar Overlay - ONLY visible after user starts video */}
+      {hasPlayed && (
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className={`absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent transition-opacity duration-300 flex flex-col gap-2 ${
+            showControls || !isPlaying ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
         {/* Progress Seekbar */}
         <div className="relative w-full flex items-center group/seekbar cursor-pointer">
           <input
@@ -283,6 +289,7 @@ export function CustomVideoPlayer({
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }

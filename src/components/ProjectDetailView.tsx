@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useCMS } from "../context/CMSContext";
 import { ArrowRight, X, ChevronLeft, Play } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { ImageFallback } from "./ImageFallback";
+import { ImageFallback, isVideoUrl, isYouTubeUrl, isVimeoUrl } from "./ImageFallback";
 
 interface ProjectDetailViewProps {
   projectId: number;
@@ -799,25 +799,45 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                       <div
                         className={`w-full flex justify-center order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "md:order-2" : "md:order-1"}`}
                       >
-                        {(sec.imageSrc || (sec.images && sec.images[0])) && (
-                          <button
-                            onClick={() => {
-                              const imgSrc = sec.imageSrc || sec.images[0];
-                              const imgIdx = allImages.indexOf(imgSrc);
-                              if (imgIdx !== -1) setLightboxIndex(imgIdx);
-                            }}
-                            className={`overflow-hidden group cursor-pointer focus:outline-none flex items-center justify-center p-0 transition-transform duration-300 ${splitSecClass}`}
-                          >
-                            <ImageFallback
-                              src={sec.imageSrc || sec.images[0]}
-                              poster={sec.videoTemplateUrl || sec.posterImage}
-                              alt={sec.textTitle || sec.label}
-                              category={project.title}
-                              gifMode={isGifModeForUrl(sec.imageSrc || sec.images[0])}
-                              className="w-full h-auto max-h-[750px] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                            />
-                          </button>
-                        )}
+                        {(sec.imageSrc || (sec.images && sec.images[0])) && (() => {
+                          const imgSrc = sec.imageSrc || sec.images[0];
+                          const isGif = isGifModeForUrl(imgSrc);
+                          const isPlayableVideo = (isVideoUrl(imgSrc) || isYouTubeUrl(imgSrc) || isVimeoUrl(imgSrc)) && !isGif;
+
+                          if (isPlayableVideo) {
+                            return (
+                              <div className={`overflow-hidden group flex items-center justify-center p-0 transition-transform duration-300 w-full ${splitSecClass}`}>
+                                <ImageFallback
+                                  src={imgSrc}
+                                  poster={sec.videoTemplateUrl || sec.posterImage}
+                                  alt={sec.textTitle || sec.label}
+                                  category={project.title}
+                                  gifMode={false}
+                                  className="w-full h-auto max-h-[750px] object-contain"
+                                />
+                              </div>
+                            );
+                          }
+
+                          return (
+                            <button
+                              onClick={() => {
+                                const imgIdx = allImages.indexOf(imgSrc);
+                                if (imgIdx !== -1) setLightboxIndex(imgIdx);
+                              }}
+                              className={`overflow-hidden group cursor-pointer focus:outline-none flex items-center justify-center p-0 transition-transform duration-300 ${splitSecClass}`}
+                            >
+                              <ImageFallback
+                                src={imgSrc}
+                                poster={sec.videoTemplateUrl || sec.posterImage}
+                                alt={sec.textTitle || sec.label}
+                                category={project.title}
+                                gifMode={isGif}
+                                className="w-full h-auto max-h-[750px] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                              />
+                            </button>
+                          );
+                        })()}
                       </div>
                     </div>
                   );
