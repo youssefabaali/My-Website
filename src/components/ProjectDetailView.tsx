@@ -238,7 +238,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
             padding-bottom: ${pyBottomTablet}px;
           }
         }
-        @media (min-width: 1024px) {
+        @media (min-width: 1100px) {
           .cms-detail-page-padding {
             padding-top: ${pyTopDesktop}px;
             padding-bottom: ${pyBottomDesktop}px;
@@ -253,7 +253,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
             margin-bottom: ${gapTablet}px;
           }
         }
-        @media (min-width: 1024px) {
+        @media (min-width: 1100px) {
           .cms-section-gap {
             margin-bottom: ${gapDesktop}px;
           }
@@ -267,7 +267,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
             gap: ${gapTablet}px;
           }
         }
-        @media (min-width: 1024px) {
+        @media (min-width: 1100px) {
           .cms-detail-sections-gap {
             gap: ${gapDesktop}px;
           }
@@ -281,7 +281,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
             margin-bottom: ${headingGapTablet}px;
           }
         }
-        @media (min-width: 1024px) {
+        @media (min-width: 1100px) {
           .cms-heading-gap {
             margin-bottom: ${headingGapDesktop}px;
           }
@@ -457,7 +457,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                   margin-bottom: ${finalSectionBottomSpacing.tablet} !important;
                 }
               }
-              @media (min-width: 1024px) {
+              @media (min-width: 1100px) {
                 .cms-desc-gap {
                   margin-bottom: ${finalSectionBottomSpacing.desktop} !important;
                 }
@@ -471,7 +471,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                   margin-bottom: ${metaSpacing.num > 0 || metaSpacing.mobileNum !== null ? metaSpacing.tablet : (hasDescription ? "1.5rem" : "0px")} !important;
                 }
               }
-              @media (min-width: 1024px) {
+              @media (min-width: 1100px) {
                 .cms-meta-gap {
                   margin-bottom: ${metaSpacing.num > 0 || metaSpacing.mobileNum !== null ? metaSpacing.desktop : (hasDescription ? "1.5rem" : "0px")} !important;
                 }
@@ -633,7 +633,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     margin-bottom: ${sectionSpacingObj.tablet} !important;
                   }
                 }
-                @media (min-width: 1024px) {
+                @media (min-width: 1100px) {
                   .${secClass} {
                     margin-bottom: ${desktopEffectiveBottomMargin} !important;
                   }
@@ -649,7 +649,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     margin-bottom: ${titleBottomSpacingObj.tablet} !important;
                   }
                 }
-                @media (min-width: 1024px) {
+                @media (min-width: 1100px) {
                   .${titleClass} {
                     margin-top: ${titleTopSpacingObj.desktop} !important;
                     margin-bottom: ${titleBottomSpacingObj.desktop} !important;
@@ -666,7 +666,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     gap: ${rowsSpacingObj.tablet} !important;
                   }
                 }
-                @media (min-width: 1024px) {
+                @media (min-width: 1100px) {
                   .${rowContainerClass} {
                     row-gap: ${rowsSpacingObj.desktop} !important;
                     gap: ${rowsSpacingObj.desktop} !important;
@@ -764,7 +764,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           transform: none !important;
                           width: 100% !important;
                         }
-                        @media (min-width: 640px) and (max-width: 1023px) {
+                        @media (min-width: 640px) and (max-width: 1099px) {
                           .${splitSecClass} {
                             transform: none !important;
                             width: 100% !important;
@@ -786,7 +786,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             margin-left: 0 !important;
                           }
                         }
-                        @media (min-width: 1024px) {
+                        @media (min-width: 1100px) {
                           .${splitSecClass} {
                             ${yOff || xOff ? `transform: translate(${xOff}px, ${yOff}px) !important;` : "transform: none !important;"}
                             width: 100% !important;
@@ -808,7 +808,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                       {/* Text Column - on mobile: order-1 (on top), on tablet (sm-lg): order-1 on left (50%), on desktop lg: custom order & % */}
                       <div
-                        className={`w-full flex flex-col gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "lg:order-1" : "lg:order-2"}`}
+                        className={`w-full flex flex-col gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "min-[1100px]:order-1" : "min-[1100px]:order-2"}`}
                       >
                         {sec.textTitle && (
                           <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
@@ -826,9 +826,9 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                       <div
                         className={`w-full flex ${
                           sec.imagePosition === "left"
-                            ? "justify-center sm:justify-start lg:justify-start"
-                            : "justify-center sm:justify-end lg:justify-end"
-                        } order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "lg:order-2" : "lg:order-1"}`}
+                            ? "justify-center sm:justify-start min-[1100px]:justify-start"
+                            : "justify-center sm:justify-end min-[1100px]:justify-end"
+                        } order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "min-[1100px]:order-2" : "min-[1100px]:order-1"}`}
                       >
                         {(sec.imageSrc || (sec.images && sec.images[0])) && (() => {
                           const imgSrc = sec.imageSrc || sec.images[0];
@@ -840,8 +840,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                               <div
                                 className={`overflow-hidden group flex items-center ${
                                   sec.imagePosition === "left"
-                                    ? "justify-center sm:justify-start lg:justify-start mr-auto"
-                                    : "justify-center sm:justify-end lg:justify-end ml-auto"
+                                    ? "justify-center sm:justify-start min-[1100px]:justify-start mr-auto"
+                                    : "justify-center sm:justify-end min-[1100px]:justify-end ml-auto"
                                 } p-0 transition-transform duration-300 w-full ${splitSecClass}`}
                               >
                                 <ImageFallback
@@ -864,8 +864,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                               }}
                               className={`overflow-hidden group cursor-pointer focus:outline-none flex items-center ${
                                 sec.imagePosition === "left"
-                                  ? "justify-center sm:justify-start lg:justify-start mr-auto"
-                                  : "justify-center sm:justify-end lg:justify-end ml-auto"
+                                  ? "justify-center sm:justify-start min-[1100px]:justify-start mr-auto"
+                                  : "justify-center sm:justify-end min-[1100px]:justify-end ml-auto"
                               } p-0 transition-transform duration-300 w-full ${splitSecClass}`}
                             >
                               <ImageFallback
@@ -939,7 +939,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     })}
                   </div>
 
-                  {/* 2. TABLET VIEW (sm to lg / 640px to 1023px): Clean Swiss Alignment (0 Offsets, 100% or Strict 50% Sizing with Auto-Pairing 50% images in 2-Col Rows) */}
+                  {/* 2. TABLET VIEW (sm to 1099px / 640px to 1099px): Clean Swiss Alignment (0 Offsets, 100% or Strict 50% Sizing with Auto-Pairing 50% images in 2-Col Rows) */}
                   {(() => {
                     // Extract all images with their metadata for this section, respecting 100% vs 50%
                     type TabletItem = {
@@ -1025,7 +1025,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     return (
                       <div
                         style={rowsSpacingObj.num > 0 ? { rowGap: rowsSpacingObj.tablet, gap: rowsSpacingObj.tablet } : undefined}
-                        className={`hidden sm:flex sm:flex-col lg:hidden ${rowsSpacingObj.num > 0 ? "" : "gap-5"} w-full`}
+                        className={`hidden sm:flex sm:flex-col min-[1100px]:hidden ${rowsSpacingObj.num > 0 ? "" : "gap-5"} w-full`}
                       >
                         {tabletRenderRows.map((rGroup, gIdx) => {
                           if (rGroup.type === "full") {
@@ -1076,8 +1076,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     );
                   })()}
 
-                  {/* 3. DESKTOP VIEW (>= lg / >= 1024px): Full Custom Control with exact user X/Y offsets, custom widths, and alignment */}
-                  <div className="hidden lg:flex lg:flex-col w-full">
+                  {/* 3. DESKTOP VIEW (>= 1100px): Full Custom Control with exact user X/Y offsets, custom widths, and alignment */}
+                  <div className="hidden min-[1100px]:flex min-[1100px]:flex-col w-full">
                     {sectionRows.map((rowItem, rIdx) => {
                       if (!rowItem.images || rowItem.images.length === 0) return null;
                       const cols =
