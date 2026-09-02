@@ -758,7 +758,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                   const splitSecClass = `cms-split-img-${secIdx}`;
 
                   return (
-                    <div className="flex flex-col md:flex-row gap-8 md:gap-14 items-center py-2 w-full">
+                    <div className="flex flex-col sm:flex-row justify-between items-center py-2 w-full gap-y-8 sm:gap-y-0">
                       <style>{`
                         .${splitSecClass} {
                           transform: none !important;
@@ -770,16 +770,20 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             width: 100% !important;
                           }
                           .cms-split-img-col-${secIdx} {
-                            width: 50% !important;
-                            flex: 0 0 50% !important;
-                            max-width: 50% !important;
+                            width: calc(50% - 1.25rem) !important;
+                            flex: 0 0 calc(50% - 1.25rem) !important;
+                            max-width: calc(50% - 1.25rem) !important;
                             order: 2 !important; /* Always on Right for Tablet */
+                            margin-left: auto !important;
+                            margin-right: 0 !important;
                           }
                           .cms-split-text-col-${secIdx} {
-                            width: 50% !important;
-                            flex: 0 0 50% !important;
-                            max-width: 50% !important;
+                            width: calc(50% - 1.25rem) !important;
+                            flex: 0 0 calc(50% - 1.25rem) !important;
+                            max-width: calc(50% - 1.25rem) !important;
                             order: 1 !important; /* Always on Left for Tablet */
+                            margin-right: auto !important;
+                            margin-left: 0 !important;
                           }
                         }
                         @media (min-width: 1024px) {
@@ -788,14 +792,16 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             width: 100% !important;
                           }
                           .cms-split-img-col-${secIdx} {
-                            width: ${safeImgPercent}% !important;
-                            flex: 0 0 ${safeImgPercent}% !important;
-                            max-width: ${safeImgPercent}% !important;
+                            width: calc(${safeImgPercent}% - 1.5rem) !important;
+                            flex: 0 0 calc(${safeImgPercent}% - 1.5rem) !important;
+                            max-width: calc(${safeImgPercent}% - 1.5rem) !important;
+                            ${sec.imagePosition === "left" ? "margin-right: auto !important; margin-left: 0 !important;" : "margin-left: auto !important; margin-right: 0 !important;"}
                           }
                           .cms-split-text-col-${secIdx} {
-                            width: ${textPercent}% !important;
-                            flex: 0 0 ${textPercent}% !important;
-                            max-width: ${textPercent}% !important;
+                            width: calc(${textPercent}% - 1.5rem) !important;
+                            flex: 0 0 calc(${textPercent}% - 1.5rem) !important;
+                            max-width: calc(${textPercent}% - 1.5rem) !important;
+                            ${sec.imagePosition === "left" ? "margin-left: auto !important; margin-right: 0 !important;" : "margin-right: auto !important; margin-left: 0 !important;"}
                           }
                         }
                       `}</style>
@@ -818,7 +824,11 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                       {/* Image Column - on mobile: order-2 (below), on tablet (sm-lg): order-2 on right (50%), on desktop lg: custom order & % */}
                       <div
-                        className={`w-full flex justify-center order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "lg:order-2" : "lg:order-1"}`}
+                        className={`w-full flex ${
+                          sec.imagePosition === "left"
+                            ? "justify-center sm:justify-start lg:justify-start"
+                            : "justify-center sm:justify-end lg:justify-end"
+                        } order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "lg:order-2" : "lg:order-1"}`}
                       >
                         {(sec.imageSrc || (sec.images && sec.images[0])) && (() => {
                           const imgSrc = sec.imageSrc || sec.images[0];
@@ -827,7 +837,13 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                           if (isPlayableVideo) {
                             return (
-                              <div className={`overflow-hidden group flex items-center justify-center p-0 transition-transform duration-300 w-full ${splitSecClass}`}>
+                              <div
+                                className={`overflow-hidden group flex items-center ${
+                                  sec.imagePosition === "left"
+                                    ? "justify-center sm:justify-start lg:justify-start mr-auto"
+                                    : "justify-center sm:justify-end lg:justify-end ml-auto"
+                                } p-0 transition-transform duration-300 w-full ${splitSecClass}`}
+                              >
                                 <ImageFallback
                                   src={imgSrc}
                                   poster={sec.videoTemplateUrl || sec.posterImage}
@@ -846,7 +862,11 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 const imgIdx = allImages.indexOf(imgSrc);
                                 if (imgIdx !== -1) setLightboxIndex(imgIdx);
                               }}
-                              className={`overflow-hidden group cursor-pointer focus:outline-none flex items-center justify-center p-0 transition-transform duration-300 ${splitSecClass}`}
+                              className={`overflow-hidden group cursor-pointer focus:outline-none flex items-center ${
+                                sec.imagePosition === "left"
+                                  ? "justify-center sm:justify-start lg:justify-start mr-auto"
+                                  : "justify-center sm:justify-end lg:justify-end ml-auto"
+                              } p-0 transition-transform duration-300 w-full ${splitSecClass}`}
                             >
                               <ImageFallback
                                 src={imgSrc}
