@@ -765,16 +765,30 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             width: 100% !important;
                           }
                           .cms-split-img-col-${secIdx} {
-                            width: ${safeImgPercent}% !important;
+                            width: 50% !important;
+                            flex: 0 0 50% !important;
+                            max-width: 50% !important;
                           }
                           .cms-split-text-col-${secIdx} {
-                            width: ${textPercent}% !important;
+                            width: 50% !important;
+                            flex: 0 0 50% !important;
+                            max-width: 50% !important;
                           }
                         }
                         @media (min-width: 1024px) {
                           .${splitSecClass} {
                             ${yOff || xOff ? `transform: translate(${xOff}px, ${yOff}px) !important;` : "transform: none !important;"}
                             width: 100% !important;
+                          }
+                          .cms-split-img-col-${secIdx} {
+                            width: ${safeImgPercent}% !important;
+                            flex: 0 0 ${safeImgPercent}% !important;
+                            max-width: ${safeImgPercent}% !important;
+                          }
+                          .cms-split-text-col-${secIdx} {
+                            width: ${textPercent}% !important;
+                            flex: 0 0 ${textPercent}% !important;
+                            max-width: ${textPercent}% !important;
                           }
                         }
                       `}</style>
@@ -953,7 +967,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             style={tabletAlignStyle}
                             className="w-full flex"
                           >
-                            <div style={{ maxWidth: finalTabletWidth, width: "100%" }} className="flex justify-center">
+                            <div style={{ width: finalTabletWidth, maxWidth: finalTabletWidth, flex: `0 0 ${finalTabletWidth}` }} className="flex justify-center">
                               <button
                                 onClick={() => setLightboxIndex(activeGlobalIdx)}
                                 className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
