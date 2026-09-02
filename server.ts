@@ -23,41 +23,47 @@ import { defaultSiteData } from "./src/defaultData";
 function getDbData() {
   if (fs.existsSync(DATA_FILE)) {
     try {
-      const raw = fs.readFileSync(DATA_FILE, "utf-8");
-      const parsed = JSON.parse(raw);
-      if (parsed && typeof parsed === "object") {
-        return {
-          ...defaultSiteData,
-          ...parsed,
-          settings: {
-            ...defaultSiteData.settings,
-            ...(parsed.settings || {}),
-          },
-          design: {
-            ...defaultSiteData.design,
-            ...(parsed.design || {}),
-            colors: {
-              ...defaultDataColors(defaultSiteData),
-              ...(parsed.design?.colors || {}),
+      const raw = fs.readFileSync(DATA_FILE, "utf-8").trim();
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === "object") {
+          return {
+            ...defaultSiteData,
+            ...parsed,
+            settings: {
+              ...defaultSiteData.settings,
+              ...(parsed.settings || {}),
             },
-          },
-          aboutMe: {
-            ...defaultSiteData.aboutMe,
-            ...(parsed.aboutMe || {}),
-            skills: Array.isArray(parsed.aboutMe?.skills) ? parsed.aboutMe.skills : defaultSiteData.aboutMe?.skills || [],
-          },
-          allProjects: Array.isArray(parsed.allProjects) ? parsed.allProjects : defaultSiteData.allProjects || [],
-          projects: Array.isArray(parsed.projects) ? parsed.projects : defaultSiteData.projects || [],
-          services: Array.isArray(parsed.services) ? parsed.services : defaultSiteData.services || [],
-        };
+            design: {
+              ...defaultSiteData.design,
+              ...(parsed.design || {}),
+              colors: {
+                ...defaultDataColors(defaultSiteData),
+                ...(parsed.design?.colors || {}),
+              },
+            },
+            aboutMe: {
+              ...defaultSiteData.aboutMe,
+              ...(parsed.aboutMe || {}),
+              skills: Array.isArray(parsed.aboutMe?.skills) ? parsed.aboutMe.skills : defaultSiteData.aboutMe?.skills || [],
+            },
+            allProjects: Array.isArray(parsed.allProjects) ? parsed.allProjects : defaultSiteData.allProjects || [],
+            projects: Array.isArray(parsed.projects) ? parsed.projects : defaultSiteData.projects || [],
+            services: Array.isArray(parsed.services) ? parsed.services : defaultSiteData.services || [],
+          };
+        }
       }
     } catch (err) {
-      console.error("Server: Failed to parse data.json, returning default snapshot.", err);
+      console.error("Server: Failed to parse data.json, restoring from backup/defaults.", err);
     }
   }
   
-  // Seed with default data on first load
-  fs.writeFileSync(DATA_FILE, JSON.stringify(defaultSiteData, null, 2), "utf-8");
+  // Seed with default data on first load or corruption
+  try {
+    saveDbData(defaultSiteData);
+  } catch (e) {
+    console.error("Server: Error writing fallback data", e);
+  }
   return defaultSiteData;
 }
 
@@ -80,9 +86,11 @@ function defaultDataColors(d: typeof defaultSiteData) {
   };
 }
 
-// Helper to write database
+// Helper to write database atomically to prevent race condition corruption
 function saveDbData(data: any) {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), "utf-8");
+  const tempPath = `${DATA_FILE}.tmp`;
+  fs.writeFileSync(tempPath, JSON.stringify(data, null, 2), "utf-8");
+  fs.renameSync(tempPath, DATA_FILE);
 }
 
 // Middleware & Security Headers

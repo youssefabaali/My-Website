@@ -299,11 +299,16 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
           <ChevronLeft size={14} /> Back to Work
         </button>
 
-        <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16">
-          <h1 className="font-bebas text-4xl sm:text-5xl md:text-[50px] font-normal tracking-wider text-white uppercase leading-none md:max-w-[55%]">
+        {/* Responsive Header:
+            - Mobile (< sm): Stacked flex-col
+            - Tablet (sm to lg): Stacked full-width Title on Top with Description below for maximum legibility of long titles
+            - Desktop (lg+): Original Side-by-Side row layout
+        */}
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-6 sm:gap-8 lg:gap-16">
+          <h1 className="font-bebas text-3xl sm:text-4xl md:text-[42px] lg:text-[50px] font-normal tracking-wider text-white uppercase leading-none w-full lg:max-w-[55%]">
             {project.title}
           </h1>
-          <p className="font-sans text-sm md:text-base tracking-wider leading-relaxed text-white/80 uppercase md:max-w-[38%] pt-2 whitespace-pre-line">
+          <p className="font-sans text-sm md:text-base tracking-wider leading-relaxed text-white/80 uppercase w-full lg:max-w-[38%] pt-1 lg:pt-2 whitespace-pre-line">
             {project.shortDescription}
           </p>
         </div>
@@ -759,7 +764,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           transform: none !important;
                           width: 100% !important;
                         }
-                        @media (min-width: 768px) {
+                        @media (min-width: 640px) and (max-width: 1023px) {
                           .${splitSecClass} {
                             transform: none !important;
                             width: 100% !important;
@@ -768,11 +773,13 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             width: 50% !important;
                             flex: 0 0 50% !important;
                             max-width: 50% !important;
+                            order: 2 !important; /* Always on Right for Tablet */
                           }
                           .cms-split-text-col-${secIdx} {
                             width: 50% !important;
                             flex: 0 0 50% !important;
                             max-width: 50% !important;
+                            order: 1 !important; /* Always on Left for Tablet */
                           }
                         }
                         @media (min-width: 1024px) {
@@ -793,9 +800,9 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         }
                       `}</style>
 
-                      {/* Text Column - on mobile: order-1 (on top) and width 100%, on desktop md: responsive order and calculated % width */}
+                      {/* Text Column - on mobile: order-1 (on top), on tablet (sm-lg): order-1 on left (50%), on desktop lg: custom order & % */}
                       <div
-                        className={`w-full flex flex-col gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "md:order-1" : "md:order-2"}`}
+                        className={`w-full flex flex-col gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "lg:order-1" : "lg:order-2"}`}
                       >
                         {sec.textTitle && (
                           <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
@@ -809,9 +816,9 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         )}
                       </div>
 
-                      {/* Image Column - on mobile: order-2 (below text) and width 100%, on desktop md: responsive order and calculated % width */}
+                      {/* Image Column - on mobile: order-2 (below), on tablet (sm-lg): order-2 on right (50%), on desktop lg: custom order & % */}
                       <div
-                        className={`w-full flex justify-center order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "md:order-2" : "md:order-1"}`}
+                        className={`w-full flex justify-center order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "lg:order-2" : "lg:order-1"}`}
                       >
                         {(sec.imageSrc || (sec.images && sec.images[0])) && (() => {
                           const imgSrc = sec.imageSrc || sec.images[0];
@@ -912,116 +919,142 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     })}
                   </div>
 
-                  {/* 2. TABLET VIEW (sm to lg / 640px to 1023px): Swiss Grid Alignment (0 Offsets, 100% or 50% Sizing, Left-aligned 3rd images) */}
-                  <div
-                    style={rowsSpacingObj.num > 0 ? { rowGap: rowsSpacingObj.tablet, gap: rowsSpacingObj.tablet } : undefined}
-                    className={`hidden sm:flex sm:flex-col lg:hidden ${rowsSpacingObj.num > 0 ? "" : "gap-5"} w-full`}
-                  >
-                    {sectionRows.map((rowItem, rIdx) => {
-                      if (!rowItem.images || rowItem.images.length === 0) return null;
-                      const isSingle = rowItem.images.length === 1;
-                      const cols =
-                        rowItem.singleImageColumns && rowItem.singleImageColumns >= 1
-                          ? rowItem.singleImageColumns
-                          : 1;
+                  {/* 2. TABLET VIEW (sm to lg / 640px to 1023px): Clean Swiss Alignment (0 Offsets, 100% or Strict 50% Sizing with Auto-Pairing 50% images in 2-Col Rows) */}
+                  {(() => {
+                    // Extract all images with their metadata for this section, respecting 100% vs 50%
+                    type TabletItem = {
+                      imgSrc: string;
+                      activeGlobalIdx: number;
+                      isFullWidth: boolean;
+                    };
 
-                      const rowCustomColGap = rowItem.columnsGap !== undefined && rowItem.columnsGap !== null && rowItem.columnsGap !== ""
-                        ? (parseSpacingValue(rowItem.columnsGap) || resolveResponsiveSpacing(rowItem.columnsGap).tablet)
-                        : "1.25rem";
+                    const tabletItems: TabletItem[] = [];
 
-                      const tabletAlignStyle: React.CSSProperties =
-                        rowItem.rowAlignment === "left"
-                          ? { marginLeft: 0, marginRight: "auto", justifyContent: "flex-start" }
-                          : rowItem.rowAlignment === "right"
-                          ? { marginLeft: "auto", marginRight: 0, justifyContent: "flex-end" }
-                          : { marginLeft: "auto", marginRight: "auto", justifyContent: "center" };
+                    sectionRows.forEach((rowItem) => {
+                      if (!rowItem.images || rowItem.images.length === 0) return;
+                      const isMulti = rowItem.images.length > 1;
 
-                      if (isSingle) {
-                        const imgSrc = rowItem.images[0];
+                      rowItem.images.forEach((imgSrc, imgIdx) => {
                         const imgGlobalIdx = allImages.indexOf(imgSrc);
                         const activeGlobalIdx =
-                          imgGlobalIdx !== -1 ? imgGlobalIdx : startingGlobalIndex;
+                          imgGlobalIdx !== -1 ? imgGlobalIdx : startingGlobalIndex + imgIdx;
 
                         const rawItemWidth = Array.isArray(rowItem.itemWidths)
-                          ? rowItem.itemWidths[0]
-                          : rowItem.itemWidths?.[0];
+                          ? rowItem.itemWidths[imgIdx]
+                          : rowItem.itemWidths?.[imgIdx];
 
                         const customItemWidth = rawItemWidth ?? rowItem.customWidth;
 
-                        // Binary tablet sizing: 100% if 100/full, 50% for any other value (50, 70, 80, etc.)
-                        let finalTabletWidth = "100%";
-                        if (customItemWidth !== undefined && customItemWidth !== null && customItemWidth !== "") {
-                          const parsedStr = String(customItemWidth).trim();
-                          if (parsedStr === "100" || parsedStr === "100%" || parsedStr === "100vw") {
-                            finalTabletWidth = "100%";
-                          } else {
-                            finalTabletWidth = "50%";
+                        let isFullWidth = true;
+                        if (isMulti) {
+                          // Multi-image row always gets split into 50% columns
+                          isFullWidth = false;
+                        } else {
+                          if (customItemWidth !== undefined && customItemWidth !== null && customItemWidth !== "") {
+                            const parsedStr = String(customItemWidth).trim();
+                            if (parsedStr !== "100" && parsedStr !== "100%" && parsedStr !== "100vw") {
+                              isFullWidth = false;
+                            }
+                          } else if (rowItem.singleImageColumns && rowItem.singleImageColumns > 1) {
+                            isFullWidth = false;
                           }
-                        } else if (cols > 1) {
-                          finalTabletWidth = "50%";
                         }
 
-                        return (
-                          <div
-                            key={rIdx}
-                            style={tabletAlignStyle}
-                            className="w-full flex"
-                          >
-                            <div style={{ width: finalTabletWidth, maxWidth: finalTabletWidth, flex: `0 0 ${finalTabletWidth}` }} className="flex justify-center">
-                              <button
-                                onClick={() => setLightboxIndex(activeGlobalIdx)}
-                                className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
-                              >
-                                <ImageFallback
-                                  src={imgSrc}
-                                  alt={`${sec.label} Tablet Single Frame ${rIdx + 1}`}
-                                  category={project.title}
-                                  gifMode={isGifModeForUrl(imgSrc)}
-                                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                                />
-                              </button>
-                            </div>
-                          </div>
-                        );
+                        tabletItems.push({
+                          imgSrc,
+                          activeGlobalIdx,
+                          isFullWidth,
+                        });
+                      });
+                    });
+
+                    // Group items into rows: 100% gets its own row; consecutive 50% items get paired into 2-column rows
+                    type TabletRenderRow =
+                      | { type: "full"; item: TabletItem }
+                      | { type: "pair"; items: TabletItem[] };
+
+                    const tabletRenderRows: TabletRenderRow[] = [];
+                    let pending50: TabletItem[] = [];
+
+                    tabletItems.forEach((tItem) => {
+                      if (tItem.isFullWidth) {
+                        // Flush any pending 50% items first
+                        if (pending50.length > 0) {
+                          while (pending50.length >= 2) {
+                            tabletRenderRows.push({ type: "pair", items: pending50.splice(0, 2) });
+                          }
+                          if (pending50.length === 1) {
+                            tabletRenderRows.push({ type: "pair", items: [pending50.pop()!] });
+                          }
+                        }
+                        tabletRenderRows.push({ type: "full", item: tItem });
+                      } else {
+                        pending50.push(tItem);
+                        if (pending50.length === 2) {
+                          tabletRenderRows.push({ type: "pair", items: [...pending50] });
+                          pending50 = [];
+                        }
                       }
+                    });
 
-                      // Multi-image row (2 or 3+ images): Clean 2-column grid, 0 offset, 3rd image sits at bottom-left
-                      return (
-                        <div
-                          key={rIdx}
-                          style={{
-                            maxWidth: "100%",
-                            width: "100%",
-                            gap: rowCustomColGap,
-                            ...tabletAlignStyle,
-                          }}
-                          className="grid grid-cols-2 w-full"
-                        >
-                          {rowItem.images.map((imgSrc, imgIdx) => {
-                            const imgGlobalIdx = allImages.indexOf(imgSrc);
-                            const activeGlobalIdx =
-                              imgGlobalIdx !== -1 ? imgGlobalIdx : startingGlobalIndex + imgIdx;
+                    // Flush any remaining 50% item
+                    if (pending50.length > 0) {
+                      tabletRenderRows.push({ type: "pair", items: [...pending50] });
+                    }
 
+                    return (
+                      <div
+                        style={rowsSpacingObj.num > 0 ? { rowGap: rowsSpacingObj.tablet, gap: rowsSpacingObj.tablet } : undefined}
+                        className={`hidden sm:flex sm:flex-col lg:hidden ${rowsSpacingObj.num > 0 ? "" : "gap-5"} w-full`}
+                      >
+                        {tabletRenderRows.map((rGroup, gIdx) => {
+                          if (rGroup.type === "full") {
                             return (
-                              <button
-                                key={imgIdx}
-                                onClick={() => setLightboxIndex(activeGlobalIdx)}
-                                className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
-                              >
-                                <ImageFallback
-                                  src={imgSrc}
-                                  alt={`${sec.label} Tablet Grid Frame ${imgIdx + 1}`}
-                                  category={project.title}
-                                  gifMode={isGifModeForUrl(imgSrc)}
-                                  className="w-full h-auto max-h-[600px] object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                                />
-                              </button>
+                              <div key={gIdx} className="w-full flex justify-center">
+                                <button
+                                  onClick={() => setLightboxIndex(rGroup.item.activeGlobalIdx)}
+                                  className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
+                                >
+                                  <ImageFallback
+                                    src={rGroup.item.imgSrc}
+                                    alt={`${sec.label} Tablet Full Frame ${gIdx + 1}`}
+                                    category={project.title}
+                                    gifMode={isGifModeForUrl(rGroup.item.imgSrc)}
+                                    className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+                                  />
+                                </button>
+                              </div>
                             );
-                          })}
-                        </div>
-                      );
-                    })}
-                  </div>
+                          }
+
+                          // Pair / 2-column row for 50% images (left to right)
+                          return (
+                            <div
+                              key={gIdx}
+                              className="grid grid-cols-2 gap-5 w-full items-start"
+                            >
+                              {rGroup.items.map((item, itmIdx) => (
+                                <div key={itmIdx} className="w-full flex justify-start">
+                                  <button
+                                    onClick={() => setLightboxIndex(item.activeGlobalIdx)}
+                                    className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
+                                  >
+                                    <ImageFallback
+                                      src={item.imgSrc}
+                                      alt={`${sec.label} Tablet 50% Frame ${gIdx + 1}-${itmIdx + 1}`}
+                                      category={project.title}
+                                      gifMode={isGifModeForUrl(item.imgSrc)}
+                                      className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+                                    />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  })()}
 
                   {/* 3. DESKTOP VIEW (>= lg / >= 1024px): Full Custom Control with exact user X/Y offsets, custom widths, and alignment */}
                   <div className="hidden lg:flex lg:flex-col w-full">
