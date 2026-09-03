@@ -149,6 +149,21 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
+      "id": 5,
+      "title": "AINSI VA MANU - ON SCREEN MOTION GRAPHICS",
+      "category": "Broadcast",
+      "categories": [
+        "Broadcast"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/thumpnail.webp",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
+      }
+    },
+    {
       "id": 4,
       "title": "WORKLEAP - SPHERICAL PROJECTION MAPPING",
       "category": "Event",
@@ -166,35 +181,20 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
-      "id": 5,
-      "title": "AINSI VA MANU - ON SCREEN MOTION GRAPHICS",
+      "id": 12,
+      "title": "NYC EMERGENCY MANAGEMENT - TEXT BUBBLE DESIGN & ANIMATION",
       "category": "Broadcast",
       "categories": [
         "Broadcast"
       ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/thumpnail.webp",
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Thumbnails.jpg",
       "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
-      }
-    },
-    {
-      "id": 6,
-      "title": "POKA - INTRODUCING POKA ASSISTANT",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4",
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4": true
       }
     },
     {
@@ -213,6 +213,89 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg": false
+      }
+    },
+    {
+      "id": 11,
+      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 20,
+      "title": "TABSEER - PRODUCT QUALITY EXPLAINER VIDEO",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-6.jpg": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
+      }
+    },
+    {
+      "id": 10,
+      "title": "WORKLEAP - BRAND IDENTITY SIZZLE REEL 1",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.20.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 13,
+      "title": "EJADWA - FINANCIAL FEASIBILITY EXPLAINER VIDEO",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Thumbnail.png",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif": true
+      }
+    },
+    {
+      "id": 6,
+      "title": "POKA - INTRODUCING POKA ASSISTANT",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
       }
     },
     {
@@ -249,69 +332,20 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
-      "id": 10,
-      "title": "WORKLEAP - BRAND IDENTITY SIZZLE REEL 1",
+      "id": 18,
+      "title": "WORKLEAP - BRAND SIZZLE REEL 2",
       "category": "Brand",
       "categories": [
         "Brand"
       ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.20.jpg",
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg",
       "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4",
       "isPublished": true,
       "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      }
-    },
-    {
-      "id": 11,
-      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      }
-    },
-    {
-      "id": 12,
-      "title": "NYC EMERGENCY MANAGEMENT - TEXT BUBBLE DESIGN & ANIMATION",
-      "category": "Broadcast",
-      "categories": [
-        "Broadcast"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Thumbnails.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4": true
-      }
-    },
-    {
-      "id": 13,
-      "title": "EJADWA - FINANCIAL FEASIBILITY EXPLAINER VIDEO",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Thumbnail.png",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif": true
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg": false
       }
     },
     {
@@ -330,6 +364,24 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
+      "id": 21,
+      "title": "MONDATA - CYBERSECURITY EXPLAINER VIDEO",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true
+      }
+    },
+    {
       "id": 15,
       "title": "WORKLEAP - LOTTIE WEB ANIMATIONS 2",
       "category": "UI Motion",
@@ -342,6 +394,21 @@ export const defaultSiteData: CMSSiteData = {
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true
+      }
+    },
+    {
+      "id": 19,
+      "title": "WORKLEAP - BRAND SIZZLE REEL 3",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Thumbnail.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false
       }
     },
     {
@@ -371,73 +438,6 @@ export const defaultSiteData: CMSSiteData = {
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true
       }
-    },
-    {
-      "id": 18,
-      "title": "WORKLEAP - BRAND SIZZLE REEL 2",
-      "category": "Brand",
-      "categories": [
-        "Brand"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg": false
-      }
-    },
-    {
-      "id": 19,
-      "title": "WORKLEAP - BRAND SIZZLE REEL 3",
-      "category": "Brand",
-      "categories": [
-        "Brand"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Thumbnail.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false
-      }
-    },
-    {
-      "id": 20,
-      "title": "TABSEER - PRODUCT QUALITY EXPLAINER VIDEO",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-6.jpg": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
-      }
-    },
-    {
-      "id": 21,
-      "title": "MONDATA - CYBERSECURITY EXPLAINER VIDEO",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true
-      }
     }
   ],
   "projects": [],
@@ -452,7 +452,7 @@ export const defaultSiteData: CMSSiteData = {
       "description": "To give the video a polished feel, I combined 3D elements with a flat 2D world. \n\nThis contrast added visual depth, helping key elements pop on screen and hold the viewer's attention throughout the video.",
       "descriptionBottomGap": 150,
       "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": "default",
+      "metaInfoBottomGapMobile": 70,
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
       "headerVideos": [
         {
@@ -692,7 +692,8 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/intro-30F-GIF.small.gif"
               ],
               "itemOffsets": {
-                "1": 150
+                "0": 150,
+                "1": 0
               }
             },
             {
@@ -813,7 +814,8 @@ export const defaultSiteData: CMSSiteData = {
               },
               "rowAlignment": "left",
               "itemOffsets": {
-                "1": 150
+                "0": 150,
+                "1": 0
               }
             },
             {
@@ -836,6 +838,7 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
               ],
               "itemOffsets": {
+                "0": 0,
                 "1": 150
               }
             },
@@ -899,7 +902,9 @@ export const defaultSiteData: CMSSiteData = {
       "client": "WORKLEAP",
       "description": "",
       "descriptionBottomGap": 150,
+      "descriptionBottomGapMobile": "default",
       "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4",
       "headerVideos": [
         {
@@ -946,20 +951,15 @@ export const defaultSiteData: CMSSiteData = {
           "imagePosition": "left",
           "imageYOffset": 150,
           "imageCustomWidth": "50%",
-          "sectionGap": 120
+          "sectionGap": 120,
+          "sectionGapMobile": 40
         },
         {
           "type": "grid",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-3.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4"
           ],
           "rows": [
             {
@@ -995,35 +995,123 @@ export const defaultSiteData: CMSSiteData = {
             },
             {
               "id": "row-1788174800140",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg"
-              ],
+              "images": [],
               "itemOffsets": {
-                "1": 100
-              }
+                "1": 0
+              },
+              "itemWidths": {
+                "0": "50%"
+              },
+              "rowAlignment": "right"
+            }
+          ],
+          "rowsGap": 120,
+          "sectionGap": 0,
+          "rowsGapMobile": 20,
+          "sectionGapMobile": 20
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg"
+          ],
+          "rows": [
+            {
+              "id": "row-1788455885946",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg"
+              ],
+              "itemWidths": {
+                "0": "50%"
+              },
+              "rowAlignment": "right"
             },
             {
-              "id": "row-1785959088193",
+              "id": "row-1788455754850-3-ogjt",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg"
+              ],
+              "itemWidths": {
+                "0": "50%"
+              },
+              "rowAlignment": "right",
+              "itemOffsets": {
+                "0": 0
+              }
+            }
+          ],
+          "rowsGap": 50,
+          "sectionGap": 120,
+          "rowsGapMobile": 20,
+          "sectionGapMobile": 20,
+          "id": "sec-1788455754850-m8ct"
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-3.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1788455769985-1-jbfz",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-3.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-3.mp4": true
-              }
-            },
+              },
+              "rowAlignment": "center"
+            }
+          ],
+          "rowsGap": 120,
+          "sectionGap": 120,
+          "rowsGapMobile": 20,
+          "sectionGapMobile": 20,
+          "id": "sec-1788455769985-pjx1"
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
+          ],
+          "rows": [
             {
-              "id": "row-1788175052249",
+              "id": "row-1788455425810-4-celq",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg"
               ],
               "itemOffsets": {
                 "1": 250
+              },
+              "itemWidths": {
+                "0": "50%"
+              },
+              "rowAlignment": "left",
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg": true
               }
             },
             {
-              "id": "row-1788175086297",
+              "id": "row-1788455425810-5-4mzj",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg"
+              ],
+              "itemWidths": {
+                "0": "50%"
+              },
+              "rowAlignment": "left",
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg": true
+              }
+            },
+            {
+              "id": "row-1788455425810-6-voha",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
               ],
@@ -1032,14 +1120,15 @@ export const defaultSiteData: CMSSiteData = {
               },
               "rowAlignment": "left",
               "itemOffsets": {
-                "0": -80
+                "0": 0
               }
             }
           ],
-          "rowsGap": 120,
+          "rowsGap": 50,
           "sectionGap": 0,
           "rowsGapMobile": 20,
-          "sectionGapMobile": 40
+          "sectionGapMobile": 20,
+          "id": "sec-1788455425810-sok2"
         },
         {
           "type": "image_text",
@@ -1072,7 +1161,7 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.3.png"
               ],
               "itemOffsets": {
-                "1": 150
+                "1": 0
               },
               "rowAlignment": "left",
               "itemWidths": {
@@ -1140,7 +1229,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": "default",
+          "sectionGap": 120,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1150,7 +1239,9 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet-Screen.mp4": true,
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet.mp4": true
           },
-          "imageYOffset": 0
+          "imageYOffset": 0,
+          "imageCustomWidth": "70%",
+          "sectionGapMobile": 20
         },
         {
           "type": "grid",
@@ -1181,7 +1272,8 @@ export const defaultSiteData: CMSSiteData = {
           "rowsGap": 0,
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "sectionGapMobile": 50
+          "sectionGapMobile": 40,
+          "rowsGapMobile": "default"
         },
         {
           "type": "image_text",
@@ -1191,7 +1283,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 0,
+          "sectionGap": 100,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1201,7 +1293,9 @@ export const defaultSiteData: CMSSiteData = {
             "EPISODE 8 - DEVICES CONNECTED TO INTERNET": true,
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4": true
           },
-          "imageYOffset": 0
+          "imageYOffset": 0,
+          "imageCustomWidth": "70%",
+          "sectionGapMobile": 20
         },
         {
           "type": "grid",
@@ -1235,8 +1329,7 @@ export const defaultSiteData: CMSSiteData = {
             {
               "id": "row-1788185928876",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true,
@@ -1244,14 +1337,31 @@ export const defaultSiteData: CMSSiteData = {
               },
               "itemOffsets": {
                 "0": 0,
-                "1": 450
+                "1": 0
+              },
+              "itemWidths": {
+                "0": "70%",
+                "1": "100%"
+              },
+              "rowAlignment": "left"
+            },
+            {
+              "id": "row-1788453843241",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "50%"
               }
             },
             {
               "id": "row-1788186155002",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4": true,
@@ -1260,14 +1370,32 @@ export const defaultSiteData: CMSSiteData = {
               "itemOffsets": {
                 "0": 0,
                 "1": 450
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "left"
+            },
+            {
+              "id": "row-1788453915648",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4"
+              ],
+              "rowAlignment": "right",
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4": true
+              },
+              "itemWidths": {
+                "0": "50%"
               }
             }
           ],
-          "sectionGap": 250,
-          "rowsGap": 0,
+          "sectionGap": 120,
+          "rowsGap": 150,
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "sectionGapMobile": 50
+          "sectionGapMobile": 20,
+          "rowsGapMobile": 40
         },
         {
           "type": "image_text",
@@ -1277,7 +1405,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": "default",
+          "sectionGap": 120,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1286,7 +1414,9 @@ export const defaultSiteData: CMSSiteData = {
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4": true
           },
-          "imageYOffset": 0
+          "imageYOffset": 0,
+          "imageCustomWidth": "70%",
+          "sectionGapMobile": 20
         },
         {
           "type": "grid",
@@ -1313,8 +1443,9 @@ export const defaultSiteData: CMSSiteData = {
               }
             }
           ],
-          "sectionGap": 250,
-          "sectionGapMobile": 50
+          "sectionGap": 120,
+          "sectionGapMobile": 40,
+          "rowsGapMobile": "default"
         },
         {
           "type": "image_text",
@@ -1324,7 +1455,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 0,
+          "sectionGap": 120,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1333,7 +1464,9 @@ export const defaultSiteData: CMSSiteData = {
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4": true
           },
-          "imageYOffset": 0
+          "imageYOffset": 0,
+          "imageCustomWidth": "70%",
+          "sectionGapMobile": 20
         },
         {
           "type": "grid",
@@ -1364,8 +1497,7 @@ export const defaultSiteData: CMSSiteData = {
             {
               "id": "row-1786117545014",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4": true,
@@ -1374,13 +1506,30 @@ export const defaultSiteData: CMSSiteData = {
               "itemOffsets": {
                 "0": 0,
                 "1": 450
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "left"
+            },
+            {
+              "id": "row-1788454388510",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4": true
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "50%"
               }
             }
           ],
           "rowsGap": 120,
           "rowsGapMobile": 20,
-          "sectionGapMobile": 50,
-          "sectionGap": 250
+          "sectionGapMobile": 40,
+          "sectionGap": 120
         },
         {
           "type": "image_text",
@@ -1390,7 +1539,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 0,
+          "sectionGap": 120,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1400,7 +1549,8 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4": true
           },
           "imageYOffset": 0,
-          "sectionGapMobile": 20
+          "sectionGapMobile": 20,
+          "imageCustomWidth": "70%"
         },
         {
           "type": "grid",
@@ -1429,8 +1579,10 @@ export const defaultSiteData: CMSSiteData = {
               }
             }
           ],
-          "sectionGapMobile": 50,
-          "sectionGap": 250
+          "sectionGapMobile": 40,
+          "sectionGap": 120,
+          "rowsGap": 120,
+          "rowsGapMobile": 20
         },
         {
           "type": "image_text",
@@ -1440,7 +1592,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 0,
+          "sectionGap": 120,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1450,7 +1602,8 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4": true
           },
           "imageYOffset": 0,
-          "sectionGapMobile": 20
+          "sectionGapMobile": 20,
+          "imageCustomWidth": "70%"
         },
         {
           "type": "grid",
@@ -1481,8 +1634,8 @@ export const defaultSiteData: CMSSiteData = {
             }
           ],
           "rowsGapMobile": "default",
-          "sectionGapMobile": 50,
-          "sectionGap": 250
+          "sectionGapMobile": 40,
+          "sectionGap": 120
         },
         {
           "type": "image_text",
@@ -1492,7 +1645,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 0,
+          "sectionGap": 120,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1502,7 +1655,8 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2-Air.Tag.mp4": true
           },
           "imageYOffset": 0,
-          "sectionGapMobile": 20
+          "sectionGapMobile": 20,
+          "imageCustomWidth": "70%"
         },
         {
           "type": "grid",
@@ -1533,7 +1687,8 @@ export const defaultSiteData: CMSSiteData = {
               "rowAlignment": "right"
             }
           ],
-          "sectionGap": 250
+          "sectionGap": 250,
+          "sectionGapMobile": 40
         }
       ],
       "date": "2024",
@@ -1856,7 +2011,7 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 100,
+          "sectionGap": 250,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -1901,7 +2056,8 @@ export const defaultSiteData: CMSSiteData = {
               },
               "rowAlignment": "left",
               "itemOffsets": {
-                "1": 150
+                "0": 150,
+                "1": 0
               }
             },
             {
@@ -1931,10 +2087,10 @@ export const defaultSiteData: CMSSiteData = {
               "itemWidths": {
                 "0": "70%"
               },
-              "rowAlignment": "left"
+              "rowAlignment": "right"
             }
           ],
-          "rowsGap": 100,
+          "rowsGap": 150,
           "rowsGapMobile": 20
         }
       ],
@@ -2013,7 +2169,7 @@ export const defaultSiteData: CMSSiteData = {
               "itemWidths": {
                 "0": "70%"
               },
-              "rowAlignment": "right"
+              "rowAlignment": "left"
             },
             {
               "id": "row-1788260711913",
@@ -2026,7 +2182,8 @@ export const defaultSiteData: CMSSiteData = {
               },
               "rowAlignment": "left",
               "itemOffsets": {
-                "1": 250
+                "0": 0,
+                "1": 150
               }
             },
             {
@@ -2036,12 +2193,13 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-3.gif"
               ],
               "itemOffsets": {
-                "1": 250
+                "0": 150,
+                "1": 0
               }
             }
           ],
           "sectionGap": 0,
-          "rowsGap": 120,
+          "rowsGap": 250,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "rowsGapMobile": 20
@@ -2114,7 +2272,8 @@ export const defaultSiteData: CMSSiteData = {
           "titleBottomGap": 0,
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif"
-          ]
+          ],
+          "sectionGapMobile": 10
         },
         {
           "type": "grid",
@@ -2185,8 +2344,8 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif"
               ],
               "itemOffsets": {
-                "0": 200,
-                "1": 350
+                "0": 350,
+                "1": 200
               }
             }
           ],
@@ -2310,7 +2469,7 @@ export const defaultSiteData: CMSSiteData = {
               "itemOffsets": {
                 "1": 250
               },
-              "rowAlignment": "left"
+              "rowAlignment": "right"
             },
             {
               "id": "row-1788263720107",
@@ -2319,7 +2478,7 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg"
               ],
               "itemOffsets": {
-                "0": 150,
+                "0": 0,
                 "1": 0
               }
             },
@@ -2330,7 +2489,7 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg"
               ],
               "itemOffsets": {
-                "0": 150,
+                "0": 0,
                 "1": 0
               }
             }
@@ -2706,7 +2865,8 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4": true
               },
               "itemOffsets": {
-                "1": 150
+                "0": 150,
+                "1": 0
               }
             }
           ],
@@ -2790,7 +2950,8 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.4-small.gif"
               ],
               "itemOffsets": {
-                "1": 250
+                "0": 250,
+                "1": 0
               }
             },
             {
@@ -2972,7 +3133,8 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-1.gif"
               ],
               "itemOffsets": {
-                "1": 150
+                "0": 150,
+                "1": 0
               }
             },
             {
@@ -2982,6 +3144,7 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-5.gif"
               ],
               "itemOffsets": {
+                "0": 0,
                 "1": 150
               }
             }
@@ -3187,7 +3350,8 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4": true
               },
               "itemOffsets": {
-                "0": 150
+                "0": 0,
+                "1": 150
               }
             }
           ],
@@ -3373,7 +3537,8 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
               },
               "itemOffsets": {
-                "1": 150
+                "0": 150,
+                "1": 0
               }
             }
           ],
@@ -3522,7 +3687,7 @@ export const defaultSiteData: CMSSiteData = {
                 "0": "25%",
                 "1": "25%"
               },
-              "rowAlignment": "left",
+              "rowAlignment": "center",
               "itemOffsets": {
                 "0": 0,
                 "1": 0
@@ -3538,7 +3703,7 @@ export const defaultSiteData: CMSSiteData = {
                 "0": "25%",
                 "1": "25%"
               },
-              "rowAlignment": "left",
+              "rowAlignment": "center",
               "itemOffsets": {
                 "0": -120,
                 "1": -120
@@ -3554,7 +3719,7 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true
               },
               "itemOffsets": {
-                "0": 150,
+                "0": 0,
                 "1": 0
               }
             },
@@ -3565,7 +3730,7 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-8.gif"
               ],
               "itemOffsets": {
-                "0": 150,
+                "0": 0,
                 "1": 0
               }
             }
