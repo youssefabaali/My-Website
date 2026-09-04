@@ -17,6 +17,7 @@ import {
   Copy,
   ArrowUp,
   ArrowDown,
+  ArrowUpDown,
   Upload,
   Eye,
   EyeOff,
@@ -3476,6 +3477,15 @@ function CMSGallerySectionEditor({
             onUpdateSec(updates);
           };
 
+          const handleSwapStackedImages = () => {
+            const newImgs = [...(sec.images || [])];
+            while (newImgs.length < 3) newImgs.push("");
+            const temp = newImgs[1];
+            newImgs[1] = newImgs[2];
+            newImgs[2] = temp;
+            onUpdateSec({ ...sec, images: newImgs });
+          };
+
           const rawWidth = sec.imageCustomWidth !== undefined && sec.imageCustomWidth !== null && sec.imageCustomWidth !== ""
             ? sec.imageCustomWidth
             : (sec.imageWidthRatio || 70);
@@ -3665,6 +3675,19 @@ function CMSGallerySectionEditor({
                       imageClipboard={imageClipboard}
                       recommendedText="First of two vertically stacked images"
                     />
+                  </div>
+
+                  {/* Swap Button between Top and Bottom */}
+                  <div className="flex items-center justify-center -my-1">
+                    <button
+                      type="button"
+                      onClick={handleSwapStackedImages}
+                      className="w-full py-2 px-3 bg-neutral-950 hover:bg-brand-green hover:text-black text-neutral-300 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-brand-green cursor-pointer shadow-sm active:scale-95 group"
+                      title="Swap Top and Bottom Images"
+                    >
+                      <ArrowUpDown size={14} className="text-brand-green group-hover:text-black transition-colors shrink-0" />
+                      <span>⇅ Swap Top &amp; Bottom Images (تبديل موضع الصورتين)</span>
+                    </button>
                   </div>
 
                   {/* Slot B: Bottom Image */}

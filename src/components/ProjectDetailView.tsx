@@ -944,7 +944,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           isLargeOnLeft ? "lg:flex-row" : "lg:flex-row-reverse"
                         }`}
                       >
-                        {/* 1. LARGE MAIN IMAGE */}
+                        {/* 1. LARGE MAIN IMAGE (Natural aspect ratio, NO cropping) */}
                         <div
                           className={`w-full cms-stacked-large-col-${secIdx} ${splitSecClass} flex items-center justify-center`}
                         >
@@ -955,14 +955,14 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                             if (isPlayableVideo) {
                               return (
-                                <div className="w-full h-full overflow-hidden rounded-lg group">
+                                <div className="w-full overflow-hidden group">
                                   <ImageFallback
                                     src={largeImg}
                                     poster={sec.videoTemplateUrl || sec.posterImage}
                                     alt={sec.label || "Feature Video"}
                                     category={project.title}
                                     gifMode={false}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-auto block"
                                   />
                                 </div>
                               );
@@ -974,31 +974,31 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 onClick={() => {
                                   if (globalIdx !== -1) setLightboxIndex(globalIdx);
                                 }}
-                                className="w-full h-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center rounded-lg"
+                                className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 block"
                               >
                                 <ImageFallback
                                   src={largeImg}
                                   alt={`${sec.label} Main`}
                                   category={project.title}
                                   gifMode={isGif}
-                                  className="w-full h-auto max-h-[85vh] lg:h-full object-cover transition-transform duration-500 group-hover:scale-[1.015]"
+                                  className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.015]"
                                 />
                               </button>
                             );
                           })() : (
-                            <div className="w-full min-h-[300px] border border-dashed border-white/10 rounded-lg flex items-center justify-center text-white/30 text-xs font-mono uppercase">
+                            <div className="w-full min-h-[300px] border border-dashed border-white/10 flex items-center justify-center text-white/30 text-xs font-mono uppercase">
                               Main Large Image Placeholder
                             </div>
                           )}
                         </div>
 
-                        {/* 2. TWO STACKED IMAGES COLUMN (Same total height on desktop) */}
+                        {/* 2. TWO STACKED IMAGES COLUMN (Same total height on desktop, sharp edges) */}
                         <div
                           className={`w-full cms-stacked-small-col-${secIdx} flex flex-col justify-between`}
                           style={{ gap: stackedGapVal }}
                         >
                           {/* TOP STACKED IMAGE */}
-                          <div className="flex-1 min-h-0 w-full flex items-center justify-center">
+                          <div className="flex-1 min-h-[160px] sm:min-h-[220px] lg:min-h-0 w-full overflow-hidden flex items-center justify-center">
                             {topStackedImg ? (() => {
                               const isGif = isGifModeForUrl(topStackedImg);
                               const isPlayableVideo = (isVideoUrl(topStackedImg) || isYouTubeUrl(topStackedImg) || isVimeoUrl(topStackedImg)) && !isGif;
@@ -1006,7 +1006,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                               if (isPlayableVideo) {
                                 return (
-                                  <div className="w-full h-full overflow-hidden rounded-lg group">
+                                  <div className="w-full h-full overflow-hidden group">
                                     <ImageFallback
                                       src={topStackedImg}
                                       alt={`${sec.label} Top`}
@@ -1024,7 +1024,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                   onClick={() => {
                                     if (globalIdx !== -1) setLightboxIndex(globalIdx);
                                   }}
-                                  className="w-full h-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center rounded-lg"
+                                  className="w-full h-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center"
                                 >
                                   <ImageFallback
                                     src={topStackedImg}
@@ -1036,14 +1036,14 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 </button>
                               );
                             })() : (
-                              <div className="w-full h-36 sm:h-48 lg:h-full border border-dashed border-white/10 rounded-lg flex items-center justify-center text-white/30 text-xs font-mono uppercase">
+                              <div className="w-full h-36 sm:h-48 lg:h-full border border-dashed border-white/10 flex items-center justify-center text-white/30 text-xs font-mono uppercase">
                                 Top Image Placeholder
                               </div>
                             )}
                           </div>
 
                           {/* BOTTOM STACKED IMAGE */}
-                          <div className="flex-1 min-h-0 w-full flex items-center justify-center">
+                          <div className="flex-1 min-h-[160px] sm:min-h-[220px] lg:min-h-0 w-full overflow-hidden flex items-center justify-center">
                             {bottomStackedImg ? (() => {
                               const isGif = isGifModeForUrl(bottomStackedImg);
                               const isPlayableVideo = (isVideoUrl(bottomStackedImg) || isYouTubeUrl(bottomStackedImg) || isVimeoUrl(bottomStackedImg)) && !isGif;
@@ -1051,7 +1051,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                               if (isPlayableVideo) {
                                 return (
-                                  <div className="w-full h-full overflow-hidden rounded-lg group">
+                                  <div className="w-full h-full overflow-hidden group">
                                     <ImageFallback
                                       src={bottomStackedImg}
                                       alt={`${sec.label} Bottom`}
@@ -1069,7 +1069,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                   onClick={() => {
                                     if (globalIdx !== -1) setLightboxIndex(globalIdx);
                                   }}
-                                  className="w-full h-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center rounded-lg"
+                                  className="w-full h-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center"
                                 >
                                   <ImageFallback
                                     src={bottomStackedImg}
@@ -1081,7 +1081,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 </button>
                               );
                             })() : (
-                              <div className="w-full h-36 sm:h-48 lg:h-full border border-dashed border-white/10 rounded-lg flex items-center justify-center text-white/30 text-xs font-mono uppercase">
+                              <div className="w-full h-36 sm:h-48 lg:h-full border border-dashed border-white/10 flex items-center justify-center text-white/30 text-xs font-mono uppercase">
                                 Bottom Image Placeholder
                               </div>
                             )}
