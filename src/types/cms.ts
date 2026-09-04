@@ -93,6 +93,11 @@ export interface ProjectSection {
   imageWidthRatio?: "30" | "40" | "50" | "60" | "70" | string;
   imageCustomWidth?: number | string;
   stackedGap?: number | string;
+  stackedMode?: "two_images" | "image_text";
+  stackedTextPosition?: "top" | "bottom";
+  stackedTitle?: string;
+  stackedText?: string;
+  stackedTextAlign?: "left" | "center" | "right";
   imageYOffset?: number;
   imageXOffset?: number;
   sectionGap?: number | string;

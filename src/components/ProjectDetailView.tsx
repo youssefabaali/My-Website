@@ -985,108 +985,104 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 />
                               </button>
                             );
-                          })() : (
-                            <div className="w-full min-h-[300px] border border-dashed border-white/10 flex items-center justify-center text-white/30 text-xs font-mono uppercase">
-                              Main Large Image Placeholder
+                          })() : null}
+                        </div>
+
+                        {/* 2. SECONDARY STACKED COLUMN (Two Images OR Image + Text, sharp edges, no cropping, no empty placeholders) */}
+                        {(() => {
+                          const isImageTextMode = sec.stackedMode === "image_text";
+                          const isTextTop = sec.stackedTextPosition === "top";
+                          const singleSideImg = topStackedImg || bottomStackedImg;
+
+                          const renderImageBlock = (imgUrl: string, labelSuffix: string) => {
+                            if (!imgUrl) return null;
+                            const isGif = isGifModeForUrl(imgUrl);
+                            const isPlayableVideo = (isVideoUrl(imgUrl) || isYouTubeUrl(imgUrl) || isVimeoUrl(imgUrl)) && !isGif;
+                            const globalIdx = allImages.indexOf(imgUrl);
+
+                            if (isPlayableVideo) {
+                              return (
+                                <div className="w-full overflow-hidden group flex items-center justify-center">
+                                  <ImageFallback
+                                    src={imgUrl}
+                                    alt={`${sec.label} ${labelSuffix}`}
+                                    category={project.title}
+                                    gifMode={false}
+                                    className="w-full h-auto object-contain block"
+                                  />
+                                </div>
+                              );
+                            }
+
+                            return (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  if (globalIdx !== -1) setLightboxIndex(globalIdx);
+                                }}
+                                className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center"
+                              >
+                                <ImageFallback
+                                  src={imgUrl}
+                                  alt={`${sec.label} ${labelSuffix}`}
+                                  category={project.title}
+                                  gifMode={isGif}
+                                  className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.015]"
+                                />
+                              </button>
+                            );
+                          };
+
+                          const renderTextBlock = () => {
+                            if (!sec.stackedTitle && !sec.stackedText) return null;
+                            const alignClass = sec.stackedTextAlign === "center"
+                              ? "text-center items-center"
+                              : sec.stackedTextAlign === "right"
+                              ? "text-right items-end"
+                              : "text-left items-start";
+
+                            return (
+                              <div className={`w-full flex flex-col justify-center gap-3 py-2 ${alignClass}`}>
+                                {sec.stackedTitle && (
+                                  <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
+                                    {sec.stackedTitle}
+                                  </h3>
+                                )}
+                                {sec.stackedText && (
+                                  <p className="font-sans text-sm md:text-base tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
+                                    {sec.stackedText}
+                                  </p>
+                                )}
+                              </div>
+                            );
+                          };
+
+                          return (
+                            <div
+                              className={`w-full cms-stacked-small-col-${secIdx} flex flex-col justify-between`}
+                              style={{ gap: stackedGapVal }}
+                            >
+                              {isImageTextMode ? (
+                                isTextTop ? (
+                                  <>
+                                    <div className="flex-1 w-full flex items-center justify-center">{renderTextBlock()}</div>
+                                    <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
+                                  </>
+                                ) : (
+                                  <>
+                                    <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
+                                    <div className="flex-1 w-full flex items-center justify-center">{renderTextBlock()}</div>
+                                  </>
+                                )
+                              ) : (
+                                <>
+                                  <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(topStackedImg, "Top")}</div>
+                                  <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(bottomStackedImg, "Bottom")}</div>
+                                </>
+                              )}
                             </div>
-                          )}
-                        </div>
-
-                        {/* 2. TWO STACKED IMAGES COLUMN (Same total height on desktop, sharp edges) */}
-                        <div
-                          className={`w-full cms-stacked-small-col-${secIdx} flex flex-col justify-between`}
-                          style={{ gap: stackedGapVal }}
-                        >
-                          {/* TOP STACKED IMAGE */}
-                          <div className="flex-1 min-h-[160px] sm:min-h-[220px] lg:min-h-0 w-full overflow-hidden flex items-center justify-center">
-                            {topStackedImg ? (() => {
-                              const isGif = isGifModeForUrl(topStackedImg);
-                              const isPlayableVideo = (isVideoUrl(topStackedImg) || isYouTubeUrl(topStackedImg) || isVimeoUrl(topStackedImg)) && !isGif;
-                              const globalIdx = allImages.indexOf(topStackedImg);
-
-                              if (isPlayableVideo) {
-                                return (
-                                  <div className="w-full h-full overflow-hidden group">
-                                    <ImageFallback
-                                      src={topStackedImg}
-                                      alt={`${sec.label} Top`}
-                                      category={project.title}
-                                      gifMode={false}
-                                      className="w-full h-full object-cover"
-                                    />
-                                  </div>
-                                );
-                              }
-
-                              return (
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    if (globalIdx !== -1) setLightboxIndex(globalIdx);
-                                  }}
-                                  className="w-full h-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center"
-                                >
-                                  <ImageFallback
-                                    src={topStackedImg}
-                                    alt={`${sec.label} Top`}
-                                    category={project.title}
-                                    gifMode={isGif}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                                  />
-                                </button>
-                              );
-                            })() : (
-                              <div className="w-full h-36 sm:h-48 lg:h-full border border-dashed border-white/10 flex items-center justify-center text-white/30 text-xs font-mono uppercase">
-                                Top Image Placeholder
-                              </div>
-                            )}
-                          </div>
-
-                          {/* BOTTOM STACKED IMAGE */}
-                          <div className="flex-1 min-h-[160px] sm:min-h-[220px] lg:min-h-0 w-full overflow-hidden flex items-center justify-center">
-                            {bottomStackedImg ? (() => {
-                              const isGif = isGifModeForUrl(bottomStackedImg);
-                              const isPlayableVideo = (isVideoUrl(bottomStackedImg) || isYouTubeUrl(bottomStackedImg) || isVimeoUrl(bottomStackedImg)) && !isGif;
-                              const globalIdx = allImages.indexOf(bottomStackedImg);
-
-                              if (isPlayableVideo) {
-                                return (
-                                  <div className="w-full h-full overflow-hidden group">
-                                    <ImageFallback
-                                      src={bottomStackedImg}
-                                      alt={`${sec.label} Bottom`}
-                                      category={project.title}
-                                      gifMode={false}
-                                      className="w-full h-full object-cover"
-                                    />
-                                  </div>
-                                );
-                              }
-
-                              return (
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    if (globalIdx !== -1) setLightboxIndex(globalIdx);
-                                  }}
-                                  className="w-full h-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center"
-                                >
-                                  <ImageFallback
-                                    src={bottomStackedImg}
-                                    alt={`${sec.label} Bottom`}
-                                    category={project.title}
-                                    gifMode={isGif}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                                  />
-                                </button>
-                              );
-                            })() : (
-                              <div className="w-full h-36 sm:h-48 lg:h-full border border-dashed border-white/10 flex items-center justify-center text-white/30 text-xs font-mono uppercase">
-                                Bottom Image Placeholder
-                              </div>
-                            )}
-                          </div>
-                        </div>
+                          );
+                        })()}
                       </div>
                     </div>
                   );

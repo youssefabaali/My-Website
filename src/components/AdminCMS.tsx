@@ -3632,97 +3632,254 @@ function CMSGallerySectionEditor({
                   />
                 </div>
 
-                {/* 2. TWO STACKED IMAGES COLUMN */}
+                {/* 2. SECONDARY STACKED COLUMN */}
                 <div className="lg:col-span-6 flex flex-col gap-3 p-3 bg-neutral-900/60 border border-white/10 rounded-xl">
-                  <div className="flex items-center justify-between pb-1 border-b border-white/5">
+                  <div className="flex items-center justify-between pb-1 border-b border-white/5 flex-wrap gap-2">
                     <span className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-                      2. Stacked Images Column ({stackedWidth}%)
+                      2. Side Column ({stackedWidth}%)
                     </span>
-                    <span className="text-[9px] text-neutral-400 font-mono">
-                      Equal height on desktop • Gap: {sec.stackedGap ?? 16}px
-                    </span>
+                    <div className="flex items-center gap-1 bg-neutral-950 p-1 rounded-lg border border-white/10">
+                      <button
+                        type="button"
+                        onClick={() => onUpdateSec({ ...sec, stackedMode: "two_images" })}
+                        className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase transition-all cursor-pointer ${
+                          sec.stackedMode !== "image_text"
+                            ? "bg-brand-green text-black shadow font-black"
+                            : "text-neutral-400 hover:text-white"
+                        }`}
+                      >
+                        🖼️ Two Images
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onUpdateSec({ ...sec, stackedMode: "image_text" })}
+                        className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase transition-all cursor-pointer ${
+                          sec.stackedMode === "image_text"
+                            ? "bg-brand-green text-black shadow font-black"
+                            : "text-neutral-400 hover:text-white"
+                        }`}
+                      >
+                        🖼️📝 Image + Text
+                      </button>
+                    </div>
                   </div>
 
-                  {/* Slot A: Top Image */}
-                  <div className="flex flex-col gap-2 p-2.5 bg-neutral-950/60 border border-white/5 rounded-lg">
-                    <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-wider">
-                      🔼 Top Stacked Image
-                    </span>
-                    <CMSImageField
-                      label="TOP IMAGE URL / UPLOAD"
-                      value={topStackedImg}
-                      onChange={(val) => updateSplitImage(1, val)}
-                      gifMode={Boolean(sec.gifModes?.[topStackedImg])}
-                      onToggleGifMode={() => {
-                        if (topStackedImg) handleToggleSectionGifMode(topStackedImg);
-                      }}
-                      onCopy={() => {
-                        if (topStackedImg && onCopyImage) {
-                          onCopyImage(topStackedImg, "copy", sIdx, 0, 1);
-                        }
-                      }}
-                      onCut={() => {
-                        if (topStackedImg && onCopyImage) {
-                          onCopyImage(topStackedImg, "move", sIdx, 0, 1);
-                          updateSplitImage(1, "");
-                        }
-                      }}
-                      onPaste={() => {
-                        if (imageClipboard?.imgUrl) {
-                          updateSplitImage(1, imageClipboard.imgUrl);
-                        }
-                      }}
-                      imageClipboard={imageClipboard}
-                      recommendedText="First of two vertically stacked images"
-                    />
-                  </div>
+                  {sec.stackedMode === "image_text" ? (
+                    (() => {
+                      const isTextOnTop = sec.stackedTextPosition === "top";
+                      const sideImg = (sec.images && sec.images[1]) || "";
 
-                  {/* Swap Button between Top and Bottom */}
-                  <div className="flex items-center justify-center -my-1">
-                    <button
-                      type="button"
-                      onClick={handleSwapStackedImages}
-                      className="w-full py-2 px-3 bg-neutral-950 hover:bg-brand-green hover:text-black text-neutral-300 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-brand-green cursor-pointer shadow-sm active:scale-95 group"
-                      title="Swap Top and Bottom Images"
-                    >
-                      <ArrowUpDown size={14} className="text-brand-green group-hover:text-black transition-colors shrink-0" />
-                      <span>⇅ Swap Top &amp; Bottom Images (تبديل موضع الصورتين)</span>
-                    </button>
-                  </div>
+                      const renderImageFieldSlot = () => (
+                        <div className="flex flex-col gap-2 p-2.5 bg-neutral-950/60 border border-white/5 rounded-lg">
+                          <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-wider flex items-center justify-between">
+                            <span>🖼️ Side Image</span>
+                            <span className="text-neutral-500 font-normal lowercase">{isTextOnTop ? "bottom slot" : "top slot"}</span>
+                          </span>
+                          <CMSImageField
+                            label="IMAGE URL / UPLOAD"
+                            value={sideImg}
+                            onChange={(val) => updateSplitImage(1, val)}
+                            gifMode={Boolean(sec.gifModes?.[sideImg])}
+                            onToggleGifMode={() => {
+                              if (sideImg) handleToggleSectionGifMode(sideImg);
+                            }}
+                            onCopy={() => {
+                              if (sideImg && onCopyImage) {
+                                onCopyImage(sideImg, "copy", sIdx, 0, 1);
+                              }
+                            }}
+                            onCut={() => {
+                              if (sideImg && onCopyImage) {
+                                onCopyImage(sideImg, "move", sIdx, 0, 1);
+                                updateSplitImage(1, "");
+                              }
+                            }}
+                            onPaste={() => {
+                              if (imageClipboard?.imgUrl) {
+                                updateSplitImage(1, imageClipboard.imgUrl);
+                              }
+                            }}
+                            imageClipboard={imageClipboard}
+                            recommendedText="Side image displayed alongside the text block"
+                          />
+                        </div>
+                      );
 
-                  {/* Slot B: Bottom Image */}
-                  <div className="flex flex-col gap-2 p-2.5 bg-neutral-950/60 border border-white/5 rounded-lg">
-                    <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-wider">
-                      🔽 Bottom Stacked Image
-                    </span>
-                    <CMSImageField
-                      label="BOTTOM IMAGE URL / UPLOAD"
-                      value={bottomStackedImg}
-                      onChange={(val) => updateSplitImage(2, val)}
-                      gifMode={Boolean(sec.gifModes?.[bottomStackedImg])}
-                      onToggleGifMode={() => {
-                        if (bottomStackedImg) handleToggleSectionGifMode(bottomStackedImg);
-                      }}
-                      onCopy={() => {
-                        if (bottomStackedImg && onCopyImage) {
-                          onCopyImage(bottomStackedImg, "copy", sIdx, 0, 2);
-                        }
-                      }}
-                      onCut={() => {
-                        if (bottomStackedImg && onCopyImage) {
-                          onCopyImage(bottomStackedImg, "move", sIdx, 0, 2);
-                          updateSplitImage(2, "");
-                        }
-                      }}
-                      onPaste={() => {
-                        if (imageClipboard?.imgUrl) {
-                          updateSplitImage(2, imageClipboard.imgUrl);
-                        }
-                      }}
-                      imageClipboard={imageClipboard}
-                      recommendedText="Second of two vertically stacked images"
-                    />
-                  </div>
+                      const renderTextFieldSlot = () => (
+                        <div className="flex flex-col gap-2.5 p-3 bg-neutral-950/60 border border-white/5 rounded-lg">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-wider flex items-center gap-1.5">
+                              <span>📝 Text &amp; Title Block</span>
+                            </span>
+                            <div className="flex items-center gap-1">
+                              <span className="text-[9px] text-neutral-400 uppercase font-mono mr-1">Align:</span>
+                              {(["left", "center", "right"] as const).map((align) => (
+                                <button
+                                  key={align}
+                                  type="button"
+                                  onClick={() => onUpdateSec({ ...sec, stackedTextAlign: align })}
+                                  className={`px-1.5 py-0.5 rounded text-[9px] font-bold uppercase transition-all cursor-pointer ${
+                                    (sec.stackedTextAlign || "left") === align
+                                      ? "bg-brand-green text-black"
+                                      : "bg-neutral-900 text-neutral-400 hover:text-white"
+                                  }`}
+                                >
+                                  {align}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                              TITLE / HEADING (اختياري)
+                            </label>
+                            <input
+                              type="text"
+                              value={sec.stackedTitle || ""}
+                              onChange={(e) => onUpdateSec({ ...sec, stackedTitle: e.target.value })}
+                              placeholder="e.g. BEHIND THE SCENES"
+                              className="bg-neutral-950 border border-white/10 text-white rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brand-green uppercase font-bold"
+                            />
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                              DESCRIPTION TEXT (المحتوى النصي)
+                            </label>
+                            <textarea
+                              value={sec.stackedText || ""}
+                              onChange={(e) => onUpdateSec({ ...sec, stackedText: e.target.value })}
+                              placeholder="Enter descriptive copy or details..."
+                              rows={3}
+                              className="bg-neutral-950 border border-white/10 text-white rounded-lg p-2.5 text-xs focus:outline-none focus:border-brand-green leading-relaxed resize-y uppercase"
+                            />
+                          </div>
+                        </div>
+                      );
+
+                      return (
+                        <div className="flex flex-col gap-3">
+                          {isTextOnTop ? (
+                            <>
+                              {renderTextFieldSlot()}
+                              <div className="flex items-center justify-center -my-1">
+                                <button
+                                  type="button"
+                                  onClick={() => onUpdateSec({ ...sec, stackedTextPosition: "bottom" })}
+                                  className="w-full py-2 px-3 bg-neutral-950 hover:bg-brand-green hover:text-black text-neutral-300 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-brand-green cursor-pointer shadow-sm active:scale-95 group"
+                                  title="Swap Order (Switch Text to Bottom and Image to Top)"
+                                >
+                                  <ArrowUpDown size={14} className="text-brand-green group-hover:text-black transition-colors shrink-0" />
+                                  <span>⇅ Swap (الآن: النص بالأعلى 📝 والصورة بالأسفل 🖼️)</span>
+                                </button>
+                              </div>
+                              {renderImageFieldSlot()}
+                            </>
+                          ) : (
+                            <>
+                              {renderImageFieldSlot()}
+                              <div className="flex items-center justify-center -my-1">
+                                <button
+                                  type="button"
+                                  onClick={() => onUpdateSec({ ...sec, stackedTextPosition: "top" })}
+                                  className="w-full py-2 px-3 bg-neutral-950 hover:bg-brand-green hover:text-black text-neutral-300 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-brand-green cursor-pointer shadow-sm active:scale-95 group"
+                                  title="Swap Order (Switch Image to Bottom and Text to Top)"
+                                >
+                                  <ArrowUpDown size={14} className="text-brand-green group-hover:text-black transition-colors shrink-0" />
+                                  <span>⇅ Swap (الآن: الصورة بالأعلى 🖼️ والنص بالأسفل 📝)</span>
+                                </button>
+                              </div>
+                              {renderTextFieldSlot()}
+                            </>
+                          )}
+                        </div>
+                      );
+                    })()
+                  ) : (
+                    <>
+                      {/* Slot A: Top Image */}
+                      <div className="flex flex-col gap-2 p-2.5 bg-neutral-950/60 border border-white/5 rounded-lg">
+                        <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-wider">
+                          🔼 Top Stacked Image
+                        </span>
+                        <CMSImageField
+                          label="TOP IMAGE URL / UPLOAD"
+                          value={topStackedImg}
+                          onChange={(val) => updateSplitImage(1, val)}
+                          gifMode={Boolean(sec.gifModes?.[topStackedImg])}
+                          onToggleGifMode={() => {
+                            if (topStackedImg) handleToggleSectionGifMode(topStackedImg);
+                          }}
+                          onCopy={() => {
+                            if (topStackedImg && onCopyImage) {
+                              onCopyImage(topStackedImg, "copy", sIdx, 0, 1);
+                            }
+                          }}
+                          onCut={() => {
+                            if (topStackedImg && onCopyImage) {
+                              onCopyImage(topStackedImg, "move", sIdx, 0, 1);
+                              updateSplitImage(1, "");
+                            }
+                          }}
+                          onPaste={() => {
+                            if (imageClipboard?.imgUrl) {
+                              updateSplitImage(1, imageClipboard.imgUrl);
+                            }
+                          }}
+                          imageClipboard={imageClipboard}
+                          recommendedText="First of two vertically stacked images"
+                        />
+                      </div>
+
+                      {/* Swap Button between Top and Bottom */}
+                      <div className="flex items-center justify-center -my-1">
+                        <button
+                          type="button"
+                          onClick={handleSwapStackedImages}
+                          className="w-full py-2 px-3 bg-neutral-950 hover:bg-brand-green hover:text-black text-neutral-300 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-brand-green cursor-pointer shadow-sm active:scale-95 group"
+                          title="Swap Top and Bottom Images"
+                        >
+                          <ArrowUpDown size={14} className="text-brand-green group-hover:text-black transition-colors shrink-0" />
+                          <span>⇅ Swap Top &amp; Bottom Images (تبديل موضع الصورتين)</span>
+                        </button>
+                      </div>
+
+                      {/* Slot B: Bottom Image */}
+                      <div className="flex flex-col gap-2 p-2.5 bg-neutral-950/60 border border-white/5 rounded-lg">
+                        <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-wider">
+                          🔽 Bottom Stacked Image
+                        </span>
+                        <CMSImageField
+                          label="BOTTOM IMAGE URL / UPLOAD"
+                          value={bottomStackedImg}
+                          onChange={(val) => updateSplitImage(2, val)}
+                          gifMode={Boolean(sec.gifModes?.[bottomStackedImg])}
+                          onToggleGifMode={() => {
+                            if (bottomStackedImg) handleToggleSectionGifMode(bottomStackedImg);
+                          }}
+                          onCopy={() => {
+                            if (bottomStackedImg && onCopyImage) {
+                              onCopyImage(bottomStackedImg, "copy", sIdx, 0, 2);
+                            }
+                          }}
+                          onCut={() => {
+                            if (bottomStackedImg && onCopyImage) {
+                              onCopyImage(bottomStackedImg, "move", sIdx, 0, 2);
+                              updateSplitImage(2, "");
+                            }
+                          }}
+                          onPaste={() => {
+                            if (imageClipboard?.imgUrl) {
+                              updateSplitImage(2, imageClipboard.imgUrl);
+                            }
+                          }}
+                          imageClipboard={imageClipboard}
+                          recommendedText="Second of two vertically stacked images"
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -4774,6 +4931,11 @@ export function AdminCMS() {
         imageWidthRatio: "70",
         imageCustomWidth: 70,
         stackedGap: 16,
+        stackedMode: "two_images",
+        stackedTextPosition: "bottom",
+        stackedTitle: "",
+        stackedText: "",
+        stackedTextAlign: "left",
         sectionGap: 0,
         titleTopGap: 0,
         titleBottomGap: 0,
