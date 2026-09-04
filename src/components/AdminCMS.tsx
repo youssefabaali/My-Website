@@ -2157,7 +2157,7 @@ function ProjectEditorStickyRail({
   onSave: () => void;
   onDelete: () => void;
   onCancel: () => void;
-  onAddSection: (type: "grid" | "row" | "text" | "image_text" | "full_widescreen", customLabel?: string) => void;
+  onAddSection: (type: "grid" | "row" | "text" | "image_text" | "split_stacked" | "full_widescreen", customLabel?: string) => void;
   sections?: any[];
   onJumpToSection: (sIdx: number) => void;
   onMoveSection?: (sIdx: number, dir: "up" | "down") => void;
@@ -2345,6 +2345,21 @@ function ProjectEditorStickyRail({
               </div>
               <Plus size={13} className="shrink-0" />
             </button>
+
+            <button
+              type="button"
+              onClick={() => onAddSection("split_stacked", "BEHIND THE DESIGN")}
+              className="px-3 py-2 bg-neutral-900 hover:bg-brand-green hover:text-black text-neutral-200 rounded-xl text-left text-xs font-bold transition-all flex items-center justify-between group cursor-pointer border border-white/5 hover:border-brand-green shadow-sm"
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <LayoutGrid size={15} className="text-emerald-400 group-hover:text-black shrink-0" />
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[11px] uppercase font-black truncate">Split 1+2 (1 Big + 2 Stacked)</span>
+                  <span className="text-[8.5px] text-neutral-400 group-hover:text-neutral-900 truncate">Large image + 2 stacked</span>
+                </div>
+              </div>
+              <Plus size={13} className="shrink-0" />
+            </button>
           </div>
         )}
       </div>
@@ -2410,6 +2425,8 @@ function ProjectEditorStickyRail({
                     ? "Text Paragraph"
                     : sec.type === "image_text"
                     ? "Split Feature"
+                    : sec.type === "split_stacked"
+                    ? "Split 1+2 Showcase"
                     : "Full Widescreen";
 
                   const typeIcon =
@@ -2417,6 +2434,8 @@ function ProjectEditorStickyRail({
                       <Type size={13} className="text-blue-400 shrink-0" />
                     ) : sec.type === "image_text" ? (
                       <Columns size={13} className="text-amber-400 shrink-0" />
+                    ) : sec.type === "split_stacked" ? (
+                      <LayoutGrid size={13} className="text-emerald-400 shrink-0" />
                     ) : sec.type === "full_widescreen" || sec.type === "row" ? (
                       <Maximize2 size={13} className="text-purple-400 shrink-0" />
                     ) : (
@@ -2840,6 +2859,7 @@ function CMSGallerySectionEditor({
             <option value="row">Row (Full Widescreen 16:9 Layout)</option>
             <option value="text">Text Paragraph (Pure Text Section)</option>
             <option value="image_text">Image + Text (Split Column Layout)</option>
+            <option value="split_stacked">Split 1+2 (1 Large + 2 Stacked Images)</option>
           </select>
           {sec.hidden && (
             <span className="text-[10px] font-mono font-black px-2.5 py-1 rounded bg-amber-500/20 border border-amber-500/40 text-amber-400 uppercase tracking-wide flex items-center gap-1">
@@ -2852,6 +2872,8 @@ function CMSGallerySectionEditor({
               ? "TEXT ONLY"
               : sec.type === "image_text"
               ? "IMAGE & TEXT"
+              : sec.type === "split_stacked"
+              ? "1 LARGE + 2 STACKED"
               : `${sec.images.length} Total Image${sec.images.length === 1 ? "" : "s"}${sec.type === "grid" ? ` • ${rows.length} Row${rows.length === 1 ? "" : "s"}` : ""}`}
           </span>
 
@@ -3438,6 +3460,251 @@ function CMSGallerySectionEditor({
             </div>
           </div>
         </div>
+      ) : sec.type === "split_stacked" ? (
+        /* SPLIT 1+2 (1 LARGE IMAGE + 2 STACKED IMAGES) EDITOR */
+        (() => {
+          const largeImg = (sec.images && sec.images[0]) || sec.imageSrc || "";
+          const topStackedImg = (sec.images && sec.images[1]) || "";
+          const bottomStackedImg = (sec.images && sec.images[2]) || "";
+
+          const updateSplitImage = (imgIdx: number, val: string) => {
+            const newImgs = [...(sec.images || [])];
+            while (newImgs.length <= imgIdx) newImgs.push("");
+            newImgs[imgIdx] = val;
+            const updates: any = { ...sec, images: newImgs };
+            if (imgIdx === 0) updates.imageSrc = val;
+            onUpdateSec(updates);
+          };
+
+          const rawWidth = sec.imageCustomWidth !== undefined && sec.imageCustomWidth !== null && sec.imageCustomWidth !== ""
+            ? sec.imageCustomWidth
+            : (sec.imageWidthRatio || 70);
+          let currentLargeWidth = 70;
+          if (typeof rawWidth === "number") currentLargeWidth = rawWidth;
+          else if (typeof rawWidth === "string") {
+            const n = parseFloat(rawWidth.replace("%", "").trim());
+            if (!isNaN(n)) currentLargeWidth = n;
+          }
+          const stackedWidth = 100 - currentLargeWidth;
+
+          return (
+            <div className="flex flex-col gap-4">
+              {/* Layout & Positioning Settings Toolbar */}
+              <div className="p-3 bg-neutral-900/90 border border-white/10 rounded-xl flex flex-col gap-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <span className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                    <LayoutGrid size={14} className="text-emerald-400" />
+                    Split 1+2 Layout & Dimensions Configuration
+                  </span>
+                  <span className="text-[10px] text-brand-green font-mono font-bold bg-brand-green/10 px-2 py-0.5 rounded border border-brand-green/20">
+                    Large Image: {currentLargeWidth}% • Stacked Column: {stackedWidth}%
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                  {/* 1. Desktop Position */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                      LAYOUT ORIENTATION
+                    </label>
+                    <select
+                      value={sec.imagePosition || "left"}
+                      onChange={(e) => onUpdateSec({ ...sec, imagePosition: e.target.value as "left" | "right" })}
+                      className="bg-neutral-950 border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-bold cursor-pointer focus:outline-none focus:border-brand-green uppercase"
+                    >
+                      <option value="left">🖼️ Large Image LEFT / Stacked Column RIGHT</option>
+                      <option value="right">🖼️ Large Image RIGHT / Stacked Column LEFT</option>
+                    </select>
+                  </div>
+
+                  {/* 2. Large Image Width % */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                      LARGE IMAGE WIDTH %
+                    </label>
+                    <CompactImageSizeControl
+                      widthVal={sec.imageCustomWidth !== undefined ? sec.imageCustomWidth : 70}
+                      onChange={(val) => onUpdateSec({ ...sec, imageCustomWidth: val, imageWidthRatio: String(val) })}
+                    />
+                  </div>
+
+                  {/* 3. Gap Between Stacked Images */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider">
+                      GAP BETWEEN STACKED IMAGES (PX)
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="number"
+                        min="0"
+                        max="64"
+                        step="2"
+                        value={sec.stackedGap !== undefined ? sec.stackedGap : 16}
+                        onChange={(e) => onUpdateSec({ ...sec, stackedGap: parseInt(e.target.value, 10) || 0 })}
+                        className="w-24 bg-neutral-950 border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-bold text-center focus:outline-none focus:border-brand-green"
+                      />
+                      <div className="flex items-center gap-1">
+                        {[8, 16, 24, 32].map((gapPreset) => (
+                          <button
+                            key={gapPreset}
+                            type="button"
+                            onClick={() => onUpdateSec({ ...sec, stackedGap: gapPreset })}
+                            className={`px-2 py-1 rounded text-[10px] font-mono font-bold transition-all cursor-pointer ${
+                              (sec.stackedGap ?? 16) === gapPreset
+                                ? "bg-brand-green text-black font-extrabold"
+                                : "bg-neutral-950 text-neutral-400 hover:text-white border border-white/10"
+                            }`}
+                          >
+                            {gapPreset}px
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Offsets (Y & X shift) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 border-t border-white/5">
+                  <CompactOffsetControl
+                    label="↕ Large Image Y-Offset"
+                    offset={sec.imageYOffset || 0}
+                    onChange={(val) => onUpdateSec({ ...sec, imageYOffset: val })}
+                    storageKey="cms_custom_split_y_offsets"
+                  />
+                  <CompactOffsetControl
+                    label="↔ Large Image X-Shift"
+                    offset={sec.imageXOffset || 0}
+                    onChange={(val) => onUpdateSec({ ...sec, imageXOffset: val })}
+                    storageKey="cms_custom_split_x_shifts"
+                  />
+                </div>
+              </div>
+
+              {/* Two Column Editor Area: Left (Large Image) & Right (2 Stacked Images) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+                {/* 1. LARGE MAIN IMAGE */}
+                <div className="lg:col-span-6 flex flex-col gap-3 p-3 bg-neutral-900/60 border border-white/10 rounded-xl">
+                  <div className="flex items-center justify-between pb-1 border-b border-white/5">
+                    <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                      1. Main Large Image ({currentLargeWidth}%)
+                    </span>
+                    <span className="text-[9px] text-neutral-400 font-mono">
+                      {sec.imagePosition === "right" ? "Appears on Right" : "Appears on Left"}
+                    </span>
+                  </div>
+
+                  <CMSImageField
+                    label="LARGE IMAGE URL / UPLOAD"
+                    value={largeImg}
+                    onChange={(val) => updateSplitImage(0, val)}
+                    gifMode={Boolean(sec.gifModes?.[largeImg])}
+                    onToggleGifMode={() => {
+                      if (largeImg) handleToggleSectionGifMode(largeImg);
+                    }}
+                    onCopy={() => {
+                      if (largeImg && onCopyImage) {
+                        onCopyImage(largeImg, "copy", sIdx, 0, 0);
+                      }
+                    }}
+                    onCut={() => {
+                      if (largeImg && onCopyImage) {
+                        onCopyImage(largeImg, "move", sIdx, 0, 0);
+                        updateSplitImage(0, "");
+                      }
+                    }}
+                    onPaste={() => {
+                      if (imageClipboard?.imgUrl) {
+                        updateSplitImage(0, imageClipboard.imgUrl);
+                      }
+                    }}
+                    imageClipboard={imageClipboard}
+                    recommendedText="Upload or paste image for the dominant large showcase"
+                  />
+                </div>
+
+                {/* 2. TWO STACKED IMAGES COLUMN */}
+                <div className="lg:col-span-6 flex flex-col gap-3 p-3 bg-neutral-900/60 border border-white/10 rounded-xl">
+                  <div className="flex items-center justify-between pb-1 border-b border-white/5">
+                    <span className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                      2. Stacked Images Column ({stackedWidth}%)
+                    </span>
+                    <span className="text-[9px] text-neutral-400 font-mono">
+                      Equal height on desktop • Gap: {sec.stackedGap ?? 16}px
+                    </span>
+                  </div>
+
+                  {/* Slot A: Top Image */}
+                  <div className="flex flex-col gap-2 p-2.5 bg-neutral-950/60 border border-white/5 rounded-lg">
+                    <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-wider">
+                      🔼 Top Stacked Image
+                    </span>
+                    <CMSImageField
+                      label="TOP IMAGE URL / UPLOAD"
+                      value={topStackedImg}
+                      onChange={(val) => updateSplitImage(1, val)}
+                      gifMode={Boolean(sec.gifModes?.[topStackedImg])}
+                      onToggleGifMode={() => {
+                        if (topStackedImg) handleToggleSectionGifMode(topStackedImg);
+                      }}
+                      onCopy={() => {
+                        if (topStackedImg && onCopyImage) {
+                          onCopyImage(topStackedImg, "copy", sIdx, 0, 1);
+                        }
+                      }}
+                      onCut={() => {
+                        if (topStackedImg && onCopyImage) {
+                          onCopyImage(topStackedImg, "move", sIdx, 0, 1);
+                          updateSplitImage(1, "");
+                        }
+                      }}
+                      onPaste={() => {
+                        if (imageClipboard?.imgUrl) {
+                          updateSplitImage(1, imageClipboard.imgUrl);
+                        }
+                      }}
+                      imageClipboard={imageClipboard}
+                      recommendedText="First of two vertically stacked images"
+                    />
+                  </div>
+
+                  {/* Slot B: Bottom Image */}
+                  <div className="flex flex-col gap-2 p-2.5 bg-neutral-950/60 border border-white/5 rounded-lg">
+                    <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-wider">
+                      🔽 Bottom Stacked Image
+                    </span>
+                    <CMSImageField
+                      label="BOTTOM IMAGE URL / UPLOAD"
+                      value={bottomStackedImg}
+                      onChange={(val) => updateSplitImage(2, val)}
+                      gifMode={Boolean(sec.gifModes?.[bottomStackedImg])}
+                      onToggleGifMode={() => {
+                        if (bottomStackedImg) handleToggleSectionGifMode(bottomStackedImg);
+                      }}
+                      onCopy={() => {
+                        if (bottomStackedImg && onCopyImage) {
+                          onCopyImage(bottomStackedImg, "copy", sIdx, 0, 2);
+                        }
+                      }}
+                      onCut={() => {
+                        if (bottomStackedImg && onCopyImage) {
+                          onCopyImage(bottomStackedImg, "move", sIdx, 0, 2);
+                          updateSplitImage(2, "");
+                        }
+                      }}
+                      onPaste={() => {
+                        if (imageClipboard?.imgUrl) {
+                          updateSplitImage(2, imageClipboard.imgUrl);
+                        }
+                      }}
+                      imageClipboard={imageClipboard}
+                      recommendedText="Second of two vertically stacked images"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })()
       ) : sec.type === "grid" ? (
         /* GRID MODE: MULTI-ROW EDITOR WITH ADD ROW BUTTON */
         <div className="flex flex-col gap-4">
@@ -4428,7 +4695,7 @@ export function AdminCMS() {
   };
 
   const handleAddNewProjectSection = (
-    type: "grid" | "row" | "text" | "image_text" | "full_widescreen" = "grid",
+    type: "grid" | "row" | "text" | "image_text" | "split_stacked" | "full_widescreen" = "grid",
     customLabel?: string
   ) => {
     let newSec: any;
@@ -4471,6 +4738,19 @@ export function AdminCMS() {
         textContent: "",
         imagePosition: "left",
         imageWidthRatio: "50",
+        sectionGap: 0,
+        titleTopGap: 0,
+        titleBottomGap: 0,
+      };
+    } else if (type === "split_stacked") {
+      newSec = {
+        type: "split_stacked",
+        label: customLabel || "SPLIT 1+2 SHOWCASE",
+        images: ["", "", ""],
+        imagePosition: "left",
+        imageWidthRatio: "70",
+        imageCustomWidth: 70,
+        stackedGap: 16,
         sectionGap: 0,
         titleTopGap: 0,
         titleBottomGap: 0,
@@ -6926,6 +7206,13 @@ export function AdminCMS() {
                             className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 hover:border-brand-green text-[10px] text-neutral-300 hover:text-brand-green uppercase font-bold cursor-pointer transition-all flex items-center gap-1"
                           >
                             <Columns size={11} /> + Split
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleAddNewProjectSection("split_stacked", "BEHIND THE DESIGN")}
+                            className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 hover:border-brand-green text-[10px] text-neutral-300 hover:text-brand-green uppercase font-bold cursor-pointer transition-all flex items-center gap-1"
+                          >
+                            <LayoutGrid size={11} /> + Split 1+2
                           </button>
                         </div>
                       </div>

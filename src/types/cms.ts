@@ -75,7 +75,7 @@ export interface CustomInfoField {
 export interface ProjectSection {
   id?: string;
   hidden?: boolean;
-  type: "grid" | "row" | "text" | "image_text";
+  type: "grid" | "row" | "text" | "image_text" | "split_stacked";
   label: string;
   images: string[];
   rows?: GalleryRow[];
@@ -92,6 +92,7 @@ export interface ProjectSection {
   imagePosition?: "left" | "right";
   imageWidthRatio?: "30" | "40" | "50" | "60" | "70" | string;
   imageCustomWidth?: number | string;
+  stackedGap?: number | string;
   imageYOffset?: number;
   imageXOffset?: number;
   sectionGap?: number | string;
