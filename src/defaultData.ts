@@ -224,11 +224,12 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
       "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif": true
       }
     },
     {
@@ -539,7 +540,8 @@ export const defaultSiteData: CMSSiteData = {
               },
               "rowAlignment": "center",
               "itemOffsets": {
-                "1": 150
+                "0": 150,
+                "1": 0
               }
             },
             {
@@ -577,10 +579,6 @@ export const defaultSiteData: CMSSiteData = {
               }
             },
             {
-              "id": "row-1788172214529",
-              "images": []
-            },
-            {
               "id": "row-1788172281654",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
@@ -599,9 +597,131 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
           },
           "rowsGap": 150,
-          "hidden": false,
+          "hidden": true,
           "rowsGapMobile": 20,
           "sectionGap": "default"
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.3.PNG"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "top",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+          },
+          "imageYOffset": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
+          ],
+          "rows": [
+            {
+              "id": "row-1788541572569",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 0,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "top",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
+          },
+          "imageYOffset": 0,
+          "id": "sec-1788541353267-a0a4",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
+          ],
+          "rows": [
+            {
+              "id": "row-1788541605809",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "id": "sec-1788541603143-wowh",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
+          "sectionGapMobile": "default"
         }
       ],
       "date": "2024",
@@ -724,7 +844,64 @@ export const defaultSiteData: CMSSiteData = {
             }
           ],
           "rowsGap": 150,
-          "rowsGapMobile": 20
+          "rowsGapMobile": 20,
+          "hidden": true
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Video.As.Gif-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/final-2-withsoundeffect-ezgif.com-optimize.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/intro-30F-GIF.small.gif"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Video.As.Gif-1.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Video.As.Gif-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/final-2-withsoundeffect-ezgif.com-optimize.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/intro-30F-GIF.small.gif": true
+          }
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/GIF-2.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/602ad7140082473.623f27d7de50e.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Video.As.Gif-2.mp4"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/GIF-2.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Video.As.Gif-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Video.As.Gif-2.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/602ad7140082473.623f27d7de50e.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/GIF-2.gif": true
+          },
+          "id": "sec-1788609052953-lnwt"
         }
       ],
       "date": "2024",
@@ -860,7 +1037,109 @@ export const defaultSiteData: CMSSiteData = {
           "rowsGap": 120,
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "rowsGapMobile": 20
+          "rowsGapMobile": 20,
+          "hidden": true
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1788609254532",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4": true
+              }
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
+          },
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1788609475992",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true
+              }
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "id": "sec-1788609469226-sg1d",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4": true
+          },
+          "id": "sec-1788609372993-dn7g",
+          "sectionGapMobile": 10
         }
       ],
       "date": "2024",
@@ -951,15 +1230,14 @@ export const defaultSiteData: CMSSiteData = {
           "imagePosition": "left",
           "imageYOffset": 150,
           "imageCustomWidth": "50%",
-          "sectionGap": 120,
-          "sectionGapMobile": 40
+          "sectionGap": 20,
+          "sectionGapMobile": 10
         },
         {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-1.mp4"
           ],
           "rows": [
             {
@@ -982,9 +1260,7 @@ export const defaultSiteData: CMSSiteData = {
             },
             {
               "id": "row-1788174679337",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4"
-              ],
+              "images": [],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4": true
               },
@@ -992,23 +1268,12 @@ export const defaultSiteData: CMSSiteData = {
               "itemWidths": {
                 "0": "100%"
               }
-            },
-            {
-              "id": "row-1788174800140",
-              "images": [],
-              "itemOffsets": {
-                "1": 0
-              },
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "right"
             }
           ],
-          "rowsGap": 120,
-          "sectionGap": 0,
-          "rowsGapMobile": 20,
-          "sectionGapMobile": 20
+          "rowsGap": "default",
+          "sectionGap": 20,
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 10
         },
         {
           "type": "grid",
@@ -1021,32 +1286,43 @@ export const defaultSiteData: CMSSiteData = {
             {
               "id": "row-1788455885946",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg"
-              ],
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "right"
-            },
-            {
-              "id": "row-1788455754850-3-ogjt",
-              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/11.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/4.jpg"
               ],
               "itemWidths": {
                 "0": "50%"
               },
-              "rowAlignment": "right",
-              "itemOffsets": {
-                "0": 0
+              "rowAlignment": "right"
+            }
+          ],
+          "rowsGap": "default",
+          "sectionGap": 20,
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 10,
+          "id": "sec-1788455754850-m8ct"
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1788611651388-2-bldy",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-2.mp4": true
               }
             }
           ],
-          "rowsGap": 50,
-          "sectionGap": 120,
-          "rowsGapMobile": 20,
-          "sectionGapMobile": 20,
-          "id": "sec-1788455754850-m8ct"
+          "rowsGap": "default",
+          "sectionGap": 20,
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 10,
+          "id": "sec-1788611651388-w5vi"
         },
         {
           "type": "grid",
@@ -1066,89 +1342,38 @@ export const defaultSiteData: CMSSiteData = {
               "rowAlignment": "center"
             }
           ],
-          "rowsGap": 120,
-          "sectionGap": 120,
-          "rowsGapMobile": 20,
-          "sectionGapMobile": 20,
+          "rowsGap": "default",
+          "sectionGap": 20,
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 10,
           "id": "sec-1788455769985-pjx1"
         },
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
           ],
-          "rows": [
-            {
-              "id": "row-1788455425810-4-celq",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg"
-              ],
-              "itemOffsets": {
-                "1": 250
-              },
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "left",
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg": true
-              }
-            },
-            {
-              "id": "row-1788455425810-5-4mzj",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg"
-              ],
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "left",
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/18.jpg": true
-              }
-            },
-            {
-              "id": "row-1788455425810-6-voha",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/22.jpg"
-              ],
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "left",
-              "itemOffsets": {
-                "0": 0
-              }
-            }
-          ],
-          "rowsGap": 50,
-          "sectionGap": 0,
-          "rowsGapMobile": 20,
-          "sectionGapMobile": 20,
-          "id": "sec-1788455425810-sok2"
-        },
-        {
-          "type": "image_text",
-          "label": "",
-          "textTitle": "SPHERE PROJECTION BLUEPRINT",
-          "textContent": "",
-          "sectionGap": 250,
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.1.png"
-          ],
-          "imagePosition": "right",
-          "imageYOffset": 250,
-          "sectionGapMobile": 20
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/16.jpg",
+          "sectionGapMobile": 10
         },
         {
           "type": "grid",
-          "label": "",
+          "label": "SPHERE PROJECTION BLUEPRINT",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.2.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Sphere.Projection.Blueprint.3.png"
@@ -1170,7 +1395,12 @@ export const defaultSiteData: CMSSiteData = {
             }
           ],
           "sectionGapMobile": "default",
-          "rowsGapMobile": 20
+          "rowsGapMobile": "default",
+          "sectionGap": "default",
+          "titleTopGap": "default",
+          "titleTopGapMobile": "default",
+          "titleBottomGap": 20,
+          "titleBottomGapMobile": 10
         }
       ],
       "date": "2024",
@@ -1222,473 +1452,321 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "sections": [
         {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet.mp4",
           "textTitle": "EPISODE 8 - DEVICES CONNECTED TO INTERNET",
           "textContent": "",
           "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet-Screen.mp4"
           ],
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet-Screen.mp4": true,
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet.mp4": true
           },
           "imageYOffset": 0,
-          "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTitle": "EPISODE 8 - DEVICES CONNECTED TO INTERNET",
+          "stackedTextPosition": "top"
         },
         {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet-Screen.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1788184487785",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet-Screen.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet.mp4": false,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet-Screen.mp4": true
-              },
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "right",
-              "itemOffsets": {
-                "0": 0
-              }
-            }
-          ],
-          "sectionGap": 250,
-          "rowsGap": 0,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "sectionGapMobile": 40,
-          "rowsGapMobile": "default"
-        },
-        {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4",
           "textTitle": "EPISODE 7 ",
           "textContent": "",
-          "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 100,
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4"
           ],
           "gifModes": {
             "EPISODE 8 - DEVICES CONNECTED TO INTERNET": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4": true
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4": true
           },
           "imageYOffset": 0,
-          "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "EPISODE 7"
         },
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4",
+          "textTitle": "EPISODE 8 - DEVICES CONNECTED TO INTERNET",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4"
+          ],
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet-Screen.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-8-Devices.Connected.To.Internet.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
+          },
+          "imageYOffset": 0,
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTitle": "",
+          "stackedTextPosition": "top",
+          "id": "sec-1788609996841-7a2n"
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4",
+          "textTitle": "EPISODE 7 ",
+          "textContent": "",
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4"
           ],
-          "rows": [
-            {
-              "id": "row-1788185594676",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
-              },
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "50%"
-              },
-              "itemOffsets": {
-                "0": 0,
-                "1": 150
-              }
-            },
-            {
-              "id": "row-1788185928876",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-GIF.mp4": true
-              },
-              "itemOffsets": {
-                "0": 0,
-                "1": 0
-              },
-              "itemWidths": {
-                "0": "70%",
-                "1": "100%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788453843241",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
-              },
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "50%"
-              }
-            },
-            {
-              "id": "row-1788186155002",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4": true
-              },
-              "itemOffsets": {
-                "0": 0,
-                "1": 450
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788453915648",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4"
-              ],
-              "rowAlignment": "right",
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4": true
-              },
-              "itemWidths": {
-                "0": "50%"
-              }
-            }
-          ],
-          "sectionGap": 120,
-          "rowsGap": 150,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "sectionGapMobile": 20,
-          "rowsGapMobile": 40
+          "gifModes": {
+            "EPISODE 8 - DEVICES CONNECTED TO INTERNET": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-GIF.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Character.Trying.To.Enter.Code-Screen.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-GIF.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-KIM.IS.WRITING.CODE-Screen.mp4": true
+          },
+          "imageYOffset": 0,
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "id": "sec-1788610091731-ywgk"
         },
         {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4",
           "textTitle": "EPISODE 6 - COMPUTER ENCRYPTED",
           "textContent": "",
           "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4"
-          ],
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4": true
-          },
-          "imageYOffset": 0,
-          "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted-screen.mp4"
           ],
-          "rows": [
-            {
-              "id": "row-1786110060184",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted-screen.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted-screen.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4": true
-              },
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "50%"
-              },
-              "itemOffsets": {
-                "0": 0
-              }
-            }
-          ],
-          "sectionGap": 120,
-          "sectionGapMobile": 40,
-          "rowsGapMobile": "default"
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted-screen.mp4": true
+          },
+          "imageYOffset": 0,
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top"
         },
         {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4",
-          "textTitle": "EPISODE 5 - MESSAGE TEXT BUBBLE",
+          "textTitle": "EPISODE 6 - COMPUTER ENCRYPTED",
           "textContent": "",
-          "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE-Screen.mp4"
           ],
           "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4": true
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted-screen.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE-Screen.mp4": true
           },
           "imageYOffset": 0,
-          "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "id": "sec-1788610378838-mzku",
+          "stackedTitle": "EPISODE 5 - MESSAGE TEXT BUBBLE"
         },
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4",
+          "textTitle": "EPISODE 6 - COMPUTER ENCRYPTED",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE-Screen.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4"
           ],
-          "rows": [
-            {
-              "id": "row-1786110085344",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE-Screen.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE-Screen.mp4": true
-              },
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "right",
-              "itemOffsets": {
-                "0": 0
-              }
-            },
-            {
-              "id": "row-1786117545014",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4": true
-              },
-              "itemOffsets": {
-                "0": 0,
-                "1": 450
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788454388510",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4": true
-              },
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "50%"
-              }
-            }
-          ],
-          "rowsGap": 120,
-          "rowsGapMobile": 20,
-          "sectionGapMobile": 40,
-          "sectionGap": 120
-        },
-        {
-          "type": "image_text",
-          "label": "",
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4",
-          "textTitle": "EPISODE 4 - APP MUSIC",
-          "textContent": "",
-          "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 120,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4"
-          ],
           "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4": true
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.6.Computer.Encrypted-screen.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.MESSAGE.TEXT.BUBBLE.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4": true
           },
           "imageYOffset": 0,
-          "sectionGapMobile": 20,
-          "imageCustomWidth": "70%"
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "id": "sec-1788610501314-76t8",
+          "stackedTitle": ""
         },
         {
           "type": "grid",
           "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4",
+          "textTitle": "",
+          "textContent": "",
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.gif"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4"
           ],
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.gif": true
+          },
+          "imageYOffset": 0,
+          "sectionGapMobile": 10,
+          "imageCustomWidth": "67%",
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "EPISODE 4 - APP MUSIC",
           "rows": [
             {
               "id": "row-1",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.gif"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4"
               ],
               "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4": true
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.5.Selfie.challenge-Screen.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.4-app.music.gif": true
               },
               "itemWidths": {
-                "0": "20%"
-              },
-              "rowAlignment": "right",
-              "itemHorizontalOffsets": {
-                "0": -150
-              },
-              "itemOffsets": {
-                "0": 0
+                "0": "33%",
+                "1": "67%"
               }
             }
-          ],
-          "sectionGapMobile": 40,
-          "sectionGap": 120,
-          "rowsGap": 120,
-          "rowsGapMobile": 20
+          ]
         },
         {
-          "type": "image_text",
+          "type": "grid",
           "label": "",
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4",
-          "textTitle": "EPISODE 3 - WALLPAPER PHONE",
+          "textTitle": "",
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.gif"
           ],
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4": true
           },
           "imageYOffset": 0,
-          "sectionGapMobile": 20,
-          "imageCustomWidth": "70%"
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.gif"
-          ],
+          "sectionGapMobile": 10,
+          "imageCustomWidth": "70%",
           "rows": [
             {
-              "id": "row-1",
+              "id": "row-1788610844731",
               "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.gif"
               ],
-              "singleImageColumns": 1,
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.3-wallpaper.mp4": true
               },
               "itemWidths": {
-                "0": "20%"
-              },
-              "rowAlignment": "right",
-              "itemOffsets": {
-                "0": 0
-              },
-              "itemHorizontalOffsets": {
-                "0": -150
+                "0": "67%",
+                "1": "33%"
               }
             }
           ],
-          "rowsGapMobile": "default",
-          "sectionGapMobile": 40,
-          "sectionGap": 120
+          "rowsGap": "default"
         },
         {
-          "type": "image_text",
+          "type": "grid",
           "label": "",
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2-Air.Tag.mp4",
           "textTitle": "EPISODE 2 - AIR TAG",
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "sectionGap": "default",
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2.-.Air.Tag.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2-Air.Tag.mp4"
           ],
           "gifModes": {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2-Air.Tag.mp4": true
           },
           "imageYOffset": 0,
-          "sectionGapMobile": 20,
-          "imageCustomWidth": "70%"
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2.-.Air.Tag.gif"
-          ],
+          "sectionGapMobile": "default",
+          "imageCustomWidth": "70%",
           "rows": [
             {
-              "id": "row-1",
+              "id": "row-1788611019823",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2.-.Air.Tag.gif"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2.-.Air.Tag.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2-Air.Tag.mp4"
               ],
               "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2.-.Air.Tag.gif": false,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode.2-Air.Tag.mp4": true
               },
-              "singleImageColumns": 1,
               "itemWidths": {
-                "0": "20%"
-              },
-              "itemOffsets": {
-                "0": 0
-              },
-              "itemHorizontalOffsets": {
-                "0": -150
-              },
-              "rowAlignment": "right"
+                "0": "33%",
+                "1": "67%"
+              }
             }
-          ],
-          "sectionGap": 250,
-          "sectionGapMobile": 40
+          ]
         }
       ],
       "date": "2024",
@@ -1744,96 +1822,62 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "sections": [
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4",
+          "textTitle": "",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
+          ],
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
+          },
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
           ],
           "rows": [
             {
-              "id": "row-1788197576602",
+              "id": "row-1788624214291-2-esty",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4": true,
-                "sha256:4a02d2f904dd9dee8e356d14e8be97f7d226e7213d7beab6e53396132c49dc4b": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
-              },
-              "itemOffsets": {
-                "1": 280
-              },
-              "rowAlignment": "left",
-              "itemWidths": {
-                "0": "70%"
-              }
-            },
-            {
-              "id": "row-1788198617338",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
-              },
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "70%"
-              }
-            },
-            {
-              "id": "row-1788198189224",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4": true,
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4": true
               },
               "itemOffsets": {
-                "1": 280
+                "1": 0
               },
               "itemWidths": {
-                "0": "70%"
+                "0": "100%"
               },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788198768743",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4": true
-              },
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "70%"
-              }
-            },
-            {
-              "id": "row-1788198524661",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
-              ],
-              "itemWidths": {
-                "0": "70%"
-              },
-              "itemOffsets": {
-                "1": 250
-              },
-              "rowAlignment": "left"
+              "rowAlignment": "center"
             }
           ],
           "sectionGap": 0,
-          "rowsGap": 120,
+          "rowsGap": "default",
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "rowsGapMobile": 20
+          "rowsGapMobile": "default",
+          "id": "sec-1788624214291-kxjz",
+          "hidden": false
         }
       ],
       "date": "2024",
@@ -1904,44 +1948,54 @@ export const defaultSiteData: CMSSiteData = {
               ]
             }
           ],
-          "sectionGap": 250,
+          "sectionGap": 20,
           "rowsGapMobile": "default",
-          "sectionGapMobile": 50
+          "sectionGapMobile": 10
         },
         {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
-          "textTitle": "LOWER THIRDS",
+          "textTitle": "",
           "textContent": "",
           "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif"
           ],
-          "imageCustomWidth": "51%",
-          "sectionGapMobile": 10
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "LOWER THIRDS",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif": true
+          }
         },
         {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-3.gif"
           ],
           "rows": [
             {
               "id": "row-1786206997337",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-3.gif"
               ],
               "itemOffsets": {
                 "0": 0,
                 "1": 0
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "32%"
               }
             }
           ],
@@ -2024,74 +2078,79 @@ export const defaultSiteData: CMSSiteData = {
           }
         },
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-1.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-5.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif": true
+          },
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-2.gif"
           ],
           "rows": [
             {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif"
-              ],
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "right"
-            },
-            {
-              "id": "row-1788260156595",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif"
-              ],
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "left",
-              "itemOffsets": {
-                "0": 150,
-                "1": 0
-              }
-            },
-            {
-              "id": "row-1786208729931",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-1.gif",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-5.gif"
-              ],
-              "itemOffsets": {
-                "0": 0,
-                "1": 150
-              },
-              "itemWidths": {
-                "0": "100%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788260260097",
+              "id": "row-1788624661583",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-2.gif"
-              ],
-              "itemOffsets": {
-                "0": 0,
-                "1": 250
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "right"
+              ]
             }
           ],
-          "rowsGap": 150,
-          "rowsGapMobile": 20
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-5.gif",
+            ""
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "50%",
+          "imageCustomWidth": "50%",
+          "stackedGap": 0,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-1.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif": true
+          },
+          "id": "sec-1788624694236-h5xf",
+          "sectionGapMobile": "default"
         }
       ],
       "date": "2024",
@@ -2151,11 +2210,7 @@ export const defaultSiteData: CMSSiteData = {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-4.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.11.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.12.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-3.gif"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4"
           ],
           "rows": [
             {
@@ -2167,42 +2222,43 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4": true
               },
               "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788260711913",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-4.gif",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.11.jpg"
-              ],
-              "itemWidths": {
                 "0": "100%"
               },
-              "rowAlignment": "left",
-              "itemOffsets": {
-                "0": 0,
-                "1": 150
-              }
-            },
-            {
-              "id": "row-1788260822258",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.12.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-3.gif"
-              ],
-              "itemOffsets": {
-                "0": 150,
-                "1": 0
-              }
+              "rowAlignment": "center"
             }
           ],
-          "sectionGap": 0,
-          "rowsGap": 250,
+          "sectionGap": 20,
+          "rowsGap": "default",
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "rowsGapMobile": 20
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-4.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-3.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.11.jpg"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-4.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-3.gif": true
+          },
+          "sectionGapMobile": 10
         }
       ],
       "date": "2024",
@@ -2260,14 +2316,14 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "sections": [
         {
-          "type": "image_text",
+          "type": "grid",
           "label": "",
           "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif",
           "textTitle": "",
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 0,
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
@@ -2276,50 +2332,26 @@ export const defaultSiteData: CMSSiteData = {
           "sectionGapMobile": 10
         },
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.2.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.2.jpg",
+            "",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif"
           ],
           "rows": [
             {
-              "id": "row-1788262203175",
-              "images": [],
-              "itemWidths": {
-                "0": "40%"
-              },
-              "rowAlignment": "right"
-            },
-            {
               "id": "row-1788262440014",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.2.jpg"
-              ],
-              "itemWidths": {
-                "0": "40%"
-              },
-              "rowAlignment": "right"
-            },
-            {
-              "id": "row-1788262451048",
-              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.2.jpg",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg"
               ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4": true
-              },
-              "itemOffsets": {
-                "0": -250,
-                "1": 250
-              },
               "itemWidths": {
-                "0": "50%"
+                "0": "100%"
               },
-              "rowAlignment": "left"
+              "rowAlignment": "right"
             },
             {
               "id": "row-1788262733149",
@@ -2349,11 +2381,42 @@ export const defaultSiteData: CMSSiteData = {
               }
             }
           ],
-          "sectionGap": 0,
+          "sectionGap": 20,
           "rowsGap": "default",
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "rowsGapMobile": 20
+          "rowsGapMobile": 20,
+          "sectionGapMobile": 10,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg",
+          "imageCustomWidth": "68%",
+          "imageWidthRatio": "68%",
+          "stackedGap": 0
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "70",
+          "imageCustomWidth": 70,
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-5.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4": true
+          },
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4"
         }
       ],
       "date": "2024",
@@ -2410,78 +2473,63 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "sections": [
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
+            "",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg"
           ],
-          "rows": [
-            {
-              "id": "row-1788263997817",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif"
-              ],
-              "itemOffsets": {
-                "0": 0,
-                "1": 150
-              },
-              "rowAlignment": "left",
-              "itemWidths": {
-                "0": "70%"
-              }
-            },
-            {
-              "id": "row-1788281937887",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg"
-              ],
-              "itemWidths": {
-                "0": "50%"
-              },
-              "rowAlignment": "right"
-            }
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg"
           ],
-          "sectionGap": 120,
-          "rowsGapMobile": 20,
-          "rowsGap": 120,
-          "sectionGapMobile": 20
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+          "id": "sec-1788613811850-c69o",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif": true
+          },
+          "sectionGapMobile": 10
         },
         {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg"
           ],
           "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif"
-              ],
-              "itemWidths": {
-                "0": "70%"
-              },
-              "itemOffsets": {
-                "1": 250
-              },
-              "rowAlignment": "right"
-            },
-            {
-              "id": "row-1788263720107",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg"
-              ],
-              "itemOffsets": {
-                "0": 0,
-                "1": 0
-              }
-            },
             {
               "id": "row-1788263763582",
               "images": [
@@ -2494,9 +2542,10 @@ export const defaultSiteData: CMSSiteData = {
               }
             }
           ],
-          "rowsGap": 120,
+          "rowsGap": "default",
           "sectionGap": "default",
-          "rowsGapMobile": 20
+          "rowsGapMobile": "default",
+          "sectionGapMobile": "default"
         }
       ],
       "date": "2024",
@@ -2525,7 +2574,8 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif": true
       }
     },
     {
@@ -2547,223 +2597,136 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "sections": [
         {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu",
-          "textTitle": "NOTIFY NYC TRAFFIC ALERTS",
+          "textTitle": "",
           "textContent": "",
           "imagePosition": "right",
-          "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu"
+            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/1-Notify.NYC.Traffic.Alerts.gif"
           ],
           "gifModes": {
-            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false
+            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/1-Notify.NYC.Traffic.Alerts.gif": true
           },
           "imageYOffset": 0,
           "videoTemplateUrl": "",
           "posterImage": "",
-          "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "NOTIFY NYC TRAFFIC ALERTS"
         },
         {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/1-Notify.NYC.Traffic.Alerts.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1788267108663",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/1-Notify.NYC.Traffic.Alerts.gif"
-              ],
-              "rowAlignment": "left",
-              "itemWidths": {
-                "0": "50%"
-              },
-              "itemOffsets": {
-                "0": 0
-              }
-            }
-          ],
-          "rowsGap": "default",
-          "sectionGap": 150,
-          "sectionGapMobile": 40
-        },
-        {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://youtu.be/toXotV0ERfo?si=F9h7DulwBTqIlSdK",
-          "textTitle": "NOTIFY NYC BASEMENT ALERTS",
+          "textTitle": "",
           "textContent": "",
           "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://youtu.be/toXotV0ERfo?si=F9h7DulwBTqIlSdK"
-          ],
-          "gifModes": {
-            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false
-          },
-          "id": "sec-1788267307614-82kc",
-          "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
+            "https://youtu.be/toXotV0ERfo?si=F9h7DulwBTqIlSdK",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/2-Notify.NYC.Basement.Alerts.gif"
           ],
-          "rows": [
-            {
-              "id": "row-1788267313006-0-ykjd",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/2-Notify.NYC.Basement.Alerts.gif"
-              ],
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "50%"
-              }
-            }
-          ],
-          "id": "sec-1788267313006-aw1s",
-          "rowsGap": "default",
-          "sectionGap": 150,
-          "sectionGapMobile": 40
+          "gifModes": {
+            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/2-Notify.NYC.Basement.Alerts.gif": true
+          },
+          "id": "sec-1788267307614-82kc",
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "sNOTIFY NYC BASEMENT ALERTS"
         },
         {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://youtu.be/NMG66ygSk_s?si=48SCzETFPUwwR1d0",
           "textTitle": "NOTIFY NYC MAJOR EVENT ALERTS",
           "textContent": "",
           "imagePosition": "right",
           "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://youtu.be/NMG66ygSk_s?si=48SCzETFPUwwR1d0"
+            "https://youtu.be/NMG66ygSk_s?si=48SCzETFPUwwR1d0",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/3-Notify.NYC.Major.Event.Alerts.gif"
           ],
           "gifModes": {
-            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false
+            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/3-Notify.NYC.Major.Event.Alerts.gif": true
           },
           "id": "sec-1788267408698-3qdi",
           "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "NOTIFY NYC MAJOR EVENT ALERTS"
         },
         {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/3-Notify.NYC.Major.Event.Alerts.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1788267415456-0-dez8",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/3-Notify.NYC.Major.Event.Alerts.gif"
-              ],
-              "rowAlignment": "left",
-              "itemWidths": {
-                "0": "50%"
-              }
-            }
-          ],
-          "id": "sec-1788267415456-l3wh",
-          "sectionGap": 150,
-          "sectionGapMobile": 40
-        },
-        {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://youtu.be/jl2imTplRyo?si=o91sFg_BImxLJJi8",
           "textTitle": "NOTIFY NYC MASS TRANSIT ALERTS",
           "textContent": "",
           "imagePosition": "left",
           "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://youtu.be/jl2imTplRyo?si=o91sFg_BImxLJJi8"
+            "https://youtu.be/jl2imTplRyo?si=o91sFg_BImxLJJi8",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/4-Notify.NYC.Mass.Transit.Alerts.gif"
           ],
           "gifModes": {
-            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false
+            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/4-Notify.NYC.Mass.Transit.Alerts.gif": true
           },
           "id": "sec-1788267580206-f06t",
           "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "NOTIFY NYC MASS TRANSIT ALERTS"
         },
         {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/4-Notify.NYC.Mass.Transit.Alerts.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1788267584834-0-4ymy",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/4-Notify.NYC.Mass.Transit.Alerts.gif"
-              ],
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "50%"
-              }
-            }
-          ],
-          "id": "sec-1788267584834-nlau",
-          "sectionGap": 150,
-          "sectionGapMobile": 40
-        },
-        {
-          "type": "image_text",
+          "type": "split_stacked",
           "label": "",
           "imageSrc": "https://youtu.be/_gFCryCdXf8?si=IEB8iFkXG5_hvBRc",
-          "textTitle": "NOTIFY NYC POWER OUTAGE ALERTS",
+          "textTitle": "",
           "textContent": "",
           "imagePosition": "right",
           "imageWidthRatio": "50",
-          "sectionGap": 120,
+          "sectionGap": "default",
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://youtu.be/_gFCryCdXf8?si=IEB8iFkXG5_hvBRc"
+            "https://youtu.be/_gFCryCdXf8?si=IEB8iFkXG5_hvBRc",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/5-Notify.NYC.Power.Outage.Alerts.gif"
           ],
           "gifModes": {
-            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false
+            "https://youtu.be/YIfGtjNr-Co?si=MTdgApKlttDT2MVu": false,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/5-Notify.NYC.Power.Outage.Alerts.gif": true
           },
           "id": "sec-1788267837322-vq81",
           "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/5-Notify.NYC.Power.Outage.Alerts.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1788267869058-0-zezo",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/5-Notify.NYC.Power.Outage.Alerts.gif"
-              ],
-              "rowAlignment": "left",
-              "itemWidths": {
-                "0": "50%"
-              }
-            }
-          ],
-          "id": "sec-1788267869058-t2mh"
+          "sectionGapMobile": "default",
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "NOTIFY NYC POWER OUTAGE ALERTS"
         }
       ],
       "date": "2024",
@@ -2824,11 +2787,7 @@ export const defaultSiteData: CMSSiteData = {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.1.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.1.jpg"
           ],
           "rows": [
             {
@@ -2836,42 +2795,58 @@ export const defaultSiteData: CMSSiteData = {
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Picture-.1.jpg"
               ]
-            },
+            }
+          ],
+          "rowsGap": "default",
+          "rowsGapMobile": "default",
+          "sectionGap": 20,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4"
+          ],
+          "rows": [
             {
-              "id": "row-1",
+              "id": "row-1788623568328",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4"
               ],
               "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4": true
-              },
-              "itemOffsets": {
-                "1": 150
-              }
-            },
-            {
-              "id": "row-1786284189590",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4": true
-              },
-              "itemOffsets": {
-                "0": 150,
-                "1": 0
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-1.mp4": true
               }
             }
           ],
-          "rowsGap": 120,
-          "rowsGapMobile": 20
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4",
+          "textTitle": "",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "sectionGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4"
+          ],
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-3-smal.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-4.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/Gif-2.mp4": true
+          },
+          "imageCustomWidth": "67%"
         }
       ],
       "date": "2024",
@@ -2927,10 +2902,7 @@ export const defaultSiteData: CMSSiteData = {
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.1-small.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.2-Small.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/animation.3-small.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.4-small.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.5-small.gif"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.2-Small.gif"
           ],
           "rows": [
             {
@@ -2940,11 +2912,53 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.2-Small.gif"
               ],
               "itemOffsets": {
-                "1": 250
+                "1": 0
               }
-            },
+            }
+          ],
+          "rowsGap": "default",
+          "rowsGapMobile": "default",
+          "sectionGap": 20,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/animation.3-small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.5-small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.4-small.gif"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/animation.3-small.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/animation.3-small.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.4-small.gif": true
+          },
+          "sectionGapMobile": "default"
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/animation.3-small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.4-small.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.5-small.gif"
+          ],
+          "rows": [
             {
-              "id": "row-1786286476548",
+              "id": "row-1788625348262-1-koyo",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/animation.3-small.gif",
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.4-small.gif"
@@ -2955,7 +2969,7 @@ export const defaultSiteData: CMSSiteData = {
               }
             },
             {
-              "id": "row-1788268942940",
+              "id": "row-1788625348262-2-29kp",
               "images": [
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/Animation.5-small.gif"
               ],
@@ -2966,7 +2980,9 @@ export const defaultSiteData: CMSSiteData = {
             }
           ],
           "rowsGap": 250,
-          "rowsGapMobile": 20
+          "rowsGapMobile": 20,
+          "id": "sec-1788625348262-2a4j",
+          "hidden": true
         }
       ],
       "date": "2026",
@@ -3049,8 +3065,8 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true,
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-1.mp4": true
           },
-          "rowsGap": 250,
-          "rowsGapMobile": 20
+          "rowsGap": 20,
+          "rowsGapMobile": 10
         }
       ],
       "date": "2026",
@@ -3103,40 +3119,40 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "sections": [
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-2.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.2.png",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.2.png"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-2.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-1.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-2.gif": true
+          },
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-4.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-5.gif"
           ],
           "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-2.gif"
-              ],
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "70%"
-              },
-              "itemOffsets": {
-                "0": 0
-              }
-            },
-            {
-              "id": "row-1788269234577",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/Scene-Picture-.2.png",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-1.gif"
-              ],
-              "itemOffsets": {
-                "0": 150,
-                "1": 0
-              }
-            },
             {
               "id": "row-1786365006028",
               "images": [
@@ -3145,12 +3161,13 @@ export const defaultSiteData: CMSSiteData = {
               ],
               "itemOffsets": {
                 "0": 0,
-                "1": 150
+                "1": 0
               }
             }
           ],
-          "rowsGap": 150,
-          "rowsGapMobile": 20
+          "rowsGap": "default",
+          "rowsGapMobile": "default",
+          "sectionGapMobile": "default"
         }
       ],
       "date": "2026",
@@ -3201,71 +3218,31 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "sections": [
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/2-Small.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/5.gif"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/2-Small.gif"
           ],
-          "rows": [
-            {
-              "id": "row-1786366580092",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4": true
-              },
-              "itemOffsets": {
-                "1": 250
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788269617554",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4": true
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "right"
-            },
-            {
-              "id": "row-1786366602091",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/2-Small.gif"
-              ],
-              "itemOffsets": {
-                "1": 250
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788269722138",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/5.gif"
-              ],
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "right"
-            }
-          ],
-          "rowsGap": 150,
-          "rowsGapMobile": 20
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-2.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/2-Small.gif": true
+          }
         }
       ],
       "date": "2026",
@@ -3321,9 +3298,7 @@ export const defaultSiteData: CMSSiteData = {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/1.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4"
           ],
           "rows": [
             {
@@ -3336,27 +3311,40 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4": true
               },
               "itemWidths": {
-                "0": "70%"
+                "0": "100%"
               },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788269908708",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/1.jpg"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4": true
-              },
-              "itemOffsets": {
-                "0": 0,
-                "1": 150
-              }
+              "rowAlignment": "center"
             }
           ],
-          "rowsGap": 150,
-          "rowsGapMobile": 20
+          "rowsGap": "default",
+          "rowsGapMobile": "default",
+          "sectionGap": 20,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/1.jpg",
+            ""
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "50%",
+          "imageCustomWidth": "50%",
+          "stackedGap": 0,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4": true
+          }
         }
       ],
       "date": "2026",
@@ -3411,26 +3399,42 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "sections": [
         {
-          "type": "grid",
+          "type": "split_stacked",
           "label": "",
           "images": [
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-2.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-4.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-5.gif",
             "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-3.gif"
           ],
           "rows": [
             {
-              "id": "row-1",
+              "id": "row-1788626745599",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-2.gif"
-              ],
-              "itemOffsets": {
-                "1": 250
-              }
-            },
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-3.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-2.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif": true
+          },
+          "imageCustomWidth": "67%",
+          "imageWidthRatio": "67%",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-4.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-5.gif"
+          ],
+          "rows": [
             {
               "id": "row-1786540638854",
               "images": [
@@ -3438,17 +3442,12 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-5.gif"
               ],
               "singleImageColumns": 1
-            },
-            {
-              "id": "row-1786540695499",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-3.gif"
-              ],
-              "singleImageColumns": 2
             }
           ],
-          "rowsGap": 150,
-          "rowsGapMobile": 20
+          "rowsGap": "default",
+          "rowsGapMobile": "default",
+          "sectionGap": "default",
+          "sectionGapMobile": "default"
         }
       ],
       "date": "2026",
@@ -3504,17 +3503,13 @@ export const defaultSiteData: CMSSiteData = {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4"
           ],
           "rows": [
             {
               "id": "row-1",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4"
               ],
               "gifModes": {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4": true,
@@ -3525,27 +3520,40 @@ export const defaultSiteData: CMSSiteData = {
               "itemOffsets": {
                 "1": 150
               }
-            },
-            {
-              "id": "row-1786544335739",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
-              },
-              "itemOffsets": {
-                "0": 150,
-                "1": 0
-              }
             }
           ],
-          "rowsGap": 150,
-          "sectionGap": 150,
-          "rowsGapMobile": 20,
-          "sectionGapMobile": 20
+          "rowsGap": "default",
+          "sectionGap": 20,
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4": true
+          },
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
+          "sectionGapMobile": 10
         },
         {
           "type": "grid",
@@ -3563,30 +3571,11 @@ export const defaultSiteData: CMSSiteData = {
                 "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Tabsser.BS.mp4": true
               },
               "itemWidths": {
-                "0": "80%"
+                "0": "100%"
               }
             }
           ],
           "sectionGap": "default"
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/3.storyboard.png"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/3.storyboard.png"
-              ],
-              "itemWidths": {
-                "0": "80%"
-              }
-            }
-          ],
-          "hidden": true
         }
       ],
       "date": "2026",
@@ -3648,95 +3637,98 @@ export const defaultSiteData: CMSSiteData = {
           "textContent": "",
           "imagePosition": "right",
           "imageWidthRatio": "50",
-          "sectionGap": 150,
+          "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-FR.mp4"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-FR.mp4",
+            ""
           ],
           "imageYOffset": 200,
           "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
           "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
           "imageCustomWidth": "70%",
-          "sectionGapMobile": 20
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "French version",
+          "hidden": false
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "79%",
+          "imageCustomWidth": "79%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif": true
+          },
+          "sectionGapMobile": 10
         },
         {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-3.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-6.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-2.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-7.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-8.gif"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-7.gif"
           ],
           "rows": [
             {
-              "id": "row-1",
+              "id": "row-1788626164321",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-3.gif",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true
-              },
-              "itemWidths": {
-                "0": "25%",
-                "1": "25%"
-              },
-              "rowAlignment": "center",
-              "itemOffsets": {
-                "0": 0,
-                "1": 0
-              }
-            },
-            {
-              "id": "row-1788284446740",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-6.gif",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif"
-              ],
-              "itemWidths": {
-                "0": "25%",
-                "1": "25%"
-              },
-              "rowAlignment": "center",
-              "itemOffsets": {
-                "0": -120,
-                "1": -120
-              }
-            },
-            {
-              "id": "row-1786546823023",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-2.gif"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true
-              },
-              "itemOffsets": {
-                "0": 0,
-                "1": 0
-              }
-            },
-            {
-              "id": "row-1786546844933",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-7.gif",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-8.gif"
-              ],
-              "itemOffsets": {
-                "0": 0,
-                "1": 0
-              }
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-7.gif"
+              ]
             }
           ],
-          "rowsGap": 150,
-          "rowsGapMobile": 20
+          "sectionGap": 20,
+          "rowsGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-2.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-3.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-6.gif"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "79%",
+          "imageCustomWidth": "79%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-2.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif": true
+          },
+          "id": "sec-1788626197800-0p6k"
         }
       ],
       "date": "2026",
@@ -3935,8 +3927,8 @@ export const defaultSiteData: CMSSiteData = {
     }
   },
   "linkPreview": {
-    "shareImage": "https://www.youssefabaali.com/assets/images/project-1.png",
-    "shareTitle": "Youssef Abaali — Motion Graphics Designer",
+    "shareImage": "src/assets/images/uploaded_asset_1.jpg",
+    "shareTitle": "Youssef Abaali - Motion Graphics Designer",
     "shareDescription": "I'm here to help you turn your ideas into life.",
     "siteFavicon": "/favicon.svg",
     "siteUrl": "https://www.youssefabaali.com"
@@ -3966,6 +3958,7 @@ export const defaultSiteData: CMSSiteData = {
   "cmsPresets": {
     "cms_custom_rows_gaps": [],
     "cms_custom_section_spacings": [
+      20,
       100,
       250
     ],
@@ -3985,7 +3978,12 @@ export const defaultSiteData: CMSSiteData = {
       150
     ],
     "cms_custom_y_offsets": [
+      -590,
+      -565,
       150
+    ],
+    "cms_custom_section_spacings_mobile": [
+      10
     ]
   }
 };
