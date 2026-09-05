@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { CMSSiteData, ActivityLog } from "../types/cms";
+import { CMSSiteData, ActivityLog, LinkPreviewSettings } from "../types/cms";
 import { defaultSiteData } from "../defaultData";
 
 interface CMSContextType {
@@ -288,17 +288,19 @@ export function CMSProvider({ children }: { children: ReactNode }) {
     loadData();
   }, []);
 
-  // SEO Update
+  // SEO & Social OpenGraph Update
   useEffect(() => {
-    if (!data || !data.seo) return;
+    if (!data) return;
     
     const updateSEO = () => {
       const hash = window.location.hash;
-      let pageSEO = data.seo.home;
-      if (hash === "#projects") pageSEO = data.seo.projects;
-      if (hash === "#about") pageSEO = data.seo.about;
+      let pageSEO = data.seo?.home || { title: data.name, description: "", keywords: "" };
+      if (hash === "#projects" && data.seo?.projects) pageSEO = data.seo.projects;
+      if (hash === "#about" && data.seo?.about) pageSEO = data.seo.about;
 
-      document.title = pageSEO.title || data.seo.home.title;
+      if (pageSEO.title) {
+        document.title = pageSEO.title;
+      }
       
       let metaDesc = document.querySelector('meta[name="description"]');
       if (!metaDesc) {
@@ -306,7 +308,9 @@ export function CMSProvider({ children }: { children: ReactNode }) {
         metaDesc.setAttribute("name", "description");
         document.head.appendChild(metaDesc);
       }
-      metaDesc.setAttribute("content", pageSEO.description);
+      if (pageSEO.description) {
+        metaDesc.setAttribute("content", pageSEO.description);
+      }
 
       let metaKeywords = document.querySelector('meta[name="keywords"]');
       if (!metaKeywords) {
@@ -314,7 +318,45 @@ export function CMSProvider({ children }: { children: ReactNode }) {
         metaKeywords.setAttribute("name", "keywords");
         document.head.appendChild(metaKeywords);
       }
-      metaKeywords.setAttribute("content", pageSEO.keywords);
+      if (pageSEO.keywords) {
+        metaKeywords.setAttribute("content", pageSEO.keywords);
+      }
+
+      // Dynamic OpenGraph and Twitter Tags from Link Preview Settings
+      const lp: Partial<LinkPreviewSettings> = data.linkPreview || {};
+      const siteUrl = (lp.siteUrl || "https://www.youssefabaali.com").replace(/\/+$/, "");
+      const shareTitle = lp.shareTitle || pageSEO.title || data.name || "Youssef Abaali — Motion Graphics Designer";
+      const shareDesc = lp.shareDescription || pageSEO.description || "I'm here to help you turn your ideas into life.";
+      
+      let rawImg = lp.shareImage || "/assets/images/project-1.png";
+      let absoluteImg = String(rawImg).trim();
+      if (!/^https?:\/\//i.test(absoluteImg) && !absoluteImg.startsWith("data:")) {
+        const cleanPath = absoluteImg.startsWith("/") ? absoluteImg : `/${absoluteImg}`;
+        absoluteImg = `${siteUrl}${cleanPath}`;
+      }
+
+      const setMetaTag = (selector: string, attr: string, value: string, createMeta?: { prop: string; val: string }) => {
+        let el = document.querySelector(selector);
+        if (!el && createMeta) {
+          el = document.createElement("meta");
+          el.setAttribute(createMeta.prop, createMeta.val);
+          document.head.appendChild(el);
+        }
+        if (el) el.setAttribute(attr, value);
+      };
+
+      setMetaTag('meta[property="og:title"]', "content", shareTitle, { prop: "property", val: "og:title" });
+      setMetaTag('meta[name="twitter:title"]', "content", shareTitle, { prop: "name", val: "twitter:title" });
+      setMetaTag('meta[property="og:description"]', "content", shareDesc, { prop: "property", val: "og:description" });
+      setMetaTag('meta[name="twitter:description"]', "content", shareDesc, { prop: "name", val: "twitter:description" });
+      setMetaTag('meta[property="og:image"]', "content", absoluteImg, { prop: "property", val: "og:image" });
+      setMetaTag('meta[name="twitter:image"]', "content", absoluteImg, { prop: "name", val: "twitter:image" });
+      setMetaTag('meta[property="og:url"]', "content", `${siteUrl}/`, { prop: "property", val: "og:url" });
+
+      if (lp.siteFavicon) {
+        const iconEl = document.querySelector('link[rel="icon"]');
+        if (iconEl) iconEl.setAttribute("href", lp.siteFavicon);
+      }
     };
 
     window.addEventListener("hashchange", updateSEO);
@@ -430,7 +472,7 @@ export function CMSProvider({ children }: { children: ReactNode }) {
 
       if (res.ok) {
         const body = await res.json();
-        return body.url;
+        return body.fileUrl || body.url;
       }
     } catch (err) {
       console.warn("CMS: File upload API unavailable, using base64 data-URI fallback.", err);

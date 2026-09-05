@@ -3932,6 +3932,27 @@
       "keywords": "about me, creative toolbox, contact details spain, motion graphics designer email"
     }
   },
+  "linkPreview": {
+    "shareImage": "https://www.youssefabaali.com/uploads/upload-1788632973676-827894592.jpg",
+    "shareTitle": "Youssef Abaali — Motion Graphics Designer",
+    "shareDescription": "I'm here to help you turn your ideas into life.",
+    "siteFavicon": "/favicon.svg",
+    "siteUrl": "https://www.youssefabaali.com"
+  },
+  "activityLogs": [
+    {
+      "id": "log_1788632983301",
+      "timestamp": "2026-09-05T18:29:43.301Z",
+      "action": "Update Link Preview Settings",
+      "details": "Configured Share Image, Title, Description (47 chars) & Favicon"
+    },
+    {
+      "id": "log_1788632982013",
+      "timestamp": "2026-09-05T18:29:42.013Z",
+      "action": "Update Link Preview Settings",
+      "details": "Configured Share Image, Title, Description (47 chars) & Favicon"
+    }
+  ],
   "homeTitles": {
     "showreel": "",
     "featuredWork": "FEATURED WORK",
@@ -3978,12 +3999,5 @@
     "cms_custom_y_offsets": [
       150
     ]
-  },
-  "linkPreview": {
-    "shareImage": "https://www.youssefabaali.com/assets/images/project-1.png",
-    "shareTitle": "Youssef Abaali — Motion Graphics Designer",
-    "shareDescription": "I'm here to help you turn your ideas into life.",
-    "siteFavicon": "/favicon.svg",
-    "siteUrl": "https://www.youssefabaali.com"
   }
 }

@@ -95,6 +95,24 @@ function saveDbData(data: any) {
   const tempPath = `${DATA_FILE}.tmp`;
   fs.writeFileSync(tempPath, JSON.stringify(data, null, 2), "utf-8");
   fs.renameSync(tempPath, DATA_FILE);
+
+  // Synchronize index.html and dist/index.html with updated meta tags
+  try {
+    const indexPath = path.join(process.cwd(), "index.html");
+    if (fs.existsSync(indexPath)) {
+      const currentHtml = fs.readFileSync(indexPath, "utf-8");
+      const updatedHtml = injectMetaTags(currentHtml, data);
+      fs.writeFileSync(indexPath, updatedHtml, "utf-8");
+    }
+    const distIndexPath = path.join(process.cwd(), "dist", "index.html");
+    if (fs.existsSync(distIndexPath)) {
+      const currentDistHtml = fs.readFileSync(distIndexPath, "utf-8");
+      const updatedDistHtml = injectMetaTags(currentDistHtml, data);
+      fs.writeFileSync(distIndexPath, updatedDistHtml, "utf-8");
+    }
+  } catch (syncErr) {
+    console.error("Server: Error updating index.html with dynamic meta tags", syncErr);
+  }
 }
 
 // Middleware & Security Headers
@@ -212,9 +230,9 @@ app.post("/api/upload", verifyAdminAuth, upload.single("file") as any, (req, res
       return res.status(400).json({ error: "No file uploaded." });
     }
     
-    // Return relative URL to the uploaded file
+    // Return relative URL to the uploaded file (both fileUrl and url for compatibility)
     const fileUrl = `/uploads/${req.file.filename}`;
-    res.json({ success: true, fileUrl });
+    res.json({ success: true, fileUrl, url: fileUrl });
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }

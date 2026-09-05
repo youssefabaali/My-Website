@@ -11,7 +11,7 @@ import { AdminCMS } from "./components/AdminCMS";
 import { CMSErrorBoundary } from "./components/CMSErrorBoundary";
 import { StandalonePreview } from "./components/StandalonePreview";
 import { useCMS } from "./context/CMSContext";
-import { CMSSiteData } from "./types/cms";
+import { CMSSiteData, LinkPreviewSettings } from "./types/cms";
 import { toAbsoluteUrl } from "./utils/urlHelper";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
 
@@ -184,6 +184,29 @@ export default function App() {
         setCurrentView("home");
         document.title = `${activeData?.name || "Youssef Abaali"} — ${activeData?.title || "Motion Graphics Designer"}`;
       }
+
+      // Reset OpenGraph and Twitter meta tags to Link Preview settings when not on a specific project detail view
+      const lp: Partial<LinkPreviewSettings> = activeData?.linkPreview || {};
+      const siteUrl = (lp.siteUrl || "https://www.youssefabaali.com").replace(/\/+$/, "");
+      const title = lp.shareTitle || activeData?.name || "Youssef Abaali — Motion Graphics Designer";
+      const desc = lp.shareDescription || "I'm here to help you turn your ideas into life.";
+      const rawImg = lp.shareImage || "/uploads/upload-1788632973676-827894592.jpg";
+      const shareImg = toAbsoluteUrl(rawImg, siteUrl);
+
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute("content", title);
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twitterTitle) twitterTitle.setAttribute("content", title);
+
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute("content", desc);
+      const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+      if (twitterDesc) twitterDesc.setAttribute("content", desc);
+
+      const ogImg = document.querySelector('meta[property="og:image"]');
+      if (ogImg) ogImg.setAttribute("content", shareImg);
+      const twitterImg = document.querySelector('meta[name="twitter:image"]');
+      if (twitterImg) twitterImg.setAttribute("content", shareImg);
       window.scrollTo(0, 0);
     };
 
