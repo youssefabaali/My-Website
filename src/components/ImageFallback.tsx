@@ -8,12 +8,7 @@ const localAssetModules = import.meta.glob<{ default: string }>(
 );
 
 export function isYouTubeUrl(url: string): boolean {
-  if (!url) return false;
-  const clean = url.trim().toLowerCase();
-  // Exclude YouTube image CDN or direct image files
-  if (/img\.youtube\.com|i\.ytimg\.com/i.test(clean)) return false;
-  if (/\.(jpe?g|png|webp|gif|svg)(\?.*)?$/i.test(clean)) return false;
-  return /youtube\.com|youtu\.be/i.test(clean);
+  return /youtube\.com|youtu\.be/i.test(url);
 }
 
 export function getYouTubeEmbedUrl(url: string): string {
