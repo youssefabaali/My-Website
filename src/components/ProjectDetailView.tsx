@@ -12,7 +12,7 @@ interface ProjectDetailViewProps {
 export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps) {
   const { data } = useCMS();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [playingVideoMap, setPlayingVideoMap] = useState<Record<number, boolean>>({});
+  const [playingVideoMap, setPlayingVideoMap] = useState<Record<string | number, boolean>>({});
 
   // Find active project details
   const project = data.projectDetails.find((p) => p.id === projectId);
@@ -21,11 +21,16 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
     setPlayingVideoMap({});
   }, [projectId]);
 
-  // Find next project in the series for navigation
-  const currentProjectIndex = data.projectDetails.findIndex((p) => p.id === projectId);
-  const nextProject = currentProjectIndex !== -1
-    ? data.projectDetails[(currentProjectIndex + 1) % data.projectDetails.length]
+  // Find next project in the series for navigation based on allProjects order in CMS
+  const orderedProjects = (data.allProjects && data.allProjects.length > 0)
+    ? data.allProjects.filter((p) => p.isPublished !== false)
+    : data.projectDetails;
+
+  const currentProjectIndex = orderedProjects.findIndex((p) => p.id === projectId);
+  const nextProjectCandidate = currentProjectIndex !== -1 && orderedProjects.length > 1
+    ? orderedProjects[(currentProjectIndex + 1) % orderedProjects.length]
     : null;
+  const nextProject = nextProjectCandidate && nextProjectCandidate.id !== projectId ? nextProjectCandidate : null;
 
   // Header videos calculation (supports video URL, hero image cover thumbnail, or both)
   const rawHeaderVideos = (project?.headerVideos && project.headerVideos.length > 0)
@@ -954,16 +959,71 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             const globalIdx = allImages.indexOf(largeImg);
 
                             if (isPlayableVideo) {
+                              const videoKey = `sec-${secIdx}-large`;
+                              const isPlaying = Boolean(playingVideoMap[videoKey]);
+                              const embedUrl = getEmbedUrl(largeImg);
+                              const vCover = (sec.videoTemplateUrl || sec.posterImage || "").trim();
+
+                              // Auto-fallback to YouTube high-res thumbnail if no custom cover was uploaded
+                              let fallbackCover = vCover;
+                              if (!fallbackCover && isYouTubeUrl(largeImg)) {
+                                const ytMatch = largeImg.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+                                if (ytMatch && ytMatch[1]) {
+                                  fallbackCover = `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
+                                }
+                              }
+
+                              if (isPlaying) {
+                                return (
+                                  <div className="w-full aspect-video overflow-hidden bg-black relative">
+                                    {/youtube|vimeo|embed/i.test(embedUrl) ? (
+                                      <iframe
+                                        src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
+                                        className="w-full h-full border-0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                        title={sec.label || `${project.title} Video`}
+                                      />
+                                    ) : (
+                                      <video
+                                        src={embedUrl}
+                                        controls
+                                        autoPlay
+                                        className="w-full h-full object-contain"
+                                      />
+                                    )}
+                                  </div>
+                                );
+                              }
+
                               return (
-                                <div className="w-full overflow-hidden group">
-                                  <ImageFallback
-                                    src={largeImg}
-                                    poster={sec.videoTemplateUrl || sec.posterImage}
-                                    alt={sec.label || "Feature Video"}
-                                    category={project.title}
-                                    gifMode={false}
-                                    className="w-full h-auto block"
-                                  />
+                                <div
+                                  onClick={() => {
+                                    setPlayingVideoMap((prev) => ({ ...prev, [videoKey]: true }));
+                                  }}
+                                  className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
+                                >
+                                  {fallbackCover ? (
+                                    <ImageFallback
+                                      src={fallbackCover}
+                                      alt={sec.label || "Feature Video"}
+                                      category={project.title}
+                                      gifMode={false}
+                                      className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.015]"
+                                    />
+                                  ) : (
+                                    <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
+                                      <Play size={48} className="opacity-40" />
+                                    </div>
+                                  )}
+
+                                  {/* Dark overlay & Glowing Play Button exactly matching Hero Video */}
+                                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-green/90 group-hover:bg-brand-green text-brand-black flex items-center justify-center shadow-[0_0_30px_rgba(140,255,46,0.5)] transition-all duration-300 group-hover:scale-110">
+                                      <Play size={28} className="ml-1 fill-brand-black" />
+                                    </div>
+                                  </div>
                                 </div>
                               );
                             }
@@ -1001,15 +1061,67 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             const globalIdx = allImages.indexOf(imgUrl);
 
                             if (isPlayableVideo) {
+                              const sideVideoKey = `sec-${secIdx}-side-${labelSuffix}`;
+                              const isSidePlaying = Boolean(playingVideoMap[sideVideoKey]);
+                              const embedUrl = getEmbedUrl(imgUrl);
+
+                              if (isSidePlaying) {
+                                return (
+                                  <div className="w-full aspect-video overflow-hidden bg-black relative">
+                                    {/youtube|vimeo|embed/i.test(embedUrl) ? (
+                                      <iframe
+                                        src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
+                                        className="w-full h-full border-0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                        title={`${sec.label} ${labelSuffix}`}
+                                      />
+                                    ) : (
+                                      <video
+                                        src={embedUrl}
+                                        controls
+                                        autoPlay
+                                        className="w-full h-full object-contain"
+                                      />
+                                    )}
+                                  </div>
+                                );
+                              }
+
+                              let sideCover = "";
+                              if (isYouTubeUrl(imgUrl)) {
+                                const ytMatch = imgUrl.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+                                if (ytMatch && ytMatch[1]) {
+                                  sideCover = `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
+                                }
+                              }
+
                               return (
-                                <div className="w-full overflow-hidden group flex items-center justify-center">
-                                  <ImageFallback
-                                    src={imgUrl}
-                                    alt={`${sec.label} ${labelSuffix}`}
-                                    category={project.title}
-                                    gifMode={false}
-                                    className="w-full h-auto object-contain block"
-                                  />
+                                <div
+                                  onClick={() => {
+                                    setPlayingVideoMap((prev) => ({ ...prev, [sideVideoKey]: true }));
+                                  }}
+                                  className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
+                                >
+                                  {sideCover ? (
+                                    <ImageFallback
+                                      src={sideCover}
+                                      alt={`${sec.label} ${labelSuffix}`}
+                                      category={project.title}
+                                      gifMode={false}
+                                      className="w-full h-auto object-contain block transition-transform duration-700 group-hover:scale-[1.015]"
+                                    />
+                                  ) : (
+                                    <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
+                                      <Play size={36} className="opacity-40" />
+                                    </div>
+                                  )}
+                                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                    <div className="w-12 h-12 rounded-full bg-brand-green/90 group-hover:bg-brand-green text-brand-black flex items-center justify-center shadow-[0_0_20px_rgba(140,255,46,0.5)] transition-all duration-300 group-hover:scale-110">
+                                      <Play size={22} className="ml-0.5 fill-brand-black" />
+                                    </div>
+                                  </div>
                                 </div>
                               );
                             }

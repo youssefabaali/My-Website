@@ -2607,6 +2607,7 @@ function CMSGallerySectionEditor({
 }) {
   const [activeSectionTab, setActiveSectionTab] = useState<"content" | "spacing">("content");
   const [splitMediaTab, setSplitMediaTab] = useState<"source" | "template">("source");
+  const [splitStackedLargeTab, setSplitStackedLargeTab] = useState<"media" | "cover">("media");
 
   // Ensure rows array exists for grid type sections
   const rows: {
@@ -3594,42 +3595,154 @@ function CMSGallerySectionEditor({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
                 {/* 1. LARGE MAIN IMAGE */}
                 <div className="lg:col-span-6 flex flex-col gap-3 p-3 bg-neutral-900/60 border border-white/10 rounded-xl">
-                  <div className="flex items-center justify-between pb-1 border-b border-white/5">
-                    <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-                      1. Main Large Image ({currentLargeWidth}%)
-                    </span>
-                    <span className="text-[9px] text-neutral-400 font-mono">
-                      {sec.imagePosition === "right" ? "Appears on Right" : "Appears on Left"}
-                    </span>
+                  <div className="flex items-center justify-between pb-1 border-b border-white/5 flex-wrap gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                        1. Main Large Image ({currentLargeWidth}%)
+                      </span>
+                      <span className="text-[9px] text-neutral-400 font-mono hidden sm:inline">
+                        {sec.imagePosition === "right" ? "Right" : "Left"}
+                      </span>
+                    </div>
+
+                    {/* Tabs / Switcher: Main Media vs Video Cover */}
+                    <div className="flex items-center gap-1 bg-neutral-950 p-1 rounded-lg border border-white/10">
+                      <button
+                        type="button"
+                        onClick={() => setSplitStackedLargeTab("media")}
+                        className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 ${
+                          splitStackedLargeTab === "media"
+                            ? "bg-brand-green text-black shadow font-black"
+                            : "text-neutral-400 hover:text-white"
+                        }`}
+                      >
+                        <ImageIcon size={11} />
+                        <span>Media</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setSplitStackedLargeTab("cover")}
+                        className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase transition-all cursor-pointer flex items-center gap-1.5 ${
+                          splitStackedLargeTab === "cover"
+                            ? "bg-brand-green text-black shadow font-black"
+                            : Boolean(sec.videoTemplateUrl || sec.posterImage)
+                            ? "bg-brand-green/20 text-brand-green border border-brand-green/40 font-bold"
+                            : "text-neutral-400 hover:text-white"
+                        }`}
+                        title="Add custom thumbnail / poster image when large media is a video"
+                      >
+                        <Video size={11} />
+                        <span>Video Cover</span>
+                        {Boolean(sec.videoTemplateUrl || sec.posterImage) && (
+                          <span className={`w-1.5 h-1.5 rounded-full ${splitStackedLargeTab === "cover" ? "bg-black" : "bg-brand-green"}`} />
+                        )}
+                      </button>
+                    </div>
                   </div>
 
-                  <CMSImageField
-                    label="LARGE IMAGE URL / UPLOAD"
-                    value={largeImg}
-                    onChange={(val) => updateSplitImage(0, val)}
-                    gifMode={Boolean(sec.gifModes?.[largeImg])}
-                    onToggleGifMode={() => {
-                      if (largeImg) handleToggleSectionGifMode(largeImg);
-                    }}
-                    onCopy={() => {
-                      if (largeImg && onCopyImage) {
-                        onCopyImage(largeImg, "copy", sIdx, 0, 0);
-                      }
-                    }}
-                    onCut={() => {
-                      if (largeImg && onCopyImage) {
-                        onCopyImage(largeImg, "move", sIdx, 0, 0);
-                        updateSplitImage(0, "");
-                      }
-                    }}
-                    onPaste={() => {
-                      if (imageClipboard?.imgUrl) {
-                        updateSplitImage(0, imageClipboard.imgUrl);
-                      }
-                    }}
-                    imageClipboard={imageClipboard}
-                    recommendedText="Upload or paste image for the dominant large showcase"
-                  />
+                  {splitStackedLargeTab === "media" ? (
+                    <div className="flex flex-col gap-3">
+                      <CMSImageField
+                        label="LARGE IMAGE OR VIDEO URL / UPLOAD"
+                        value={largeImg}
+                        onChange={(val) => updateSplitImage(0, val)}
+                        gifMode={Boolean(sec.gifModes?.[largeImg])}
+                        onToggleGifMode={() => {
+                          if (largeImg) handleToggleSectionGifMode(largeImg);
+                        }}
+                        onCopy={() => {
+                          if (largeImg && onCopyImage) {
+                            onCopyImage(largeImg, "copy", sIdx, 0, 0);
+                          }
+                        }}
+                        onCut={() => {
+                          if (largeImg && onCopyImage) {
+                            onCopyImage(largeImg, "move", sIdx, 0, 0);
+                            updateSplitImage(0, "");
+                          }
+                        }}
+                        onPaste={() => {
+                          if (imageClipboard?.imgUrl) {
+                            updateSplitImage(0, imageClipboard.imgUrl);
+                          }
+                        }}
+                        imageClipboard={imageClipboard}
+                        recommendedText="Upload or paste image or video URL (YouTube, Vimeo, MP4) for the dominant large showcase"
+                      />
+
+                      {/* Video Quick Helper Alert when a video link is detected */}
+                      {Boolean(isVideoUrl(largeImg) || isYouTubeUrl(largeImg) || isVimeoUrl(largeImg)) && (
+                        <div className="p-2.5 bg-neutral-950/80 border border-brand-green/20 rounded-lg flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <Video size={14} className="text-brand-green shrink-0" />
+                            <span className="text-[10.5px] text-neutral-300">
+                              Video detected! {Boolean(sec.videoTemplateUrl || sec.posterImage) ? "Custom cover poster is set." : "You can assign a custom cover thumbnail."}
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => setSplitStackedLargeTab("cover")}
+                            className="text-[10px] text-brand-green font-bold uppercase underline hover:opacity-80 shrink-0 cursor-pointer"
+                          >
+                            {Boolean(sec.videoTemplateUrl || sec.posterImage) ? "Edit Cover →" : "+ Add Video Cover →"}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-3 animate-fade-in">
+                      <CMSImageField
+                        label="VIDEO COVER / POSTER IMAGE"
+                        value={sec.videoTemplateUrl || sec.posterImage || ""}
+                        onChange={(val) => onUpdateSec({ ...sec, videoTemplateUrl: val, posterImage: val })}
+                        gifMode={Boolean(sec.gifModes?.[sec.videoTemplateUrl || sec.posterImage || ""])}
+                        onToggleGifMode={() => {
+                          const currentCover = sec.videoTemplateUrl || sec.posterImage;
+                          if (currentCover) handleToggleSectionGifMode(currentCover);
+                        }}
+                        onCopy={() => {
+                          const currentCover = sec.videoTemplateUrl || sec.posterImage;
+                          if (currentCover && onCopyImage) {
+                            onCopyImage(currentCover, "copy", sIdx, 0, 0);
+                          }
+                        }}
+                        onCut={() => {
+                          const currentCover = sec.videoTemplateUrl || sec.posterImage;
+                          if (currentCover && onCopyImage) {
+                            onCopyImage(currentCover, "move", sIdx, 0, 0);
+                            onUpdateSec({ ...sec, videoTemplateUrl: "", posterImage: "" });
+                          }
+                        }}
+                        onPaste={() => {
+                          if (imageClipboard?.imgUrl) {
+                            const pasteUrl = imageClipboard.imgUrl;
+                            onUpdateSec({ ...sec, videoTemplateUrl: pasteUrl, posterImage: pasteUrl });
+                          }
+                        }}
+                        imageClipboard={imageClipboard}
+                        recommendedText="Upload or paste image URL to serve as custom thumbnail/cover poster for the video"
+                      />
+
+                      <div className="p-3 bg-neutral-950/80 border border-white/10 rounded-xl flex flex-col gap-1.5">
+                        <span className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1.5">
+                          <Sparkles size={12} />
+                          Custom Video Poster & Play Button
+                        </span>
+                        <p className="text-[10px] text-neutral-300 leading-relaxed">
+                          When you use a video (YouTube, Vimeo, or MP4) in the Main Large Image, this cover image will appear as its crisp, customized thumbnail overlaid with the glowing green play button. Clicking the button starts the video seamlessly!
+                        </p>
+                        {Boolean(sec.videoTemplateUrl || sec.posterImage) && (
+                          <button
+                            type="button"
+                            onClick={() => onUpdateSec({ ...sec, videoTemplateUrl: "", posterImage: "" })}
+                            className="self-start text-[10px] text-red-400 hover:text-red-300 font-bold underline mt-1 cursor-pointer"
+                          >
+                            Remove Video Cover
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* 2. SECONDARY STACKED COLUMN */}
@@ -4679,6 +4792,8 @@ export function AdminCMS() {
     const briefProj = data.allProjects.find((p) => p.id === id);
     const detailProj = data.projectDetails.find((p) => p.id === id);
     if (briefProj) {
+      const isCurrentlyFeatured = (data.projects || []).some((fp) => fp.id === id) || Boolean((briefProj as any)?.isFeatured);
+
       const initialCategories = briefProj.categories || detailProj?.categories || 
         (briefProj.category ? briefProj.category.split(",").map((s) => s.trim()).filter(Boolean) : ["Explainer"]);
 
@@ -4697,6 +4812,8 @@ export function AdminCMS() {
         ...briefProj,
         ...detailProj,
         categories: initialCategories,
+        isFeatured: isCurrentlyFeatured,
+        isPublished: briefProj.isPublished !== false,
         videoUrl: detailProj?.videoUrl || "",
         headerVideos: initialHeaderVideos,
         headerVideoLayout: detailProj?.headerVideoLayout || "grid",
@@ -5035,6 +5152,7 @@ export function AdminCMS() {
             hoverGif: projectEditForm.hoverGif,
             hoverVideo: projectEditForm.hoverVideo,
             isPublished: projectEditForm.isPublished,
+            isFeatured: Boolean(projectEditForm.isFeatured),
             gifModes: projectEditForm.gifModes || {},
           };
 
@@ -5199,9 +5317,20 @@ export function AdminCMS() {
         const temp = reordered[index];
         reordered[index] = reordered[targetIndex];
         reordered[targetIndex] = temp;
+
+        const reorderedDetails = [...(prev.projectDetails || [])].sort((a, b) => {
+          const idxA = reordered.findIndex((p) => p.id === a.id);
+          const idxB = reordered.findIndex((p) => p.id === b.id);
+          if (idxA === -1 && idxB === -1) return 0;
+          if (idxA === -1) return 1;
+          if (idxB === -1) return -1;
+          return idxA - idxB;
+        });
+
         return {
           ...prev,
           allProjects: reordered,
+          projectDetails: reorderedDetails,
         };
       },
       "Projects Reordered",
