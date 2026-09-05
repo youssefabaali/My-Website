@@ -80,6 +80,10 @@ export function mergeDeepData(serverData: any, defaultData: CMSSiteData): CMSSit
       projects: { ...defaultData.seo?.projects, ...(serverData.seo?.projects || {}) },
       about: { ...defaultData.seo?.about, ...(serverData.seo?.about || {}) },
     },
+    linkPreview: {
+      ...defaultData.linkPreview,
+      ...(serverData.linkPreview || {}),
+    },
     activityLogs: Array.isArray(serverData.activityLogs) ? serverData.activityLogs : defaultData.activityLogs || [],
     homeTitles: { ...defaultData.homeTitles, ...(serverData.homeTitles || {}) },
     homeVisibility: { ...defaultData.homeVisibility, ...(serverData.homeVisibility || {}) },

@@ -3978,5 +3978,12 @@
     "cms_custom_y_offsets": [
       150
     ]
+  },
+  "linkPreview": {
+    "shareImage": "https://www.youssefabaali.com/assets/images/project-1.png",
+    "shareTitle": "Youssef Abaali — Motion Graphics Designer",
+    "shareDescription": "I'm here to help you turn your ideas into life.",
+    "siteFavicon": "/favicon.svg",
+    "siteUrl": "https://www.youssefabaali.com"
   }
 }

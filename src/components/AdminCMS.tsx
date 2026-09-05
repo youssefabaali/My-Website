@@ -64,7 +64,9 @@ import {
   Lock,
   Key,
   ArrowUpRight,
+  Share2,
 } from "lucide-react";
+import { LinkPreviewCMSSection } from "./LinkPreviewCMSSection";
 import { motion, AnimatePresence } from "motion/react";
 
 function CMSImageField({
@@ -4158,6 +4160,7 @@ export function AdminCMS() {
     | "contact"
     | "nav-footer"
     | "design"
+    | "link-preview"
     | "security"
     | "media"
     | "docs"
@@ -5593,6 +5596,7 @@ export function AdminCMS() {
             { id: "contact", label: "Contact Info", icon: Mail },
             { id: "nav-footer", label: "Footer & Copyright", icon: MenuIcon },
             { id: "design", label: "Layout & Spacing", icon: Palette },
+            { id: "link-preview", label: "Link Preview Settings", icon: Share2 },
             { id: "security", label: "Security & Passcode", icon: ShieldCheck },
             { id: "media", label: "Media Library", icon: ImageIcon },
             { id: "docs", label: "Help & Guidelines", icon: BookOpen },
@@ -9232,6 +9236,25 @@ export function AdminCMS() {
                     )}
                   </div>
                 </div>
+              </motion.div>
+            )}
+
+            {/* ══════════════════════════════════════════
+                 TAB: LINK PREVIEW SETTINGS (SOCIAL SHARING)
+               ══════════════════════════════════════════ */}
+            {activeTab === "link-preview" && (
+              <motion.div
+                key="link-preview"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                <LinkPreviewCMSSection
+                  data={data}
+                  updateData={updateData}
+                  uploadFile={uploadFile}
+                  showNotification={showNotification}
+                />
               </motion.div>
             )}
 

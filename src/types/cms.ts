@@ -279,6 +279,14 @@ export interface HomeSectionVisibility {
   socials?: boolean;
 }
 
+export interface LinkPreviewSettings {
+  shareImage: string;
+  shareTitle: string;
+  shareDescription: string;
+  siteFavicon: string;
+  siteUrl?: string;
+}
+
 export interface CMSSiteData {
   name: string;
   title: string;
@@ -300,6 +308,7 @@ export interface CMSSiteData {
   aboutMe: AboutMeData;
   contact: ContactData;
   seo: SEOSettings;
+  linkPreview?: LinkPreviewSettings;
   design: CMSDesignSystem;
   settings: CMSSettings;
   activityLogs?: ActivityLog[];

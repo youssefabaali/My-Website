@@ -50,6 +50,10 @@ function getDbData() {
             allProjects: Array.isArray(parsed.allProjects) ? parsed.allProjects : defaultSiteData.allProjects || [],
             projects: Array.isArray(parsed.projects) ? parsed.projects : defaultSiteData.projects || [],
             services: Array.isArray(parsed.services) ? parsed.services : defaultSiteData.services || [],
+            linkPreview: {
+              ...defaultSiteData.linkPreview,
+              ...(parsed.linkPreview || {}),
+            },
           };
         }
       }
@@ -230,6 +234,87 @@ app.get("/api/uploads/list", (req, res) => {
 });
 
 /* ══════════════════════════════════════════
+     DYNAMIC META TAG INJECTION FOR SOCIAL SHARING
+   ══════════════════════════════════════════ */
+
+function escapeHtml(str: string): string {
+  if (!str) return "";
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function injectMetaTags(html: string, dbData: any): string {
+  const lp = dbData?.linkPreview || {};
+  const siteUrl = (lp.siteUrl || "https://www.youssefabaali.com").replace(/\/+$/, "");
+
+  const title = lp.shareTitle || dbData?.name || "Youssef Abaali — Motion Graphics Designer";
+  const desc = lp.shareDescription || "I'm here to help you turn your ideas into life.";
+  
+  // Convert image to absolute URL
+  const rawImg = lp.shareImage || "/assets/images/project-1.png";
+  let shareImg = String(rawImg).trim();
+  if (!/^https?:\/\//i.test(shareImg) && !shareImg.startsWith("data:")) {
+    const cleanPath = shareImg.startsWith("/") ? shareImg : `/${shareImg}`;
+    shareImg = `${siteUrl}${cleanPath}`;
+  }
+
+  // Favicon (supports .ico, .png, .svg)
+  const rawFavicon = lp.siteFavicon || "/favicon.svg";
+  const faviconUrl = String(rawFavicon).trim();
+
+  let transformed = html;
+
+  // Title
+  transformed = transformed.replace(/<title>.*?<\/title>/is, `<title>${escapeHtml(title)}</title>`);
+  
+  // Meta description
+  transformed = transformed.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${escapeHtml(desc)}" />`);
+
+  // Canonical
+  if (/<link\s+rel="canonical"/i.test(transformed)) {
+    transformed = transformed.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/i, `<link rel="canonical" href="${siteUrl}/" />`);
+  }
+
+  // og:url
+  if (/<meta\s+property="og:url"/i.test(transformed)) {
+    transformed = transformed.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${siteUrl}/" />`);
+  } else {
+    transformed = transformed.replace(/<meta\s+property="og:type"/i, `<meta property="og:url" content="${siteUrl}/" />\n    <meta property="og:type"`);
+  }
+
+  // og:title & twitter:title
+  transformed = transformed.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${escapeHtml(title)}" />`);
+  transformed = transformed.replace(/<meta\s+name="twitter:title"\s+content=".*?"\s*\/?>/i, `<meta name="twitter:title" content="${escapeHtml(title)}" />`);
+
+  // og:description & twitter:description
+  transformed = transformed.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${escapeHtml(desc)}" />`);
+  transformed = transformed.replace(/<meta\s+name="twitter:description"\s+content=".*?"\s*\/?>/i, `<meta name="twitter:description" content="${escapeHtml(desc)}" />`);
+
+  // og:image & twitter:image (Guaranteed absolute URL)
+  transformed = transformed.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/i, `<meta property="og:image" content="${escapeHtml(shareImg)}" />`);
+  transformed = transformed.replace(/<meta\s+name="twitter:image"\s+content=".*?"\s*\/?>/i, `<meta name="twitter:image" content="${escapeHtml(shareImg)}" />`);
+
+  // Dimensions: 1200x630
+  if (/<meta\s+property="og:image:width"/i.test(transformed)) {
+    transformed = transformed.replace(/<meta\s+property="og:image:width"\s+content=".*?"\s*\/?>/i, `<meta property="og:image:width" content="1200" />`);
+  }
+  if (/<meta\s+property="og:image:height"/i.test(transformed)) {
+    transformed = transformed.replace(/<meta\s+property="og:image:height"\s+content=".*?"\s*\/?>/i, `<meta property="og:image:height" content="630" />`);
+  }
+
+  // Favicon & Apple Touch Icon
+  const faviconType = faviconUrl.endsWith(".ico") ? "image/x-icon" : faviconUrl.endsWith(".png") ? "image/png" : "image/svg+xml";
+  transformed = transformed.replace(/<link\s+rel="icon".*?>/i, `<link rel="icon" type="${faviconType}" href="${escapeHtml(faviconUrl)}" />`);
+  transformed = transformed.replace(/<link\s+rel="apple-touch-icon".*?>/i, `<link rel="apple-touch-icon" href="${escapeHtml(faviconUrl)}" />`);
+
+  return transformed;
+}
+
+/* ══════════════════════════════════════════
      VITE MIDDLEWARE / SPA SERVING
    ══════════════════════════════════════════ */
 
@@ -240,16 +325,51 @@ async function start() {
       server: { middlewareMode: true },
       appType: "spa",
     });
-    app.use(vite.middlewares);
-    console.log("Server: Vite dev middleware loaded.");
-  } else {
-    // Production Mode: Serve Compiled Static Assets
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+
+    // Intercept HTML requests to inject dynamic open graph tags and absolute URLs
+    app.use(async (req, res, next) => {
+      const url = req.originalUrl || req.url;
+      // Skip API routes and static asset requests with file extensions
+      if (url.startsWith("/api") || url.startsWith("/uploads") || (path.extname(url) && !url.endsWith(".html"))) {
+        return next();
+      }
+
+      const accept = req.headers.accept || "";
+      if (accept.includes("text/html") || url === "/" || url.endsWith(".html")) {
+        try {
+          const indexPath = path.join(process.cwd(), "index.html");
+          let template = fs.readFileSync(indexPath, "utf-8");
+          const dbData = getDbData();
+          template = injectMetaTags(template, dbData);
+          template = await vite.transformIndexHtml(url, template);
+          return res.status(200).set({ "Content-Type": "text/html" }).end(template);
+        } catch (e: any) {
+          vite.ssrFixStacktrace(e);
+          return next(e);
+        }
+      }
+      next();
     });
-    console.log("Server: Serving static assets from dist.");
+
+    app.use(vite.middlewares);
+    console.log("Server: Vite dev middleware loaded with dynamic meta tag injection.");
+  } else {
+    // Production Mode: Serve Compiled Static Assets with Dynamic Meta Tag Injection
+    const distPath = path.join(process.cwd(), "dist");
+    app.use(express.static(distPath, { index: false }));
+    app.get("*", (req, res) => {
+      try {
+        const indexPath = path.join(distPath, "index.html");
+        let html = fs.readFileSync(indexPath, "utf-8");
+        const dbData = getDbData();
+        html = injectMetaTags(html, dbData);
+        res.setHeader("Content-Type", "text/html");
+        res.send(html);
+      } catch (err) {
+        res.sendFile(path.join(distPath, "index.html"));
+      }
+    });
+    console.log("Server: Serving static assets from dist with dynamic meta tag injection.");
   }
 
   app.listen(PORT, "0.0.0.0", () => {

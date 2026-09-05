@@ -3934,6 +3934,13 @@ export const defaultSiteData: CMSSiteData = {
       "keywords": "about me, creative toolbox, contact details spain, motion graphics designer email"
     }
   },
+  "linkPreview": {
+    "shareImage": "https://www.youssefabaali.com/assets/images/project-1.png",
+    "shareTitle": "Youssef Abaali — Motion Graphics Designer",
+    "shareDescription": "I'm here to help you turn your ideas into life.",
+    "siteFavicon": "/favicon.svg",
+    "siteUrl": "https://www.youssefabaali.com"
+  },
   "homeTitles": {
     "showreel": "",
     "featuredWork": "FEATURED WORK",

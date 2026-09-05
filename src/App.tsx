@@ -12,6 +12,7 @@ import { CMSErrorBoundary } from "./components/CMSErrorBoundary";
 import { StandalonePreview } from "./components/StandalonePreview";
 import { useCMS } from "./context/CMSContext";
 import { CMSSiteData } from "./types/cms";
+import { toAbsoluteUrl } from "./utils/urlHelper";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
 
 export default function App() {
@@ -196,6 +197,72 @@ export default function App() {
       window.removeEventListener("popstate", handleHashChange);
     };
   }, [activeData, isFramePreview]);
+
+  // Dynamic Head, Favicon & OpenGraph Tag Synchronizer
+  useEffect(() => {
+    const lp = activeData?.linkPreview;
+    if (!lp) return;
+
+    const siteUrl = lp.siteUrl || "https://www.youssefabaali.com";
+    const shareTitle = lp.shareTitle || activeData?.name || "Youssef Abaali — Motion Graphics Designer";
+    const shareDesc = lp.shareDescription || "I'm here to help you turn your ideas into life.";
+    const shareImg = toAbsoluteUrl(lp.shareImage || "/assets/images/project-1.png", siteUrl);
+    const faviconUrl = lp.siteFavicon || "/favicon.svg";
+
+    // 1. Update Favicon and Apple Touch Icon in browser tab
+    const faviconType = faviconUrl.endsWith(".ico") ? "image/x-icon" : faviconUrl.endsWith(".png") ? "image/png" : "image/svg+xml";
+    let linkIcon = document.querySelector('link[rel="icon"]') as HTMLLinkElement | null;
+    if (!linkIcon) {
+      linkIcon = document.createElement("link");
+      linkIcon.rel = "icon";
+      document.head.appendChild(linkIcon);
+    }
+    linkIcon.type = faviconType;
+    linkIcon.href = faviconUrl;
+
+    let linkAppleIcon = document.querySelector('link[rel="apple-touch-icon"]') as HTMLLinkElement | null;
+    if (!linkAppleIcon) {
+      linkAppleIcon = document.createElement("link");
+      linkAppleIcon.rel = "apple-touch-icon";
+      document.head.appendChild(linkAppleIcon);
+    }
+    linkAppleIcon.href = faviconUrl;
+
+    // 2. Canonical & og:url
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = `${siteUrl.replace(/\/+$/, "")}/`;
+
+    const setMeta = (selector: string, attr: "name" | "property", attrVal: string, content: string) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, attrVal);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+
+    setMeta('meta[property="og:url"]', "property", "og:url", `${siteUrl.replace(/\/+$/, "")}/`);
+    setMeta('meta[property="og:image"]', "property", "og:image", shareImg);
+    setMeta('meta[name="twitter:image"]', "name", "twitter:image", shareImg);
+    setMeta('meta[property="og:image:width"]', "property", "og:image:width", "1200");
+    setMeta('meta[property="og:image:height"]', "property", "og:image:height", "630");
+
+    // Only update titles and descriptions if on home view (project views have their own project titles)
+    if (currentView === "home") {
+      document.title = shareTitle;
+      setMeta('meta[name="description"]', "name", "description", shareDesc);
+      setMeta('meta[property="og:title"]', "property", "og:title", shareTitle);
+      setMeta('meta[name="twitter:title"]', "name", "twitter:title", shareTitle);
+      setMeta('meta[property="og:description"]', "property", "og:description", shareDesc);
+      setMeta('meta[name="twitter:description"]', "name", "twitter:description", shareDesc);
+    }
+  }, [activeData?.linkPreview, activeData?.name, currentView]);
 
   // Update URL hash when state is triggered programmatically
   const handleNavigation = (view: "home" | "projects" | "about") => {
