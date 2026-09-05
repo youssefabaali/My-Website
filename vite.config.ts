@@ -47,7 +47,7 @@ function dynamicMetaTagsPlugin() {
       const title = lp.shareTitle || dbData?.name || 'Youssef Abaali — Motion Graphics Designer';
       const desc = lp.shareDescription || "I'm here to help you turn your ideas into life.";
       
-      const rawImg = lp.shareImage || '/assets/images/MyPicture.jpg';
+      const rawImg = lp.shareImage || '/assets/images/link-share-preview.jpg';
       let shareImg = String(rawImg).trim();
       if (!/^https?:\/\//i.test(shareImg) && !shareImg.startsWith('data:')) {
         const cleanPath = shareImg.startsWith('/') ? shareImg : `/${shareImg}`;

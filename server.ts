@@ -273,7 +273,7 @@ function injectMetaTags(html: string, dbData: any): string {
   const desc = lp.shareDescription || "I'm here to help you turn your ideas into life.";
   
   // Convert image to absolute URL
-  const rawImg = lp.shareImage || "/assets/images/MyPicture.jpg";
+  const rawImg = lp.shareImage || "/assets/images/link-share-preview.jpg";
   let shareImg = String(rawImg).trim();
   if (!/^https?:\/\//i.test(shareImg) && !shareImg.startsWith("data:")) {
     const cleanPath = shareImg.startsWith("/") ? shareImg : `/${shareImg}`;

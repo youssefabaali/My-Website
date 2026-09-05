@@ -190,7 +190,7 @@ export default function App() {
       const siteUrl = (lp.siteUrl || "https://www.youssefabaali.com").replace(/\/+$/, "");
       const title = lp.shareTitle || activeData?.name || "Youssef Abaali — Motion Graphics Designer";
       const desc = lp.shareDescription || "I'm here to help you turn your ideas into life.";
-      const rawImg = lp.shareImage || "/assets/images/MyPicture.jpg";
+      const rawImg = lp.shareImage || "/assets/images/link-share-preview.jpg";
       const shareImg = toAbsoluteUrl(rawImg, siteUrl);
 
       const ogTitle = document.querySelector('meta[property="og:title"]');

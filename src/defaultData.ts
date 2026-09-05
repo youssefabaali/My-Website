@@ -3927,7 +3927,7 @@ export const defaultSiteData: CMSSiteData = {
     }
   },
   "linkPreview": {
-    "shareImage": "https://www.youssefabaali.com/assets/images/MyPicture.jpg",
+    "shareImage": "https://www.youssefabaali.com/assets/images/link-share-preview.jpg",
     "shareTitle": "Youssef Abaali — Motion Graphics Designer",
     "shareDescription": "I'm here to help you turn your ideas into life.",
     "siteFavicon": "/favicon.svg",
