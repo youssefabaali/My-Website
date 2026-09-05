@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useCMS } from "../context/CMSContext";
 import { ArrowRight, X, ChevronLeft, Play } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { ImageFallback, isVideoUrl, isYouTubeUrl, isVimeoUrl } from "./ImageFallback";
+import { ImageFallback, isVideoUrl, isYouTubeUrl, isVimeoUrl, fixAssetUrl } from "./ImageFallback";
 
 interface ProjectDetailViewProps {
   projectId: number;
@@ -1001,18 +1001,22 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                   onClick={() => {
                                     setPlayingVideoMap((prev) => ({ ...prev, [videoKey]: true }));
                                   }}
-                                  className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
+                                  className="w-full aspect-video relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
                                 >
                                   {fallbackCover ? (
-                                    <ImageFallback
-                                      src={fallbackCover}
+                                    <img
+                                      src={fixAssetUrl(fallbackCover)}
                                       alt={sec.label || "Feature Video"}
-                                      category={project.title}
-                                      gifMode={false}
-                                      className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.015]"
+                                      className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-[1.015]"
+                                      onError={(e) => {
+                                        const target = e.currentTarget as HTMLImageElement;
+                                        if (target.src.includes("maxresdefault.jpg")) {
+                                          target.src = target.src.replace("maxresdefault.jpg", "hqdefault.jpg");
+                                        }
+                                      }}
                                     />
                                   ) : (
-                                    <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
+                                    <div className="w-full h-full flex items-center justify-center bg-neutral-950 text-neutral-600">
                                       <Play size={48} className="opacity-40" />
                                     </div>
                                   )}
@@ -1101,18 +1105,22 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                   onClick={() => {
                                     setPlayingVideoMap((prev) => ({ ...prev, [sideVideoKey]: true }));
                                   }}
-                                  className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
+                                  className="w-full aspect-video relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
                                 >
                                   {sideCover ? (
-                                    <ImageFallback
-                                      src={sideCover}
+                                    <img
+                                      src={fixAssetUrl(sideCover)}
                                       alt={`${sec.label} ${labelSuffix}`}
-                                      category={project.title}
-                                      gifMode={false}
-                                      className="w-full h-auto object-contain block transition-transform duration-700 group-hover:scale-[1.015]"
+                                      className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-[1.015]"
+                                      onError={(e) => {
+                                        const target = e.currentTarget as HTMLImageElement;
+                                        if (target.src.includes("maxresdefault.jpg")) {
+                                          target.src = target.src.replace("maxresdefault.jpg", "hqdefault.jpg");
+                                        }
+                                      }}
                                     />
                                   ) : (
-                                    <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
+                                    <div className="w-full h-full flex items-center justify-center bg-neutral-950 text-neutral-600">
                                       <Play size={36} className="opacity-40" />
                                     </div>
                                   )}
