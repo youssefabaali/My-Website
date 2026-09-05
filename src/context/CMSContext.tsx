@@ -328,7 +328,7 @@ export function CMSProvider({ children }: { children: ReactNode }) {
       const shareTitle = lp.shareTitle || pageSEO.title || data.name || "Youssef Abaali — Motion Graphics Designer";
       const shareDesc = lp.shareDescription || pageSEO.description || "I'm here to help you turn your ideas into life.";
       
-      let rawImg = lp.shareImage || "/assets/images/project-1.png";
+      let rawImg = lp.shareImage || "/assets/images/MyPicture.jpg";
       let absoluteImg = String(rawImg).trim();
       if (!/^https?:\/\//i.test(absoluteImg) && !absoluteImg.startsWith("data:")) {
         const cleanPath = absoluteImg.startsWith("/") ? absoluteImg : `/${absoluteImg}`;
