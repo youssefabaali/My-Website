@@ -765,7 +765,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                   const splitSecClass = `cms-split-img-${secIdx}`;
 
                   return (
-                    <div className="flex flex-col sm:flex-row justify-between items-center py-2 w-full gap-y-8 sm:gap-y-0">
+                    <div className="flex flex-col sm:flex-row justify-between items-start py-2 w-full gap-y-8 sm:gap-y-0">
                       <style>{`
                         .${splitSecClass} {
                           transform: none !important;
@@ -793,15 +793,15 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                       {/* Text Column - on mobile: order-1 (ALWAYS on top/first), on tablet/desktop (sm+): follows imagePosition */}
                       <div
-                        className={`w-full flex flex-col gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "sm:order-1" : "sm:order-2"}`}
+                        className={`w-full flex flex-col gap-3 sm:gap-3 lg:gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "sm:order-1" : "sm:order-2"}`}
                       >
                         {sec.textTitle && (
-                          <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
+                          <h3 className="font-bebas text-xl sm:text-[19px] lg:text-3xl tracking-wider lg:tracking-widest text-white uppercase leading-snug sm:leading-tight lg:leading-tight">
                             {sec.textTitle}
                           </h3>
                         )}
                         {sec.textContent && (
-                          <p className="font-sans text-sm md:text-base tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
+                          <p className="font-sans text-xs sm:text-[13px] lg:text-base tracking-wider lg:tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
                             {sec.textContent}
                           </p>
                         )}
@@ -1122,14 +1122,14 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             : "text-left items-start";
 
                           return (
-                            <div className={`w-full flex flex-col justify-center gap-3 py-2 ${alignClass}`}>
+                            <div className={`w-full flex flex-col justify-start gap-2 sm:gap-2.5 lg:gap-3 py-1 sm:py-0 ${alignClass}`}>
                               {sec.stackedTitle && (
-                                <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
+                                <h3 className="font-bebas text-xl sm:text-[19px] lg:text-3xl tracking-wider lg:tracking-widest text-white uppercase leading-snug sm:leading-tight lg:leading-tight">
                                   {sec.stackedTitle}
                                 </h3>
                               )}
                               {sec.stackedText && (
-                                <p className="font-sans text-sm md:text-base tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
+                                <p className="font-sans text-xs sm:text-[13px] lg:text-base tracking-wider lg:tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
                                   {sec.stackedText}
                                 </p>
                               )}
@@ -1178,13 +1178,13 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                             {/* 2. TABLET & DESKTOP VIEW (sm+ / >= 640px): Side-by-Side Fluid Layout (Giant Ant style) */}
                             <div
-                              className={`hidden sm:flex items-stretch w-full gap-4 sm:gap-6 lg:gap-6 ${
+                              className={`hidden sm:flex items-start w-full gap-4 sm:gap-6 lg:gap-6 ${
                                 isLargeOnLeft ? "sm:flex-row" : "sm:flex-row-reverse"
                               }`}
                             >
                               {/* LARGE MAIN IMAGE */}
                               <div
-                                className={`w-full cms-stacked-large-col-${secIdx} ${splitSecClass} flex items-center justify-center`}
+                                className={`w-full cms-stacked-large-col-${secIdx} ${splitSecClass} flex items-start justify-center`}
                               >
                                 {renderLargeMedia()}
                               </div>
@@ -1197,13 +1197,13 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 {isImageTextMode ? (
                                   isTextTop ? (
                                     <>
-                                      <div className="flex-1 w-full flex items-center justify-center">{renderTextBlock()}</div>
-                                      <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
+                                      <div className="w-full flex flex-col justify-start items-start">{renderTextBlock()}</div>
+                                      <div className="w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
                                     </>
                                   ) : (
                                     <>
-                                      <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
-                                      <div className="flex-1 w-full flex items-center justify-center">{renderTextBlock()}</div>
+                                      <div className="w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
+                                      <div className="w-full flex flex-col justify-end items-start">{renderTextBlock()}</div>
                                     </>
                                   )
                                 ) : (
