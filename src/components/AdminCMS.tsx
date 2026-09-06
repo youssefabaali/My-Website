@@ -6355,17 +6355,60 @@ export function AdminCMS() {
                       <div className="p-5 flex flex-col gap-4 bg-neutral-950/40">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <CMSImageField
-                            label="HERO GRAPHIC PATH (Desktop SVG/PNG)"
+                            label="HERO GRAPHIC PATH (Desktop Video / GIF / Image)"
                             value={data.heroImage || ""}
                             onChange={(val) => updateData((prev) => ({ ...prev, heroImage: val }), "Hero Image Edit", `Updated hero image path to ${val}`)}
-                            recommendedText="Recommended: Widescreen vector SVG or high-res PNG transparency"
+                            gifMode={data.heroGifMode ?? true}
+                            onToggleGifMode={() => updateData((prev) => ({ ...prev, heroGifMode: !(prev.heroGifMode ?? true) }), "Hero GIF Mode Toggle", `Toggled hero desktop GIF mode`)}
+                            onCopy={() => handleCopyMediaToClipboard(data.heroImage || "", "copy", data.heroGifMode ?? true)}
+                            onCut={() => {
+                              handleCopyMediaToClipboard(data.heroImage || "", "move", data.heroGifMode ?? true);
+                              updateData((prev) => ({ ...prev, heroImage: "" }), "Hero Image Cut", "Cut hero image");
+                            }}
+                            onPaste={() => {
+                              if (imageClipboard?.imgUrl) {
+                                updateData((prev) => ({
+                                  ...prev,
+                                  heroImage: imageClipboard.imgUrl,
+                                  heroGifMode: imageClipboard.gifMode !== undefined ? imageClipboard.gifMode : prev.heroGifMode,
+                                }), "Hero Image Paste", "Pasted hero image");
+                                if (imageClipboard.mode === "move") setImageClipboard(null);
+                              }
+                            }}
+                            imageClipboard={imageClipboard}
+                            recommendedText="Recommended: Video (MP4/WebM) as GIF, animated GIF, or SVG/PNG"
                           />
                           <CMSImageField
-                            label="HERO MOBILE GRAPHIC PATH (Mobile PNG)"
+                            label="HERO MOBILE GRAPHIC PATH (Mobile Video / GIF / Image)"
                             value={data.heroImageMobile || ""}
                             onChange={(val) => updateData((prev) => ({ ...prev, heroImageMobile: val }), "Hero Mobile Edit", `Updated hero mobile graphic path to ${val}`)}
-                            recommendedText="Recommended: Portrait/mobile ratio PNG graphic"
+                            gifMode={data.heroMobileGifMode ?? true}
+                            onToggleGifMode={() => updateData((prev) => ({ ...prev, heroMobileGifMode: !(prev.heroMobileGifMode ?? true) }), "Hero Mobile GIF Mode Toggle", `Toggled hero mobile GIF mode`)}
+                            onCopy={() => handleCopyMediaToClipboard(data.heroImageMobile || "", "copy", data.heroMobileGifMode ?? true)}
+                            onCut={() => {
+                              handleCopyMediaToClipboard(data.heroImageMobile || "", "move", data.heroMobileGifMode ?? true);
+                              updateData((prev) => ({ ...prev, heroImageMobile: "" }), "Hero Mobile Cut", "Cut hero mobile graphic");
+                            }}
+                            onPaste={() => {
+                              if (imageClipboard?.imgUrl) {
+                                updateData((prev) => ({
+                                  ...prev,
+                                  heroImageMobile: imageClipboard.imgUrl,
+                                  heroMobileGifMode: imageClipboard.gifMode !== undefined ? imageClipboard.gifMode : prev.heroMobileGifMode,
+                                }), "Hero Mobile Paste", "Pasted hero mobile graphic");
+                                if (imageClipboard.mode === "move") setImageClipboard(null);
+                              }
+                            }}
+                            imageClipboard={imageClipboard}
+                            recommendedText="Recommended: Mobile portrait video (MP4/WebM), GIF, or PNG"
                           />
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-neutral-900/60 border border-white/5 flex items-center gap-2 text-[10px] text-neutral-400">
+                          <span className="text-brand-green font-bold">💡 نصيحة:</span>
+                          <span>
+                            يمكنك إدراج فيديو (MP4/WebM) أو ملف GIF أو صورة SVG/PNG لكل من الديسكتوب والموبايل.
+                            تفعيل <strong className="text-brand-green">GIF MODE: ON</strong> يشغل الفيديو تلقائياً وبشكل صامت ومتكرر كـ GIF بدون أزرار، بينما <strong className="text-white">GIF MODE: OFF</strong> يعرض مشغل الفيديو التفاعلي.
+                          </span>
                         </div>
                       </div>
                     )}

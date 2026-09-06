@@ -296,6 +296,8 @@ export interface CMSSiteData {
   tagline: string;
   heroImage: string;
   heroImageMobile?: string;
+  heroGifMode?: boolean;
+  heroMobileGifMode?: boolean;
   myInfo?: string;
   myInfoMobile?: string;
   email: string;

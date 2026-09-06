@@ -173,19 +173,43 @@ export function HomeView({
               variants={itemVariants}
               className="w-full flex items-center justify-center overflow-visible"
             >
-              <picture className="w-full flex justify-center">
-                {data.heroImageMobile && (
-                  <source media="(max-width: 640px)" srcSet={fixAssetUrl(data.heroImageMobile)} />
-                )}
-                <img
-                  src={fixAssetUrl(data.heroImage)}
-                  alt="Youssef Abaali - Motion Graphics"
-                  loading="eager"
-                  decoding="sync"
-                  className="w-full h-auto object-contain mx-auto select-none transition-transform duration-300"
-                  referrerPolicy="no-referrer"
-                />
-              </picture>
+              {data.heroImageMobile ? (
+                <>
+                  {/* Mobile Screen (<640px) */}
+                  <div className="w-full flex justify-center sm:hidden">
+                    <ImageFallback
+                      src={data.heroImageMobile}
+                      alt="Youssef Abaali - Motion Graphics"
+                      gifMode={data.heroMobileGifMode ?? true}
+                      loading="eager"
+                      decoding="sync"
+                      className="w-full h-auto object-contain mx-auto select-none transition-transform duration-300"
+                    />
+                  </div>
+                  {/* Tablet & Desktop Screens (>=640px) */}
+                  <div className="w-full hidden sm:flex justify-center">
+                    <ImageFallback
+                      src={data.heroImage}
+                      alt="Youssef Abaali - Motion Graphics"
+                      gifMode={data.heroGifMode ?? true}
+                      loading="eager"
+                      decoding="sync"
+                      className="w-full h-auto object-contain mx-auto select-none transition-transform duration-300"
+                    />
+                  </div>
+                </>
+              ) : (
+                <div className="w-full flex justify-center">
+                  <ImageFallback
+                    src={data.heroImage}
+                    alt="Youssef Abaali - Motion Graphics"
+                    gifMode={data.heroGifMode ?? true}
+                    loading="eager"
+                    decoding="sync"
+                    className="w-full h-auto object-contain mx-auto select-none transition-transform duration-300"
+                  />
+                </div>
+              )}
             </motion.div>
           </div>
         </section>

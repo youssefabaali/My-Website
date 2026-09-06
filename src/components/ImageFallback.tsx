@@ -236,6 +236,7 @@ export function ImageFallback({
     if (gifMode) {
       const customFit = className?.includes("object-") ? "" : "object-cover";
       const customSize = className?.includes("h-") || className?.includes("aspect-") ? "" : "aspect-video";
+      const customHeight = className?.includes("h-") ? "" : "h-full";
       return (
         <video
           src={resolvedSrc}
@@ -245,7 +246,7 @@ export function ImageFallback({
           muted
           playsInline
           preload="auto"
-          className={`w-full h-full ${customSize} ${customFit} pointer-events-none select-none ${className}`}
+          className={`w-full ${customHeight} ${customSize} ${customFit} pointer-events-none select-none ${className}`}
         />
       );
     }

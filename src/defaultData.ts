@@ -9,6 +9,8 @@ export const defaultSiteData: CMSSiteData = {
   "myInfoMobile": "src/assets/images/myInfo-Mobile.png",
   "heroImage": "src/assets/images/HeroImage.svg",
   "heroImageMobile": "src/assets/images/HeroImage-Mobile.png",
+  "heroGifMode": true,
+  "heroMobileGifMode": true,
   "settings": {
     "passcode": "admin"
   },
