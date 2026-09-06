@@ -16,6 +16,8 @@ import {
   Sparkles,
   Loader2,
   Trash2,
+  Download,
+  Copy,
 } from "lucide-react";
 
 interface LinkPreviewCMSSectionProps {
@@ -50,26 +52,52 @@ export function LinkPreviewCMSSection({
   const [previewTab, setPreviewTab] = useState<"linkedin" | "whatsapp" | "browser">("linkedin");
   const [imageDimensions, setImageDimensions] = useState<{ width: number; height: number } | null>(null);
 
+  // Local pending file tracking for automatic browser download on Save
+  const [pendingDownload, setPendingDownload] = useState<{
+    file: File;
+    filename: string;
+    previewUrl: string;
+  } | null>(null);
+  const [lastSavedFilename, setLastSavedFilename] = useState<string | null>(null);
+  const [copiedPath, setCopiedPath] = useState(false);
+
   const imageInputRef = useRef<HTMLInputElement>(null);
   const faviconInputRef = useRef<HTMLInputElement>(null);
 
+  // Helper to trigger direct browser download
+  const triggerBrowserDownload = (file: File, filename: string) => {
+    try {
+      const url = URL.createObjectURL(file);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    } catch (err) {
+      console.error("Failed to trigger browser download:", err);
+    }
+  };
+
   // Measure image dimensions whenever shareImage changes
   useEffect(() => {
-    if (!form.shareImage) {
+    const srcToMeasure = pendingDownload?.previewUrl || form.shareImage;
+    if (!srcToMeasure) {
       setImageDimensions(null);
       return;
     }
     const img = new Image();
-    img.src = form.shareImage;
+    img.src = srcToMeasure;
     img.onload = () => {
       setImageDimensions({ width: img.naturalWidth, height: img.naturalHeight });
     };
     img.onerror = () => {
       setImageDimensions(null);
     };
-  }, [form.shareImage]);
+  }, [form.shareImage, pendingDownload]);
 
-  // Handle Share Image upload
+  // Handle Share Image selection
   const handleImageFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -81,39 +109,46 @@ export function LinkPreviewCMSSection({
 
     try {
       setUploadingImage(true);
-      
-      // Attempt upload via dedicated share-image endpoint which saves directly to src/assets/images
-      // and assigns a unique timestamped file name to permanently prevent social media caching
-      const token = localStorage.getItem("cms_auth_token") || "admin-session-granted";
-      const formData = new FormData();
-      formData.append("file", file);
 
-      let finalUrl = "";
+      // 1. Generate unique cache-buster filename matching project asset conventions
+      const originalExt = file.name.split(".").pop()?.toLowerCase() || "jpg";
+      const validExt = ["jpg", "jpeg", "png", "webp", "gif", "svg"].includes(originalExt) ? originalExt : "jpg";
+      const uniqueFilename = `link-share-preview-${Date.now()}.${validExt}`;
+
+      // 2. Generate absolute URL pointing to static assets path
+      const siteUrl = (form.siteUrl || DEFAULT_SITE_URL).replace(/\/+$/, "");
+      const generatedAbsoluteUrl = `${siteUrl}/assets/images/${uniqueFilename}`;
+
+      // 3. Create local object URL for instant zero-latency visual preview
+      const localPreviewUrl = URL.createObjectURL(file);
+
+      // Store pending file for browser download when user clicks Save
+      setPendingDownload({
+        file,
+        filename: uniqueFilename,
+        previewUrl: localPreviewUrl,
+      });
+
+      // Update the form URL so it persists into data.json and index.html
+      setForm((prev) => ({ ...prev, shareImage: generatedAbsoluteUrl }));
+
+      // 4. Also upload to dev server in background if server API is active
       try {
-        const res = await fetch("/api/upload-share-image", {
+        const token = localStorage.getItem("cms_auth_token") || "admin-session-granted";
+        const formData = new FormData();
+        formData.append("file", file);
+        await fetch("/api/upload-share-image", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
           },
           body: formData,
         });
-
-        if (res.ok) {
-          const resData = await res.json();
-          finalUrl = resData.absoluteUrl || resData.fileUrl || resData.url;
-        }
       } catch (uploadEndpointErr) {
-        console.warn("Dedicated share image upload endpoint failed, falling back to standard uploadFile", uploadEndpointErr);
+        // Safe to ignore if running on static host
       }
 
-      // Fallback if dedicated endpoint wasn't reached
-      if (!finalUrl) {
-        const fallbackRelative = await uploadFile(file);
-        finalUrl = toAbsoluteUrl(fallbackRelative, form.siteUrl);
-      }
-
-      setForm((prev) => ({ ...prev, shareImage: finalUrl }));
-      showNotification("Share image uploaded with unique cache-buster URL! Click 'SAVE SETTINGS' to apply.");
+      showNotification(`Image selected as ${uniqueFilename}! Click 'SAVE SETTINGS' to apply & download.`);
     } catch (err: any) {
       showNotification(`Upload failed: ${err.message || "Unknown error"}`, "error");
     } finally {
@@ -174,7 +209,17 @@ export function LinkPreviewCMSSection({
       );
 
       if (success) {
-        showNotification("Link Preview & Social Sharing settings saved successfully!");
+        // If a new image was uploaded, trigger automatic browser download with the matching filename
+        if (pendingDownload) {
+          triggerBrowserDownload(pendingDownload.file, pendingDownload.filename);
+          setLastSavedFilename(pendingDownload.filename);
+          // Show user-requested instruction message in English
+          showNotification(
+            `Settings saved! Your image was downloaded as ${pendingDownload.filename}. Just place this file into src/assets/images/ and push to GitHub.`
+          );
+        } else {
+          showNotification("Link Preview & Social Sharing settings saved successfully!");
+        }
       } else {
         showNotification("Failed to save settings. Please check passcode.", "error");
       }
@@ -187,6 +232,8 @@ export function LinkPreviewCMSSection({
 
   // Reset to defaults
   const handleResetDefaults = () => {
+    setPendingDownload(null);
+    setLastSavedFilename(null);
     setForm({
       shareImage: "https://www.youssefabaali.com/assets/images/project-1.png",
       shareTitle: "Youssef Abaali — Motion Graphics Designer",
@@ -339,6 +386,52 @@ export function LinkPreviewCMSSection({
                 <p className="text-[11px] text-neutral-500">
                   Uploaded files automatically get a full absolute URL (<code className="text-brand-green/80">https://www.youssefabaali.com/...</code>).
                 </p>
+
+                {pendingDownload && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      triggerBrowserDownload(pendingDownload.file, pendingDownload.filename);
+                      setLastSavedFilename(pendingDownload.filename);
+                      showNotification(
+                        `Downloaded ${pendingDownload.filename}! Place it into src/assets/images/ and push to GitHub.`
+                      );
+                    }}
+                    className="flex items-center justify-center gap-2 py-2 px-3.5 rounded-xl bg-brand-green/15 hover:bg-brand-green/25 text-brand-green text-xs font-semibold tracking-wider transition-colors cursor-pointer border border-brand-green/30"
+                    title="Download this image directly to your device"
+                  >
+                    <Download size={14} />
+                    Download for GitHub ({pendingDownload.filename})
+                  </button>
+                )}
+
+                {(pendingDownload || lastSavedFilename) && (
+                  <div className="p-3 rounded-xl bg-brand-green/10 border border-brand-green/25 flex flex-col gap-1.5">
+                    <div className="flex items-center justify-between text-xs text-brand-green font-medium">
+                      <span className="flex items-center gap-1.5">
+                        <Download size={13} />
+                        GitHub Deployment Guide
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const targetFile = pendingDownload?.filename || lastSavedFilename || "";
+                          const fullPath = `src/assets/images/${targetFile}`;
+                          navigator.clipboard.writeText(fullPath);
+                          setCopiedPath(true);
+                          setTimeout(() => setCopiedPath(false), 2000);
+                        }}
+                        className="flex items-center gap-1 text-[11px] text-neutral-300 hover:text-white cursor-pointer bg-white/5 hover:bg-white/10 px-2 py-0.5 rounded transition-colors"
+                      >
+                        <Copy size={11} />
+                        {copiedPath ? "Copied Path!" : "Copy Path"}
+                      </button>
+                    </div>
+                    <p className="text-[11px] text-neutral-300 leading-relaxed">
+                      Place <code className="text-white font-bold bg-black/40 px-1 py-0.5 rounded">{pendingDownload?.filename || lastSavedFilename}</code> into <code className="text-brand-green font-bold bg-black/40 px-1 py-0.5 rounded">src/assets/images/</code> and push to GitHub.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
 
