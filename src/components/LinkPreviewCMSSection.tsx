@@ -61,6 +61,15 @@ export function LinkPreviewCMSSection({
   const [lastSavedFilename, setLastSavedFilename] = useState<string | null>(null);
   const [copiedPath, setCopiedPath] = useState(false);
 
+  // Favicon pending tracking for automatic download to src/assets/Icons/
+  const [pendingFaviconDownload, setPendingFaviconDownload] = useState<{
+    file: File;
+    filename: string;
+    previewUrl: string;
+  } | null>(null);
+  const [lastSavedFaviconFilename, setLastSavedFaviconFilename] = useState<string | null>(null);
+  const [copiedFaviconPath, setCopiedFaviconPath] = useState(false);
+
   const imageInputRef = useRef<HTMLInputElement>(null);
   const faviconInputRef = useRef<HTMLInputElement>(null);
 
@@ -157,25 +166,32 @@ export function LinkPreviewCMSSection({
     }
   };
 
-  // Handle Favicon upload (accepts .ico, .png, .svg)
+  // Handle Favicon upload (accepts .ico, .png, .svg, .webp)
   const handleFaviconFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const validExts = [".ico", ".png", ".svg", ".webp"];
-    const hasValidExt = validExts.some((ext) => file.name.toLowerCase().endsWith(ext));
-    if (!hasValidExt && !file.type.includes("icon") && !file.type.includes("image")) {
-      showNotification("Favicon must be a .ico, .png, or .svg file", "error");
-      return;
-    }
+    const validExts = ["ico", "png", "svg", "webp", "jpg", "jpeg"];
+    const originalExt = file.name.split(".").pop()?.toLowerCase() || "png";
+    const validExt = validExts.includes(originalExt) ? originalExt : "png";
 
     try {
       setUploadingFavicon(true);
-      const uploadedUrl = await uploadFile(file);
-      setForm((prev) => ({ ...prev, siteFavicon: uploadedUrl }));
-      showNotification("Favicon uploaded successfully!");
+
+      const uniqueFilename = `site-favicon-${Date.now()}.${validExt}`;
+      const generatedPath = `src/assets/Icons/${uniqueFilename}`;
+      const localPreviewUrl = URL.createObjectURL(file);
+
+      setPendingFaviconDownload({
+        file,
+        filename: uniqueFilename,
+        previewUrl: localPreviewUrl,
+      });
+
+      setForm((prev) => ({ ...prev, siteFavicon: generatedPath }));
+      showNotification(`Favicon selected as ${uniqueFilename}! Click 'SAVE SETTINGS' to download & apply.`);
     } catch (err: any) {
-      showNotification(`Favicon upload failed: ${err.message || "Unknown error"}`, "error");
+      showNotification(`Favicon selection failed: ${err.message || "Unknown error"}`, "error");
     } finally {
       setUploadingFavicon(false);
       if (faviconInputRef.current) faviconInputRef.current.value = "";
@@ -209,13 +225,25 @@ export function LinkPreviewCMSSection({
       );
 
       if (success) {
-        // If a new image was uploaded, trigger automatic browser download with the matching filename
+        let downloadNotes: string[] = [];
+
+        // If a new image was uploaded, trigger automatic browser download with matching filename
         if (pendingDownload) {
           triggerBrowserDownload(pendingDownload.file, pendingDownload.filename);
           setLastSavedFilename(pendingDownload.filename);
-          // Show user-requested instruction message in English
+          downloadNotes.push(`image as ${pendingDownload.filename} (place into src/assets/images/)`);
+        }
+
+        // If a new favicon was uploaded, trigger automatic browser download with matching filename
+        if (pendingFaviconDownload) {
+          triggerBrowserDownload(pendingFaviconDownload.file, pendingFaviconDownload.filename);
+          setLastSavedFaviconFilename(pendingFaviconDownload.filename);
+          downloadNotes.push(`favicon as ${pendingFaviconDownload.filename} (place into src/assets/Icons/)`);
+        }
+
+        if (downloadNotes.length > 0) {
           showNotification(
-            `Settings saved! Your image was downloaded as ${pendingDownload.filename}. Just place this file into src/assets/images/ and push to GitHub.`
+            `Settings saved & downloaded: ${downloadNotes.join(" and ")}. Then push with defaultData.ts to GitHub.`
           );
         } else {
           showNotification("Link Preview & Social Sharing settings saved successfully!");
@@ -234,6 +262,8 @@ export function LinkPreviewCMSSection({
   const handleResetDefaults = () => {
     setPendingDownload(null);
     setLastSavedFilename(null);
+    setPendingFaviconDownload(null);
+    setLastSavedFaviconFilename(null);
     setForm({
       shareImage: "https://www.youssefabaali.com/assets/images/project-1.png",
       shareTitle: "Youssef Abaali — Motion Graphics Designer",
@@ -540,7 +570,7 @@ export function LinkPreviewCMSSection({
               <div className="w-14 h-14 rounded-xl bg-neutral-950 border border-white/10 flex items-center justify-center p-2 shrink-0">
                 {form.siteFavicon ? (
                   <img
-                    src={form.siteFavicon}
+                    src={pendingFaviconDownload?.previewUrl || form.siteFavicon}
                     alt="Favicon preview"
                     className="w-full h-full object-contain"
                   />
@@ -554,7 +584,7 @@ export function LinkPreviewCMSSection({
                   type="file"
                   ref={faviconInputRef}
                   onChange={handleFaviconFileChange}
-                  accept=".ico,.png,.svg,.webp,image/x-icon,image/png,image/svg+xml"
+                  accept=".ico,.png,.svg,.webp,.jpg,.jpeg,image/x-icon,image/png,image/svg+xml,image/webp"
                   className="hidden"
                 />
                 <div className="flex items-center gap-2">
@@ -574,7 +604,11 @@ export function LinkPreviewCMSSection({
                   {form.siteFavicon !== "/favicon.svg" && (
                     <button
                       type="button"
-                      onClick={() => setForm((prev) => ({ ...prev, siteFavicon: "/favicon.svg" }))}
+                      onClick={() => {
+                        setPendingFaviconDownload(null);
+                        setLastSavedFaviconFilename(null);
+                        setForm((prev) => ({ ...prev, siteFavicon: "/favicon.svg" }));
+                      }}
                       className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors cursor-pointer"
                       title="Reset to default SVG"
                     >
@@ -587,6 +621,71 @@ export function LinkPreviewCMSSection({
                 </p>
               </div>
             </div>
+
+            {/* Direct Favicon Path Input */}
+            <div>
+              <label className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider block mb-1.5">
+                Favicon Path (stored in src/assets/Icons/)
+              </label>
+              <input
+                type="text"
+                value={form.siteFavicon}
+                onChange={(e) => {
+                  setPendingFaviconDownload(null);
+                  setForm((prev) => ({ ...prev, siteFavicon: e.target.value }));
+                }}
+                placeholder="src/assets/Icons/site-favicon-123.png or /favicon.svg"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-white/10 text-white text-xs font-mono focus:border-brand-green/60 focus:outline-none transition-colors"
+              />
+            </div>
+
+            {/* Optional Manual Download button for Favicon */}
+            {pendingFaviconDownload && (
+              <button
+                type="button"
+                onClick={() => {
+                  triggerBrowserDownload(pendingFaviconDownload.file, pendingFaviconDownload.filename);
+                  setLastSavedFaviconFilename(pendingFaviconDownload.filename);
+                  showNotification(
+                    `Downloaded ${pendingFaviconDownload.filename}! Place it into src/assets/Icons/ and push to GitHub.`
+                  );
+                }}
+                className="flex items-center justify-center gap-2 py-2 px-3.5 rounded-xl bg-brand-green/15 hover:bg-brand-green/25 text-brand-green text-xs font-semibold tracking-wider transition-colors cursor-pointer border border-brand-green/30"
+                title="Download this favicon directly to your device"
+              >
+                <Download size={14} />
+                Download for GitHub ({pendingFaviconDownload.filename})
+              </button>
+            )}
+
+            {/* Favicon GitHub Deployment Guide Box */}
+            {(pendingFaviconDownload || lastSavedFaviconFilename) && (
+              <div className="p-3 rounded-xl bg-brand-green/10 border border-brand-green/25 flex flex-col gap-1.5">
+                <div className="flex items-center justify-between text-xs text-brand-green font-medium">
+                  <span className="flex items-center gap-1.5">
+                    <Download size={13} />
+                    Favicon GitHub Deployment Guide
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const targetFile = pendingFaviconDownload?.filename || lastSavedFaviconFilename || "";
+                      const fullPath = `src/assets/Icons/${targetFile}`;
+                      navigator.clipboard.writeText(fullPath);
+                      setCopiedFaviconPath(true);
+                      setTimeout(() => setCopiedFaviconPath(false), 2000);
+                    }}
+                    className="flex items-center gap-1 text-[11px] text-neutral-300 hover:text-white cursor-pointer bg-white/5 hover:bg-white/10 px-2 py-0.5 rounded transition-colors"
+                  >
+                    <Copy size={11} />
+                    {copiedFaviconPath ? "Copied Path!" : "Copy Path"}
+                  </button>
+                </div>
+                <p className="text-[11px] text-neutral-300 leading-relaxed">
+                  Place <code className="text-white font-bold bg-black/40 px-1 py-0.5 rounded">{pendingFaviconDownload?.filename || lastSavedFaviconFilename}</code> into <code className="text-brand-green font-bold bg-black/40 px-1 py-0.5 rounded">src/assets/Icons/</code> and push to GitHub with <code className="text-white font-bold bg-black/40 px-1 py-0.5 rounded">defaultData.ts</code>.
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -738,7 +837,7 @@ export function LinkPreviewCMSSection({
                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-t-lg bg-neutral-950 border-t border-x border-white/10 max-w-xs">
                       {form.siteFavicon ? (
                         <img
-                          src={form.siteFavicon}
+                          src={pendingFaviconDownload?.previewUrl || form.siteFavicon}
                           alt="Favicon"
                           className="w-3.5 h-3.5 object-contain shrink-0"
                         />

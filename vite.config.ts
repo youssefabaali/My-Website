@@ -75,7 +75,26 @@ function dynamicMetaTagsPlugin() {
         shareImg = `${siteUrl}${cleanPath}`;
       }
 
-      const faviconUrl = String(lp.siteFavicon || '/favicon.svg').trim();
+      let rawFavicon = String(lp.siteFavicon || '/favicon.svg').trim();
+      let cleanFavicon = rawFavicon;
+      if (cleanFavicon.startsWith('/src/')) {
+        cleanFavicon = cleanFavicon.replace(/^\/src\//, '/');
+      } else if (cleanFavicon.startsWith('src/')) {
+        cleanFavicon = cleanFavicon.replace(/^src\//, '/');
+      }
+      if (!cleanFavicon.startsWith('/') && !/^https?:\/\//i.test(cleanFavicon) && !cleanFavicon.startsWith('data:')) {
+        cleanFavicon = `/${cleanFavicon}`;
+      }
+      const faviconUrl = cleanFavicon;
+      const faviconType = faviconUrl.endsWith('.ico')
+        ? 'image/x-icon'
+        : faviconUrl.endsWith('.png')
+        ? 'image/png'
+        : faviconUrl.endsWith('.webp')
+        ? 'image/webp'
+        : faviconUrl.endsWith('.jpg') || faviconUrl.endsWith('.jpeg')
+        ? 'image/jpeg'
+        : 'image/svg+xml';
 
       const escape = (str: string) => str
         .replace(/&/g, '&amp;')
@@ -106,8 +125,7 @@ function dynamicMetaTagsPlugin() {
       transformed = transformed.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${siteUrl}/" />`);
       transformed = transformed.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/i, `<link rel="canonical" href="${siteUrl}/" />`);
 
-      // Favicons
-      const faviconType = faviconUrl.endsWith('.ico') ? 'image/x-icon' : faviconUrl.endsWith('.png') ? 'image/png' : 'image/svg+xml';
+      // Favicons & Apple Touch Icon
       transformed = transformed.replace(/<link\s+rel="icon".*?>/i, `<link rel="icon" type="${faviconType}" href="${escape(faviconUrl)}" />`);
       transformed = transformed.replace(/<link\s+rel="apple-touch-icon".*?>/i, `<link rel="apple-touch-icon" href="${escape(faviconUrl)}" />`);
 

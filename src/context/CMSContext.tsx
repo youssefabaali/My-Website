@@ -294,12 +294,17 @@ export function CMSProvider({ children }: { children: ReactNode }) {
     
     const updateSEO = () => {
       const hash = window.location.hash;
+      const lp: Partial<LinkPreviewSettings> = data.linkPreview || {};
       let pageSEO = data.seo?.home || { title: data.name, description: "", keywords: "" };
       if (hash === "#projects" && data.seo?.projects) pageSEO = data.seo.projects;
       if (hash === "#about" && data.seo?.about) pageSEO = data.seo.about;
 
-      if (pageSEO.title) {
-        document.title = pageSEO.title;
+      const isHome = !hash || hash === "#" || hash === "#home";
+      const effectiveTitle = isHome && lp.shareTitle ? lp.shareTitle : pageSEO.title;
+      const effectiveDesc = isHome && lp.shareDescription ? lp.shareDescription : pageSEO.description;
+
+      if (effectiveTitle) {
+        document.title = effectiveTitle;
       }
       
       let metaDesc = document.querySelector('meta[name="description"]');
@@ -308,8 +313,8 @@ export function CMSProvider({ children }: { children: ReactNode }) {
         metaDesc.setAttribute("name", "description");
         document.head.appendChild(metaDesc);
       }
-      if (pageSEO.description) {
-        metaDesc.setAttribute("content", pageSEO.description);
+      if (effectiveDesc) {
+        metaDesc.setAttribute("content", effectiveDesc);
       }
 
       let metaKeywords = document.querySelector('meta[name="keywords"]');
@@ -323,7 +328,6 @@ export function CMSProvider({ children }: { children: ReactNode }) {
       }
 
       // Dynamic OpenGraph and Twitter Tags from Link Preview Settings
-      const lp: Partial<LinkPreviewSettings> = data.linkPreview || {};
       const siteUrl = (lp.siteUrl || "https://www.youssefabaali.com").replace(/\/+$/, "");
       const shareTitle = lp.shareTitle || pageSEO.title || data.name || "Youssef Abaali — Motion Graphics Designer";
       const shareDesc = lp.shareDescription || pageSEO.description || "I'm here to help you turn your ideas into life.";

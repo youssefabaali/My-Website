@@ -182,7 +182,7 @@ export default function App() {
         document.title = `About & Contact — ${activeData?.name || "Youssef Abaali"}`;
       } else {
         setCurrentView("home");
-        document.title = `${activeData?.name || "Youssef Abaali"} — ${activeData?.title || "Motion Graphics Designer"}`;
+        document.title = activeData?.linkPreview?.shareTitle || `${activeData?.name || "Youssef Abaali"} — ${activeData?.title || "Motion Graphics Designer"}`;
       }
 
       // Reset OpenGraph and Twitter meta tags to Link Preview settings when not on a specific project detail view
@@ -230,10 +230,14 @@ export default function App() {
     const shareTitle = lp.shareTitle || activeData?.name || "Youssef Abaali — Motion Graphics Designer";
     const shareDesc = lp.shareDescription || "I'm here to help you turn your ideas into life.";
     const shareImg = toAbsoluteUrl(lp.shareImage || "/assets/images/project-1.png", siteUrl);
-    const faviconUrl = lp.siteFavicon || "/favicon.svg";
+    let rawFav = lp.siteFavicon || "/favicon.svg";
+    let cleanFav = rawFav.trim();
+    if (cleanFav.startsWith("src/")) cleanFav = `/${cleanFav.replace(/^src\//, "")}`;
+    if (cleanFav.startsWith("/src/")) cleanFav = cleanFav.replace(/^\/src\//, "/");
+    const faviconUrl = cleanFav;
 
     // 1. Update Favicon and Apple Touch Icon in browser tab
-    const faviconType = faviconUrl.endsWith(".ico") ? "image/x-icon" : faviconUrl.endsWith(".png") ? "image/png" : "image/svg+xml";
+    const faviconType = faviconUrl.endsWith(".ico") ? "image/x-icon" : faviconUrl.endsWith(".png") ? "image/png" : faviconUrl.endsWith(".webp") ? "image/webp" : "image/svg+xml";
     let linkIcon = document.querySelector('link[rel="icon"]') as HTMLLinkElement | null;
     if (!linkIcon) {
       linkIcon = document.createElement("link");
