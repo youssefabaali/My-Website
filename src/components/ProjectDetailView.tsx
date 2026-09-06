@@ -771,51 +771,29 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                           transform: none !important;
                           width: 100% !important;
                         }
-                        @media (min-width: 640px) and (max-width: 1023px) {
-                          .${splitSecClass} {
-                            transform: none !important;
-                            width: 100% !important;
-                          }
-                          .cms-split-img-col-${secIdx} {
-                            width: calc(50% - 1.25rem) !important;
-                            flex: 0 0 calc(50% - 1.25rem) !important;
-                            max-width: calc(50% - 1.25rem) !important;
-                            order: 2 !important; /* Always on Right for Tablet */
-                            margin-left: auto !important;
-                            margin-right: 0 !important;
-                          }
-                          .cms-split-text-col-${secIdx} {
-                            width: calc(50% - 1.25rem) !important;
-                            flex: 0 0 calc(50% - 1.25rem) !important;
-                            max-width: calc(50% - 1.25rem) !important;
-                            order: 1 !important; /* Always on Left for Tablet */
-                            margin-right: auto !important;
-                            margin-left: 0 !important;
-                          }
-                        }
-                        @media (min-width: 1024px) {
+                        @media (min-width: 640px) {
                           .${splitSecClass} {
                             ${yOff || xOff ? `transform: translate(${xOff}px, ${yOff}px) !important;` : "transform: none !important;"}
                             width: 100% !important;
                           }
                           .cms-split-img-col-${secIdx} {
-                            width: calc(${safeImgPercent}% - 1.5rem) !important;
-                            flex: 0 0 calc(${safeImgPercent}% - 1.5rem) !important;
-                            max-width: calc(${safeImgPercent}% - 1.5rem) !important;
+                            width: calc(${safeImgPercent}% - 1.25rem) !important;
+                            flex: 0 0 calc(${safeImgPercent}% - 1.25rem) !important;
+                            max-width: calc(${safeImgPercent}% - 1.25rem) !important;
                             ${sec.imagePosition === "left" ? "margin-right: auto !important; margin-left: 0 !important;" : "margin-left: auto !important; margin-right: 0 !important;"}
                           }
                           .cms-split-text-col-${secIdx} {
-                            width: calc(${textPercent}% - 1.5rem) !important;
-                            flex: 0 0 calc(${textPercent}% - 1.5rem) !important;
-                            max-width: calc(${textPercent}% - 1.5rem) !important;
+                            width: calc(${textPercent}% - 1.25rem) !important;
+                            flex: 0 0 calc(${textPercent}% - 1.25rem) !important;
+                            max-width: calc(${textPercent}% - 1.25rem) !important;
                             ${sec.imagePosition === "left" ? "margin-left: auto !important; margin-right: 0 !important;" : "margin-right: auto !important; margin-left: 0 !important;"}
                           }
                         }
                       `}</style>
 
-                      {/* Text Column - on mobile: order-1 (on top), on tablet (sm-lg): order-1 on left (50%), on desktop lg: custom order & % */}
+                      {/* Text Column - on mobile: order-1 (ALWAYS on top/first), on tablet/desktop (sm+): follows imagePosition */}
                       <div
-                        className={`w-full flex flex-col gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "lg:order-1" : "lg:order-2"}`}
+                        className={`w-full flex flex-col gap-4 text-left order-1 cms-split-text-col-${secIdx} ${sec.imagePosition === "right" ? "sm:order-1" : "sm:order-2"}`}
                       >
                         {sec.textTitle && (
                           <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
@@ -829,13 +807,13 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         )}
                       </div>
 
-                      {/* Image Column - on mobile: order-2 (below), on tablet (sm-lg): order-2 on right (50%), on desktop lg: custom order & % */}
+                      {/* Image Column - on mobile: order-2 (ALWAYS below text), on tablet/desktop (sm+): follows imagePosition */}
                       <div
                         className={`w-full flex ${
                           sec.imagePosition === "left"
-                            ? "justify-center sm:justify-start lg:justify-start"
-                            : "justify-center sm:justify-end lg:justify-end"
-                        } order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "lg:order-2" : "lg:order-1"}`}
+                            ? "justify-center sm:justify-start"
+                            : "justify-center sm:justify-end"
+                        } order-2 cms-split-img-col-${secIdx} ${sec.imagePosition === "right" ? "sm:order-2" : "sm:order-1"}`}
                       >
                         {(sec.imageSrc || (sec.images && sec.images[0])) && (() => {
                           const imgSrc = sec.imageSrc || sec.images[0];
@@ -927,7 +905,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         .${splitSecClass} {
                           transform: none !important;
                         }
-                        @media (min-width: 1024px) {
+                        @media (min-width: 640px) {
                           .${splitSecClass} {
                             ${yOff || xOff ? `transform: translate(${xOff}px, ${yOff}px) !important;` : "transform: none !important;"}
                           }
@@ -944,258 +922,301 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         }
                       `}</style>
 
-                      <div
-                        className={`flex flex-col lg:flex-row items-stretch w-full gap-4 sm:gap-6 lg:gap-6 ${
-                          isLargeOnLeft ? "lg:flex-row" : "lg:flex-row-reverse"
-                        }`}
-                      >
-                        {/* 1. LARGE MAIN IMAGE (Natural aspect ratio, NO cropping) */}
-                        <div
-                          className={`w-full cms-stacked-large-col-${secIdx} ${splitSecClass} flex items-center justify-center`}
-                        >
-                          {largeImg ? (() => {
-                            const isGif = isGifModeForUrl(largeImg);
-                            const isPlayableVideo = (isVideoUrl(largeImg) || isYouTubeUrl(largeImg) || isVimeoUrl(largeImg)) && !isGif;
-                            const globalIdx = allImages.indexOf(largeImg);
+                      {(() => {
+                        const isImageTextMode = sec.stackedMode === "image_text";
+                        const isTextTop = sec.stackedTextPosition === "top";
+                        const singleSideImg = topStackedImg || bottomStackedImg;
 
-                            if (isPlayableVideo) {
-                              const videoKey = `sec-${secIdx}-large`;
-                              const isPlaying = Boolean(playingVideoMap[videoKey]);
-                              const embedUrl = getEmbedUrl(largeImg);
-                              const vCover = (sec.videoTemplateUrl || sec.posterImage || "").trim();
+                        const renderLargeMedia = () => {
+                          if (!largeImg) return null;
+                          const isGif = isGifModeForUrl(largeImg);
+                          const isPlayableVideo = (isVideoUrl(largeImg) || isYouTubeUrl(largeImg) || isVimeoUrl(largeImg)) && !isGif;
+                          const globalIdx = allImages.indexOf(largeImg);
 
-                              // Auto-fallback to YouTube high-res thumbnail if no custom cover was uploaded
-                              let fallbackCover = vCover;
-                              if (!fallbackCover && isYouTubeUrl(largeImg)) {
-                                const ytMatch = largeImg.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
-                                if (ytMatch && ytMatch[1]) {
-                                  fallbackCover = `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
-                                }
+                          if (isPlayableVideo) {
+                            const videoKey = `sec-${secIdx}-large`;
+                            const isPlaying = Boolean(playingVideoMap[videoKey]);
+                            const embedUrl = getEmbedUrl(largeImg);
+                            const vCover = (sec.videoTemplateUrl || sec.posterImage || "").trim();
+
+                            // Auto-fallback to YouTube high-res thumbnail if no custom cover was uploaded
+                            let fallbackCover = vCover;
+                            if (!fallbackCover && isYouTubeUrl(largeImg)) {
+                              const ytMatch = largeImg.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+                              if (ytMatch && ytMatch[1]) {
+                                fallbackCover = `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
                               }
+                            }
 
-                              if (isPlaying) {
-                                return (
-                                  <div className="w-full aspect-video overflow-hidden bg-black relative">
-                                    {/youtube|vimeo|embed/i.test(embedUrl) ? (
-                                      <iframe
-                                        src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
-                                        className="w-full h-full border-0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        title={sec.label || `${project.title} Video`}
-                                      />
-                                    ) : (
-                                      <video
-                                        src={embedUrl}
-                                        controls
-                                        autoPlay
-                                        className="w-full h-full object-contain"
-                                      />
-                                    )}
-                                  </div>
-                                );
-                              }
-
+                            if (isPlaying) {
                               return (
-                                <div
-                                  onClick={() => {
-                                    setPlayingVideoMap((prev) => ({ ...prev, [videoKey]: true }));
-                                  }}
-                                  className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
-                                >
-                                  {fallbackCover ? (
-                                    <ImageFallback
-                                      src={fallbackCover}
-                                      alt={sec.label || "Feature Video"}
-                                      category={project.title}
-                                      gifMode={false}
-                                      className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.015]"
+                                <div className="w-full aspect-video overflow-hidden bg-black relative">
+                                  {/youtube|vimeo|embed/i.test(embedUrl) ? (
+                                    <iframe
+                                      src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
+                                      className="w-full h-full border-0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      allowFullScreen
+                                      title={sec.label || `${project.title} Video`}
                                     />
                                   ) : (
-                                    <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
-                                      <Play size={48} className="opacity-40" />
-                                    </div>
+                                    <video
+                                      src={embedUrl}
+                                      controls
+                                      autoPlay
+                                      className="w-full h-full object-contain"
+                                    />
                                   )}
-
-                                  {/* Dark overlay & Glowing Play Button exactly matching Hero Video */}
-                                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
-                                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-green/90 group-hover:bg-brand-green text-brand-black flex items-center justify-center shadow-[0_0_30px_rgba(140,255,46,0.5)] transition-all duration-300 group-hover:scale-110">
-                                      <Play size={28} className="ml-1 fill-brand-black" />
-                                    </div>
-                                  </div>
                                 </div>
                               );
                             }
 
                             return (
-                              <button
-                                type="button"
+                              <div
                                 onClick={() => {
-                                  if (globalIdx !== -1) setLightboxIndex(globalIdx);
+                                  setPlayingVideoMap((prev) => ({ ...prev, [videoKey]: true }));
                                 }}
-                                className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 block"
+                                className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
                               >
-                                <ImageFallback
-                                  src={largeImg}
-                                  alt={`${sec.label} Main`}
-                                  category={project.title}
-                                  gifMode={isGif}
-                                  className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.015]"
-                                />
-                              </button>
-                            );
-                          })() : null}
-                        </div>
-
-                        {/* 2. SECONDARY STACKED COLUMN (Two Images OR Image + Text, sharp edges, no cropping, no empty placeholders) */}
-                        {(() => {
-                          const isImageTextMode = sec.stackedMode === "image_text";
-                          const isTextTop = sec.stackedTextPosition === "top";
-                          const singleSideImg = topStackedImg || bottomStackedImg;
-
-                          const renderImageBlock = (imgUrl: string, labelSuffix: string) => {
-                            if (!imgUrl) return null;
-                            const isGif = isGifModeForUrl(imgUrl);
-                            const isPlayableVideo = (isVideoUrl(imgUrl) || isYouTubeUrl(imgUrl) || isVimeoUrl(imgUrl)) && !isGif;
-                            const globalIdx = allImages.indexOf(imgUrl);
-
-                            if (isPlayableVideo) {
-                              const sideVideoKey = `sec-${secIdx}-side-${labelSuffix}`;
-                              const isSidePlaying = Boolean(playingVideoMap[sideVideoKey]);
-                              const embedUrl = getEmbedUrl(imgUrl);
-
-                              if (isSidePlaying) {
-                                return (
-                                  <div className="w-full aspect-video overflow-hidden bg-black relative">
-                                    {/youtube|vimeo|embed/i.test(embedUrl) ? (
-                                      <iframe
-                                        src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
-                                        className="w-full h-full border-0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        title={`${sec.label} ${labelSuffix}`}
-                                      />
-                                    ) : (
-                                      <video
-                                        src={embedUrl}
-                                        controls
-                                        autoPlay
-                                        className="w-full h-full object-contain"
-                                      />
-                                    )}
+                                {fallbackCover ? (
+                                  <ImageFallback
+                                    src={fallbackCover}
+                                    alt={sec.label || "Feature Video"}
+                                    category={project.title}
+                                    gifMode={false}
+                                    className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.015]"
+                                  />
+                                ) : (
+                                  <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
+                                    <Play size={48} className="opacity-40" />
                                   </div>
-                                );
-                              }
+                                )}
 
-                              let sideCover = "";
-                              if (isYouTubeUrl(imgUrl)) {
-                                const ytMatch = imgUrl.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
-                                if (ytMatch && ytMatch[1]) {
-                                  sideCover = `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
-                                }
-                              }
-
-                              return (
-                                <div
-                                  onClick={() => {
-                                    setPlayingVideoMap((prev) => ({ ...prev, [sideVideoKey]: true }));
-                                  }}
-                                  className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
-                                >
-                                  {sideCover ? (
-                                    <ImageFallback
-                                      src={sideCover}
-                                      alt={`${sec.label} ${labelSuffix}`}
-                                      category={project.title}
-                                      gifMode={false}
-                                      className="w-full h-auto object-contain block transition-transform duration-700 group-hover:scale-[1.015]"
-                                    />
-                                  ) : (
-                                    <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
-                                      <Play size={36} className="opacity-40" />
-                                    </div>
-                                  )}
-                                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
-                                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                                    <div className="w-12 h-12 rounded-full bg-brand-green/90 group-hover:bg-brand-green text-brand-black flex items-center justify-center shadow-[0_0_20px_rgba(140,255,46,0.5)] transition-all duration-300 group-hover:scale-110">
-                                      <Play size={22} className="ml-0.5 fill-brand-black" />
-                                    </div>
+                                {/* Dark overlay & Glowing Play Button exactly matching Hero Video */}
+                                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-green/90 group-hover:bg-brand-green text-brand-black flex items-center justify-center shadow-[0_0_30px_rgba(140,255,46,0.5)] transition-all duration-300 group-hover:scale-110">
+                                    <Play size={28} className="ml-1 fill-brand-black" />
                                   </div>
                                 </div>
-                              );
-                            }
-
-                            return (
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  if (globalIdx !== -1) setLightboxIndex(globalIdx);
-                                }}
-                                className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center"
-                              >
-                                <ImageFallback
-                                  src={imgUrl}
-                                  alt={`${sec.label} ${labelSuffix}`}
-                                  category={project.title}
-                                  gifMode={isGif}
-                                  className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.015]"
-                                />
-                              </button>
-                            );
-                          };
-
-                          const renderTextBlock = () => {
-                            if (!sec.stackedTitle && !sec.stackedText) return null;
-                            const alignClass = sec.stackedTextAlign === "center"
-                              ? "text-center items-center"
-                              : sec.stackedTextAlign === "right"
-                              ? "text-right items-end"
-                              : "text-left items-start";
-
-                            return (
-                              <div className={`w-full flex flex-col justify-center gap-3 py-2 ${alignClass}`}>
-                                {sec.stackedTitle && (
-                                  <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
-                                    {sec.stackedTitle}
-                                  </h3>
-                                )}
-                                {sec.stackedText && (
-                                  <p className="font-sans text-sm md:text-base tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
-                                    {sec.stackedText}
-                                  </p>
-                                )}
                               </div>
                             );
-                          };
+                          }
 
                           return (
-                            <div
-                              className={`w-full cms-stacked-small-col-${secIdx} flex flex-col justify-between`}
-                              style={{ gap: stackedGapVal }}
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (globalIdx !== -1) setLightboxIndex(globalIdx);
+                              }}
+                              className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 block"
                             >
-                              {isImageTextMode ? (
-                                isTextTop ? (
-                                  <>
-                                    <div className="flex-1 w-full flex items-center justify-center">{renderTextBlock()}</div>
-                                    <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
-                                  </>
+                              <ImageFallback
+                                src={largeImg}
+                                alt={`${sec.label} Main`}
+                                category={project.title}
+                                gifMode={isGif}
+                                className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.015]"
+                              />
+                            </button>
+                          );
+                        };
+
+                        const renderImageBlock = (imgUrl: string, labelSuffix: string) => {
+                          if (!imgUrl) return null;
+                          const isGif = isGifModeForUrl(imgUrl);
+                          const isPlayableVideo = (isVideoUrl(imgUrl) || isYouTubeUrl(imgUrl) || isVimeoUrl(imgUrl)) && !isGif;
+                          const globalIdx = allImages.indexOf(imgUrl);
+
+                          if (isPlayableVideo) {
+                            const sideVideoKey = `sec-${secIdx}-side-${labelSuffix}`;
+                            const isSidePlaying = Boolean(playingVideoMap[sideVideoKey]);
+                            const embedUrl = getEmbedUrl(imgUrl);
+
+                            if (isSidePlaying) {
+                              return (
+                                <div className="w-full aspect-video overflow-hidden bg-black relative">
+                                  {/youtube|vimeo|embed/i.test(embedUrl) ? (
+                                    <iframe
+                                      src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
+                                      className="w-full h-full border-0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      allowFullScreen
+                                      title={`${sec.label} ${labelSuffix}`}
+                                    />
+                                  ) : (
+                                    <video
+                                      src={embedUrl}
+                                      controls
+                                      autoPlay
+                                      className="w-full h-full object-contain"
+                                    />
+                                  )}
+                                </div>
+                              );
+                            }
+
+                            let sideCover = "";
+                            if (isYouTubeUrl(imgUrl)) {
+                              const ytMatch = imgUrl.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+                              if (ytMatch && ytMatch[1]) {
+                                sideCover = `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
+                              }
+                            }
+
+                            return (
+                              <div
+                                onClick={() => {
+                                  setPlayingVideoMap((prev) => ({ ...prev, [sideVideoKey]: true }));
+                                }}
+                                className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
+                              >
+                                {sideCover ? (
+                                  <ImageFallback
+                                    src={sideCover}
+                                    alt={`${sec.label} ${labelSuffix}`}
+                                    category={project.title}
+                                    gifMode={false}
+                                    className="w-full h-auto object-contain block transition-transform duration-700 group-hover:scale-[1.015]"
+                                  />
                                 ) : (
-                                  <>
-                                    <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
-                                    <div className="flex-1 w-full flex items-center justify-center">{renderTextBlock()}</div>
-                                  </>
-                                )
-                              ) : (
-                                <>
-                                  <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(topStackedImg, "Top")}</div>
-                                  <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(bottomStackedImg, "Bottom")}</div>
-                                </>
+                                  <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
+                                    <Play size={36} className="opacity-40" />
+                                  </div>
+                                )}
+                                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                  <div className="w-12 h-12 rounded-full bg-brand-green/90 group-hover:bg-brand-green text-brand-black flex items-center justify-center shadow-[0_0_20px_rgba(140,255,46,0.5)] transition-all duration-300 group-hover:scale-110">
+                                    <Play size={22} className="ml-0.5 fill-brand-black" />
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          }
+
+                          return (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (globalIdx !== -1) setLightboxIndex(globalIdx);
+                              }}
+                              className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center"
+                            >
+                              <ImageFallback
+                                src={imgUrl}
+                                alt={`${sec.label} ${labelSuffix}`}
+                                category={project.title}
+                                gifMode={isGif}
+                                className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.015]"
+                              />
+                            </button>
+                          );
+                        };
+
+                        const renderTextBlock = () => {
+                          if (!sec.stackedTitle && !sec.stackedText) return null;
+                          const alignClass = sec.stackedTextAlign === "center"
+                            ? "text-center items-center"
+                            : sec.stackedTextAlign === "right"
+                            ? "text-right items-end"
+                            : "text-left items-start";
+
+                          return (
+                            <div className={`w-full flex flex-col justify-center gap-3 py-2 ${alignClass}`}>
+                              {sec.stackedTitle && (
+                                <h3 className="font-bebas text-2xl sm:text-3xl tracking-widest text-white uppercase">
+                                  {sec.stackedTitle}
+                                </h3>
+                              )}
+                              {sec.stackedText && (
+                                <p className="font-sans text-sm md:text-base tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
+                                  {sec.stackedText}
+                                </p>
                               )}
                             </div>
                           );
-                        })()}
-                      </div>
+                        };
+
+                        return (
+                          <>
+                            {/* 1. MOBILE VIEW (< sm / < 640px): Text ALWAYS First, then Images */}
+                            <div className="flex flex-col gap-6 w-full sm:hidden">
+                              {isImageTextMode ? (
+                                <>
+                                  {/* Mobile: Text ALWAYS First */}
+                                  {renderTextBlock()}
+                                  {/* Then Large Media */}
+                                  <div className="w-full flex items-center justify-center">
+                                    {renderLargeMedia()}
+                                  </div>
+                                  {/* Then Side Image if available */}
+                                  {singleSideImg && (
+                                    <div className="w-full flex items-center justify-center">
+                                      {renderImageBlock(singleSideImg, "Side")}
+                                    </div>
+                                  )}
+                                </>
+                              ) : (
+                                <>
+                                  {/* 3 Images: Large first, then stacked images */}
+                                  <div className="w-full flex items-center justify-center">
+                                    {renderLargeMedia()}
+                                  </div>
+                                  {topStackedImg && (
+                                    <div className="w-full flex items-center justify-center">
+                                      {renderImageBlock(topStackedImg, "Top")}
+                                    </div>
+                                  )}
+                                  {bottomStackedImg && (
+                                    <div className="w-full flex items-center justify-center">
+                                      {renderImageBlock(bottomStackedImg, "Bottom")}
+                                    </div>
+                                  )}
+                                </>
+                              )}
+                            </div>
+
+                            {/* 2. TABLET & DESKTOP VIEW (sm+ / >= 640px): Side-by-Side Fluid Layout (Giant Ant style) */}
+                            <div
+                              className={`hidden sm:flex items-stretch w-full gap-4 sm:gap-6 lg:gap-6 ${
+                                isLargeOnLeft ? "sm:flex-row" : "sm:flex-row-reverse"
+                              }`}
+                            >
+                              {/* LARGE MAIN IMAGE */}
+                              <div
+                                className={`w-full cms-stacked-large-col-${secIdx} ${splitSecClass} flex items-center justify-center`}
+                              >
+                                {renderLargeMedia()}
+                              </div>
+
+                              {/* SECONDARY STACKED COLUMN (Two Images OR Image + Text) */}
+                              <div
+                                className={`w-full cms-stacked-small-col-${secIdx} flex flex-col justify-between`}
+                                style={{ gap: stackedGapVal }}
+                              >
+                                {isImageTextMode ? (
+                                  isTextTop ? (
+                                    <>
+                                      <div className="flex-1 w-full flex items-center justify-center">{renderTextBlock()}</div>
+                                      <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
+                                      <div className="flex-1 w-full flex items-center justify-center">{renderTextBlock()}</div>
+                                    </>
+                                  )
+                                ) : (
+                                  <>
+                                    <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(topStackedImg, "Top")}</div>
+                                    <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(bottomStackedImg, "Bottom")}</div>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          </>
+                        );
+                      })()}
                     </div>
                   );
                 })()
@@ -1255,145 +1276,8 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                     })}
                   </div>
 
-                  {/* 2. TABLET VIEW (sm to 1023px / 640px to 1023px): Clean Swiss Alignment (0 Offsets, 100% or Strict 50% Sizing with Auto-Pairing 50% images in 2-Col Rows) */}
-                  {(() => {
-                    // Extract all images with their metadata for this section, respecting 100% vs 50%
-                    type TabletItem = {
-                      imgSrc: string;
-                      activeGlobalIdx: number;
-                      isFullWidth: boolean;
-                    };
-
-                    const tabletItems: TabletItem[] = [];
-
-                    sectionRows.forEach((rowItem) => {
-                      if (!rowItem.images || rowItem.images.length === 0) return;
-                      const isMulti = rowItem.images.length > 1;
-
-                      rowItem.images.forEach((imgSrc, imgIdx) => {
-                        const imgGlobalIdx = allImages.indexOf(imgSrc);
-                        const activeGlobalIdx =
-                          imgGlobalIdx !== -1 ? imgGlobalIdx : startingGlobalIndex + imgIdx;
-
-                        const rawItemWidth = Array.isArray(rowItem.itemWidths)
-                          ? rowItem.itemWidths[imgIdx]
-                          : rowItem.itemWidths?.[imgIdx];
-
-                        const customItemWidth = rawItemWidth ?? rowItem.customWidth;
-
-                        let isFullWidth = true;
-                        if (isMulti) {
-                          // Multi-image row always gets split into 50% columns
-                          isFullWidth = false;
-                        } else {
-                          if (customItemWidth !== undefined && customItemWidth !== null && customItemWidth !== "") {
-                            const parsedStr = String(customItemWidth).trim();
-                            if (parsedStr !== "100" && parsedStr !== "100%" && parsedStr !== "100vw") {
-                              isFullWidth = false;
-                            }
-                          } else if (rowItem.singleImageColumns && rowItem.singleImageColumns > 1) {
-                            isFullWidth = false;
-                          }
-                        }
-
-                        tabletItems.push({
-                          imgSrc,
-                          activeGlobalIdx,
-                          isFullWidth,
-                        });
-                      });
-                    });
-
-                    // Group items into rows: 100% gets its own row; consecutive 50% items get paired into 2-column rows
-                    type TabletRenderRow =
-                      | { type: "full"; item: TabletItem }
-                      | { type: "pair"; items: TabletItem[] };
-
-                    const tabletRenderRows: TabletRenderRow[] = [];
-                    let pending50: TabletItem[] = [];
-
-                    tabletItems.forEach((tItem) => {
-                      if (tItem.isFullWidth) {
-                        // Flush any pending 50% items first
-                        if (pending50.length > 0) {
-                          while (pending50.length >= 2) {
-                            tabletRenderRows.push({ type: "pair", items: pending50.splice(0, 2) });
-                          }
-                          if (pending50.length === 1) {
-                            tabletRenderRows.push({ type: "pair", items: [pending50.pop()!] });
-                          }
-                        }
-                        tabletRenderRows.push({ type: "full", item: tItem });
-                      } else {
-                        pending50.push(tItem);
-                        if (pending50.length === 2) {
-                          tabletRenderRows.push({ type: "pair", items: [...pending50] });
-                          pending50 = [];
-                        }
-                      }
-                    });
-
-                    // Flush any remaining 50% item
-                    if (pending50.length > 0) {
-                      tabletRenderRows.push({ type: "pair", items: [...pending50] });
-                    }
-
-                    return (
-                      <div
-                        style={rowsSpacingObj.num > 0 ? { rowGap: rowsSpacingObj.tablet, gap: rowsSpacingObj.tablet } : undefined}
-                        className={`hidden sm:flex sm:flex-col lg:hidden ${rowsSpacingObj.num > 0 ? "" : "gap-5"} w-full`}
-                      >
-                        {tabletRenderRows.map((rGroup, gIdx) => {
-                          if (rGroup.type === "full") {
-                            return (
-                              <div key={gIdx} className="w-full flex justify-center">
-                                <button
-                                  onClick={() => setLightboxIndex(rGroup.item.activeGlobalIdx)}
-                                  className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
-                                >
-                                  <ImageFallback
-                                    src={rGroup.item.imgSrc}
-                                    alt={`${sec.label} Tablet Full Frame ${gIdx + 1}`}
-                                    category={project.title}
-                                    gifMode={isGifModeForUrl(rGroup.item.imgSrc)}
-                                    className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                                  />
-                                </button>
-                              </div>
-                            );
-                          }
-
-                          // Pair / 2-column row for 50% images (left to right)
-                          return (
-                            <div
-                              key={gIdx}
-                              className="grid grid-cols-2 gap-5 w-full items-start"
-                            >
-                              {rGroup.items.map((item, itmIdx) => (
-                                <div key={itmIdx} className="w-full flex justify-start">
-                                  <button
-                                    onClick={() => setLightboxIndex(item.activeGlobalIdx)}
-                                    className="overflow-hidden group cursor-pointer focus:outline-none w-full flex items-center justify-center p-0 transition-transform duration-300"
-                                  >
-                                    <ImageFallback
-                                      src={item.imgSrc}
-                                      alt={`${sec.label} Tablet 50% Frame ${gIdx + 1}-${itmIdx + 1}`}
-                                      category={project.title}
-                                      gifMode={isGifModeForUrl(item.imgSrc)}
-                                      className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                                    />
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    );
-                  })()}
-
-                  {/* 3. DESKTOP VIEW (>= lg / >= 1024px): Full Custom Control with exact user X/Y offsets, custom widths, and alignment */}
-                  <div className="hidden lg:flex lg:flex-col w-full">
+                  {/* 2. TABLET & DESKTOP VIEW (sm+ / >= 640px): Fluid Responsive Layout preserving custom widths, alignment, offsets, and spacing */}
+                  <div className="hidden sm:flex sm:flex-col w-full">
                     {sectionRows.map((rowItem, rIdx) => {
                       if (!rowItem.images || rowItem.images.length === 0) return null;
                       const cols =
