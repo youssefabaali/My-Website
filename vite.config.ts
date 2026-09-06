@@ -32,13 +32,31 @@ function dynamicMetaTagsPlugin() {
   return {
     name: 'dynamic-meta-tags',
     transformIndexHtml(html: string) {
-      const dataFile = path.resolve(__dirname, 'data.json');
       let dbData: any = null;
-      if (fs.existsSync(dataFile)) {
+
+      // 1. Prefer src/defaultData.ts (the file downloaded from the CMS Dashboard and committed to GitHub)
+      const defaultDataFile = path.resolve(__dirname, 'src/defaultData.ts');
+      if (fs.existsSync(defaultDataFile)) {
         try {
-          dbData = JSON.parse(fs.readFileSync(dataFile, 'utf-8'));
+          const rawTs = fs.readFileSync(defaultDataFile, 'utf-8');
+          const jsonMatch = rawTs.match(/export const defaultSiteData(?:\s*:\s*CMSSiteData)?\s*=\s*(\{[\s\S]*\});?\s*$/);
+          if (jsonMatch && jsonMatch[1]) {
+            dbData = JSON.parse(jsonMatch[1]);
+          }
         } catch (e) {
-          console.warn('Vite: Failed to read data.json during HTML transform', e);
+          console.warn('Vite: Failed to parse src/defaultData.ts during HTML transform', e);
+        }
+      }
+
+      // 2. Fallback to data.json if defaultData.ts was not present or could not be parsed
+      if (!dbData) {
+        const dataFile = path.resolve(__dirname, 'data.json');
+        if (fs.existsSync(dataFile)) {
+          try {
+            dbData = JSON.parse(fs.readFileSync(dataFile, 'utf-8'));
+          } catch (e) {
+            console.warn('Vite: Failed to read data.json during HTML transform', e);
+          }
         }
       }
 
@@ -50,7 +68,10 @@ function dynamicMetaTagsPlugin() {
       const rawImg = lp.shareImage || '/assets/images/link-share-preview.jpg';
       let shareImg = String(rawImg).trim();
       if (!/^https?:\/\//i.test(shareImg) && !shareImg.startsWith('data:')) {
-        const cleanPath = shareImg.startsWith('/') ? shareImg : `/${shareImg}`;
+        let cleanPath = shareImg.startsWith('/') ? shareImg : `/${shareImg}`;
+        if (cleanPath.startsWith('/src/')) {
+          cleanPath = cleanPath.replace(/^\/src\//, '/');
+        }
         shareImg = `${siteUrl}${cleanPath}`;
       }
 
