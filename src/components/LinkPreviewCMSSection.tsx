@@ -81,11 +81,39 @@ export function LinkPreviewCMSSection({
 
     try {
       setUploadingImage(true);
-      const relativeUrl = await uploadFile(file);
-      // Automatically convert to absolute URL
-      const absoluteUrl = toAbsoluteUrl(relativeUrl, form.siteUrl);
-      setForm((prev) => ({ ...prev, shareImage: absoluteUrl }));
-      showNotification("Share image uploaded and converted to absolute URL successfully!");
+      
+      // Attempt upload via dedicated share-image endpoint which saves directly to src/assets/images
+      // and assigns a unique timestamped file name to permanently prevent social media caching
+      const token = localStorage.getItem("cms_auth_token") || "admin-session-granted";
+      const formData = new FormData();
+      formData.append("file", file);
+
+      let finalUrl = "";
+      try {
+        const res = await fetch("/api/upload-share-image", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        });
+
+        if (res.ok) {
+          const resData = await res.json();
+          finalUrl = resData.absoluteUrl || resData.fileUrl || resData.url;
+        }
+      } catch (uploadEndpointErr) {
+        console.warn("Dedicated share image upload endpoint failed, falling back to standard uploadFile", uploadEndpointErr);
+      }
+
+      // Fallback if dedicated endpoint wasn't reached
+      if (!finalUrl) {
+        const fallbackRelative = await uploadFile(file);
+        finalUrl = toAbsoluteUrl(fallbackRelative, form.siteUrl);
+      }
+
+      setForm((prev) => ({ ...prev, shareImage: finalUrl }));
+      showNotification("Share image uploaded with unique cache-buster URL! Click 'SAVE SETTINGS' to apply.");
     } catch (err: any) {
       showNotification(`Upload failed: ${err.message || "Unknown error"}`, "error");
     } finally {

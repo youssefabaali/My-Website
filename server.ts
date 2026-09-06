@@ -238,6 +238,79 @@ app.post("/api/upload", verifyAdminAuth, upload.single("file") as any, (req, res
   }
 });
 
+// 4b. Dedicated Share Preview Image Upload (Protected)
+// Saves directly to src/assets/images/link-share-preview-<timestamp>.<ext>
+// so it is permanently committed in git and gets an automatic unique URL to break social caches
+app.post("/api/upload-share-image", verifyAdminAuth, upload.single("file") as any, (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded." });
+    }
+
+    const ext = path.extname(req.file.originalname).toLowerCase() || ".jpg";
+    const safeExt = ALLOWED_EXTENSIONS.has(ext) ? ext : ".jpg";
+    const timestamp = Date.now();
+    const newFileName = `link-share-preview-${timestamp}${safeExt}`;
+    const targetDir = path.join(process.cwd(), "src", "assets", "images");
+
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
+    }
+
+    // Clean up any old link-share-preview-* files in targetDir to avoid clutter
+    try {
+      const existingFiles = fs.readdirSync(targetDir);
+      for (const f of existingFiles) {
+        if (f.startsWith("link-share-preview-") || f === "link-share-preview.jpg") {
+          try {
+            fs.unlinkSync(path.join(targetDir, f));
+          } catch (delErr) {
+            // Ignore if file cannot be deleted
+          }
+        }
+      }
+    } catch (cleanupErr) {
+      console.warn("Could not clean old preview files", cleanupErr);
+    }
+
+    const finalPath = path.join(targetDir, newFileName);
+    fs.copyFileSync(req.file.path, finalPath);
+
+    // Also copy to dist folders if they exist
+    const distTargetDir = path.join(process.cwd(), "dist", "assets", "images");
+    if (fs.existsSync(distTargetDir)) {
+      try {
+        fs.copyFileSync(req.file.path, path.join(distTargetDir, newFileName));
+      } catch (distErr) {}
+    }
+    const distSrcTargetDir = path.join(process.cwd(), "dist", "src", "assets", "images");
+    if (fs.existsSync(distSrcTargetDir)) {
+      try {
+        fs.copyFileSync(req.file.path, path.join(distSrcTargetDir, newFileName));
+      } catch (distSrcErr) {}
+    }
+
+    // Delete temp upload file
+    try {
+      fs.unlinkSync(req.file.path);
+    } catch (rmErr) {}
+
+    const relativeUrl = `/assets/images/${newFileName}`;
+    const absoluteUrl = `https://www.youssefabaali.com/assets/images/${newFileName}`;
+
+    res.json({
+      success: true,
+      fileName: newFileName,
+      relativeUrl,
+      absoluteUrl,
+      fileUrl: absoluteUrl,
+      url: absoluteUrl,
+    });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // 5. List Uploaded Files
 app.get("/api/uploads/list", (req, res) => {
   try {
