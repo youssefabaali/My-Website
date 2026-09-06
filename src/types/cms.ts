@@ -98,6 +98,9 @@ export interface ProjectSection {
   stackedTitle?: string;
   stackedText?: string;
   stackedTextAlign?: "left" | "center" | "right";
+  textScale?: "standard" | "compact" | "minimal";
+  tabletTextSize?: number | string;
+  tabletTitleSize?: number | string;
   imageYOffset?: number;
   imageXOffset?: number;
   sectionGap?: number | string;

@@ -3461,6 +3461,111 @@ function CMSGallerySectionEditor({
                   className="w-full h-full min-h-[140px] bg-neutral-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-green leading-relaxed"
                 />
               </div>
+
+              {/* TEXT SCALE & TABLET FONT SIZE CONTROLS */}
+              <div className="p-3 bg-neutral-950/90 border border-white/10 rounded-xl flex flex-col gap-2.5 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1.5">
+                    <Sliders size={12} />
+                    TEXT SCALE & TABLET SIZE (حجم الخط للتابلت واللابتوب)
+                  </label>
+                  {sec.tabletTextSize !== undefined && sec.tabletTextSize !== "" && (
+                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                      {sec.tabletTextSize}px
+                    </span>
+                  )}
+                </div>
+
+                {/* Quick Presets: Standard, Compact, Minimal */}
+                <div className="flex flex-col gap-1">
+                  <span className="text-[9px] text-neutral-400 uppercase font-medium">Text Scale Presets (أنماط الحجم السريع):</span>
+                  <div className="grid grid-cols-3 gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => onUpdateSec({ ...sec, textScale: "standard", tabletTextSize: 14 })}
+                      className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer border ${
+                        (sec.textScale === "standard" || !sec.textScale) && (!sec.tabletTextSize || Number(sec.tabletTextSize) >= 14)
+                          ? "bg-brand-green text-black border-brand-green shadow-sm"
+                          : "bg-neutral-900 text-neutral-300 border-white/10 hover:border-white/30"
+                      }`}
+                    >
+                      Standard (افتراضي)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onUpdateSec({ ...sec, textScale: "compact", tabletTextSize: 12 })}
+                      className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer border ${
+                        sec.textScale === "compact" || Number(sec.tabletTextSize) === 12
+                          ? "bg-brand-green text-black border-brand-green shadow-sm"
+                          : "bg-neutral-900 text-neutral-300 border-white/10 hover:border-white/30"
+                      }`}
+                    >
+                      Compact (مدمج)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onUpdateSec({ ...sec, textScale: "minimal", tabletTextSize: 10 })}
+                      className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer border ${
+                        sec.textScale === "minimal" || Number(sec.tabletTextSize) === 10
+                          ? "bg-brand-green text-black border-brand-green shadow-sm"
+                          : "bg-neutral-900 text-neutral-300 border-white/10 hover:border-white/30"
+                      }`}
+                    >
+                      Minimal (مصغر)
+                    </button>
+                  </div>
+                </div>
+
+                {/* Custom Number Input for Free Sizing */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 border-t border-white/5">
+                  <div className="flex flex-col gap-1">
+                    <label className="text-[9px] text-neutral-300 uppercase font-bold flex items-center gap-1">
+                      <span>TEXT TABLET SIZE (PX)</span>
+                    </label>
+                    <div className="relative flex items-center">
+                      <input
+                        type="number"
+                        min={8}
+                        max={24}
+                        step={0.5}
+                        value={sec.tabletTextSize !== undefined ? sec.tabletTextSize : ""}
+                        onChange={(e) => {
+                          const val = e.target.value === "" ? undefined : Number(e.target.value);
+                          onUpdateSec({ ...sec, tabletTextSize: val });
+                        }}
+                        placeholder="e.g. 12 (تحكم حر بالبيكسل)"
+                        className="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-brand-green"
+                      />
+                      <span className="absolute right-2.5 text-[10px] text-neutral-500 font-mono pointer-events-none">px</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="text-[9px] text-neutral-300 uppercase font-bold flex items-center gap-1">
+                      <span>TITLE TABLET SIZE (PX - اختياري)</span>
+                    </label>
+                    <div className="relative flex items-center">
+                      <input
+                        type="number"
+                        min={12}
+                        max={36}
+                        step={1}
+                        value={sec.tabletTitleSize !== undefined ? sec.tabletTitleSize : ""}
+                        onChange={(e) => {
+                          const val = e.target.value === "" ? undefined : Number(e.target.value);
+                          onUpdateSec({ ...sec, tabletTitleSize: val });
+                        }}
+                        placeholder="تلقائي متناسب إن ترك فارغاً"
+                        className="w-full bg-neutral-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-brand-green"
+                      />
+                      <span className="absolute right-2.5 text-[10px] text-neutral-500 font-mono pointer-events-none">px</span>
+                    </div>
+                  </div>
+                </div>
+                <span className="text-[9px] text-neutral-400 leading-tight">
+                  💡 تصغير الخط هنا يضمن بقاء النص والصورة في إطار موحد على أجهزة التابلت واللابتوب ومنع نزول الصورة لأسفل. يتم حفظ الأرقام لمشاريعك.
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -3869,6 +3974,111 @@ function CMSGallerySectionEditor({
                               rows={3}
                               className="bg-neutral-950 border border-white/10 text-white rounded-lg p-2.5 text-xs focus:outline-none focus:border-brand-green leading-relaxed resize-y uppercase"
                             />
+                          </div>
+
+                          {/* TEXT SCALE & TABLET FONT SIZE CONTROLS */}
+                          <div className="p-3 bg-neutral-900/90 border border-white/10 rounded-xl flex flex-col gap-2.5 shadow-sm mt-1">
+                            <div className="flex items-center justify-between">
+                              <label className="text-[10px] text-brand-green font-bold uppercase tracking-wider flex items-center gap-1.5">
+                                <Sliders size={12} />
+                                TEXT SCALE & TABLET SIZE (حجم الخط للتابلت واللابتوب)
+                              </label>
+                              {sec.tabletTextSize !== undefined && sec.tabletTextSize !== "" && (
+                                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                                  {sec.tabletTextSize}px
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Quick Presets: Standard, Compact, Minimal */}
+                            <div className="flex flex-col gap-1">
+                              <span className="text-[9px] text-neutral-400 uppercase font-medium">Text Scale Presets (أنماط الحجم السريع):</span>
+                              <div className="grid grid-cols-3 gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={() => onUpdateSec({ ...sec, textScale: "standard", tabletTextSize: 14 })}
+                                  className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer border ${
+                                    (sec.textScale === "standard" || !sec.textScale) && (!sec.tabletTextSize || Number(sec.tabletTextSize) >= 14)
+                                      ? "bg-brand-green text-black border-brand-green shadow-sm"
+                                      : "bg-neutral-950 text-neutral-300 border-white/10 hover:border-white/30"
+                                  }`}
+                                >
+                                  Standard (افتراضي)
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => onUpdateSec({ ...sec, textScale: "compact", tabletTextSize: 12 })}
+                                  className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer border ${
+                                    sec.textScale === "compact" || Number(sec.tabletTextSize) === 12
+                                      ? "bg-brand-green text-black border-brand-green shadow-sm"
+                                      : "bg-neutral-950 text-neutral-300 border-white/10 hover:border-white/30"
+                                  }`}
+                                >
+                                  Compact (مدمج)
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => onUpdateSec({ ...sec, textScale: "minimal", tabletTextSize: 10 })}
+                                  className={`py-1.5 px-2 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer border ${
+                                    sec.textScale === "minimal" || Number(sec.tabletTextSize) === 10
+                                      ? "bg-brand-green text-black border-brand-green shadow-sm"
+                                      : "bg-neutral-950 text-neutral-300 border-white/10 hover:border-white/30"
+                                  }`}
+                                >
+                                  Minimal (مصغر)
+                                </button>
+                              </div>
+                            </div>
+
+                            {/* Custom Number Input for Free Sizing */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 border-t border-white/5">
+                              <div className="flex flex-col gap-1">
+                                <label className="text-[9px] text-neutral-300 uppercase font-bold flex items-center gap-1">
+                                  <span>TEXT TABLET SIZE (PX)</span>
+                                </label>
+                                <div className="relative flex items-center">
+                                  <input
+                                    type="number"
+                                    min={8}
+                                    max={24}
+                                    step={0.5}
+                                    value={sec.tabletTextSize !== undefined ? sec.tabletTextSize : ""}
+                                    onChange={(e) => {
+                                      const val = e.target.value === "" ? undefined : Number(e.target.value);
+                                      onUpdateSec({ ...sec, tabletTextSize: val });
+                                    }}
+                                    placeholder="e.g. 12 (تحكم حر بالبيكسل)"
+                                    className="w-full bg-neutral-950 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-brand-green"
+                                  />
+                                  <span className="absolute right-2.5 text-[10px] text-neutral-500 font-mono pointer-events-none">px</span>
+                                </div>
+                              </div>
+
+                              <div className="flex flex-col gap-1">
+                                <label className="text-[9px] text-neutral-300 uppercase font-bold flex items-center gap-1">
+                                  <span>TITLE TABLET SIZE (PX - اختياري)</span>
+                                </label>
+                                <div className="relative flex items-center">
+                                  <input
+                                    type="number"
+                                    min={12}
+                                    max={36}
+                                    step={1}
+                                    value={sec.tabletTitleSize !== undefined ? sec.tabletTitleSize : ""}
+                                    onChange={(e) => {
+                                      const val = e.target.value === "" ? undefined : Number(e.target.value);
+                                      onUpdateSec({ ...sec, tabletTitleSize: val });
+                                    }}
+                                    placeholder="تلقائي متناسب إن ترك فارغاً"
+                                    className="w-full bg-neutral-950 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-brand-green"
+                                  />
+                                  <span className="absolute right-2.5 text-[10px] text-neutral-500 font-mono pointer-events-none">px</span>
+                                </div>
+                              </div>
+                            </div>
+                            <span className="text-[9px] text-neutral-400 leading-tight">
+                              💡 تصغير الخط هنا يضمن بقاء النص والصورة في إطار موحد على أجهزة التابلت واللابتوب ومنع نزول الصورة لأسفل. يتم حفظ الأرقام لمشاريعك.
+                            </span>
                           </div>
                         </div>
                       );

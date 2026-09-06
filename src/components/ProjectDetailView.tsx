@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useCMS } from "../context/CMSContext";
+import { ProjectSection } from "../types/cms";
 import { ArrowRight, X, ChevronLeft, Play } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { ImageFallback, isVideoUrl, isYouTubeUrl, isVimeoUrl } from "./ImageFallback";
@@ -540,6 +541,58 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
           }
           cumulativeImageCount += secImagesCount;
 
+          // Helper to resolve responsive typography scaling for Split and Split Stacked sections
+          const resolveSectionTextScale = (sectionItem: ProjectSection) => {
+            let titleTablet = 19;
+            let textTablet = 13;
+            let titleDesktop = 30;
+            let textDesktop = 16;
+            let leadingTablet = "1.35";
+            let leadingDesktop = "1.625";
+
+            if (sectionItem.textScale === "compact") {
+              titleTablet = 17;
+              textTablet = 11.5;
+              titleDesktop = 24;
+              textDesktop = 13.5;
+              leadingTablet = "1.3";
+              leadingDesktop = "1.5";
+            } else if (sectionItem.textScale === "minimal") {
+              titleTablet = 15;
+              textTablet = 10;
+              titleDesktop = 20;
+              textDesktop = 12;
+              leadingTablet = "1.25";
+              leadingDesktop = "1.45";
+            }
+
+            // User manual custom number overrides from CMS:
+            if (sectionItem.tabletTextSize !== undefined && sectionItem.tabletTextSize !== null && sectionItem.tabletTextSize !== "") {
+              const customText = Number(sectionItem.tabletTextSize);
+              if (!isNaN(customText) && customText > 0) {
+                textTablet = customText;
+                titleTablet = Math.round(customText * 1.55);
+                if (customText <= 12) leadingTablet = "1.3";
+              }
+            }
+
+            if (sectionItem.tabletTitleSize !== undefined && sectionItem.tabletTitleSize !== null && sectionItem.tabletTitleSize !== "") {
+              const customTitle = Number(sectionItem.tabletTitleSize);
+              if (!isNaN(customTitle) && customTitle > 0) {
+                titleTablet = customTitle;
+              }
+            }
+
+            return {
+              titleTablet,
+              textTablet,
+              titleDesktop,
+              textDesktop,
+              leadingTablet,
+              leadingDesktop,
+            };
+          };
+
           // Helper to resolve custom gap/spacing values with responsive scaling: 100% Desktop, manual override or 50% Tablet/Mobile
           const getProportionalSpacing = (val: number | string | undefined, defaultVal = 0, mobileOverride?: number | string | undefined) => {
             return resolveResponsiveSpacing(val, defaultVal, mobileOverride);
@@ -763,6 +816,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                   const yOff = sec.imageYOffset || 0;
                   const xOff = sec.imageXOffset || 0;
                   const splitSecClass = `cms-split-img-${secIdx}`;
+                  const textSizes = resolveSectionTextScale(sec);
 
                   return (
                     <div className="flex flex-col sm:flex-row justify-between items-start py-2 w-full gap-y-8 sm:gap-y-0">
@@ -787,6 +841,28 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             flex: 0 0 calc(${textPercent}% - 1.25rem) !important;
                             max-width: calc(${textPercent}% - 1.25rem) !important;
                             ${sec.imagePosition === "left" ? "margin-left: auto !important; margin-right: 0 !important;" : "margin-right: auto !important; margin-left: 0 !important;"}
+                          }
+                        }
+                        /* Responsive Typography for Tablet & Laptop (640px - 1399px) */
+                        @media (min-width: 640px) and (max-width: 1399px) {
+                          .cms-split-text-col-${secIdx} h3 {
+                            font-size: ${textSizes.titleTablet}px !important;
+                            line-height: 1.25 !important;
+                          }
+                          .cms-split-text-col-${secIdx} p {
+                            font-size: ${textSizes.textTablet}px !important;
+                            line-height: ${textSizes.leadingTablet} !important;
+                          }
+                        }
+                        /* Desktop Typography (1400px+) */
+                        @media (min-width: 1400px) {
+                          .cms-split-text-col-${secIdx} h3 {
+                            font-size: ${textSizes.titleDesktop}px !important;
+                            line-height: 1.25 !important;
+                          }
+                          .cms-split-text-col-${secIdx} p {
+                            font-size: ${textSizes.textDesktop}px !important;
+                            line-height: ${textSizes.leadingDesktop} !important;
                           }
                         }
                       `}</style>
@@ -894,6 +970,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                   const xOff = sec.imageXOffset || 0;
                   const isLargeOnLeft = sec.imagePosition !== "right";
                   const splitSecClass = `cms-split-stacked-${secIdx}`;
+                  const textSizes = resolveSectionTextScale(sec);
 
                   const stackedGapVal = typeof sec.stackedGap === "number"
                     ? `${sec.stackedGap}px`
@@ -918,6 +995,28 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             width: calc(${stackedPercent}% - 0.75rem) !important;
                             flex: 0 0 calc(${stackedPercent}% - 0.75rem) !important;
                             max-width: calc(${stackedPercent}% - 0.75rem) !important;
+                          }
+                        }
+                        /* Responsive Typography for Tablet & Laptop (640px - 1399px) */
+                        @media (min-width: 640px) and (max-width: 1399px) {
+                          .cms-stacked-text-col-${secIdx} h3 {
+                            font-size: ${textSizes.titleTablet}px !important;
+                            line-height: 1.25 !important;
+                          }
+                          .cms-stacked-text-col-${secIdx} p {
+                            font-size: ${textSizes.textTablet}px !important;
+                            line-height: ${textSizes.leadingTablet} !important;
+                          }
+                        }
+                        /* Desktop Typography (1400px+) */
+                        @media (min-width: 1400px) {
+                          .cms-stacked-text-col-${secIdx} h3 {
+                            font-size: ${textSizes.titleDesktop}px !important;
+                            line-height: 1.25 !important;
+                          }
+                          .cms-stacked-text-col-${secIdx} p {
+                            font-size: ${textSizes.textDesktop}px !important;
+                            line-height: ${textSizes.leadingDesktop} !important;
                           }
                         }
                       `}</style>
@@ -1122,7 +1221,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             : "text-left items-start";
 
                           return (
-                            <div className={`w-full flex flex-col justify-start gap-2 sm:gap-2.5 lg:gap-3 py-1 sm:py-0 ${alignClass}`}>
+                            <div className={`w-full flex flex-col justify-start gap-2 sm:gap-2.5 lg:gap-3 py-1 sm:py-0 ${alignClass} cms-stacked-text-col-${secIdx}`}>
                               {sec.stackedTitle && (
                                 <h3 className="font-bebas text-xl sm:text-[19px] lg:text-3xl tracking-wider lg:tracking-widest text-white uppercase leading-snug sm:leading-tight lg:leading-tight">
                                   {sec.stackedTitle}
