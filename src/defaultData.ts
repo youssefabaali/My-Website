@@ -95,7 +95,7 @@ export const defaultSiteData: CMSSiteData = {
         "percent": 60
       }
     ],
-    "resumeUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Other-Assets/Resume-Youssef.Abaali.pdf",
+    "resumeUrl": "src/assets/PDF/Resume-Youssef-Abaali.pdf",
     "resumeButtonText": "My Resume"
   },
   "allProjects": [
@@ -3995,6 +3995,5 @@ export const defaultSiteData: CMSSiteData = {
     "cms_custom_section_spacings_mobile": [
       10
     ]
-  },
-  "heroMobileGifMode": true
+  }
 };
