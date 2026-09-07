@@ -232,7 +232,7 @@ export function AboutView() {
           {aboutMe.resumeUrl && (
             <motion.div variants={itemVariants} className="flex items-center justify-center my-2">
               <a
-                href={aboutMe.resumeUrl}
+                href={fixAssetUrl(aboutMe.resumeUrl)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 bg-brand-green text-brand-black hover:bg-white px-7 py-3.5 font-grotesk font-bold text-sm tracking-widest uppercase transition-all duration-300 shadow-lg"

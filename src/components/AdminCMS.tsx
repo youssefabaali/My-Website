@@ -8231,7 +8231,7 @@ export function AdminCMS() {
                                 `Updated resume PDF document path to ${val}`
                               )
                             }
-                            recommendedText="Upload a PDF file or provide direct link to resume"
+                            recommendedText="e.g. src/assets/PDF/Resume-Youssef-Abaali.pdf or drag & drop PDF here"
                           />
                         </div>
                       </div>

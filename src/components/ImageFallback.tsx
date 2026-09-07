@@ -3,7 +3,7 @@ import { CustomVideoPlayer } from "./CustomVideoPlayer";
 
 // Eagerly load all local assets in /src/assets so Vite bundles them during production build
 const localAssetModules = import.meta.glob<{ default: string }>(
-  "/src/assets/**/*.{gif,jpg,jpeg,png,svg,webp,GIF,JPG,JPEG,PNG,SVG,WEBP}",
+  "/src/assets/**/*.{gif,jpg,jpeg,png,svg,webp,pdf,GIF,JPG,JPEG,PNG,SVG,WEBP,PDF}",
   { eager: true }
 );
 
@@ -76,6 +76,15 @@ export function fixAssetUrl(url?: string): string {
 
   if (clean.startsWith("/src") && localAssetModules[clean]?.default) {
     return localAssetModules[clean].default;
+  }
+
+  // Check if it's inside /src/assets/PDF/
+  const fileName = clean.split("/").pop();
+  if (fileName) {
+    const pdfPath = `/src/assets/PDF/${fileName}`;
+    if (localAssetModules[pdfPath]?.default) {
+      return localAssetModules[pdfPath].default;
+    }
   }
 
   return normalizedPath;
