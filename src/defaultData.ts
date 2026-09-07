@@ -4,20 +4,18 @@ export const defaultSiteData: CMSSiteData = {
   "name": "YOUSSEF ABAALI",
   "title": "MOTION GRAPHICS",
   "tagline": "I'M HERE TO HELP YOU TO TURNING\nYOUR IDEAS INTO THE LIVE",
-  "email": "youssef.abaali@gmail.com",
+  "email": "youssef.abaali.pro@gmail.com",
   "myInfo": "src/assets/images/myInfo.jpg",
   "myInfoMobile": "src/assets/images/myInfo-Mobile.png",
-  "heroImage": "src/assets/images/HeroImage.svg",
-  "heroImageMobile": "src/assets/images/HeroImage-Mobile.png",
-  "heroGifMode": true,
-  "heroMobileGifMode": true,
+  "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Other-Assets/Home-page-hero-image-laptop.mp4",
+  "heroImageMobile": "https://github.com/youssefabaali/my-website-assets/releases/download/Other-Assets/Home-page-hero-image-Phone.mp4",
   "settings": {
     "passcode": "admin"
   },
   "design": {
     "colors": {
       "primary": "#8cff2e",
-      "background": "#131313",
+      "background": "#000000",
       "text": "#ffffff",
       "card": "#1a1a1a",
       "footer": "#c8c5ae",
@@ -63,11 +61,11 @@ export const defaultSiteData: CMSSiteData = {
     "bioEmailGapDesktop": 64,
     "bioEmailGapMobile": 32,
     "paragraphs": [
-      "Hi! I'm Youssef Abaali, a Motion Graphics Designer working as a Freelancer and based in Spain. Since 2017, I've been diving into the world of motion design, gaining extensive experience in executing motion graphics projects from start to finish.",
-      "My goal is to transform complex ideas into smooth and impactful visual stories.",
-      "I'm perfectly comfortable managing the entire creative process, as I'm skilled at jumping into every stage of production from sketching the initial concepts and building the storyboard, through to the illustration phase, and finally the animation itself.",
-      "Currently, I work independently, collaborating with various clients and studios.",
-      "I focus on helping clients simplify their messages and achieve their marketing goals through motion, while maintaining a commitment to high-quality and effective design across all aspects of motion graphics."
+      "Hi, I'm Youssef Abaali, a Motion Graphics Designer based in Spain.",
+      "In 2017, in my final year studying law at university, I discovered motion design, and I was instantly hooked by how something as simple as a shape could come alive through motion. \nI finished my law degree, then left it behind to pursue motion graphics full-time. I haven't looked back since.",
+      "Since then, I've helped brands and studios turn complex ideas into clear, impactful visual stories, handling the full process from concept and storyboard through illustration to final animation.",
+      "Today, I work with clients and studios worldwide, turning ideas into motion that grabs attention and stays memorable.",
+      "Got a project in mind? Let's bring it to life."
     ],
     "creativeHeadline": "My creative\ntoolbox",
     "skills": [
@@ -97,7 +95,7 @@ export const defaultSiteData: CMSSiteData = {
         "percent": 60
       }
     ],
-    "resumeUrl": "/assets/Resume-Youssef-Abaali.pdf",
+    "resumeUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Other-Assets/Resume-Youssef.Abaali.pdf",
     "resumeButtonText": "My Resume"
   },
   "allProjects": [
@@ -193,6 +191,7 @@ export const defaultSiteData: CMSSiteData = {
       "link": "#",
       "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4",
       "isPublished": true,
+      "isFeatured": false,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
@@ -2618,13 +2617,14 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/1-Notify.NYC.Traffic.Alerts.gif": true
           },
           "imageYOffset": 0,
-          "videoTemplateUrl": "",
-          "posterImage": "",
+          "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-1.jpg",
+          "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-1.jpg",
           "imageCustomWidth": "67%",
           "sectionGapMobile": 10,
           "stackedMode": "image_text",
           "stackedTextPosition": "top",
-          "stackedTitle": "NOTIFY NYC TRAFFIC ALERTS"
+          "stackedTitle": "NOTIFY NYC TRAFFIC ALERTS",
+          "stackedText": ""
         },
         {
           "type": "split_stacked",
@@ -2650,7 +2650,9 @@ export const defaultSiteData: CMSSiteData = {
           "sectionGapMobile": 10,
           "stackedMode": "image_text",
           "stackedTextPosition": "top",
-          "stackedTitle": "sNOTIFY NYC BASEMENT ALERTS"
+          "stackedTitle": "sNOTIFY NYC BASEMENT ALERTS",
+          "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-2.jpg",
+          "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-2.jpg"
         },
         {
           "type": "split_stacked",
@@ -2676,7 +2678,9 @@ export const defaultSiteData: CMSSiteData = {
           "sectionGapMobile": 10,
           "stackedMode": "image_text",
           "stackedTextPosition": "top",
-          "stackedTitle": "NOTIFY NYC MAJOR EVENT ALERTS"
+          "stackedTitle": "NOTIFY NYC MAJOR EVENT ALERTS",
+          "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-3.jpg",
+          "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-3.jpg"
         },
         {
           "type": "split_stacked",
@@ -2702,7 +2706,9 @@ export const defaultSiteData: CMSSiteData = {
           "sectionGapMobile": 10,
           "stackedMode": "image_text",
           "stackedTextPosition": "top",
-          "stackedTitle": "NOTIFY NYC MASS TRANSIT ALERTS"
+          "stackedTitle": "NOTIFY NYC MASS TRANSIT ALERTS",
+          "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-4.jpg",
+          "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-4.jpg"
         },
         {
           "type": "split_stacked",
@@ -2728,7 +2734,9 @@ export const defaultSiteData: CMSSiteData = {
           "sectionGapMobile": "default",
           "stackedMode": "image_text",
           "stackedTextPosition": "top",
-          "stackedTitle": "NOTIFY NYC POWER OUTAGE ALERTS"
+          "stackedTitle": "NOTIFY NYC POWER OUTAGE ALERTS",
+          "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-5.jpg",
+          "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/thumbnail-video-youtube-5.jpg"
         }
       ],
       "date": "2024",
@@ -3853,7 +3861,7 @@ export const defaultSiteData: CMSSiteData = {
     }
   ],
   "contact": {
-    "email": "youssef.abaali@gmail.com",
+    "email": "youssef.abaali.pro@gmail.com",
     "phone": "+34 600 000 000",
     "location": "Spain (Available Worldwide)",
     "googleMapsEmbed": "",
@@ -3987,5 +3995,6 @@ export const defaultSiteData: CMSSiteData = {
     "cms_custom_section_spacings_mobile": [
       10
     ]
-  }
+  },
+  "heroMobileGifMode": true
 };
