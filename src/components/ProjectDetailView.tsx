@@ -14,6 +14,15 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
   const { data } = useCMS();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [playingVideoMap, setPlayingVideoMap] = useState<Record<string | number, boolean>>({});
+  const [isDesktop, setIsDesktop] = useState<boolean>(() => typeof window !== "undefined" ? window.innerWidth >= 640 : true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 640);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Find active project details
   const project = data.projectDetails.find((p) => p.id === projectId);
@@ -1059,7 +1068,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                   {/youtube|vimeo|embed/i.test(embedUrl) ? (
                                     <iframe
                                       src={embedUrl}
-                                      className="w-full h-full border-0 rounded-none block"
+                                      className="w-full h-full border-0 rounded-none block pointer-events-auto"
                                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                       allowFullScreen
                                       title={sec.label || `${project.title} Video`}
@@ -1081,7 +1090,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 onClick={() => {
                                   setPlayingVideoMap((prev) => ({ ...prev, [videoKey]: true }));
                                 }}
-                                className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-transparent rounded-none"
+                                className="w-full aspect-video relative overflow-hidden group cursor-pointer flex items-center justify-center bg-black rounded-none"
                               >
                                 {fallbackCover ? (
                                   <ImageFallback
@@ -1089,10 +1098,10 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                     alt={sec.label || "Feature Video"}
                                     category={project.title}
                                     gifMode={false}
-                                    className="w-full h-auto block rounded-none transition-transform duration-700 group-hover:scale-[1.015]"
+                                    className="w-full h-full object-cover block rounded-none transition-transform duration-700 group-hover:scale-105"
                                   />
                                 ) : (
-                                  <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600 rounded-none">
+                                  <div className="w-full h-full flex items-center justify-center bg-neutral-950 text-neutral-600 rounded-none">
                                     <Play size={48} className="opacity-40" />
                                   </div>
                                 )}
@@ -1244,81 +1253,83 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                         return (
                           <>
-                            {/* 1. MOBILE VIEW (< sm / < 640px): Text ALWAYS First, then Images */}
-                            <div className="flex flex-col gap-6 w-full sm:hidden">
-                              {isImageTextMode ? (
-                                <>
-                                  {/* Mobile: Text ALWAYS First */}
-                                  {renderTextBlock()}
-                                  {/* Then Large Media */}
-                                  <div className="w-full flex items-center justify-center">
-                                    {renderLargeMedia()}
-                                  </div>
-                                  {/* Then Side Image if available */}
-                                  {singleSideImg && (
-                                    <div className="w-full flex items-center justify-center">
-                                      {renderImageBlock(singleSideImg, "Side")}
-                                    </div>
-                                  )}
-                                </>
-                              ) : (
-                                <>
-                                  {/* 3 Images: Large first, then stacked images */}
-                                  <div className="w-full flex items-center justify-center">
-                                    {renderLargeMedia()}
-                                  </div>
-                                  {topStackedImg && (
-                                    <div className="w-full flex items-center justify-center">
-                                      {renderImageBlock(topStackedImg, "Top")}
-                                    </div>
-                                  )}
-                                  {bottomStackedImg && (
-                                    <div className="w-full flex items-center justify-center">
-                                      {renderImageBlock(bottomStackedImg, "Bottom")}
-                                    </div>
-                                  )}
-                                </>
-                              )}
-                            </div>
-
-                            {/* 2. TABLET & DESKTOP VIEW (sm+ / >= 640px): Side-by-Side Fluid Layout (Giant Ant style) */}
-                            <div
-                              className={`hidden sm:flex items-stretch w-full gap-4 sm:gap-6 lg:gap-6 ${
-                                isLargeOnLeft ? "sm:flex-row" : "sm:flex-row-reverse"
-                              }`}
-                            >
-                              {/* LARGE MAIN IMAGE */}
-                              <div
-                                className={`w-full cms-stacked-large-col-${secIdx} ${splitSecClass} flex items-start justify-center`}
-                              >
-                                {renderLargeMedia()}
-                              </div>
-
-                              {/* SECONDARY STACKED COLUMN (Two Images OR Image + Text) */}
-                              <div
-                                className={`w-full max-w-full min-w-0 overflow-hidden cms-stacked-small-col-${secIdx} flex flex-col justify-between self-stretch`}
-                                style={{ gap: stackedGapVal }}
-                              >
+                            {!isDesktop ? (
+                              /* 1. MOBILE VIEW (< sm / < 640px): Text ALWAYS First, then Images */
+                              <div className="flex flex-col gap-6 w-full sm:hidden">
                                 {isImageTextMode ? (
-                                  isTextTop ? (
-                                    <>
-                                      <div className="w-full max-w-full min-w-0 overflow-hidden flex flex-col justify-start items-start">{renderTextBlock()}</div>
-                                      <div className="w-full flex items-center justify-center mt-auto">{renderImageBlock(singleSideImg, "Side")}</div>
-                                    </>
-                                  ) : (
-                                    <>
-                                      <div className="w-full flex items-center justify-center mb-auto">{renderImageBlock(singleSideImg, "Side")}</div>
-                                      <div className="w-full max-w-full min-w-0 overflow-hidden flex flex-col justify-end items-start mt-auto">{renderTextBlock()}</div>
-                                    </>
-                                  )
+                                  <>
+                                    {/* Mobile: Text ALWAYS First */}
+                                    {renderTextBlock()}
+                                    {/* Then Large Media */}
+                                    <div className="w-full flex items-center justify-center">
+                                      {renderLargeMedia()}
+                                    </div>
+                                    {/* Then Side Image if available */}
+                                    {singleSideImg && (
+                                      <div className="w-full flex items-center justify-center">
+                                        {renderImageBlock(singleSideImg, "Side")}
+                                      </div>
+                                    )}
+                                  </>
                                 ) : (
                                   <>
-                                    <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(topStackedImg, "Top")}</div>
-                                    <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(bottomStackedImg, "Bottom")}</div>
+                                    {/* 3 Images: Large first, then stacked images */}
+                                    <div className="w-full flex items-center justify-center">
+                                      {renderLargeMedia()}
+                                    </div>
+                                    {topStackedImg && (
+                                      <div className="w-full flex items-center justify-center">
+                                        {renderImageBlock(topStackedImg, "Top")}
+                                      </div>
+                                    )}
+                                    {bottomStackedImg && (
+                                      <div className="w-full flex items-center justify-center">
+                                        {renderImageBlock(bottomStackedImg, "Bottom")}
+                                      </div>
+                                    )}
                                   </>
                                 )}
                               </div>
-                            </div>
+                            ) : (
+                              /* 2. TABLET & DESKTOP VIEW (sm+ / >= 640px): Side-by-Side Fluid Layout (Giant Ant style) */
+                              <div
+                                className={`hidden sm:flex items-stretch w-full gap-4 sm:gap-6 lg:gap-6 ${
+                                  isLargeOnLeft ? "sm:flex-row" : "sm:flex-row-reverse"
+                                }`}
+                              >
+                                {/* LARGE MAIN IMAGE */}
+                                <div
+                                  className={`w-full cms-stacked-large-col-${secIdx} ${splitSecClass} flex items-start justify-center`}
+                                >
+                                  {renderLargeMedia()}
+                                </div>
+
+                                {/* SECONDARY STACKED COLUMN (Two Images OR Image + Text) */}
+                                <div
+                                  className={`w-full max-w-full min-w-0 overflow-hidden cms-stacked-small-col-${secIdx} flex flex-col justify-between self-stretch`}
+                                  style={{ gap: stackedGapVal }}
+                                >
+                                  {isImageTextMode ? (
+                                    isTextTop ? (
+                                      <>
+                                        <div className="w-full max-w-full min-w-0 overflow-hidden flex flex-col justify-start items-start">{renderTextBlock()}</div>
+                                        <div className="w-full flex items-center justify-center mt-auto">{renderImageBlock(singleSideImg, "Side")}</div>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <div className="w-full flex items-center justify-center mb-auto">{renderImageBlock(singleSideImg, "Side")}</div>
+                                        <div className="w-full max-w-full min-w-0 overflow-hidden flex flex-col justify-end items-start mt-auto">{renderTextBlock()}</div>
+                                      </>
+                                    )
+                                  ) : (
+                                    <>
+                                      <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(topStackedImg, "Top")}</div>
+                                      <div className="flex-1 w-full flex items-center justify-center">{renderImageBlock(bottomStackedImg, "Bottom")}</div>
+                                    </>
+                                  )}
+                                </div>
+                              </div>
+                            )}
                           </>
                         );
                       })()}
