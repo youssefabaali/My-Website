@@ -1277,7 +1277,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                             {/* 2. TABLET & DESKTOP VIEW (sm+ / >= 640px): Side-by-Side Fluid Layout (Giant Ant style) */}
                             <div
-                              className={`hidden sm:flex items-start w-full gap-4 sm:gap-6 lg:gap-6 ${
+                              className={`hidden sm:flex items-stretch w-full gap-4 sm:gap-6 lg:gap-6 ${
                                 isLargeOnLeft ? "sm:flex-row" : "sm:flex-row-reverse"
                               }`}
                             >
@@ -1290,19 +1290,19 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                               {/* SECONDARY STACKED COLUMN (Two Images OR Image + Text) */}
                               <div
-                                className={`w-full cms-stacked-small-col-${secIdx} flex flex-col justify-between`}
+                                className={`w-full cms-stacked-small-col-${secIdx} flex flex-col justify-between self-stretch`}
                                 style={{ gap: stackedGapVal }}
                               >
                                 {isImageTextMode ? (
                                   isTextTop ? (
                                     <>
                                       <div className="w-full flex flex-col justify-start items-start">{renderTextBlock()}</div>
-                                      <div className="w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
+                                      <div className="w-full flex items-center justify-center mt-auto">{renderImageBlock(singleSideImg, "Side")}</div>
                                     </>
                                   ) : (
                                     <>
-                                      <div className="w-full flex items-center justify-center">{renderImageBlock(singleSideImg, "Side")}</div>
-                                      <div className="w-full flex flex-col justify-end items-start">{renderTextBlock()}</div>
+                                      <div className="w-full flex items-center justify-center mb-auto">{renderImageBlock(singleSideImg, "Side")}</div>
+                                      <div className="w-full flex flex-col justify-end items-start mt-auto">{renderTextBlock()}</div>
                                     </>
                                   )
                                 ) : (

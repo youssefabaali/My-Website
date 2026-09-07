@@ -313,8 +313,8 @@ function CMSImageField({
 
       {/* Live Preview Box */}
       {value ? (
-        <div className="mt-1 bg-black/50 border border-white/10 rounded-lg p-2 flex items-center gap-3 relative overflow-hidden">
-          <div className="w-20 h-14 rounded bg-neutral-950 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 relative">
+        <div className="mt-1 bg-black/50 border border-white/10 rounded-none p-2 flex items-center gap-3 relative overflow-hidden">
+          <div className="w-20 h-14 rounded-none bg-neutral-950 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 relative">
             {isPdf ? (
               <FileText className="text-brand-green w-6 h-6" />
             ) : (
@@ -322,7 +322,7 @@ function CMSImageField({
                 src={value}
                 alt="Preview"
                 gifMode={gifMode}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-none"
               />
             )}
           </div>
