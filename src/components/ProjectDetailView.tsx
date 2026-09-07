@@ -47,23 +47,26 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
   );
   const headerVideoLayout = project?.headerVideoLayout || "grid";
 
-  // Sanitize and transform standard youtube watch url or vimeo url to embed
+  // Sanitize and transform standard youtube watch url, shorts, or vimeo url to embed
   const getEmbedUrl = (rawUrl: string) => {
     const trimmed = (rawUrl || "").trim();
     if (!trimmed) return "";
     if (/^(javascript|data|vbscript):/i.test(trimmed)) {
       return "about:blank";
-    } else if (trimmed.includes("youtube.com/embed/") || trimmed.includes("player.vimeo.com/")) {
+    } else if (trimmed.includes("player.vimeo.com/")) {
       return trimmed;
     } else if (trimmed.includes("vimeo.com/")) {
       const vimeoIdMatch = trimmed.match(/vimeo\.com\/([0-9]+)/);
       return vimeoIdMatch && vimeoIdMatch[1]
-        ? `https://player.vimeo.com/video/${vimeoIdMatch[1]}`
+        ? `https://player.vimeo.com/video/${vimeoIdMatch[1]}?autoplay=1`
         : trimmed;
-    } else if (trimmed.includes("youtube.com/watch") || trimmed.includes("youtu.be/")) {
-      const ytIdMatch = trimmed.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s?]+)/);
+    } else if (trimmed.includes("youtube.com/embed/")) {
+      const glue = trimmed.includes("?") ? "&" : "?";
+      return `${trimmed}${glue}autoplay=1&enablejsapi=1&controls=1&rel=0&modestbranding=0&playsinline=1`;
+    } else if (trimmed.includes("youtube.com/watch") || trimmed.includes("youtu.be/") || trimmed.includes("youtube.com/shorts/")) {
+      const ytIdMatch = trimmed.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([^&\s?]+)/);
       return ytIdMatch && ytIdMatch[1]
-        ? `https://www.youtube.com/embed/${ytIdMatch[1]}`
+        ? `https://www.youtube.com/embed/${ytIdMatch[1]}?autoplay=1&enablejsapi=1&controls=1&rel=0&modestbranding=0&playsinline=1`
         : trimmed;
     }
     return trimmed;
@@ -982,6 +985,9 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                         .${splitSecClass} {
                           transform: none !important;
                         }
+                        .${splitSecClass}, .cms-stacked-large-col-${secIdx}, .cms-stacked-small-col-${secIdx}, .cms-stacked-large-col-${secIdx} *:not(.rounded-full), .cms-stacked-small-col-${secIdx} *:not(.rounded-full) {
+                          border-radius: 0px !important;
+                        }
                         @media (min-width: 640px) {
                           .${splitSecClass} {
                             ${yOff || xOff ? `transform: translate(${xOff}px, ${yOff}px) !important;` : "transform: none !important;"}
@@ -1049,12 +1055,12 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                             if (isPlaying) {
                               return (
-                                <div className="w-full aspect-video overflow-hidden bg-black relative">
+                                <div className="w-full aspect-video overflow-hidden bg-black rounded-none relative">
                                   {/youtube|vimeo|embed/i.test(embedUrl) ? (
                                     <iframe
-                                      src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
-                                      className="w-full h-full border-0"
-                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      src={embedUrl}
+                                      className="w-full h-full border-0 rounded-none block"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                       allowFullScreen
                                       title={sec.label || `${project.title} Video`}
                                     />
@@ -1063,7 +1069,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                       src={embedUrl}
                                       controls
                                       autoPlay
-                                      className="w-full h-full object-contain"
+                                      className="w-full h-full object-contain rounded-none block"
                                     />
                                   )}
                                 </div>
@@ -1075,7 +1081,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 onClick={() => {
                                   setPlayingVideoMap((prev) => ({ ...prev, [videoKey]: true }));
                                 }}
-                                className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
+                                className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-transparent rounded-none"
                               >
                                 {fallbackCover ? (
                                   <ImageFallback
@@ -1083,16 +1089,16 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                     alt={sec.label || "Feature Video"}
                                     category={project.title}
                                     gifMode={false}
-                                    className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.015]"
+                                    className="w-full h-auto block rounded-none transition-transform duration-700 group-hover:scale-[1.015]"
                                   />
                                 ) : (
-                                  <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
+                                  <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600 rounded-none">
                                     <Play size={48} className="opacity-40" />
                                   </div>
                                 )}
 
                                 {/* Dark overlay & Glowing Play Button exactly matching Hero Video */}
-                                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                                <div className="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none rounded-none" />
                                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                                   <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-green/90 group-hover:bg-brand-green text-brand-black flex items-center justify-center shadow-[0_0_30px_rgba(140,255,46,0.5)] transition-all duration-300 group-hover:scale-110">
                                     <Play size={28} className="ml-1 fill-brand-black" />
@@ -1108,14 +1114,14 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                               onClick={() => {
                                 if (globalIdx !== -1) setLightboxIndex(globalIdx);
                               }}
-                              className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 block"
+                              className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 block rounded-none"
                             >
                               <ImageFallback
                                 src={largeImg}
                                 alt={`${sec.label} Main`}
                                 category={project.title}
                                 gifMode={isGif}
-                                className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.015]"
+                                className="w-full h-auto block rounded-none transition-transform duration-500 group-hover:scale-[1.015]"
                               />
                             </button>
                           );
@@ -1134,12 +1140,12 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                             if (isSidePlaying) {
                               return (
-                                <div className="w-full aspect-video overflow-hidden bg-black relative">
+                                <div className="w-full aspect-video overflow-hidden bg-black rounded-none relative">
                                   {/youtube|vimeo|embed/i.test(embedUrl) ? (
                                     <iframe
-                                      src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
-                                      className="w-full h-full border-0"
-                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      src={embedUrl}
+                                      className="w-full h-full border-0 rounded-none block"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                       allowFullScreen
                                       title={`${sec.label} ${labelSuffix}`}
                                     />
@@ -1148,7 +1154,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                       src={embedUrl}
                                       controls
                                       autoPlay
-                                      className="w-full h-full object-contain"
+                                      className="w-full h-full object-contain rounded-none block"
                                     />
                                   )}
                                 </div>
@@ -1168,7 +1174,7 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                 onClick={() => {
                                   setPlayingVideoMap((prev) => ({ ...prev, [sideVideoKey]: true }));
                                 }}
-                                className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-neutral-900"
+                                className="w-full relative overflow-hidden group cursor-pointer flex items-center justify-center bg-transparent rounded-none"
                               >
                                 {sideCover ? (
                                   <ImageFallback
@@ -1176,14 +1182,14 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                                     alt={`${sec.label} ${labelSuffix}`}
                                     category={project.title}
                                     gifMode={false}
-                                    className="w-full h-auto object-contain block transition-transform duration-700 group-hover:scale-[1.015]"
+                                    className="w-full h-auto object-contain block rounded-none transition-transform duration-700 group-hover:scale-[1.015]"
                                   />
                                 ) : (
-                                  <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600">
+                                  <div className="w-full aspect-video flex items-center justify-center bg-neutral-950 text-neutral-600 rounded-none">
                                     <Play size={36} className="opacity-40" />
                                   </div>
                                 )}
-                                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                                <div className="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none rounded-none" />
                                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                                   <div className="w-12 h-12 rounded-full bg-brand-green/90 group-hover:bg-brand-green text-brand-black flex items-center justify-center shadow-[0_0_20px_rgba(140,255,46,0.5)] transition-all duration-300 group-hover:scale-110">
                                     <Play size={22} className="ml-0.5 fill-brand-black" />
@@ -1199,14 +1205,14 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                               onClick={() => {
                                 if (globalIdx !== -1) setLightboxIndex(globalIdx);
                               }}
-                              className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center"
+                              className="w-full overflow-hidden group cursor-pointer focus:outline-none p-0 flex items-center justify-center rounded-none"
                             >
                               <ImageFallback
                                 src={imgUrl}
                                 alt={`${sec.label} ${labelSuffix}`}
                                 category={project.title}
                                 gifMode={isGif}
-                                className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.015]"
+                                className="w-full h-auto object-contain block rounded-none transition-transform duration-500 group-hover:scale-[1.015]"
                               />
                             </button>
                           );
@@ -1221,14 +1227,14 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
                             : "text-left items-start";
 
                           return (
-                            <div className={`w-full flex flex-col justify-start gap-2 sm:gap-2.5 lg:gap-3 py-1 sm:py-0 ${alignClass} cms-stacked-text-col-${secIdx}`}>
+                            <div className={`w-full max-w-full min-w-0 flex flex-col justify-start gap-2 sm:gap-2.5 lg:gap-3 py-1 sm:py-0 overflow-hidden break-words ${alignClass} cms-stacked-text-col-${secIdx}`}>
                               {sec.stackedTitle && (
-                                <h3 className="font-bebas text-xl sm:text-[19px] lg:text-3xl tracking-wider lg:tracking-widest text-white uppercase leading-snug sm:leading-tight lg:leading-tight">
+                                <h3 className="font-bebas text-xl sm:text-[19px] lg:text-3xl tracking-wider lg:tracking-widest text-white uppercase leading-snug sm:leading-tight lg:leading-tight max-w-full break-words">
                                   {sec.stackedTitle}
                                 </h3>
                               )}
                               {sec.stackedText && (
-                                <p className="font-sans text-xs sm:text-[13px] lg:text-base tracking-wider lg:tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line">
+                                <p className="font-sans text-xs sm:text-[13px] lg:text-base tracking-wider lg:tracking-widest text-white/80 leading-relaxed uppercase whitespace-pre-line max-w-full break-words">
                                   {sec.stackedText}
                                 </p>
                               )}
@@ -1290,19 +1296,19 @@ export function ProjectDetailView({ projectId, onBack }: ProjectDetailViewProps)
 
                               {/* SECONDARY STACKED COLUMN (Two Images OR Image + Text) */}
                               <div
-                                className={`w-full cms-stacked-small-col-${secIdx} flex flex-col justify-between self-stretch`}
+                                className={`w-full max-w-full min-w-0 overflow-hidden cms-stacked-small-col-${secIdx} flex flex-col justify-between self-stretch`}
                                 style={{ gap: stackedGapVal }}
                               >
                                 {isImageTextMode ? (
                                   isTextTop ? (
                                     <>
-                                      <div className="w-full flex flex-col justify-start items-start">{renderTextBlock()}</div>
+                                      <div className="w-full max-w-full min-w-0 overflow-hidden flex flex-col justify-start items-start">{renderTextBlock()}</div>
                                       <div className="w-full flex items-center justify-center mt-auto">{renderImageBlock(singleSideImg, "Side")}</div>
                                     </>
                                   ) : (
                                     <>
                                       <div className="w-full flex items-center justify-center mb-auto">{renderImageBlock(singleSideImg, "Side")}</div>
-                                      <div className="w-full flex flex-col justify-end items-start mt-auto">{renderTextBlock()}</div>
+                                      <div className="w-full max-w-full min-w-0 overflow-hidden flex flex-col justify-end items-start mt-auto">{renderTextBlock()}</div>
                                     </>
                                   )
                                 ) : (
