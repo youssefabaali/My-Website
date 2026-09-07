@@ -113,7 +113,8 @@ export const defaultSiteData: CMSSiteData = {
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      }
+      },
+      "isFeatured": true
     },
     {
       "id": 2,
@@ -129,7 +130,8 @@ export const defaultSiteData: CMSSiteData = {
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/GIF.Video.project.mp4": true
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 3,
@@ -146,7 +148,8 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
-      }
+      },
+      "isFeatured": true
     },
     {
       "id": 5,
@@ -161,7 +164,8 @@ export const defaultSiteData: CMSSiteData = {
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
-      }
+      },
+      "isFeatured": true
     },
     {
       "id": 4,
@@ -174,6 +178,7 @@ export const defaultSiteData: CMSSiteData = {
       "link": "#",
       "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4",
       "isPublished": true,
+      "isFeatured": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4": true,
@@ -191,7 +196,7 @@ export const defaultSiteData: CMSSiteData = {
       "link": "#",
       "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4",
       "isPublished": true,
-      "isFeatured": false,
+      "isFeatured": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
@@ -214,7 +219,8 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg": false
-      }
+      },
+      "isFeatured": true
     },
     {
       "id": 11,
@@ -231,7 +237,8 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif": true
-      }
+      },
+      "isFeatured": true
     },
     {
       "id": 20,
@@ -248,7 +255,8 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-6.jpg": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
-      }
+      },
+      "isFeatured": true
     },
     {
       "id": 10,
@@ -264,7 +272,8 @@ export const defaultSiteData: CMSSiteData = {
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 13,
@@ -281,7 +290,8 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif": true
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 6,
@@ -298,7 +308,8 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 8,
@@ -314,7 +325,8 @@ export const defaultSiteData: CMSSiteData = {
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 9,
@@ -331,7 +343,8 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4": true
-      }
+      },
+      "isFeatured": true
     },
     {
       "id": 18,
@@ -348,7 +361,8 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg": false
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 14,
@@ -363,7 +377,8 @@ export const defaultSiteData: CMSSiteData = {
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-1/GIF.video.thumbnail.mp4": true
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 21,
@@ -376,6 +391,7 @@ export const defaultSiteData: CMSSiteData = {
       "link": "#",
       "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
       "isPublished": true,
+      "isFeatured": false,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4": false,
@@ -396,7 +412,8 @@ export const defaultSiteData: CMSSiteData = {
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 19,
@@ -411,7 +428,8 @@ export const defaultSiteData: CMSSiteData = {
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false
-      }
+      },
+      "isFeatured": false
     },
     {
       "id": 16,
@@ -424,7 +442,8 @@ export const defaultSiteData: CMSSiteData = {
       "link": "#",
       "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Success-Finder/GIF-4.gif",
       "isPublished": true,
-      "gifModes": {}
+      "gifModes": {},
+      "isFeatured": false
     },
     {
       "id": 17,
@@ -439,10 +458,184 @@ export const defaultSiteData: CMSSiteData = {
       "isPublished": true,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true
-      }
+      },
+      "isFeatured": false
     }
   ],
-  "projects": [],
+  "projects": [
+    {
+      "id": 4,
+      "title": "WORKLEAP - SPHERICAL PROJECTION MAPPING",
+      "category": "Event",
+      "categories": [
+        "Event"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Cover.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4",
+      "isPublished": true,
+      "isFeatured": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4": true
+      },
+      "description": "",
+      "imageLeft": false
+    },
+    {
+      "id": 11,
+      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif": true
+      },
+      "description": "",
+      "imageLeft": true
+    },
+    {
+      "id": 5,
+      "title": "AINSI VA MANU - ON SCREEN MOTION GRAPHICS",
+      "category": "Broadcast",
+      "categories": [
+        "Broadcast"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/thumpnail.webp",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
+      },
+      "description": "",
+      "imageLeft": true
+    },
+    {
+      "id": 9,
+      "title": "FO.NE.TIK - SHOWREEL ANIMATION",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.3.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4": true
+      },
+      "isFeatured": false,
+      "description": "",
+      "imageLeft": true
+    },
+    {
+      "id": 3,
+      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
+      },
+      "description": "",
+      "imageLeft": false
+    },
+    {
+      "id": 12,
+      "title": "NYC EMERGENCY MANAGEMENT - TEXT BUBBLE DESIGN & ANIMATION",
+      "category": "Broadcast",
+      "categories": [
+        "Broadcast"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Thumbnails.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4",
+      "isPublished": true,
+      "isFeatured": false,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-NYC-Emergency-Management/Notify.NYC.Traffic.Alerts.mp4": true
+      },
+      "description": "",
+      "imageLeft": true
+    },
+    {
+      "id": 1,
+      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      },
+      "description": "",
+      "imageLeft": true
+    },
+    {
+      "id": 7,
+      "title": "CLUB DE LECTURE - WHERE BOOKS MEET MUSIC",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg": false
+      },
+      "description": "",
+      "imageLeft": false
+    },
+    {
+      "id": 20,
+      "title": "TABSEER - PRODUCT QUALITY EXPLAINER VIDEO",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-6.jpg": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
+      },
+      "description": "",
+      "imageLeft": true
+    }
+  ],
   "projectDetails": [
     {
       "id": 1,
@@ -1229,7 +1422,7 @@ export const defaultSiteData: CMSSiteData = {
           },
           "textContent": "Animating graphics for a large physical sphere comes with a unique challenge: flat designs can easily stretch or warp when projected onto a round surface. \n\nWorking within a 3780×1080 pixel canvas, I carefully adjusted the scale, positioning, and movement speed of the visual elements. \n\nThis ensured that every animation wrapped naturally around the curved display, delivering a clear and distortion-free experience for everyone in the room.",
           "imagePosition": "left",
-          "imageYOffset": 150,
+          "imageYOffset": 0,
           "imageCustomWidth": "50%",
           "sectionGap": 20,
           "sectionGapMobile": 10
@@ -3623,7 +3816,8 @@ export const defaultSiteData: CMSSiteData = {
       "role": "STORYBOARD, ILLUSTRATION, ANIMATION",
       "client": "MONDATA",
       "description": "Because the client provided a defined visual style and clear direction from the start, the production process was smooth and efficient. \n\nOnce the visual designs were set, I animated the scenes with fluid movements to ensure the message was simple for viewers to follow, resulting in a final video that was approved right away with no revisions needed.",
-      "descriptionBottomGap": -50,
+      "descriptionBottomGap": 150,
+      "descriptionBottomGapMobile": "default",
       "metaInfoBottomGap": 150,
       "metaInfoBottomGapMobile": 70,
       "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4",
@@ -3654,7 +3848,7 @@ export const defaultSiteData: CMSSiteData = {
             "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-FR.mp4",
             ""
           ],
-          "imageYOffset": 200,
+          "imageYOffset": 0,
           "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
           "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
           "imageCustomWidth": "70%",
@@ -3774,21 +3968,21 @@ export const defaultSiteData: CMSSiteData = {
     {
       "title": "MOTION GRAPHICS",
       "items": [
-        "SAS",
+        "SAAS VIDEO",
         "EXPLAINER VIDEO",
-        "REEL"
+        "SIZZLE REEL",
+        "BRAND VIDEO"
       ]
     },
     {
-      "title": "LOGO ANIMATION",
-      "items": [
-        "FRAME BY FRAME"
-      ]
+      "title": "LOGO & IDENTITY ANIMATIOND",
+      "items": []
     },
     {
       "title": "UX-UI ANIMATION",
       "items": [
-        "LOTTIE"
+        "APP ANIMATIONS",
+        "WEB ANIMATIONS"
       ]
     }
   ],
@@ -3881,7 +4075,7 @@ export const defaultSiteData: CMSSiteData = {
     "year": 2026,
     "logoText": "Youssef Abaali Logo",
     "descriptionText": "MOTION GRAPHICS & STORYTELLING DESIGNER BASED IN SPAIN",
-    "copyrightText": "Youssef Abaali",
+    "copyrightText": "©2026 youssef abaali. All rights reserved.",
     "footerLinks": [
       {
         "label": "PROJECTS",
