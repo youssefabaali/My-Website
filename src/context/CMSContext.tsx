@@ -55,7 +55,10 @@ export function mergeDeepData(serverData: any, defaultData: CMSSiteData): CMSSit
       skills: Array.isArray(serverData.aboutMe?.skills) ? serverData.aboutMe.skills : defaultData.aboutMe?.skills || [],
     },
     allProjects: Array.isArray(serverData.allProjects) ? serverData.allProjects : defaultData.allProjects || [],
-    projects: Array.isArray(serverData.projects) ? serverData.projects : defaultData.projects || [],
+    projects: (Array.isArray(serverData.projects) ? serverData.projects : defaultData.projects || []).map((p) => ({
+      ...p,
+      description: p.description === "Custom slide description." ? "" : p.description,
+    })),
     projectDetails: Array.isArray(serverData.projectDetails) ? serverData.projectDetails : defaultData.projectDetails || [],
     services: Array.isArray(serverData.services) ? serverData.services : defaultData.services || [],
     socials: Array.isArray(serverData.socials) ? serverData.socials : defaultData.socials || [],

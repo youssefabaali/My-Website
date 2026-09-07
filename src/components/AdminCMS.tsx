@@ -7984,38 +7984,79 @@ export function AdminCMS() {
                                   </button>
                                 </td>
                                 <td className="py-4 px-6">
-                                  <button
-                                    onClick={() =>
-                                      updateData(
-                                        (prev) => {
-                                          let featured = [...prev.projects];
-                                          const featuredIdx = featured.findIndex((fp) => fp.id === p.id);
-                                          if (featuredIdx !== -1) {
-                                            featured.splice(featuredIdx, 1);
-                                          } else {
-                                            const ap = prev.allProjects.find((ap) => ap.id === p.id);
-                                            if (ap) {
-                                              featured.push({
-                                                ...ap,
-                                                description: "Custom slide description.",
-                                                imageLeft: featured.length % 2 === 0,
-                                              } as any);
-                                            }
-                                          }
-                                          return { ...prev, projects: featured };
-                                        },
-                                        "Toggle Featured",
-                                        `Toggled featured status of project: ${p.title}`
-                                      )
-                                    }
-                                    className={`px-2.5 py-1 rounded text-[9px] font-bold tracking-wider cursor-pointer ${
-                                      isFeatured
-                                        ? "bg-purple-500/20 text-purple-400 border border-purple-500/20"
-                                        : "bg-neutral-800 text-neutral-400 border border-transparent"
-                                    }`}
-                                  >
-                                    {isFeatured ? "★ Featured" : "☆ Standard"}
-                                  </button>
+                                  {(() => {
+                                    const featuredIndex = (data.projects || []).findIndex((fp) => fp.id === p.id);
+                                    const currentPos = featuredIndex !== -1 ? featuredIndex + 1 : 0;
+                                    return (
+                                      <div className="relative inline-flex items-center">
+                                        <select
+                                          value={currentPos}
+                                          onChange={(e) => {
+                                            const targetPos = Number(e.target.value);
+                                            updateData(
+                                              (prev) => {
+                                                let featured = [...(prev.projects || [])];
+                                                const existingIdx = featured.findIndex((fp) => fp.id === p.id);
+
+                                                if (targetPos === 0) {
+                                                  if (existingIdx !== -1) {
+                                                    featured.splice(existingIdx, 1);
+                                                  }
+                                                } else {
+                                                  let itemToPlace: any;
+                                                  if (existingIdx !== -1) {
+                                                    itemToPlace = featured.splice(existingIdx, 1)[0];
+                                                  } else {
+                                                    const ap = prev.allProjects.find((proj) => proj.id === p.id);
+                                                    if (ap) {
+                                                      itemToPlace = { ...ap, description: "", imageLeft: true };
+                                                    }
+                                                  }
+                                                  if (itemToPlace) {
+                                                    itemToPlace.description = "";
+                                                    const insertIdx = Math.min(targetPos - 1, featured.length);
+                                                    featured.splice(insertIdx, 0, itemToPlace);
+                                                  }
+                                                }
+
+                                                const updatedAllProjects = prev.allProjects.map((proj) => ({
+                                                  ...proj,
+                                                  isFeatured: featured.some((fp) => fp.id === proj.id),
+                                                }));
+
+                                                return {
+                                                  ...prev,
+                                                  projects: featured,
+                                                  allProjects: updatedAllProjects,
+                                                };
+                                              },
+                                              targetPos === 0 ? "Remove Featured" : "Set Featured Position",
+                                              targetPos === 0
+                                                ? `Removed "${p.title}" from Featured Work`
+                                                : `Set "${p.title}" as Featured Position #${targetPos}`
+                                            );
+                                          }}
+                                          className={`py-1 pl-2.5 pr-7 rounded text-[10px] font-bold tracking-wider cursor-pointer border appearance-none transition-colors ${
+                                            currentPos > 0
+                                              ? "bg-brand-green/20 text-brand-green border-brand-green/40 hover:bg-brand-green/30"
+                                              : "bg-neutral-800 text-neutral-400 border-white/5 hover:border-white/20 hover:text-white"
+                                          }`}
+                                        >
+                                          <option value={0} className="bg-neutral-900 text-neutral-400 font-semibold">
+                                            — Not Featured —
+                                          </option>
+                                          {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
+                                            <option key={num} value={num} className="bg-neutral-900 text-white font-bold">
+                                              {num === 1 ? "★ #1 (First on Home)" : `★ #${num}`}
+                                            </option>
+                                          ))}
+                                        </select>
+                                        <div className="pointer-events-none absolute right-2 flex items-center text-current opacity-70">
+                                          <ChevronDown size={12} />
+                                        </div>
+                                      </div>
+                                    );
+                                  })()}
                                 </td>
                                 <td className="py-4 px-6 text-right">
                                   <div className="flex justify-end gap-2">

@@ -34,6 +34,7 @@ export interface AllProject {
   hoverGif?: string;
   hoverVideo?: string;
   isPublished?: boolean;
+  isFeatured?: boolean;
   gifModes?: Record<string, boolean>;
 }
 

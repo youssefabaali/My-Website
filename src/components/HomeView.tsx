@@ -282,7 +282,7 @@ export function HomeView({
                   whileInView="show"
                   viewport={{ once: true, margin: "-120px" }}
                   className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 pt-8 ${
-                    !project.imageLeft ? "md:flex-row-reverse" : ""
+                    index % 2 !== 0 ? "md:flex-row-reverse" : ""
                   }`}
                 >
                   {/* Thumbnail */}
@@ -315,9 +315,6 @@ export function HomeView({
                         {project.title}
                       </h3>
                     </button>
-                    <p className="font-grotesk text-xs sm:text-[13px] tracking-wider leading-relaxed text-white/70 uppercase max-w-lg">
-                      {project.description}
-                    </p>
                   </div>
                 </motion.div>
               ))}
