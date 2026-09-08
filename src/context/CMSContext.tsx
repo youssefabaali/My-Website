@@ -377,29 +377,36 @@ export function CMSProvider({ children }: { children: ReactNode }) {
   };
 
   const login = async (passcode: string): Promise<boolean> => {
+    const normalizedInput = (passcode || "").trim();
+    if (!normalizedInput) return false;
+
     try {
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ passcode }),
+        body: JSON.stringify({ passcode: normalizedInput }),
       });
 
       if (res.ok) {
         const body = await res.json();
-        const token = body.token || btoa(passcode);
+        const token = body.token || btoa(normalizedInput);
         setIsAdmin(true);
         localStorage.setItem("cms_admin_session", "true");
         localStorage.setItem("cms_auth_token", token);
         return true;
       }
+
+      // If server explicitly rejected credentials (401), do not allow client-side bypass
+      if (res.status === 401) {
+        return false;
+      }
     } catch (err) {
       console.warn("CMS Login: Server endpoint unavailable, verifying on client-side passcode.", err);
     }
 
-    // Client-side fallback login check
-    const normalizedInput = (passcode || "").trim();
-    const currentPasscode = data?.settings?.passcode || "admin";
-    if (normalizedInput === currentPasscode || normalizedInput.toLowerCase() === "admin") {
+    // Client-side fallback login check (only when server is completely unreachable)
+    const currentPasscode = (data?.settings?.passcode || "admin").trim();
+    if (normalizedInput === currentPasscode) {
       const token = btoa(normalizedInput);
       setIsAdmin(true);
       localStorage.setItem("cms_admin_session", "true");
@@ -440,6 +447,9 @@ export function CMSProvider({ children }: { children: ReactNode }) {
 
     try {
       localStorage.setItem("cms_portfolio_data", JSON.stringify(finalData));
+      if (finalData.settings?.passcode) {
+        localStorage.setItem("cms_auth_token", btoa(finalData.settings.passcode.trim()));
+      }
     } catch (e) {
       console.warn("CMS: Failed to save to localStorage", e);
     }

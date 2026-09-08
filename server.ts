@@ -209,11 +209,11 @@ app.post("/api/login", (req, res) => {
   try {
     const { passcode } = req.body;
     const currentData = getDbData();
-    const serverPasscode = currentData.settings?.passcode || "admin";
+    const serverPasscode = (currentData.settings?.passcode || "admin").trim();
 
     const normalizedPasscode = (passcode || "").trim();
-    if (normalizedPasscode === serverPasscode || normalizedPasscode.toLowerCase() === "admin") {
-      const token = Buffer.from(normalizedPasscode || "admin").toString("base64");
+    if (normalizedPasscode && normalizedPasscode === serverPasscode) {
+      const token = Buffer.from(normalizedPasscode).toString("base64");
       res.json({ success: true, token });
     } else {
       res.status(401).json({ success: false, error: "Incorrect passcode." });
