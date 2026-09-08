@@ -10,7 +10,7 @@ export const defaultSiteData: CMSSiteData = {
   "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Other-Assets/Home-page-hero-image-laptop.mp4",
   "heroImageMobile": "https://github.com/youssefabaali/my-website-assets/releases/download/Other-Assets/Home-page-hero-image-Phone.mp4",
   "settings": {
-    "passcode": "admin"
+    "passcode": "www.Ih@dwebsite2026.com"
   },
   "design": {
     "colors": {
@@ -100,23 +100,6 @@ export const defaultSiteData: CMSSiteData = {
   },
   "allProjects": [
     {
-      "id": 1,
-      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      },
-      "isFeatured": true
-    },
-    {
       "id": 2,
       "title": "SHOWREEL 2025",
       "category": "Showreel",
@@ -132,40 +115,6 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/GIF.Video.project.mp4": true
       },
       "isFeatured": false
-    },
-    {
-      "id": 3,
-      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
-      "category": "Brand",
-      "categories": [
-        "Brand"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
-      },
-      "isFeatured": true
-    },
-    {
-      "id": 5,
-      "title": "AINSI VA MANU - ON SCREEN MOTION GRAPHICS",
-      "category": "Broadcast",
-      "categories": [
-        "Broadcast"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/thumpnail.webp",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
-      },
-      "isFeatured": true
     },
     {
       "id": 4,
@@ -186,6 +135,76 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
+      "id": 11,
+      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif": true
+      },
+      "isFeatured": true
+    },
+    {
+      "id": 5,
+      "title": "AINSI VA MANU - ON SCREEN MOTION GRAPHICS",
+      "category": "Broadcast",
+      "categories": [
+        "Broadcast"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/thumpnail.webp",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ainsi-va-Manu-TV-Series/Episode-7-Devices.Connected.To.Internet-Screen.mp4": true
+      },
+      "isFeatured": true
+    },
+    {
+      "id": 9,
+      "title": "FO.NE.TIK - SHOWREEL ANIMATION",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.3.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4": true
+      },
+      "isFeatured": true
+    },
+    {
+      "id": 3,
+      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
+      "category": "Brand",
+      "categories": [
+        "Brand"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
+      },
+      "isFeatured": true
+    },
+    {
       "id": 12,
       "title": "NYC EMERGENCY MANAGEMENT - TEXT BUBBLE DESIGN & ANIMATION",
       "category": "Broadcast",
@@ -204,6 +223,23 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
+      "id": 1,
+      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
+      "category": "Explainer",
+      "categories": [
+        "Explainer"
+      ],
+      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+      "link": "#",
+      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+      "isPublished": true,
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      },
+      "isFeatured": true
+    },
+    {
       "id": 7,
       "title": "CLUB DE LECTURE - WHERE BOOKS MEET MUSIC",
       "category": "Brand",
@@ -219,24 +255,6 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg": false
-      },
-      "isFeatured": true
-    },
-    {
-      "id": 11,
-      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
-      "category": "Explainer",
-      "categories": [
-        "Explainer"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif": true
       },
       "isFeatured": true
     },
@@ -327,24 +345,6 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
       },
       "isFeatured": false
-    },
-    {
-      "id": 9,
-      "title": "FO.NE.TIK - SHOWREEL ANIMATION",
-      "category": "Brand",
-      "categories": [
-        "Brand"
-      ],
-      "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/scene-.3.jpg",
-      "link": "#",
-      "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4",
-      "isPublished": true,
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-FONETIK-REEL/Gif-1.mp4": true
-      },
-      "isFeatured": true
     },
     {
       "id": 18,
@@ -638,316 +638,6 @@ export const defaultSiteData: CMSSiteData = {
   ],
   "projectDetails": [
     {
-      "id": 1,
-      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
-      "shortDescription": "I partnered with 247 Maintenance to create an explainer video showing how their platform connects UAE homeowners with trusted technicians. \n\nThe goal was to explain their services clearly while presenting the brand in a modern, engaging way.",
-      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-      "role": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX",
-      "client": "247 MAINTENANCE",
-      "description": "To give the video a polished feel, I combined 3D elements with a flat 2D world. \n\nThis contrast added visual depth, helping key elements pop on screen and hold the viewer's attention throughout the video.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG"
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Explainer"
-      ],
-      "sections": [
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.2.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4"
-              ],
-              "gifModes": {
-                "src/assets/images/upload-1785782854542-397219208.gif": false,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "hidden": false,
-              "rowAlignment": "right"
-            },
-            {
-              "id": "row-1788171640659",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.2.PNG"
-              ],
-              "itemWidths": {
-                "0": "100%"
-              },
-              "rowAlignment": "left",
-              "itemOffsets": {
-                "0": 0,
-                "1": 0
-              }
-            },
-            {
-              "id": "row-1788171630567",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788171858018",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
-              ],
-              "itemWidths": {
-                "0": "100%"
-              },
-              "rowAlignment": "center",
-              "itemOffsets": {
-                "0": 150,
-                "1": 0
-              }
-            },
-            {
-              "id": "row-1788171964112",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG"
-              ],
-              "itemWidths": {
-                "0": "100%"
-              },
-              "rowAlignment": "left",
-              "itemOffsets": {
-                "1": 150
-              }
-            },
-            {
-              "id": "row-1788171973504",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
-              ],
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "right"
-            },
-            {
-              "id": "row-1788172209393",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG"
-              ],
-              "itemOffsets": {
-                "1": 150
-              }
-            },
-            {
-              "id": "row-1788172281654",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
-              ],
-              "itemWidths": {
-                "0": "70%"
-              }
-            },
-            {
-              "id": "row-1788258465870",
-              "images": []
-            }
-          ],
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
-          },
-          "rowsGap": 150,
-          "hidden": true,
-          "rowsGapMobile": 20,
-          "sectionGap": "default"
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.3.PNG"
-          ],
-          "imagePosition": "left",
-          "imageWidthRatio": "67%",
-          "imageCustomWidth": "67%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "top",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-          },
-          "imageYOffset": 0,
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
-          ],
-          "rows": [
-            {
-              "id": "row-1788541572569",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
-              ]
-            }
-          ],
-          "sectionGap": 20,
-          "rowsGap": 0,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG"
-          ],
-          "imagePosition": "right",
-          "imageWidthRatio": "67%",
-          "imageCustomWidth": "67%",
-          "stackedGap": 0,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "top",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
-          },
-          "imageYOffset": 0,
-          "id": "sec-1788541353267-a0a4",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
-          ],
-          "rows": [
-            {
-              "id": "row-1788541605809",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
-              ]
-            }
-          ],
-          "sectionGap": 20,
-          "rowsGap": 0,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "id": "sec-1788541603143-wowh",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
-          ],
-          "imagePosition": "left",
-          "imageWidthRatio": "67%",
-          "imageCustomWidth": "67%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": "default",
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
-          "sectionGapMobile": "default"
-        }
-      ],
-      "date": "2024",
-      "softwareUsed": [
-        "After Effects",
-        "Illustrator"
-      ],
-      "behanceLink": "https://behance.net",
-      "externalLink": "#",
-      "customFields": [
-        {
-          "id": "field-client",
-          "label": "CLIENT",
-          "value": "247 MAINTENANCE"
-        },
-        {
-          "id": "field-1786458291799",
-          "label": "ROLE",
-          "value": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX"
-        },
-        {
-          "id": "field-1786458316416",
-          "label": "Tools",
-          "value": "Illustrator, Photoshop\nAfter Effects, Cinema 4D"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      }
-    },
-    {
       "id": 2,
       "title": "SHOWREEL 2025",
       "shortDescription": "To showcase my growth and visual style, I needed a central video that brings together my best work. \n\nI curated this showreel to highlight my design identity, quality, and motion skills across different projects.",
@@ -1109,261 +799,6 @@ export const defaultSiteData: CMSSiteData = {
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/GIF.Video.project.mp4": true
-      }
-    },
-    {
-      "id": 3,
-      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
-      "shortDescription": "Montreal-based Comète Studio needed a conceptual narrative video to highlight their ability to turn dry, complex social issues into captivating visual artwork. \nI collaborated with the studio to translate their static illustrations into a dynamic visual story that conveys deep narrative meaning with high artistic polish.",
-      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
-      "role": "ANIMATION",
-      "client": "STUDIO COMETE",
-      "description": "To capture the psychological weight of the narrative, the core execution focused on translating static visual concepts into deliberate, meaningful movement. \nI crafted fluid, seamless transitions between scenes, giving physical rhythm to the artwork so that every motion directly reinforces the emotional progression of the story.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Brand"
-      ],
-      "sections": [
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1788173164889",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4": true
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788173746892",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
-              },
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "70%"
-              }
-            },
-            {
-              "id": "row-1788173209901",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
-              ],
-              "itemWidths": {
-                "0": "100%"
-              },
-              "rowAlignment": "left",
-              "itemOffsets": {
-                "0": 150,
-                "1": 0
-              }
-            },
-            {
-              "id": "row-1788174260789",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4": true
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "left"
-            },
-            {
-              "id": "row-1788174284742",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
-              ],
-              "itemOffsets": {
-                "0": 0,
-                "1": 150
-              }
-            },
-            {
-              "id": "row-1788174309566",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true
-              },
-              "itemWidths": {
-                "0": "70%"
-              },
-              "rowAlignment": "right"
-            }
-          ],
-          "sectionGap": 0,
-          "rowsGap": 120,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "rowsGapMobile": 20,
-          "hidden": true
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1788609254532",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4": true
-              }
-            }
-          ],
-          "sectionGap": 20,
-          "rowsGap": 0,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
-          ],
-          "imagePosition": "left",
-          "imageWidthRatio": "67%",
-          "imageCustomWidth": "67%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
-          },
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1788609475992",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true
-              }
-            }
-          ],
-          "sectionGap": 20,
-          "rowsGap": 0,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "id": "sec-1788609469226-sg1d",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
-          ],
-          "imagePosition": "right",
-          "imageWidthRatio": "67%",
-          "imageCustomWidth": "67%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4": true
-          },
-          "id": "sec-1788609372993-dn7g",
-          "sectionGapMobile": 10
-        }
-      ],
-      "date": "2024",
-      "softwareUsed": [
-        "After Effects",
-        "Illustrator"
-      ],
-      "behanceLink": "https://behance.net",
-      "externalLink": "#",
-      "customFields": [
-        {
-          "id": "field-client",
-          "label": "CLIENT ",
-          "value": "Studio Comete"
-        },
-        {
-          "id": "field-1786459284151",
-          "label": "ROLE",
-          "value": "ANIMATION"
-        },
-        {
-          "id": "field-1786459414705",
-          "label": "Tools",
-          "value": "After Effects, Illustrator"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
       }
     },
     {
@@ -1625,6 +1060,136 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Main.video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video.As.Gif.-4-thumbnails.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WORKLEAP-GSP-2026/Video-Client.Reaction.mp4": true
+      }
+    },
+    {
+      "id": 11,
+      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
+      "shortDescription": "Workleap is a software platform that offers AI-powered tools for employee performance management and training. \n\nTo help present their platform, I animated a series of static isometric scenes provided by the client, turning them into a dynamic, engaging video.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
+      "role": "ANIMATION",
+      "client": "WORKLEAP",
+      "description": "With a strict three-day deadline, animating in an isometric style was a major challenge, as it requires far more structural precision and alignment than a standard flat style. \n\nTo hit this tight turnaround without compromising quality, I rebuilt the scenes and characters directly inside After Effects. \n\nThis streamlined the workflow, making the animation process much faster while ensuring every movement remained smooth, precise, and consistent.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://www.youtube.com/watch?v=0kidr_FDq2s",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://www.youtube.com/watch?v=0kidr_FDq2s",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
+            "",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
+          "id": "sec-1788613811850-c69o",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif": true
+          },
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg"
+          ],
+          "rows": [
+            {
+              "id": "row-1788263763582",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg"
+              ],
+              "itemOffsets": {
+                "0": 0,
+                "1": 0
+              }
+            }
+          ],
+          "rowsGap": "default",
+          "sectionGap": "default",
+          "rowsGapMobile": "default",
+          "sectionGapMobile": "default"
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-client",
+          "label": "CLIENT",
+          "value": "Workleap"
+        },
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "ANIMATION"
+        },
+        {
+          "id": "field-1786473901199",
+          "label": "tools",
+          "value": "After Effects, Illustrator"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif": true
       }
     },
     {
@@ -1992,391 +1557,6 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
-      "id": 6,
-      "title": "POKA - INTRODUCING POKA ASSISTANT",
-      "shortDescription": "Poka is a Canadian software platform trusted by major manufacturers like Nestlé and L'Oréal. \n\nTo introduce Poka Assistant an AI tool that turns long factory manuals into simple, step-by-step guides \n\nI animated the internal team's static designs to help explain this new technology clearly.",
-      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg",
-      "role": "ANIMATION",
-      "client": "POKA",
-      "description": "The main challenge was making smart software concepts easy to understand for everyone. \nI animated the visual elements to show the AI in action clearly showing how long documents break down into short steps using smooth movements to keep the video clear, engaging, and professional.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-Main-Video.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-Main-Video.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg"
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Explainer"
-      ],
-      "sections": [
-        {
-          "type": "split_stacked",
-          "label": "",
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4",
-          "textTitle": "",
-          "textContent": "",
-          "imagePosition": "left",
-          "imageWidthRatio": "67%",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
-          ],
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
-          },
-          "imageCustomWidth": "67%",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1788624214291-2-esty",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4": true
-              },
-              "itemOffsets": {
-                "1": 0
-              },
-              "itemWidths": {
-                "0": "100%"
-              },
-              "rowAlignment": "center"
-            }
-          ],
-          "sectionGap": 0,
-          "rowsGap": "default",
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "rowsGapMobile": "default",
-          "id": "sec-1788624214291-kxjz",
-          "hidden": false
-        }
-      ],
-      "date": "2024",
-      "softwareUsed": [
-        "After Effects",
-        "Illustrator"
-      ],
-      "behanceLink": "https://behance.net",
-      "externalLink": "#",
-      "customFields": [
-        {
-          "id": "field-1786196608541",
-          "label": "Client",
-          "value": "Poka"
-        },
-        {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "ANIMATION"
-        },
-        {
-          "id": "field-1786649387577",
-          "label": "tools",
-          "value": "Figma, Illustrator, After Effects"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
-      }
-    },
-    {
-      "id": 7,
-      "title": "CLUB DE LECTURE - WHERE BOOKS MEET MUSIC",
-      "shortDescription": "To launch \"Club de Lecture\" a music video series filmed inside their Montreal store, Librairie l'Échange needed a short animated logo to start each episode. \n\nI animated their logo into a sleek, 2-second intro designed to make a strong first impression in a very short time.",
-      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg",
-      "role": "ANIMATION ",
-      "client": "247 MAINTENANCE",
-      "description": "Creating a fast 2-second animation meant every single frame mattered. Before animating, I built a step-by-step storyboard to plan out the exact movement and timing. \n\nSharing this plan early ensured we were fully aligned on the motion, making the final animation feel smooth and clear rather than rushed.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4",
-          "thumbnail": ""
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Brand"
-      ],
-      "sections": [
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/storyboard.jpg"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/storyboard.jpg"
-              ]
-            }
-          ],
-          "sectionGap": 20,
-          "rowsGapMobile": "default",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
-          "textTitle": "",
-          "textContent": "",
-          "imagePosition": "left",
-          "imageWidthRatio": "67%",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif"
-          ],
-          "imageCustomWidth": "67%",
-          "sectionGapMobile": 10,
-          "stackedMode": "image_text",
-          "stackedTextPosition": "top",
-          "stackedTitle": "LOWER THIRDS",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif": true
-          }
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-3.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1786206997337",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-3.gif"
-              ],
-              "itemOffsets": {
-                "0": 0,
-                "1": 0
-              },
-              "rowAlignment": "right",
-              "itemWidths": {
-                "0": "32%"
-              }
-            }
-          ],
-          "rowsGapMobile": 20
-        }
-      ],
-      "date": "2024",
-      "softwareUsed": [
-        "After Effects",
-        "Illustrator"
-      ],
-      "behanceLink": "https://behance.net",
-      "externalLink": "#",
-      "customFields": [
-        {
-          "id": "field-client",
-          "label": "CLIENT",
-          "value": ""
-        },
-        {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "ANIMATION "
-        },
-        {
-          "id": "field-1786650048542",
-          "label": "tools",
-          "value": "After  Effects,  Illustrator"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg": false
-      }
-    },
-    {
-      "id": 8,
-      "title": "FO.NE.TIK - BRAND IDENTITY ANIMATION",
-      "shortDescription": "To launch their new brand identity, Montreal-based creative studio fo.ne.tik needed a video to introduce their core services. \n\nThe studio provided the pre-designed scenes, and I animated them to create a clean, engaging video presentation that reflects their brand values.",
-      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Thumbnail.jpg",
-      "role": "ANIMATION",
-      "client": "FONETIK",
-      "description": "The focus was on giving smooth movement to simple elements like floating dots and text representing words. \n\nBy using natural timing and gentle transitions between the provided scenes, the animation brings the studio's brand story to life in a way that is clear and easy to follow.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Horizontal-EN.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Horizontal-EN.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Thumbnail.jpg"
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Brand"
-      ],
-      "sections": [
-        {
-          "type": "image_text",
-          "label": "",
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4",
-          "textTitle": "SOCIAL MEDIA VERSION (VERTICAL)",
-          "textContent": "",
-          "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 250,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg"
-          ],
-          "imageCustomWidth": "60%",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4": false
-          }
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg"
-          ],
-          "imagePosition": "left",
-          "imageWidthRatio": "67%",
-          "imageCustomWidth": "67%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif": true
-          },
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-2.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1788624661583",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-2.gif"
-              ]
-            }
-          ],
-          "sectionGap": 20,
-          "rowsGap": 0,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-1.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-5.gif",
-            ""
-          ],
-          "imagePosition": "left",
-          "imageWidthRatio": "50%",
-          "imageCustomWidth": "50%",
-          "stackedGap": 0,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": "default",
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-1.gif",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif": true
-          },
-          "id": "sec-1788624694236-h5xf",
-          "sectionGapMobile": "default"
-        }
-      ],
-      "date": "2024",
-      "softwareUsed": [
-        "After Effects",
-        "Illustrator"
-      ],
-      "behanceLink": "https://behance.net",
-      "externalLink": "#",
-      "customFields": [
-        {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "ANIMATION"
-        },
-        {
-          "id": "field-client",
-          "label": "CLIENT ",
-          "value": "FONETIK"
-        },
-        {
-          "id": "field-1786650321610",
-          "label": "tools",
-          "value": "Illustrator, After Effects"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      }
-    },
-    {
       "id": 9,
       "title": "FO.NE.TIK - SHOWREEL ANIMATION",
       "shortDescription": "Montreal-based creative studio fo.ne.tik needed a high-energy showreel to highlight their work across audiovisual production, brand creation, and cultural localization. \n\nWorking directly from the video footage and storyboard provided by the client, I brought the project to life by animating their logo, text elements, and visual transitions.",
@@ -2486,22 +1666,21 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
-      "id": 10,
-      "title": "WORKLEAP - BRAND IDENTITY SIZZLE REEL 1",
-      "shortDescription": "To help Workleap launch its new logo and updated website, I animated a short, energetic showcase video. \n\nI took their new visual design and brought it to life, creating a fast-paced video that clearly introduces their updated look to their audience.",
-      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg",
+      "id": 3,
+      "title": "COMÈTE STUDIO - CONCEPTUAL MOTION GRAPHICS",
+      "shortDescription": "Montreal-based Comète Studio needed a conceptual narrative video to highlight their ability to turn dry, complex social issues into captivating visual artwork. \nI collaborated with the studio to translate their static illustrations into a dynamic visual story that conveys deep narrative meaning with high artistic polish.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
       "role": "ANIMATION",
-      "client": "WORKLEAP",
-      "description": "To keep the video engaging, I timed every visual movement directly to the beat of the music. \n\nI animated the logo using smooth slides and clean transitions, making sure the information was easy to read while maintaining a fast, upbeat pace throughout the video.",
+      "client": "STUDIO COMETE",
+      "description": "To capture the psychological weight of the narrative, the core execution focused on translating static visual concepts into deliberate, meaningful movement. \nI crafted fluid, seamless transitions between scenes, giving physical rhythm to the artwork so that every motion directly reinforces the emotional progression of the story.",
       "descriptionBottomGap": 150,
       "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Video-Workleap-Sizzle.reel.mp4",
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4",
       "headerVideos": [
         {
           "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Video-Workleap-Sizzle.reel.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg"
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
         }
       ],
       "headerVideoLayout": "grid",
@@ -2512,167 +1691,133 @@ export const defaultSiteData: CMSSiteData = {
         {
           "type": "grid",
           "label": "",
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif",
-          "textTitle": "",
-          "textContent": "",
-          "imagePosition": "left",
-          "imageWidthRatio": "50",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif"
-          ],
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.2.jpg",
-            "",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
           ],
           "rows": [
             {
-              "id": "row-1788262440014",
+              "id": "row-1788173164889",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.2.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg"
-              ],
-              "itemWidths": {
-                "0": "100%"
-              },
-              "rowAlignment": "right"
-            },
-            {
-              "id": "row-1788262733149",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
               ],
               "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4": true
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4": true
               },
               "itemWidths": {
                 "0": "70%"
               },
-              "itemOffsets": {
-                "0": 0
-              },
-              "rowAlignment": "right"
+              "rowAlignment": "left"
             },
             {
-              "id": "row-1788263031323",
+              "id": "row-1788173746892",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "70%"
+              }
+            },
+            {
+              "id": "row-1788173209901",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
+              ],
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "left",
+              "itemOffsets": {
+                "0": 150,
+                "1": 0
+              }
+            },
+            {
+              "id": "row-1788174260789",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4": true
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "left"
+            },
+            {
+              "id": "row-1788174284742",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
               ],
               "itemOffsets": {
-                "0": 350,
-                "1": 200
+                "0": 0,
+                "1": 150
+              }
+            },
+            {
+              "id": "row-1788174309566",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "right"
+            }
+          ],
+          "sectionGap": 0,
+          "rowsGap": 120,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "rowsGapMobile": 20,
+          "hidden": true
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1788609254532",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.2.mp4": true
               }
             }
           ],
           "sectionGap": 20,
-          "rowsGap": "default",
+          "rowsGap": 0,
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "rowsGapMobile": 20,
-          "sectionGapMobile": 10,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg",
-          "imageCustomWidth": "68%",
-          "imageWidthRatio": "68%",
-          "stackedGap": 0
+          "sectionGapMobile": 10
         },
         {
           "type": "split_stacked",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg"
-          ],
-          "imagePosition": "right",
-          "imageWidthRatio": "70",
-          "imageCustomWidth": 70,
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": "default",
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-5.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4": true
-          },
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4"
-        }
-      ],
-      "date": "2024",
-      "softwareUsed": [
-        "After Effects",
-        "Illustrator"
-      ],
-      "behanceLink": "https://behance.net",
-      "externalLink": "#",
-      "customFields": [
-        {
-          "id": "field-client",
-          "label": "CLIENT",
-          "value": "Workleap"
-        },
-        {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "Animation"
-        },
-        {
-          "id": "field-1786473156674",
-          "label": "Tools",
-          "value": "After Effects\nIllustrator, Photoshop\n"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
-      }
-    },
-    {
-      "id": 11,
-      "title": "WORKLEAP - ISOMETRIC MOTION GRAPHICS",
-      "shortDescription": "Workleap is a software platform that offers AI-powered tools for employee performance management and training. \n\nTo help present their platform, I animated a series of static isometric scenes provided by the client, turning them into a dynamic, engaging video.",
-      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg",
-      "role": "ANIMATION",
-      "client": "WORKLEAP",
-      "description": "With a strict three-day deadline, animating in an isometric style was a major challenge, as it requires far more structural precision and alignment than a standard flat style. \n\nTo hit this tight turnaround without compromising quality, I rebuilt the scenes and characters directly inside After Effects. \n\nThis streamlined the workflow, making the animation process much faster while ensuring every movement remained smooth, precise, and consistent.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://www.youtube.com/watch?v=0kidr_FDq2s",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://www.youtube.com/watch?v=0kidr_FDq2s",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/thumbnail.picture.jpg"
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Explainer"
-      ],
-      "sections": [
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
-            "",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-5.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-3.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-4.jpg"
           ],
           "imagePosition": "left",
           "imageWidthRatio": "67%",
@@ -2686,33 +1831,9 @@ export const defaultSiteData: CMSSiteData = {
           "sectionGap": 20,
           "titleTopGap": 0,
           "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-2.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-1.jpg"
-          ],
-          "imagePosition": "right",
-          "imageWidthRatio": "67%",
-          "imageCustomWidth": "67%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif",
-          "id": "sec-1788613811850-c69o",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4",
           "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-1.gif": true
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
           },
           "sectionGapMobile": 10
         },
@@ -2720,26 +1841,53 @@ export const defaultSiteData: CMSSiteData = {
           "type": "grid",
           "label": "",
           "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg"
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
           ],
           "rows": [
             {
-              "id": "row-1788263763582",
+              "id": "row-1788609475992",
               "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-4.jpg",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/picture-3.jpg"
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4"
               ],
-              "itemOffsets": {
-                "0": 0,
-                "1": 0
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true
               }
             }
           ],
-          "rowsGap": "default",
-          "sectionGap": "default",
-          "rowsGapMobile": "default",
-          "sectionGapMobile": "default"
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "id": "sec-1788609469226-sg1d",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-1.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Scene-2.jpg"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.1.mp4": true
+          },
+          "id": "sec-1788609372993-dn7g",
+          "sectionGapMobile": 10
         }
       ],
       "date": "2024",
@@ -2752,24 +1900,24 @@ export const defaultSiteData: CMSSiteData = {
       "customFields": [
         {
           "id": "field-client",
-          "label": "CLIENT",
-          "value": "Workleap"
+          "label": "CLIENT ",
+          "value": "Studio Comete"
         },
         {
-          "id": "field-role",
+          "id": "field-1786459284151",
           "label": "ROLE",
           "value": "ANIMATION"
         },
         {
-          "id": "field-1786473901199",
-          "label": "tools",
+          "id": "field-1786459414705",
+          "label": "Tools",
           "value": "After Effects, Illustrator"
         }
       ],
       "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Isometric/GIF-2.gif": true
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Main-video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.4.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-COM%C3%88TE-STUDIO/Video.As.Video.-.3.mp4": true
       }
     },
     {
@@ -2963,6 +2111,726 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
+      "id": 1,
+      "title": "247 MAINTENANCE - HOME SERVICES PLATFORM",
+      "shortDescription": "I partnered with 247 Maintenance to create an explainer video showing how their platform connects UAE homeowners with trusted technicians. \n\nThe goal was to explain their services clearly while presenting the brand in a modern, engaging way.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+      "role": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX",
+      "client": "247 MAINTENANCE",
+      "description": "To give the video a polished feel, I combined 3D elements with a flat 2D world. \n\nThis contrast added visual depth, helping key elements pop on screen and hold the viewer's attention throughout the video.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG"
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.2.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4"
+              ],
+              "gifModes": {
+                "src/assets/images/upload-1785782854542-397219208.gif": false,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "hidden": false,
+              "rowAlignment": "right"
+            },
+            {
+              "id": "row-1788171640659",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.2.PNG"
+              ],
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "left",
+              "itemOffsets": {
+                "0": 0,
+                "1": 0
+              }
+            },
+            {
+              "id": "row-1788171630567",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "left"
+            },
+            {
+              "id": "row-1788171858018",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
+              ],
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "center",
+              "itemOffsets": {
+                "0": 150,
+                "1": 0
+              }
+            },
+            {
+              "id": "row-1788171964112",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG"
+              ],
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "left",
+              "itemOffsets": {
+                "1": 150
+              }
+            },
+            {
+              "id": "row-1788171973504",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
+              ],
+              "itemWidths": {
+                "0": "70%"
+              },
+              "rowAlignment": "right"
+            },
+            {
+              "id": "row-1788172209393",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG"
+              ],
+              "itemOffsets": {
+                "1": 150
+              }
+            },
+            {
+              "id": "row-1788172281654",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
+              ],
+              "itemWidths": {
+                "0": "70%"
+              }
+            },
+            {
+              "id": "row-1788258465870",
+              "images": []
+            }
+          ],
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
+          },
+          "rowsGap": 150,
+          "hidden": true,
+          "rowsGapMobile": 20,
+          "sectionGap": "default"
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.1.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.3.PNG"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "top",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+          },
+          "imageYOffset": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
+          ],
+          "rows": [
+            {
+              "id": "row-1788541572569",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.10.PNG"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.7.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.9.PNG"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 0,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "top",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-2.mp4": true
+          },
+          "imageYOffset": 0,
+          "id": "sec-1788541353267-a0a4",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
+          ],
+          "rows": [
+            {
+              "id": "row-1788541605809",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.8.PNG",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.5.PNG"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "id": "sec-1788541603143-wowh",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.11.PNG",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.16.PNG"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/project-274-.12.PNG",
+          "sectionGapMobile": "default"
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-client",
+          "label": "CLIENT",
+          "value": "247 MAINTENANCE"
+        },
+        {
+          "id": "field-1786458291799",
+          "label": "ROLE",
+          "value": "STORYBOARD, ILLUSTRATION\nANIMATION, SFX"
+        },
+        {
+          "id": "field-1786458316416",
+          "label": "Tools",
+          "value": "Illustrator, Photoshop\nAfter Effects, Cinema 4D"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 7,
+      "title": "CLUB DE LECTURE - WHERE BOOKS MEET MUSIC",
+      "shortDescription": "To launch \"Club de Lecture\" a music video series filmed inside their Montreal store, Librairie l'Échange needed a short animated logo to start each episode. \n\nI animated their logo into a sleek, 2-second intro designed to make a strong first impression in a very short time.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg",
+      "role": "ANIMATION ",
+      "client": "247 MAINTENANCE",
+      "description": "Creating a fast 2-second animation meant every single frame mattered. Before animating, I built a step-by-step storyboard to plan out the exact movement and timing. \n\nSharing this plan early ensured we were fully aligned on the motion, making the final animation feel smooth and clear rather than rushed.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4",
+          "thumbnail": ""
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Brand"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/storyboard.jpg"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/storyboard.jpg"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
+          "textTitle": "",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif"
+          ],
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "LOWER THIRDS",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-2.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-1.gif": true
+          }
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-3.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1786206997337",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/Text.animation-3.gif"
+              ],
+              "itemOffsets": {
+                "0": 0,
+                "1": 0
+              },
+              "rowAlignment": "right",
+              "itemWidths": {
+                "0": "32%"
+              }
+            }
+          ],
+          "rowsGapMobile": 20
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-client",
+          "label": "CLIENT",
+          "value": ""
+        },
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "ANIMATION "
+        },
+        {
+          "id": "field-1786650048542",
+          "label": "tools",
+          "value": "After  Effects,  Illustrator"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/logo-animatio-30F.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-CLUB-DE-LECTURE-Logo-Animation/project.thumbnail.picture.jpg": false
+      }
+    },
+    {
+      "id": 20,
+      "title": "TABSEER - PRODUCT QUALITY EXPLAINER VIDEO",
+      "shortDescription": "Tabseer helps companies make sure their products meet safety and quality standards in the Middle East. \n\nTo help them clearly explain their services to businesses, I created a full motion graphics explainer video.",
+      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
+      "role": "STORYBOARD, ILLUSTRATION, ANIMATION, SFX",
+      "client": "TABSEER",
+      "description": "I handled the project from start to finish. \n\nI began with sketches and storyboards to plan out each scene, then animated the visuals, added custom sound effects, and completed the final video export.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Final-Video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Final-Video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
+              },
+              "itemOffsets": {
+                "1": 150
+              }
+            }
+          ],
+          "rowsGap": "default",
+          "sectionGap": 20,
+          "rowsGapMobile": "default",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4": true
+          },
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Tabsser.BS.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Tabsser.BS.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Tabsser.BS.mp4": true
+              },
+              "itemWidths": {
+                "0": "100%"
+              }
+            }
+          ],
+          "sectionGap": "default"
+        }
+      ],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD, ILLUSTRATION, ANIMATION, SFX"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT",
+          "value": "Tabseer"
+        },
+        {
+          "id": "field-1786544072192",
+          "label": "tools",
+          "value": "Illustrator, After Effects"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-6.jpg": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
+      }
+    },
+    {
+      "id": 10,
+      "title": "WORKLEAP - BRAND IDENTITY SIZZLE REEL 1",
+      "shortDescription": "To help Workleap launch its new logo and updated website, I animated a short, energetic showcase video. \n\nI took their new visual design and brought it to life, creating a fast-paced video that clearly introduces their updated look to their audience.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg",
+      "role": "ANIMATION",
+      "client": "WORKLEAP",
+      "description": "To keep the video engaging, I timed every visual movement directly to the beat of the music. \n\nI animated the logo using smooth slides and clean transitions, making sure the information was easy to read while maintaining a fast, upbeat pace throughout the video.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Video-Workleap-Sizzle.reel.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Video-Workleap-Sizzle.reel.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.24.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Brand"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif",
+          "textTitle": "",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "50",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-7.gif"
+          ],
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.2.jpg",
+            "",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1788262440014",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.2.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg"
+              ],
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "right"
+            },
+            {
+              "id": "row-1788262733149",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4": true
+              },
+              "itemWidths": {
+                "0": "70%"
+              },
+              "itemOffsets": {
+                "0": 0
+              },
+              "rowAlignment": "right"
+            },
+            {
+              "id": "row-1788263031323",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif"
+              ],
+              "itemOffsets": {
+                "0": 350,
+                "1": 200
+              }
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "rowsGapMobile": 20,
+          "sectionGapMobile": 10,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/modele.picture.brand.jpg",
+          "imageCustomWidth": "68%",
+          "imageWidthRatio": "68%",
+          "stackedGap": 0
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/Slide.16_9.-.31.jpg"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "70",
+          "imageCustomWidth": 70,
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-5.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4": true
+          },
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-1/GIF-2.mp4"
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-client",
+          "label": "CLIENT",
+          "value": "Workleap"
+        },
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "Animation"
+        },
+        {
+          "id": "field-1786473156674",
+          "label": "Tools",
+          "value": "After Effects\nIllustrator, Photoshop\n"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
       "id": 13,
       "title": "EJADWA - FINANCIAL FEASIBILITY EXPLAINER VIDEO",
       "shortDescription": "To help Ejadwa introduce its online platform for financial feasibility studies, I created a motion graphics explainer video. \n\nStarting with only a voiceover, I turned complex financial concepts into a simple visual story that is easy for anyone to understand.",
@@ -3080,6 +2948,372 @@ export const defaultSiteData: CMSSiteData = {
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Ejadwa/GIF_1-banner.gif": true
+      }
+    },
+    {
+      "id": 6,
+      "title": "POKA - INTRODUCING POKA ASSISTANT",
+      "shortDescription": "Poka is a Canadian software platform trusted by major manufacturers like Nestlé and L'Oréal. \n\nTo introduce Poka Assistant an AI tool that turns long factory manuals into simple, step-by-step guides \n\nI animated the internal team's static designs to help explain this new technology clearly.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg",
+      "role": "ANIMATION",
+      "client": "POKA",
+      "description": "The main challenge was making smart software concepts easy to understand for everyone. \nI animated the visual elements to show the AI in action clearly showing how long documents break down into short steps using smooth movements to keep the video clear, engaging, and professional.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-Main-Video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-Main-Video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/THUMBNAILS.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "split_stacked",
+          "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4",
+          "textTitle": "",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Picture-58.jpg"
+          ],
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
+          },
+          "imageCustomWidth": "67%",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1788624214291-2-esty",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-3.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-4.mp4": true
+              },
+              "itemOffsets": {
+                "1": 0
+              },
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "center"
+            }
+          ],
+          "sectionGap": 0,
+          "rowsGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "rowsGapMobile": "default",
+          "id": "sec-1788624214291-kxjz",
+          "hidden": false
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-1786196608541",
+          "label": "Client",
+          "value": "Poka"
+        },
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "ANIMATION"
+        },
+        {
+          "id": "field-1786649387577",
+          "label": "tools",
+          "value": "Figma, Illustrator, After Effects"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Poka/Poka-Ai-GIF-2.mp4": true
+      }
+    },
+    {
+      "id": 8,
+      "title": "FO.NE.TIK - BRAND IDENTITY ANIMATION",
+      "shortDescription": "To launch their new brand identity, Montreal-based creative studio fo.ne.tik needed a video to introduce their core services. \n\nThe studio provided the pre-designed scenes, and I animated them to create a clean, engaging video presentation that reflects their brand values.",
+      "heroImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Thumbnail.jpg",
+      "role": "ANIMATION",
+      "client": "FONETIK",
+      "description": "The focus was on giving smooth movement to simple elements like floating dots and text representing words. \n\nBy using natural timing and gentle transitions between the provided scenes, the animation brings the studio's brand story to life in a way that is clear and easy to follow.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Horizontal-EN.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Horizontal-EN.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Thumbnail.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Brand"
+      ],
+      "sections": [
+        {
+          "type": "image_text",
+          "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4",
+          "textTitle": "SOCIAL MEDIA VERSION (VERTICAL)",
+          "textContent": "",
+          "imagePosition": "left",
+          "imageWidthRatio": "50",
+          "sectionGap": 250,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg"
+          ],
+          "imageCustomWidth": "60%",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Video-FONETIK-Vertical-EN.mp4": false
+          }
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/Scene-.14.jpg"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "67%",
+          "imageCustomWidth": "67%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif": true
+          },
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-2.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1788624661583",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-2.gif"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-5.gif",
+            ""
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "50%",
+          "imageCustomWidth": "50%",
+          "stackedGap": 0,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-1.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-4.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Fonetik-Showreel/GIF-3.gif": true
+          },
+          "id": "sec-1788624694236-h5xf",
+          "sectionGapMobile": "default"
+        }
+      ],
+      "date": "2024",
+      "softwareUsed": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "behanceLink": "https://behance.net",
+      "externalLink": "#",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT ",
+          "value": "FONETIK"
+        },
+        {
+          "id": "field-1786650321610",
+          "label": "tools",
+          "value": "Illustrator, After Effects"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/274.Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/project-274/Video.As.Gif-1.mp4": true
+      }
+    },
+    {
+      "id": 18,
+      "title": "WORKLEAP - BRAND SIZZLE REEL 2",
+      "shortDescription": "Following the success of Workleap’s first sizzle reel, I was brought back to animate a second video. \n\nBuilding on our previous collaboration, I took their updated visual style and created another energetic showcase video to keep their audience engaged.",
+      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
+      "role": "ANIMATION",
+      "client": "WORKLEAP",
+      "description": "The main focus was matching every visual movement directly to the upbeat rhythm of the music. \n\nI carefully timed the transitions and motion graphics to the beat, making the motion feel natural while elevating the overall energy of the video.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/Final-Video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1786539261809",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/Final-Video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Brand"
+      ],
+      "sections": [
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4"
+          ],
+          "rows": [
+            {
+              "id": "row-1",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4"
+              ],
+              "gifModes": {
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4": true,
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4": true
+              },
+              "itemWidths": {
+                "0": "100%"
+              },
+              "rowAlignment": "center"
+            }
+          ],
+          "rowsGap": "default",
+          "rowsGapMobile": "default",
+          "sectionGap": 20,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/1.jpg",
+            ""
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "50%",
+          "imageCustomWidth": "50%",
+          "stackedGap": 0,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4": true
+          }
+        }
+      ],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT ",
+          "value": "WORKLEAP"
+        },
+        {
+          "id": "field-1786540270681",
+          "label": "tools",
+          "value": "After Effects, Illustrator"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4": true,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg": false
       }
     },
     {
@@ -3214,6 +3448,161 @@ export const defaultSiteData: CMSSiteData = {
       }
     },
     {
+      "id": 21,
+      "title": "MONDATA - CYBERSECURITY EXPLAINER VIDEO",
+      "shortDescription": "Mondata is a Canadian technology company that uses AI solutions to protect IT infrastructure against cyberattacks. \n\nTo help them showcase their tailored cybersecurity services clearly and engagingly, I created a 60-second motion graphics explainer video in two language versions (English and French).",
+      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
+      "role": "STORYBOARD, ILLUSTRATION, ANIMATION",
+      "client": "MONDATA",
+      "description": "Because the client provided a defined visual style and clear direction from the start, the production process was smooth and efficient. \n\nOnce the visual designs were set, I animated the scenes with fluid movements to ensure the message was simple for viewers to follow, resulting in a final video that was approved right away with no revisions needed.",
+      "descriptionBottomGap": 150,
+      "descriptionBottomGapMobile": "default",
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg"
+        }
+      ],
+      "headerVideoLayout": "row",
+      "categories": [
+        "Explainer"
+      ],
+      "sections": [
+        {
+          "type": "image_text",
+          "label": "",
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-FR.mp4",
+          "textTitle": "French version",
+          "textContent": "",
+          "imagePosition": "right",
+          "imageWidthRatio": "50",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-FR.mp4",
+            ""
+          ],
+          "imageYOffset": 0,
+          "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
+          "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
+          "imageCustomWidth": "70%",
+          "sectionGapMobile": 10,
+          "stackedMode": "image_text",
+          "stackedTextPosition": "top",
+          "stackedTitle": "French version",
+          "hidden": false
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif"
+          ],
+          "imagePosition": "left",
+          "imageWidthRatio": "79%",
+          "imageCustomWidth": "79%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": 20,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif": true
+          },
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-7.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1788626164321",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-7.gif"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-2.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-3.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-6.gif"
+          ],
+          "imagePosition": "right",
+          "imageWidthRatio": "79%",
+          "imageCustomWidth": "79%",
+          "stackedGap": 16,
+          "stackedMode": "two_images",
+          "stackedTextPosition": "bottom",
+          "stackedTitle": "",
+          "stackedText": "",
+          "stackedTextAlign": "left",
+          "sectionGap": "default",
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-2.gif",
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif": true
+          },
+          "id": "sec-1788626197800-0p6k"
+        }
+      ],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "STORYBOARD, ILLUSTRATION, ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT",
+          "value": "Mondata"
+        },
+        {
+          "id": "field-1786546687138",
+          "label": "tools",
+          "value": "Illustrator, After Effects"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg": false,
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true
+      }
+    },
+    {
       "id": 15,
       "title": "WORKLEAP - LOTTIE WEB ANIMATIONS 2",
       "shortDescription": "Workleap is a software platform that provides AI-powered tools for employee performance management and training. \n\nTo make their website more engaging, I animated a set of client-provided UI illustrations into smooth, continuous loops that visually demonstrate the platform in action.",
@@ -3295,6 +3684,107 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Lottie-2/GIF-2.mp4": true
+      }
+    },
+    {
+      "id": 19,
+      "title": "WORKLEAP - BRAND SIZZLE REEL 3",
+      "shortDescription": "Continuing the successful video series for Workleap, I animated a third sizzle reel. \n\nBuilding on the style of the previous videos, I brought new visual elements to life to create another fast-paced showcase for their brand.",
+      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
+      "role": "ANIMATION",
+      "client": "WORKLEAP",
+      "description": "To keep the same high energy as the previous reels, I synced every visual movement directly to the music track. \n\nI focused on clean transitions and smooth motion to keep the video engaging, clear, and easy to watch.",
+      "descriptionBottomGap": 150,
+      "metaInfoBottomGap": 150,
+      "metaInfoBottomGapMobile": 70,
+      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4",
+      "headerVideos": [
+        {
+          "id": "v-1",
+          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4",
+          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Thumbnail.jpg"
+        }
+      ],
+      "headerVideoLayout": "grid",
+      "categories": [
+        "Brand"
+      ],
+      "sections": [
+        {
+          "type": "split_stacked",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-2.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-3.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1788626745599",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif"
+              ]
+            }
+          ],
+          "sectionGap": 20,
+          "rowsGap": 0,
+          "titleTopGap": 0,
+          "titleBottomGap": 0,
+          "gifModes": {
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-3.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-2.gif": true,
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif": true
+          },
+          "imageCustomWidth": "67%",
+          "imageWidthRatio": "67%",
+          "sectionGapMobile": 10
+        },
+        {
+          "type": "grid",
+          "label": "",
+          "images": [
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-4.gif",
+            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-5.gif"
+          ],
+          "rows": [
+            {
+              "id": "row-1786540638854",
+              "images": [
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-4.gif",
+                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-5.gif"
+              ],
+              "singleImageColumns": 1
+            }
+          ],
+          "rowsGap": "default",
+          "rowsGapMobile": "default",
+          "sectionGap": "default",
+          "sectionGapMobile": "default"
+        }
+      ],
+      "date": "2026",
+      "softwareUsed": [],
+      "behanceLink": "",
+      "externalLink": "",
+      "customFields": [
+        {
+          "id": "field-role",
+          "label": "ROLE",
+          "value": "ANIMATION"
+        },
+        {
+          "id": "field-client",
+          "label": "CLIENT ",
+          "value": "WORKLEAP"
+        },
+        {
+          "id": "field-1786540313976",
+          "label": "tools",
+          "value": "After Effects, Illustrator"
+        }
+      ],
+      "gifModes": {
+        "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false
       }
     },
     {
@@ -3471,496 +3961,6 @@ export const defaultSiteData: CMSSiteData = {
       ],
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Project-WeActis/GIF-1.mp4": true
-      }
-    },
-    {
-      "id": 18,
-      "title": "WORKLEAP - BRAND SIZZLE REEL 2",
-      "shortDescription": "Following the success of Workleap’s first sizzle reel, I was brought back to animate a second video. \n\nBuilding on our previous collaboration, I took their updated visual style and created another energetic showcase video to keep their audience engaged.",
-      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
-      "role": "ANIMATION",
-      "client": "WORKLEAP",
-      "description": "The main focus was matching every visual movement directly to the upbeat rhythm of the music. \n\nI carefully timed the transitions and motion graphics to the beat, making the motion feel natural while elevating the overall energy of the video.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/Final-Video.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1786539261809",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/Final-Video.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg"
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Brand"
-      ],
-      "sections": [
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4": true
-              },
-              "itemWidths": {
-                "0": "100%"
-              },
-              "rowAlignment": "center"
-            }
-          ],
-          "rowsGap": "default",
-          "rowsGapMobile": "default",
-          "sectionGap": 20,
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/1.jpg",
-            ""
-          ],
-          "imagePosition": "left",
-          "imageWidthRatio": "50%",
-          "imageCustomWidth": "50%",
-          "stackedGap": 0,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 0,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-2.mp4": true
-          }
-        }
-      ],
-      "date": "2026",
-      "softwareUsed": [],
-      "behanceLink": "",
-      "externalLink": "",
-      "customFields": [
-        {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "ANIMATION"
-        },
-        {
-          "id": "field-client",
-          "label": "CLIENT ",
-          "value": "WORKLEAP"
-        },
-        {
-          "id": "field-1786540270681",
-          "label": "tools",
-          "value": "After Effects, Illustrator"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/GIF-1.mp4": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Workleap-Sizzle-Reel-1/thumbnail.project.jpg": false
-      }
-    },
-    {
-      "id": 19,
-      "title": "WORKLEAP - BRAND SIZZLE REEL 3",
-      "shortDescription": "Continuing the successful video series for Workleap, I animated a third sizzle reel. \n\nBuilding on the style of the previous videos, I brought new visual elements to life to create another fast-paced showcase for their brand.",
-      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
-      "role": "ANIMATION",
-      "client": "WORKLEAP",
-      "description": "To keep the same high energy as the previous reels, I synced every visual movement directly to the music track. \n\nI focused on clean transitions and smooth motion to keep the video engaging, clear, and easy to watch.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Thumbnail.jpg"
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Brand"
-      ],
-      "sections": [
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-2.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-3.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1788626745599",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif"
-              ]
-            }
-          ],
-          "sectionGap": 20,
-          "rowsGap": 0,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-3.gif": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-2.gif": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-1.gif": true
-          },
-          "imageCustomWidth": "67%",
-          "imageWidthRatio": "67%",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-4.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-5.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1786540638854",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-4.gif",
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/GIF-5.gif"
-              ],
-              "singleImageColumns": 1
-            }
-          ],
-          "rowsGap": "default",
-          "rowsGapMobile": "default",
-          "sectionGap": "default",
-          "sectionGapMobile": "default"
-        }
-      ],
-      "date": "2026",
-      "softwareUsed": [],
-      "behanceLink": "",
-      "externalLink": "",
-      "customFields": [
-        {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "ANIMATION"
-        },
-        {
-          "id": "field-client",
-          "label": "CLIENT ",
-          "value": "WORKLEAP"
-        },
-        {
-          "id": "field-1786540313976",
-          "label": "tools",
-          "value": "After Effects, Illustrator"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Workleap-Sizzle-Reel-2/Final-Video.mp4": false
-      }
-    },
-    {
-      "id": 20,
-      "title": "TABSEER - PRODUCT QUALITY EXPLAINER VIDEO",
-      "shortDescription": "Tabseer helps companies make sure their products meet safety and quality standards in the Middle East. \n\nTo help them clearly explain their services to businesses, I created a full motion graphics explainer video.",
-      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
-      "role": "STORYBOARD, ILLUSTRATION, ANIMATION, SFX",
-      "client": "TABSEER",
-      "description": "I handled the project from start to finish. \n\nI began with sketches and storyboards to plan out each scene, then animated the visuals, added custom sound effects, and completed the final video export.",
-      "descriptionBottomGap": 150,
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Final-Video.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Final-Video.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg"
-        }
-      ],
-      "headerVideoLayout": "grid",
-      "categories": [
-        "Explainer"
-      ],
-      "sections": [
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-1.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4": true,
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
-              },
-              "itemOffsets": {
-                "1": 150
-              }
-            }
-          ],
-          "rowsGap": "default",
-          "sectionGap": 20,
-          "rowsGapMobile": "default",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4"
-          ],
-          "imagePosition": "left",
-          "imageWidthRatio": "67%",
-          "imageCustomWidth": "67%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-3.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/GIF-4.mp4": true
-          },
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4",
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Tabsser.BS.mp4"
-          ],
-          "rows": [
-            {
-              "id": "row-1",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Tabsser.BS.mp4"
-              ],
-              "gifModes": {
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Tabsser.BS.mp4": true
-              },
-              "itemWidths": {
-                "0": "100%"
-              }
-            }
-          ],
-          "sectionGap": "default"
-        }
-      ],
-      "date": "2026",
-      "softwareUsed": [],
-      "behanceLink": "",
-      "externalLink": "",
-      "customFields": [
-        {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "STORYBOARD, ILLUSTRATION, ANIMATION, SFX"
-        },
-        {
-          "id": "field-client",
-          "label": "CLIENT",
-          "value": "Tabseer"
-        },
-        {
-          "id": "field-1786544072192",
-          "label": "tools",
-          "value": "Illustrator, After Effects"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-5.jpg": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Scene-6.jpg": true,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": true
-      }
-    },
-    {
-      "id": 21,
-      "title": "MONDATA - CYBERSECURITY EXPLAINER VIDEO",
-      "shortDescription": "Mondata is a Canadian technology company that uses AI solutions to protect IT infrastructure against cyberattacks. \n\nTo help them showcase their tailored cybersecurity services clearly and engagingly, I created a 60-second motion graphics explainer video in two language versions (English and French).",
-      "heroImage": "/src/assets/images/showreel-Thumbnail.png",
-      "role": "STORYBOARD, ILLUSTRATION, ANIMATION",
-      "client": "MONDATA",
-      "description": "Because the client provided a defined visual style and clear direction from the start, the production process was smooth and efficient. \n\nOnce the visual designs were set, I animated the scenes with fluid movements to ensure the message was simple for viewers to follow, resulting in a final video that was approved right away with no revisions needed.",
-      "descriptionBottomGap": 150,
-      "descriptionBottomGapMobile": "default",
-      "metaInfoBottomGap": 150,
-      "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4",
-      "headerVideos": [
-        {
-          "id": "v-1",
-          "url": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4",
-          "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg"
-        }
-      ],
-      "headerVideoLayout": "row",
-      "categories": [
-        "Explainer"
-      ],
-      "sections": [
-        {
-          "type": "image_text",
-          "label": "",
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-FR.mp4",
-          "textTitle": "French version",
-          "textContent": "",
-          "imagePosition": "right",
-          "imageWidthRatio": "50",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-FR.mp4",
-            ""
-          ],
-          "imageYOffset": 0,
-          "videoTemplateUrl": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
-          "posterImage": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg",
-          "imageCustomWidth": "70%",
-          "sectionGapMobile": 10,
-          "stackedMode": "image_text",
-          "stackedTextPosition": "top",
-          "stackedTitle": "French version",
-          "hidden": false
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif"
-          ],
-          "imagePosition": "left",
-          "imageWidthRatio": "79%",
-          "imageCustomWidth": "79%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": 20,
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif": true
-          },
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "grid",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-7.gif"
-          ],
-          "rows": [
-            {
-              "id": "row-1788626164321",
-              "images": [
-                "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-7.gif"
-              ]
-            }
-          ],
-          "sectionGap": 20,
-          "rowsGap": "default",
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "sectionGapMobile": 10
-        },
-        {
-          "type": "split_stacked",
-          "label": "",
-          "images": [
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-2.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-3.gif",
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-6.gif"
-          ],
-          "imagePosition": "right",
-          "imageWidthRatio": "79%",
-          "imageCustomWidth": "79%",
-          "stackedGap": 16,
-          "stackedMode": "two_images",
-          "stackedTextPosition": "bottom",
-          "stackedTitle": "",
-          "stackedText": "",
-          "stackedTextAlign": "left",
-          "sectionGap": "default",
-          "titleTopGap": 0,
-          "titleBottomGap": 0,
-          "imageSrc": "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-2.gif",
-          "gifModes": {
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-4.gif": true,
-            "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-5.gif": true
-          },
-          "id": "sec-1788626197800-0p6k"
-        }
-      ],
-      "date": "2026",
-      "softwareUsed": [],
-      "behanceLink": "",
-      "externalLink": "",
-      "customFields": [
-        {
-          "id": "field-role",
-          "label": "ROLE",
-          "value": "STORYBOARD, ILLUSTRATION, ANIMATION"
-        },
-        {
-          "id": "field-client",
-          "label": "CLIENT",
-          "value": "Mondata"
-        },
-        {
-          "id": "field-1786546687138",
-          "label": "tools",
-          "value": "Illustrator, After Effects"
-        }
-      ],
-      "gifModes": {
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Tabseer/Gif-5.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Final-Video-WeActis-EN.mp4": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/Thumbnail-2.jpg": false,
-        "https://github.com/youssefabaali/my-website-assets/releases/download/Project-Mondata/GIF-1.mp4": true
       }
     }
   ],
