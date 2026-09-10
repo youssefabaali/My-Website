@@ -4140,7 +4140,7 @@ export const defaultSiteData: CMSSiteData = {
   "homeTitles": {
     "showreel": "",
     "featuredWork": "FEATURED WORK",
-    "services": "SERVICES & EXPERTISE",
+    "services": "SERVICES",
     "socials": "I'M ALL OVER THE INTERNET"
   },
   "homeVisibility": {
