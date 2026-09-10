@@ -3975,7 +3975,7 @@ export const defaultSiteData: CMSSiteData = {
       ]
     },
     {
-      "title": "LOGO & IDENTITY ANIMATIOND",
+      "title": "LOGO & IDENTITY ANIMATION",
       "items": []
     },
     {
