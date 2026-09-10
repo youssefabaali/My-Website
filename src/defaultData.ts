@@ -4110,7 +4110,7 @@ export const defaultSiteData: CMSSiteData = {
     ]
   },
   "showreel": {
-    "videoUrl": "https://vimeo.com/1153984527?fl=pl&fe=sh",
+    "videoUrl": "https://vimeo.com/1225679905?share=copy&fl=sv&fe=ci",
     "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg"
   },
   "seo": {
@@ -4133,7 +4133,7 @@ export const defaultSiteData: CMSSiteData = {
   "linkPreview": {
     "shareImage": "https://www.youssefabaali.com/assets/images/link-share-preview-1788700428588.jpg",
     "shareTitle": "Youssef Abaali - Motion Graphics Designer",
-    "shareDescription": "Got a project in mind? Let's bring it to life.",
+    "shareDescription": "I'm here to help you bring your ideas to life.",
     "siteFavicon": "/favicon.svg",
     "siteUrl": "https://www.youssefabaali.com"
   },
