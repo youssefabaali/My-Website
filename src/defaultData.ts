@@ -110,11 +110,11 @@ export const defaultSiteData: CMSSiteData = {
       "link": "",
       "hoverGif": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/GIF.Video.project.mp4",
       "isPublished": true,
+      "isFeatured": false,
       "gifModes": {
         "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg": false,
         "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/GIF.Video.project.mp4": true
-      },
-      "isFeatured": false
+      }
     },
     {
       "id": 4,
@@ -648,11 +648,11 @@ export const defaultSiteData: CMSSiteData = {
       "descriptionBottomGap": 150,
       "metaInfoBottomGap": 150,
       "metaInfoBottomGapMobile": 70,
-      "videoUrl": "https://vimeo.com/1153984527?fl=pl&fe=sh",
+      "videoUrl": "https://vimeo.com/1225679905?share=copy&fl=sv&fe=ci",
       "headerVideos": [
         {
           "id": "v-1",
-          "url": "https://vimeo.com/1153984527?fl=pl&fe=sh",
+          "url": "https://vimeo.com/1225679905?share=copy&fl=sv&fe=ci",
           "thumbnail": "https://github.com/youssefabaali/my-website-assets/releases/download/Showreel-2025/Showreel-2025-picture-1.jpg"
         }
       ],
